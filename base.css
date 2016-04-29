@@ -10,11 +10,11 @@ body {
 
 /* Matrix container */
 #matrix {
-	position: absolute;
+	position: relative;
 	height: 5em;
 	width: 5em;
-	left: 40%;
-	top: 10%;
+	left: 35%;
+	top: 0.25em;
 	border: 2px solid black;	
 }
 
@@ -98,11 +98,11 @@ body {
 
 /* Equation container */
 #equation {
-	position: absolute;
+	position: relative;
 	width: 9em;
 	height: 1.70em;
-	left: 30%;
-	top: 70%;	
+	left: 23%;
+	top: 0.75em;
 }
 
 /* All Equation Cells */

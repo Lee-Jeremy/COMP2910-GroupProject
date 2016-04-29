@@ -1,0 +1,170 @@
+/* Padding and border included in width and height */
+* {
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+	font-size: 6em;
+}
+
+/* Matrix container */
+#matrix {
+	position: absolute;
+	height: 5em;
+	width: 5em;
+	left: 40%;
+	top: 10%;
+	border: 2px solid black;	
+}
+
+/* All Matrix Cells */
+#r1c1, #r1c2, #r1c3, #r2c1, #r2c2, #r2c3, #r3c1, #r3c2, #r3c3{
+	position: absolute;
+	height: 33.33%;
+	width: 33.33%;
+	text-align: center;
+	line-height: 150%;
+	background-color: #ff6600;
+	color: white;	
+}
+
+/* Row 1 Col 1 */
+#r1c1 {
+	border-bottom: 2px solid white;		
+}
+
+/* Row 1 Col 2 */
+#r1c2 {
+	left: 33.33%;
+	top: 0;
+	border-bottom: 2px solid white;
+	border-left: 2px solid white;
+	border-right: 2px solid white;
+}
+
+/* Row 1 Col 3 */
+#r1c3 {
+	left: 66.66%;
+	top: 0;
+	border-bottom: 2px solid white;	
+}
+
+/* Row 2 Col 1 */
+#r2c1 {
+	top: 33.33%;
+	border-bottom: 2px solid white;	
+}
+
+/* Row 2 Col 2 */
+#r2c2 {
+	top: 33.33%;
+	left: 33.33%;
+	border-left: 2px solid white;	
+	border-right: 2px solid white;
+	border-bottom: 2px solid white;
+}
+
+/* Row 2 Col 3 */
+#r2c3 {
+	top: 33.33%;
+	left: 66.66%;
+	border-bottom: 2px solid white;	
+}
+
+/* Row 3 Col 1 */
+#r3c1 {
+	top: 66.66%;
+}
+
+/* Row 3 Col 2 */
+#r3c2 {
+	top: 66.66%;
+	left: 33.33%;
+	border-left: 2px solid white;
+	border-right: 2px solid white;
+}
+
+/* Row 3 Col 3 */
+#r3c3 {
+	top: 66.66%;
+	left: 66.66%;
+}
+
+/* All Matrix Cells Hover */
+#r1c1:hover, #r1c2:hover, #r1c3:hover, #r2c1:hover, #r2c2:hover, #r2c3:hover, #r3c1:hover, #r3c2:hover, #r3c3:hover {
+	background-color: #ff944d;	
+}
+
+/* Equation container */
+#equation {
+	position: absolute;
+	width: 9em;
+	height: 1.70em;
+	left: 30%;
+	top: 70%;	
+}
+
+/* All Equation Cells */
+#first, #second, #third, #fourth, #fifth {
+	position: absolute;
+	height: 100%;
+	width: 20%;
+	text-align: center;
+	line-height: 150%;
+	background-color: #ff6600;
+	color: white;		
+}
+
+/* First Equation Cell */
+#first {
+}
+
+/* Second Equation Cell */
+#second {
+	left: 20%;
+	background-color: white;
+	color: black;
+}
+
+/* Third Equation Cell */
+#third {
+	left: 40%;
+}
+
+/* Fourth Equation Cell */
+#fourth {
+	left: 60%; 
+	background-color: white;
+	color: black;
+}
+
+/* Fourth Equation Cell */
+#fifth {
+	left: 80%; 
+}
+
+/* All Equation Cells Hover */
+#first:hover, #second:hover, #third:hover, #fourth:hover, #fifth:hover {
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

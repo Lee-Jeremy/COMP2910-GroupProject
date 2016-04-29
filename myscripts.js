@@ -32,8 +32,7 @@ function check() {
 				duplicates++;
 				rand = Math.floor((Math.random() * 20) + 1); // 1 to 20
 				array[k] = rand; // Assign the second occurence a new random number			
-			} else {
-			}	
+			} 				
 		}
 	}
 

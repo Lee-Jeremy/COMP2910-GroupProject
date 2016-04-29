@@ -92,13 +92,17 @@ function revealR1C1(id) {
 	
 	if (count == 1) {
 		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('first')).innerHTML = num;
+		($('first')).style.backgroundColor = "#800080";
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
 		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('third')).innerHTML = num;
+		($('third')).style.backgroundColor = "#800080";
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -112,13 +116,17 @@ function revealR1C2(id) {
 	
 	if (count == 1) {
 		cell.innerHTML = num;	
+		cell.style.backgroundColor = "#800080";
 		($('first')).innerHTML = num;
+		($('first')).style.backgroundColor = "#800080";
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
 		cell.innerHTML = num;	
+		cell.style.backgroundColor = "#800080";
 		($('third')).innerHTML = num;
+		($('third')).style.backgroundColor = "#800080";
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -132,13 +140,17 @@ function revealR1C3(id) {
 	
 	if (count == 1) {
 		cell.innerHTML = num;	
+		cell.style.backgroundColor = "#800080";
 		($('first')).innerHTML = num;
+		($('first')).style.backgroundColor = "#800080";
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
 		cell.innerHTML = num;	
+		cell.style.backgroundColor = "#800080";
 		($('third')).innerHTML = num;
+		($('third')).style.backgroundColor = "#800080";
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -151,14 +163,18 @@ function revealR2C1(id) {
 	count++;
 	
 	if (count == 1) {
-		cell.innerHTML = num;	
+		cell.innerHTML = num;
+	cell.style.backgroundColor = "#800080";		
 		($('first')).innerHTML = num;
+		($('first')).style.backgroundColor = "#800080";
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
-		cell.innerHTML = num;	
+		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('third')).innerHTML = num;
+		($('third')).style.backgroundColor = "#800080";
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -171,14 +187,18 @@ function revealR2C2(id) {
 	count++;
 	
 	if (count == 1) {
-		cell.innerHTML = num;	
+		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('first')).innerHTML = num;
+		($('first')).style.backgroundColor = "#800080";
 		userSelection[0] = num;
 	}	
 
 	if (count == 2) {
-		cell.innerHTML = num;	
+		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('third')).innerHTML = num;
+		($('third')).style.backgroundColor = "#800080";
 		userSelection[1] = num;
 		checkAnswer();
 	}	
@@ -191,14 +211,18 @@ function revealR2C3(id) {
 	count++;
 	
 	if (count == 1) {
-		cell.innerHTML = num;	
+		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('first')).innerHTML = num;
+		($('first')).style.backgroundColor = "#800080";
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
 		cell.innerHTML = num;	
+		cell.style.backgroundColor = "#800080";
 		($('third')).innerHTML = num;
+		($('third')).style.backgroundColor = "#800080";
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -211,14 +235,18 @@ function revealR3C1(id) {
 	count++;
 	
 	if (count == 1) {
-		cell.innerHTML = num;	
+		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('first')).innerHTML = num;
+		($('first')).style.backgroundColor = "#800080";
 		userSelection[0] = num;
 	}
 	
 	if (count == 2) {
-		cell.innerHTML = num;	
+		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('third')).innerHTML = num;
+		($('third')).style.backgroundColor = "#800080";
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -231,14 +259,18 @@ function revealR3C2(id) {
 	count++;
 	
 	if (count == 1) {
-		cell.innerHTML = num;	
+		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('first')).innerHTML = num;
+		($('first')).style.backgroundColor = "#800080";
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
-		cell.innerHTML = num;	
+		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('third')).innerHTML = num;
+		($('third')).style.backgroundColor = "#800080";
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -251,14 +283,18 @@ function revealR3C3(id) {
 	count++;
 	
 	if (count == 1) {
-		cell.innerHTML = num;	
+		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('first')).innerHTML = num;
+		($('first')).style.backgroundColor = "#800080";
 		userSelection[0] = num;
 	}
 	
 	if (count == 2) {
-		cell.innerHTML = num;	
+		cell.innerHTML = num;
+		cell.style.backgroundColor = "#800080";
 		($('third')).innerHTML = num;
+		($('third')).style.backgroundColor = "#800080";
 		userSelection[1] = num;
 		checkAnswer();
 	}

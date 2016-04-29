@@ -11,31 +11,43 @@ function $(id) {
 var count = 0;
 var array = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // The Matrix
 var userSelection = [1, 2]; // The Two Cells Chosen By The User
+var answer; // The Answer to the Equation
+var duplicates = 0;
+var timer;
 var i;
 var k;
-var answer;
 
 // Fill the array
 for (i = 0; i < array.length; i++) {
 	var rand = Math.floor((Math.random() * 20) + 1); // 1 to 20
 	array[i] = rand;
 }
+check();
 
-// Check for duplicate values
-for (i = 0; k < array.length - 1; i++) {
-	
-	for (k = 1; k < array.length; k++) {
-		if (array[i] == array[k]) {
-			rand = Math.floor((Math.random() * 20) + 1); // 1 to 20
-			array[k] = rand; // Assign the second occurence a new random number
+//Check for duplicate cells
+function check() {
+	for (i = 0; i < array.length - 1; i++) {	
+		for (k = (i + 1); k < array.length; k++) {
+			if (array[i] == array[k]) {
+				duplicates++;
+				rand = Math.floor((Math.random() * 20) + 1); // 1 to 20
+				array[k] = rand; // Assign the second occurence a new random number			
+			} else {
+			}	
 		}
 	}
+
+while (duplicates != 0) {
+	duplicates = 0;
+	check();
+}
+duplicates = 0;
 }
 
 // Reveal Answer
-var timer = setTimeout(revealFifth, 1500); // 1.5 Second Delay onload
+timer = setTimeout(revealFifth, 1500); // 1.5 Second Delay onload
 function revealFifth() {
-	var cell = ($('fifth'));
+	var cell = $('fifth');
 	answer = (array[0] + array[3]);
 	cell.innerHTML = answer;	
 }
@@ -43,7 +55,7 @@ function revealFifth() {
 // Hide Answer
 timer = setTimeout(hideFifth, 3500); // 2 Second Delay after reveal
 function hideFifth() {
-	var cell = ($('fifth'));
+	var cell = $('fifth');
 	cell.innerHTML = "";	
 }
 
@@ -57,7 +69,7 @@ function revealMatrix() {
 	
 	for (i = 1; i <= 3; i++) {
 		for (k = 1; k <= 3; k++) {
-			cell = ($('r' + i + 'c' + k)).innerHTML = array[z]; // Reveal each cell
+			cell = $('r' + i + 'c' + k).innerHTML = array[z]; // Reveal each cell
 			z++;
 		}
 	}
@@ -72,7 +84,7 @@ function hideMatrix() {
 	
 	for (i = 1; i <= 3; i++) {
 		for (k = 1; k <= 3; k++) {
-			cell = ($('r' + i + 'c' + k)).innerHTML = ""; // Hide each cell
+			cell = $('r' + i + 'c' + k).innerHTML = ""; // Hide each cell
 		}
 	}	
 }
@@ -80,7 +92,7 @@ function hideMatrix() {
 // Reveal Operator
 timer = setTimeout(revealOperator, 9500); // 2 Second Delay After Matrix is Hidden
 function revealOperator() {
-	var cell = ($('second'));
+	var cell = $('second');
 	cell.innerHTML = "+";	
 }
 
@@ -92,17 +104,17 @@ function revealR1C1(id) {
 	
 	if (count == 1) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('first')).innerHTML = num;
-		($('first')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; // Purple
+		$('first').innerHTML = num;
+		$('first').style.backgroundColor = "#800080"; 
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('third')).innerHTML = num;
-		($('third')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('third').innerHTML = num;
+		$('third').style.backgroundColor = "#800080"; 
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -116,17 +128,17 @@ function revealR1C2(id) {
 	
 	if (count == 1) {
 		cell.innerHTML = num;	
-		cell.style.backgroundColor = "#800080";
-		($('first')).innerHTML = num;
-		($('first')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('first').innerHTML = num;
+		$('first').style.backgroundColor = "#800080"; 
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
 		cell.innerHTML = num;	
-		cell.style.backgroundColor = "#800080";
-		($('third')).innerHTML = num;
-		($('third')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('third').innerHTML = num;
+		$('third').style.backgroundColor = "#800080"; 
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -141,16 +153,16 @@ function revealR1C3(id) {
 	if (count == 1) {
 		cell.innerHTML = num;	
 		cell.style.backgroundColor = "#800080";
-		($('first')).innerHTML = num;
-		($('first')).style.backgroundColor = "#800080";
+		$('first').innerHTML = num;
+		$('first').style.backgroundColor = "#800080"; 
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
 		cell.innerHTML = num;	
-		cell.style.backgroundColor = "#800080";
-		($('third')).innerHTML = num;
-		($('third')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('third').innerHTML = num;
+		$('third').style.backgroundColor = "#800080";
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -164,17 +176,17 @@ function revealR2C1(id) {
 	
 	if (count == 1) {
 		cell.innerHTML = num;
-	cell.style.backgroundColor = "#800080";		
-		($('first')).innerHTML = num;
-		($('first')).style.backgroundColor = "#800080";
+	cell.style.backgroundColor = "#800080";		 
+		$('first').innerHTML = num;
+		$('first').style.backgroundColor = "#800080"; 
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('third')).innerHTML = num;
-		($('third')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('third').innerHTML = num;
+		$('third').style.backgroundColor = "#800080"; 
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -188,17 +200,17 @@ function revealR2C2(id) {
 	
 	if (count == 1) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('first')).innerHTML = num;
-		($('first')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('first').innerHTML = num;
+		$('first').style.backgroundColor = "#800080"; 
 		userSelection[0] = num;
 	}	
 
 	if (count == 2) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('third')).innerHTML = num;
-		($('third')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('third').innerHTML = num;
+		$('third').style.backgroundColor = "#800080"; 
 		userSelection[1] = num;
 		checkAnswer();
 	}	
@@ -212,17 +224,17 @@ function revealR2C3(id) {
 	
 	if (count == 1) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('first')).innerHTML = num;
-		($('first')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('first').innerHTML = num;
+		$('first').style.backgroundColor = "#800080"; 
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
 		cell.innerHTML = num;	
 		cell.style.backgroundColor = "#800080";
-		($('third')).innerHTML = num;
-		($('third')).style.backgroundColor = "#800080";
+		$('third').innerHTML = num;
+		$('third').style.backgroundColor = "#800080"; 
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -236,17 +248,17 @@ function revealR3C1(id) {
 	
 	if (count == 1) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('first')).innerHTML = num;
-		($('first')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('first').innerHTML = num;
+		$('first').style.backgroundColor = "#800080"; 
 		userSelection[0] = num;
 	}
 	
 	if (count == 2) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('third')).innerHTML = num;
-		($('third')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('third').innerHTML = num;
+		$('third').style.backgroundColor = "#800080"; 
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -260,17 +272,17 @@ function revealR3C2(id) {
 	
 	if (count == 1) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('first')).innerHTML = num;
-		($('first')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('first').innerHTML = num;
+		$('first').style.backgroundColor = "#800080"; 
 		userSelection[0] = num;
 	}	
 	
 	if (count == 2) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('third')).innerHTML = num;
-		($('third')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('third').innerHTML = num;
+		$('third').style.backgroundColor = "#800080"; 
 		userSelection[1] = num;
 		checkAnswer();
 	}
@@ -284,17 +296,17 @@ function revealR3C3(id) {
 	
 	if (count == 1) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('first')).innerHTML = num;
-		($('first')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('first').innerHTML = num;
+		$('first').style.backgroundColor = "#800080"; 
 		userSelection[0] = num;
 	}
 	
 	if (count == 2) {
 		cell.innerHTML = num;
-		cell.style.backgroundColor = "#800080";
-		($('third')).innerHTML = num;
-		($('third')).style.backgroundColor = "#800080";
+		cell.style.backgroundColor = "#800080"; 
+		$('third').innerHTML = num;
+		$('third').style.backgroundColor = "#800080"; 
 		userSelection[1] = num;
 		checkAnswer();
 	}

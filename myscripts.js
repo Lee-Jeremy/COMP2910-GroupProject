@@ -1,12 +1,3 @@
-// Abbreviated getElementByID
-function $(id) {
-	var element = document.getElementById(id); 
-	if (element == null) { 
-		alert ('programmer error: ' + id + 'does not exist.');
-	}
-	return element;			
-	}
-
 // Global Variables
 var count = 0;
 var array = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // The Matrix
@@ -17,20 +8,32 @@ var timer;
 var i;
 var k;
 
-// Fill the array
-for (i = 0; i < array.length; i++) {
-	var rand = Math.floor((Math.random() * 20) + 1); // 1 to 20
-	array[i] = rand;
-}
-check();
+// Abbreviated getElementByID
+function $(id) {
+	var element = document.getElementById(id); 
+	if (element == null) { 
+		alert ('programmer error: ' + id + 'does not exist.');
+	}
+	return element;			
+	}
 
-//Check for duplicate cells
+fillMatrix();
+// Fill The Matrix Array
+function fillMatrix() {
+	for (i = 0; i < array.length; i++) {
+		var rand = Math.floor((Math.random() * 9) + 1); // 1 to 9
+		array[i] = rand;
+	}
+}
+
+check();
+// Check for duplicate cells
 function check() {
 	for (i = 0; i < array.length - 1; i++) {	
 		for (k = (i + 1); k < array.length; k++) {
 			if (array[i] == array[k]) {
 				duplicates++;
-				rand = Math.floor((Math.random() * 20) + 1); // 1 to 20
+				rand = Math.floor((Math.random() * 9) + 1); // 1 to 9
 				array[k] = rand; // Assign the second occurence a new random number			
 			} 				
 		}

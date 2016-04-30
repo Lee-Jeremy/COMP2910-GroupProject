@@ -29,7 +29,7 @@ body {
 	color: white;	
 }
 
-/* Row 1 Col 1 */
+/* Row 1 Col 1 */ 
 #r1c1 {
 	border-bottom: 2px solid white;		
 }
@@ -145,8 +145,7 @@ body {
 }
 
 /* All Equation Cells Hover */
-#first:hover, #second:hover, #third:hover, #fourth:hover, #fifth:hover {
-	
+#first:hover, #second:hover, #third:hover, #fourth:hover, #fifth:hover {	
 }
 
 

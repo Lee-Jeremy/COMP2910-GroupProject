@@ -15,7 +15,6 @@ var answer; // The Answer to the Equation
 var numSolutions = 0; // Number of Solution Combinations in the Matrix
 var timer; // Timer
 var seconds = 1; // Seconds counter
-var rand; // Random number
 var i; // For-loop iterator
 var k; // For-loop iterator
 
@@ -56,6 +55,7 @@ function generateAnswer() {
 
 // Fill The Matrix Array
 function fillMatrix() {
+	var rand;
 	for (i = 0; i < matrix.length; i++) {
 		rand = Math.floor(Math.random() * 9); // 0 to 9
 		matrix[i] = rand;
@@ -64,6 +64,7 @@ function fillMatrix() {
 
 // Check the Matrix for at least One solution
 function check() {
+	var rand;
 	for (i = 0; i < matrix.length - 1; i++) {	
 		for (k = (i + 1); k < matrix.length; k++) {
 			if ((matrix[i] + matrix[k]) == answer) { 

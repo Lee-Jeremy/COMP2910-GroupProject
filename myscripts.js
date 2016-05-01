@@ -15,8 +15,13 @@ var answer; // The Answer to the Equation
 var numSolutions = 0; // Number of Solution Combinations in the Matrix
 var timer; // Timer
 var seconds = 1; // Seconds counter
-var i; // For-loop counter
-var k; // For-loop counter
+var rand; // Random number
+var i; // For-loop iterator
+var k; // For-loop iterator
+
+generateAnswer();
+fillMatrix();
+check();
 
 // Abbreviated getElementByID
 function $(id) {
@@ -26,40 +31,6 @@ function $(id) {
 	}
 	return element;			
 	}
-
-generateAnswer();
-// Create an answer
-function generateAnswer() {
-	answer = Math.floor((Math.random() * 9) + 1); // 1 to 9
-}
-
-fillMatrix();
-// Fill The Matrix Array
-function fillMatrix() {
-	for (i = 0; i < matrix.length; i++) {
-		var rand = Math.floor(Math.random() * 9); // 0 to 9
-		matrix[i] = rand;
-	}
-}
-
-check();
-// Check the Matrix for at least One solution
-function check() {
-	for (i = 0; i < matrix.length - 1; i++) {	
-		for (k = (i + 1); k < matrix.length; k++) {
-			if ((matrix[i] + matrix[k]) == answer) { 
-				numSolutions++;						
-			} else if (numSolutions == 0){
-				rand = Math.floor(Math.random() * 9); // 0 to 9
-				matrix[k] = rand; // Assign the second value (k) a new random number		
-			} 				
-		}
-	}
-while (numSolutions == 0) { // Ensure the matrix contains at least one solution
-	check();
-}
-numSolutions = 0;
-}
 
 // Timer
 timer = setInterval(myTimer, 1000); // Execute Every 1 Second(s) 
@@ -76,6 +47,37 @@ function myTimer() {
 		clearInterval(timer); // Stop the timer		
 		seconds = 0; // Reset the seconds to 0 
 	} 
+}
+
+// Create an answer
+function generateAnswer() {
+	answer = Math.floor((Math.random() * 9) + 1); // 1 to 9
+}
+
+// Fill The Matrix Array
+function fillMatrix() {
+	for (i = 0; i < matrix.length; i++) {
+		rand = Math.floor(Math.random() * 9); // 0 to 9
+		matrix[i] = rand;
+	}
+}
+
+// Check the Matrix for at least One solution
+function check() {
+	for (i = 0; i < matrix.length - 1; i++) {	
+		for (k = (i + 1); k < matrix.length; k++) {
+			if ((matrix[i] + matrix[k]) == answer) { 
+				numSolutions++;						
+			} else if (numSolutions == 0){
+				rand = Math.floor(Math.random() * 9); // 0 to 9
+				matrix[k] = rand; // Assign the second value (k) a new random number		
+			} 				
+		}
+	}
+while (numSolutions == 0) { // Ensure the matrix contains at least one solution
+	check();
+}
+numSolutions = 0;
 }
 
 // Reveal Operator
@@ -130,7 +132,7 @@ function revealR1C1(id) {
 	var num = matrix[0]; // First value of matrix array  	
 	
 	if (seconds == 0 && r1c1Reveals != 1) { // Prevents the function from executing before the intro reveals have
-		count++; 						   // finished and from executing more that once on same cell
+		count++; 						   // finished and from executing more that once on the same cell
 	}
 	
 	if (count == 1 && r1c1Reveals != 1) {

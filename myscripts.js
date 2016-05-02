@@ -18,6 +18,7 @@ var seconds = 1; // Seconds counter
 var i; // For-loop iterator
 var k; // For-loop iterator
 
+
 generateAnswer();
 fillMatrix();
 check();
@@ -36,12 +37,14 @@ timer = setInterval(myTimer, 1000); // Execute Every 1 Second(s)
 function myTimer() {	
 	seconds++;	
 	if (seconds == 2) { 
+		revealOperator();
 		revealAnswer();
-	} else if (seconds == 4) {
+	} else if (seconds == 3) {
 		hideFifth();
 		revealMatrix();
-	} else if (seconds == 8) {
-		revealAnswer();
+	} else if (seconds == 4) {
+		//revealAnswer();
+		hideOperator();
 		hideMatrix();
 		clearInterval(timer); // Stop the timer		
 		seconds = 0; // Reset the seconds to 0 
@@ -84,7 +87,7 @@ numSolutions = 0;
 // Reveal Operator
 function revealOperator() {
 	var cell = $('second');
-	cell.innerHTML = "-";	
+	cell.innerHTML = "+";	
 }
 
 // Hide Operator
@@ -398,6 +401,7 @@ function checkEquation(){
 		$('fifth').style.backgroundColor = "#29a329"; // Green
 		
 	} else {
+		revealAnswer();
 		$('fifth').style.backgroundColor = "#e60000"; // Red
 		setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds
 	}

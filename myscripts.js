@@ -121,7 +121,7 @@ function checkCombinations() {
 		}
 	}
 	for (i = matrix.length - 1; i >= 1; i--) {
-		for (k = i - 1; k >= 0; k--) {
+		for (k = matrix.length - 2; k >= 0; k--) {
 			if (matrix[i] % matrix[k] == 0) {
 				numCombinations++;
 			}

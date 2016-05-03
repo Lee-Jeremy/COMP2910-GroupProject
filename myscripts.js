@@ -29,12 +29,13 @@ function $(id) {
 	return element;			
 	}
 
-// Timer
+// Timer - Set the reveal times
 timer = setInterval(myTimer, 1000); // Execute Every 1 Second(s) 
 function myTimer() {	
 	seconds++;	
 	if (seconds == 2) {
-		fillMatrix(); // Fill the matrix array with randomized values
+		generateOperator();
+		fillMatrix();
 		generateAnswer(); // Generate an answer from two random cells within the matrix
 		revealOperator();
 		revealAnswer();
@@ -50,22 +51,48 @@ function myTimer() {
 	} 
 }
 
+// Choose an operator
+function generateOperator() {
+	var rand = Math.floor((Math.random() * 4) + 1); // 1 to 4
+	switch(rand) {
+		case 1:
+			operator = "addition";
+			break;
+		case 2:
+			operator = "subtraction";
+			break;
+		case 3:
+			operator = "multiplication";
+			break;
+		case 4:
+			operator = "division";
+			break;
+	}
+}
+
 // Fill The Matrix Array
 function fillMatrix() {
 	var rand;
-	for (i = 0; i < matrix.length; i++) {
-		rand = Math.floor(Math.random() * 13); // 0 to 12
-		matrix[i] = rand;
+	if (operator === "division") {
+		for (i = 0; i < matrix.length; i++) {
+			rand = Math.floor(Math.random() * 145); // 0 to 144
+			matrix[i] = rand;
+		}
+	} else {
+		for (i = 0; i < matrix.length; i++) {
+			rand = Math.floor(Math.random() * 13); // 0 to 12
+			matrix[i] = rand;
+		}
 	}
 }
 
 // Generate an answer
 function generateAnswer() {
-	generateOperator();
 	var rand1 = Math.floor(Math.random() * 9); // index 0 to index 8
 	var rand2 = Math.floor(Math.random() * 9); 
 	while (rand1 == rand2) {
 		rand1 = Math.floor(Math.random() * 9); 
+		rand2 = Math.floor(Math.random() * 9); 
 	}
 	if (operator === "addition") {
 		answer = (matrix[rand1] + matrix[rand2]); 
@@ -101,28 +128,9 @@ function checkCombinations() {
 			}
 		}
 	}
-	while (numForwardCombinations + numBackwardCombinations == 0) {
-		fillMatrix();
+	while (numForwardCombinations + numBackwardCombinations == 0) { 
+		fillMatrix(); // If no combinations exist, re-fill the matrix with new numbers
 		checkCombinations();
-	}
-}
-
-// Choose an operator
-function generateOperator() {
-	var rand = Math.floor((Math.random() * 4) + 1); // 1 to 4
-	switch(rand) {
-		case 1:
-			operator = "addition";
-			break;
-		case 2:
-			operator = "subtraction";
-			break;
-		case 3:
-			operator = "multiplication";
-			break;
-		case 4:
-			operator = "division";
-			break;
 	}
 }
 

@@ -13,16 +13,12 @@ var matrix = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // The Matrix Values
 var userSelection = [1, 2]; // The Two User Selected Values
 var answer; // The Answer to the Equation
 var numSolutions = 0; // Number of Solution Combinations in the Matrix
+var operator = ""; // Mathematical operator (+, -, *, or /)
 var timer; // Timer
 var seconds = 1; // Seconds counter
-var i; // For-loop iterator
-var k; // For-loop iterator
-
-
-generateAnswer();
-fillMatrix();
-check();
-
+var i; // For-loop counter
+var k; // For-loop counter
+	
 // Abbreviated getElementByID
 function $(id) {
 	var element = document.getElementById(id); 
@@ -36,15 +32,18 @@ function $(id) {
 timer = setInterval(myTimer, 1000); // Execute Every 1 Second(s) 
 function myTimer() {	
 	seconds++;	
-	if (seconds == 2) { 
+	if (seconds == 2) {
+		generateAnswer(); // Generate a random answer for the equation
+		fillMatrix(); // Fill the matrix array with randomized values
+		checkMatrix(); // Verify the matrix to have at least one solution
 		revealOperator();
 		revealAnswer();
 	} else if (seconds == 3) {
-		hideFifth();
+		//hideFifth();
 		revealMatrix();
-	} else if (seconds == 4) {
+	} else if (seconds == 6) {
 		//revealAnswer();
-		hideOperator();
+		//hideOperator();
 		hideMatrix();
 		clearInterval(timer); // Stop the timer		
 		seconds = 0; // Reset the seconds to 0 
@@ -53,7 +52,7 @@ function myTimer() {
 
 // Create an answer
 function generateAnswer() {
-	answer = Math.floor((Math.random() * 9) + 1); // 1 to 9
+	answer = Math.floor((Math.random() * 10) + 1); // 1 to 10
 }
 
 // Fill The Matrix Array
@@ -65,29 +64,156 @@ function fillMatrix() {
 	}
 }
 
+// Choose an operator
+function generateOperator() {
+	var rand = Math.floor((Math.random() * 4) + 1); // 1 to 4
+	switch(rand) {
+		case 1:
+			operator = "addition";
+			break;
+		case 2:
+			operator = "subtraction";
+			break;
+		case 3:
+			operator = "multiplication";
+			break;
+		case 4:
+			operator = "division";
+			break;
+	}
+}
+
 // Check the Matrix for at least One solution
-function check() {
+function checkMatrix() {
+	generateOperator();
+	if (operator === "addition") {
+		additionCheck(); 
+	} else if(operator === "subtraction") {
+		subtractionCheck();
+	} else if(operator === "multiplication") {
+		multiplicationCheck();
+	} else if(operator === "division") {
+		divisionCheck();
+	} else {
+		alert("Unable to indetify an operator during matrix check");
+	}
+}
+
+// Addition operator solution check
+function additionCheck() {
 	var rand;
+	var j = 0;
 	for (i = 0; i < matrix.length - 1; i++) {	
 		for (k = (i + 1); k < matrix.length; k++) {
-			if ((matrix[i] + matrix[k]) == answer) { 
+			if ((matrix[i] + matrix[k]) == answer) { // Compare each cell combination for a solution
 				numSolutions++;						
-			} else if (numSolutions == 0){
-				rand = Math.floor(Math.random() * 9); // 0 to 9
-				matrix[k] = rand; // Assign the second value (k) a new random number		
-			} 				
+			}  				
+		}
+	} while (numSolutions == 0) { // Ensure the matrix contains at least one solution
+		rand = Math.floor(Math.random() * 11); // 0 to 10
+		matrix[j] = rand;		
+		j++;
+		additionCheck();
+		if (j == (matrix.length)) {
+			j = 0;
 		}
 	}
-while (numSolutions == 0) { // Ensure the matrix contains at least one solution
-	check();
+	j = 0; // Reset while loop counter
+	numSolutions = 0; // Reset Solution counter to 0
 }
-numSolutions = 0;
+
+// Subtraction operator solution check
+function subtractionCheck() {
+	var rand;
+	var j = 0;
+	for (i = 0; i < matrix.length - 1; i++) {	
+		for (k = (i + 1); k < matrix.length; k++) {
+			if ((matrix[i] - matrix[k]) == answer) { 
+				numSolutions++;						
+			} else if (numSolutions == 0){ 
+				rand = Math.floor(Math.random() * 11); // 0 to 10
+				matrix[k] = rand; 		
+			} 				
+		}
+	} while (numSolutions == 0) { 
+		rand = Math.floor(Math.random() * 11); // 0 to 10
+		matrix[j] = rand;		
+		j++;
+		subtractionCheck();
+		if (j == (matrix.length)) {
+			j = 0;
+		}
+	}
+	j = 0;
+	numSolutions = 0; 	
+}
+
+// Multiplication operator solution check
+function multiplicationCheck() {
+	var rand;
+	var j = 0;
+	for (i = 0; i < matrix.length - 1; i++) {	
+		for (k = (i + 1); k < matrix.length; k++) {
+			if ((matrix[i] * matrix[k]) == answer) { 
+				numSolutions++;						
+			} else if (numSolutions == 0){ 
+				rand = Math.floor(Math.random() * 11); // 0 to 10
+				matrix[k] = rand; 		
+			} 				
+		}
+	} while (numSolutions == 0) { 
+		rand = Math.floor(Math.random() * 11); // 0 to 10
+		matrix[j] = rand;		
+		j++;
+		multiplicationCheck();
+		if (j == (matrix.length)) {
+			j = 0;
+		}
+	}
+	j = 0;
+	numSolutions = 0; 
+}
+
+// Division operator solution check
+function divisionCheck() {
+	var rand;
+	var j = 0;
+	for (i = 0; i < matrix.length - 1; i++) {	
+		for (k = (i + 1); k < matrix.length; k++) {
+			if ((matrix[i] / matrix[k]) == answer) { 
+				numSolutions++;						
+			} else if (numSolutions == 0){ 
+				rand = Math.floor(Math.random() * 21); // 0 to 20
+				matrix[k] = rand; 		
+			} 				
+		}
+	} while (numSolutions == 0) { 
+		rand = Math.floor(Math.random() * 11); // 0 to 10
+		matrix[j] = rand;		
+		j++;
+		divisionCheck();
+		if (j == (matrix.length)) {
+			j = 0;
+		}
+	}
+	j = 0;
+	numSolutions = 0; 	
 }
 
 // Reveal Operator
 function revealOperator() {
 	var cell = $('second');
-	cell.innerHTML = "+";	
+	if (operator === "addition") {
+		cell.innerHTML = "+";
+	} else if(operator === "subtraction") {
+		cell.innerHTML = "-";
+	} else if(operator === "multiplication") {
+		cell.innerHTML = "*";
+	} else if(operator === "division") {
+		cell.innerHTML = "/";
+	} else {
+		alert("Unable to indetify an operator during operator reveal");
+	}	
 }
 
 // Hide Operator
@@ -395,15 +521,44 @@ function revealR3C3(id) {
 function checkEquation(){
 	var first = userSelection[0];
 	var second = userSelection[1];
-	
-	if ((first + second) == answer){
-		revealAnswer();
-		$('fifth').style.backgroundColor = "#29a329"; // Green
-		
+	if (operator === "addition") {
+		if ((first + second) == answer) {
+			revealAnswer();
+			$('fifth').style.backgroundColor = "#29a329"; // Green
+		} else {
+			revealAnswer();
+			$('fifth').style.backgroundColor = "#e60000"; // Red
+			setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds
+		}
+	} else if(operator === "subtraction") {
+		if ((first - second) == answer) {
+			revealAnswer();
+			$('fifth').style.backgroundColor = "#29a329"; // Green
+		} else {
+			revealAnswer();
+			$('fifth').style.backgroundColor = "#e60000"; // Red
+			setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds
+		}
+	} else if(operator === "multiplication") {
+		if ((first * second) == answer) {
+			revealAnswer();
+			$('fifth').style.backgroundColor = "#29a329"; // Green
+		} else {
+			revealAnswer();
+			$('fifth').style.backgroundColor = "#e60000"; // Red
+			setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds
+		}
+	} else if(operator === "division") {
+		if ((first / second) == answer) {
+			revealAnswer();
+			$('fifth').style.backgroundColor = "#29a329"; // Green
+		} else {
+			revealAnswer();
+			$('fifth').style.backgroundColor = "#e60000"; // Red
+			setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds
+		}
 	} else {
-		revealAnswer();
-		$('fifth').style.backgroundColor = "#e60000"; // Red
-		setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds
+		alert('Unable to identify operator during checkEquation');	
 	}
 }
 

@@ -1,5 +1,5 @@
 // Global Variables
-var count = 0; // Number of reveals across all matrix cells
+var count = 0; // Total number of reveals across all matrix cells
 var r1c1Reveals = 0; // Number of reveals in the 1st matrix cell
 var r1c2Reveals = 0; //   						 2nd 
 var r1c3Reveals = 0; //   						 3rd
@@ -11,12 +11,12 @@ var r3c2Reveals = 0; //   						 8th
 var r3c3Reveals = 0; //   						 9th
 var matrix = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // The Matrix Values
 var userSelection = [1, 2]; // The Two User Selected Values
-var numForwardCombinations = 0;
-var numBackwardCombinations = 0;
+var numForwardCombinations = 0; // Forward division solution combinations in the matrix
+var numBackwardCombinations = 0; // Backward division solution combinations in the matrix
 var answer; // The Answer to the Equation
 var operator = ""; // Mathematical operator (+, -, *, or /)
-var timer; // Timer
-var seconds = 1; // Seconds counter
+var timer; // Reveal timer
+var seconds = 1; // Seconds counter within the timer
 var i; // For-loop counter
 var k; // For-loop counter
 	
@@ -34,10 +34,10 @@ timer = setInterval(myTimer, 1000); // Execute Every 1 Second(s)
 function myTimer() {	
 	seconds++;	
 	if (seconds == 2) {
-		generateOperator();
-		fillMatrix();
-		generateAnswer(); // Generate an answer from two random cells within the matrix
-		revealOperator();
+		generateOperator(); // Generate a random operator
+		fillMatrix(); // Fill the matrix with randomly generated numbers
+		generateAnswer(); // Generate an answer from two randomly picked cells within the matrix
+		revealOperator(); 
 		revealAnswer();
 	} else if (seconds == 3) {
 		//hideFifth();
@@ -146,7 +146,7 @@ function revealOperator() {
 	} else if(operator === "division") {
 		cell.innerHTML = "/";
 	} else {
-		alert("Unable to indetify an operator during revealOperator");
+		alert("Unable to indentify an operator during revealOperator");
 	}	
 }
 
@@ -200,11 +200,11 @@ function revealR1C1(id) {
 	}
 	
 	if (count == 1 && r1c1Reveals != 1) {
-		cell.innerHTML = num; // Copy first value of matrix array to first matrix cell and reveal
+		cell.innerHTML = num; // Assign first value of matrix array to first matrix cell and reveal
 		cell.style.backgroundColor = "#800080"; // Change background color of first matrix cell to purple
-		$('first').innerHTML = num; // Copy value of first matrix cell to first equation cell and reveal
+		$('first').innerHTML = num; // Assign value of first matrix cell to first equation cell and reveal
 		$('first').style.backgroundColor = "#800080"; // Change background color of first equation cell to purple
-		userSelection[0] = num; // Copy value of first matrix cell to answer array at index 0
+		userSelection[0] = num; // Assign value of first matrix cell to answer array at index 0
 		r1c1Reveals++; // Increment the fucntion execution counter
 	}	
 	

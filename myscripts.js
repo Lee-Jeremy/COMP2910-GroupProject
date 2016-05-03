@@ -11,8 +11,6 @@ var r3c2Reveals = 0; //   						 8th
 var r3c3Reveals = 0; //   						 9th
 var matrix = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // The Matrix Values
 var userSelection = [1, 2]; // The Two User Selected Values
-var numForwardCombinations = 0; // Forward division solution combinations in the matrix
-var numBackwardCombinations = 0; // Backward division solution combinations in the matrix
 var answer; // The Answer to the Equation
 var operator = ""; // Mathematical operator (+, -, *, or /)
 var timer; // Reveal timer
@@ -114,21 +112,22 @@ function generateAnswer() {
 
 // Check matrix for all combinations of a 0 remainder division solution
 function checkCombinations() {	
+	var numCombinations = 0;
 	for (i = 0; i < matrix.length - 1; i++) { 
 		for (k = 0; k < matrix.length; k++) {
 			if (matrix[i] % matrix [k] == 0) {
-				numForwardCombinations;
+				numCombinations++;
 			}
 		}
 	}
 	for (i = 9; i >= 0; i--) {
 		for (k = i - 1; k >= 1; k--) {
 			if (matrix[i] % matrix[k] == 0) {
-				numBackwardCombinations++;
+				numCombinations++;
 			}
 		}
 	}
-	while (numForwardCombinations + numBackwardCombinations == 0) { 
+	while (numCombinations == 0) { 
 		fillMatrix(); // If no combinations exist, re-fill the matrix with new numbers
 		checkCombinations();
 	}

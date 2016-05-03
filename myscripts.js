@@ -35,8 +35,8 @@ function myTimer() {
 		generateOperator(); // Generate a random operator
 		fillMatrix(); // Fill the matrix with randomly generated numbers
 		generateAnswer(); // Generate an answer from two randomly picked cells within the matrix
-		revealOperator(); 
-		revealAnswer();
+		revealOperator(); // Show the operator
+		revealAnswer(); // Show the answer
 	} else if (seconds == 3) {
 		//hideFifth();
 		revealMatrix();
@@ -86,8 +86,8 @@ function fillMatrix() {
 
 // Generate an answer
 function generateAnswer() {
-	var num1 = Math.floor(Math.random() * 9); // index 0 to index 8
-	var num2 = Math.floor(Math.random() * 9); 
+	var num1 = Math.floor(Math.random() * 9); // Randomly select a cell from the matrix
+	var num2 = Math.floor(Math.random() * 9); // index 0 to index 8
 	while (num1 == num2) {
 		num1 = Math.floor(Math.random() * 9); 
 		num2 = Math.floor(Math.random() * 9); 
@@ -114,14 +114,14 @@ function generateAnswer() {
 function checkCombinations() {	
 	var numCombinations = 0;
 	for (i = 0; i < matrix.length - 1; i++) { 
-		for (k = 0; k < matrix.length; k++) {
+		for (k = 1; k < matrix.length; k++) {
 			if (matrix[i] % matrix [k] == 0) {
 				numCombinations++;
 			}
 		}
 	}
-	for (i = 9; i >= 0; i--) {
-		for (k = i - 1; k >= 1; k--) {
+	for (i = matrix.length - 1; i >= 1; i--) {
+		for (k = i - 1; k >= 0; k--) {
 			if (matrix[i] % matrix[k] == 0) {
 				numCombinations++;
 			}

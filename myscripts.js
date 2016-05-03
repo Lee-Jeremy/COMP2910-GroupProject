@@ -24,7 +24,7 @@ var k; // For-loop counter
 function $(id) {
 	var element = document.getElementById(id); 
 	if (element == null) { 
-		alert ('programmer error: ' + id + 'does not exist.');
+		alert ('programmer error: ' + id + ' does not exist.');
 	}
 	return element;			
 	}
@@ -53,8 +53,8 @@ function myTimer() {
 
 // Choose an operator
 function generateOperator() {
-	var rand = Math.floor((Math.random() * 4) + 1); // 1 to 4
-	switch(rand) {
+	var num = Math.floor((Math.random() * 4) + 1); // 1 to 4
+	switch(num) {
 		case 1:
 			operator = "addition";
 			break;
@@ -72,41 +72,41 @@ function generateOperator() {
 
 // Fill The Matrix Array
 function fillMatrix() {
-	var rand;
+	var num;
 	if (operator === "division") {
 		for (i = 0; i < matrix.length; i++) {
-			rand = Math.floor(Math.random() * 145); // 0 to 144
-			matrix[i] = rand;
+			num = Math.floor(Math.random() * 145); // 0 to 144
+			matrix[i] = num;
 		}
 	} else {
 		for (i = 0; i < matrix.length; i++) {
-			rand = Math.floor(Math.random() * 13); // 0 to 12
-			matrix[i] = rand;
+			num = Math.floor(Math.random() * 13); // 0 to 12
+			matrix[i] = num;
 		}
 	}
 }
 
 // Generate an answer
 function generateAnswer() {
-	var rand1 = Math.floor(Math.random() * 9); // index 0 to index 8
-	var rand2 = Math.floor(Math.random() * 9); 
-	while (rand1 == rand2) {
-		rand1 = Math.floor(Math.random() * 9); 
-		rand2 = Math.floor(Math.random() * 9); 
+	var num1 = Math.floor(Math.random() * 9); // index 0 to index 8
+	var num2 = Math.floor(Math.random() * 9); 
+	while (num1 == num2) {
+		num1 = Math.floor(Math.random() * 9); 
+		num2 = Math.floor(Math.random() * 9); 
 	}
 	if (operator === "addition") {
-		answer = (matrix[rand1] + matrix[rand2]); 
+		answer = (matrix[num1] + matrix[num2]); 
 	} else if(operator === "subtraction") {
-		answer = (matrix[rand1] - matrix[rand2]); 
+		answer = (matrix[num1] - matrix[num2]); 
 	} else if(operator === "multiplication") {
-		answer = (matrix[rand1] * matrix[rand2]); 
+		answer = (matrix[num1] * matrix[num2]); 
 	} else if(operator === "division") {
 		checkCombinations();
-		while (matrix[rand1] % matrix[rand2] != 0 || rand1 == rand2) {
-			rand1 = Math.floor(Math.random() * 9); 
-			rand2 = Math.floor(Math.random() * 9); 	
+		while (matrix[num1] % matrix[num2] != 0 || num1 == num2) {
+			num1 = Math.floor(Math.random() * 9); 
+			num2 = Math.floor(Math.random() * 9); 	
 		}		
-		answer = (matrix[rand1] / matrix[rand2]); 
+		answer = (matrix[num1] / matrix[num2]); 
 	} else {
 		alert("Unable to indetify an operator during generateAnswer");
 	}

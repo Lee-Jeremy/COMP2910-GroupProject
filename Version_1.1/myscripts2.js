@@ -152,15 +152,15 @@ function checkCombinations() {
 
 // Reveal Operator
 function revealOperator() {
-	var cell = getId('operatorReveal');
+	var cardValue = getId('operatorReveal');
 	if (operator === "addition") {
-		cell.innerHTML = "+";
+		cardValue.innerHTML = "+";
 	} else if(operator === "subtraction") {
-		cell.innerHTML = "-";
+		cardValue.innerHTML = "-";
 	} else if(operator === "multiplication") {
-		cell.innerHTML = "*";
+		cardValue.innerHTML = "*";
 	} else if(operator === "division") {
-		cell.innerHTML = "/";
+		cardValue.innerHTML = "/";
 	} else {
 		alert("Unable to indentify an operator during revealOperator");
 	}	
@@ -206,20 +206,19 @@ function hideMatrix() {
 
 // Reveal R1C1 Card
 function revealR1C1() {	
-	var cardValue = matrix[0];
 	if (seconds == 0 && r1c1Reveals != 1) { // Prevents the function from executing before the intro reveals have
 		count++; 						   // finished and from executing more that once on the same cell
 	}	
 	if (count == 1 && r1c1Reveals != 1) {
-		userSelection[0] = cardValue; // Assign value of first matrix cell to answer array at index 0
-		getId('firstChoiceReveal').innerHTML = cardValue; // Draw the selected card value to the 1st equation card
+		userSelection[0] = matrix[0]; // Assign value of first matrix cell to answer array at index 0
+		getId('firstChoiceReveal').innerHTML = matrix[0]; // Draw the selected card value to the 1st equation card
 		$('#r1c1').flip(true); // Flip the selected card
 		$('#first').flip(true); // Flip the 1st equation card
 		r1c1Reveals++; // Increment the fucntion execution counter
 	}		
 	if (count == 2 && r1c1Reveals != 1) { 
 		userSelection[1] = matrix[0]; // Assign value of first matrix cell to answer array at index 1 
-		getId('secondChoiceReveal').innerHTML = cardValue; // Draw the selected card value to the 3rd equation card
+		getId('secondChoiceReveal').innerHTML = matrix[0]; // Draw the selected card value to the 3rd equation card
 		$('#r1c1').flip(true); // Flip the selected card
 		$('#second').flip(true); // Flip the 2nd equation card
 		r1c1Reveals++; // Increment the fucntion execution counter
@@ -229,20 +228,19 @@ function revealR1C1() {
 
 // Reveal R1C2 Card
 function revealR1C2() {
-	var cardValue = matrix[1];
 	if (seconds == 0 && r1c2Reveals != 1) { 
 		count++; 						   
 	}	
 	if (count == 1 && r1c2Reveals != 1) {
-		userSelection[0] = cardValue; 
-		getId('firstChoiceReveal').innerHTML = cardValue;
+		userSelection[0] = matrix[1]; 
+		getId('firstChoiceReveal').innerHTML = matrix[1];
 		$('#r1c2').flip(true);
 		$('first').flip(true);
 		r1c2Reveals++; 
 	}		
 	if (count == 2 && r1c2Reveals != 1) { 
-		userSelection[1] = cardValue; 
-		getId('firstChoiceReveal').innerHTML = cardValue;
+		userSelection[1] = matrix[1]; 
+		getId('secondChoiceReveal').innerHTML = matrix[1];
 		$('#r1c2').flip(true);
 		$('#second').flip(true);
 		r1c2Reveals++; 
@@ -264,7 +262,7 @@ function revealR1C3() {
 	}		
 	if (count == 2 && r1c3Reveals != 1) { 
 		userSelection[1] = matrix[2]; 
-		getId('firstChoiceReveal').innerHTML = matrix[2];
+		getId('secondChoiceReveal').innerHTML = matrix[2];
 		$('#r1c3').flip(true);
 		$('#second').flip(true);
 		r1c3Reveals++; 
@@ -286,7 +284,7 @@ function revealR2C1() {
 	}		
 	if (count == 2 && r2c1Reveals != 1) { 
 		userSelection[1] = matrix[3]; 
-		getId('firstChoiceReveal').innerHTML = matrix[3];
+		getId('secondChoiceReveal').innerHTML = matrix[3];
 		$('#r2c1').flip(true);
 		$('#second').flip(true);
 		r2c1Reveals++; 
@@ -308,7 +306,7 @@ function revealR2C2() {
 	}		
 	if (count == 2 && r2c2Reveals != 1) { 
 		userSelection[1] = matrix[4]; 
-		getId('firstChoiceReveal').innerHTML = matrix[4];
+		getId('secondChoiceReveal').innerHTML = matrix[4];
 		$('#r2c2').flip(true);
 		$('#second').flip(true);
 		r2c2Reveals++; 
@@ -330,7 +328,7 @@ function revealR2C3() {
 	}		
 	if (count == 2 && r2c3Reveals != 1) { 
 		userSelection[1] = matrix[5]; 
-		getId('firstChoiceReveal').innerHTML = matrix[5];
+		getId('secondChoiceReveal').innerHTML = matrix[5];
 		$('#r2c3').flip(true);
 		$('#second').flip(true);
 		r2c3Reveals++; 
@@ -352,7 +350,7 @@ function revealR3C1() {
 	}		
 	if (count == 2 && r3c1Reveals != 1) { 
 		userSelection[1] = matrix[6]; 
-		getId('firstChoiceReveal').innerHTML = matrix[6];
+		getId('secondChoiceReveal').innerHTML = matrix[6];
 		$('#r3c1').flip(true);
 		$('#second').flip(true);
 		r3c1Reveals++; 
@@ -374,7 +372,7 @@ function revealR3C2() {
 	}		
 	if (count == 2 && r3c2Reveals != 1) { 
 		userSelection[1] = matrix[7]; 
-		getId('firstChoiceReveal').innerHTML = matrix[7];
+		getId('secondChoiceReveal').innerHTML = matrix[7];
 		$('#r3c2').flip(true);
 		$('#second').flip(true);
 		r3c2Reveals++; 
@@ -396,7 +394,7 @@ function revealR3C3() {
 	}		
 	if (count == 2 && r3c3Reveals != 1) { 
 		userSelection[1] = matrix[8]; 
-		getId('firstChoiceReveal').innerHTML = matrix[8];
+		getId('secondChoiceReveal').innerHTML = matrix[8];
 		$('#r3c3').flip(true);
 		$('#second').flip(true);
 		r3c3Reveals++; 
@@ -413,7 +411,7 @@ function checkEquation(){
 			revealAnswer();
 		} else {
 			getId('answerReveal').style.backgroundColor = "#000000"; // Black
-			hideAnswer();
+			revealAnswer();
 			setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds
 		}
 	} else if(operator === "subtraction") {

@@ -1,0 +1,81 @@
+/* resets all padding and margins to zero */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	display: inline-block;
+	background-color: #D7DADB;
+}
+
+#nonClickable {
+	height: 55px;
+}
+
+/* generates the hexagon */
+.hexagon {
+	float: right;
+}
+
+.hexagon {
+  position: relative;
+  width: 35px; 
+  height: 20.21px;
+  background-color: #64C7CC;
+  margin: 10.10px 0;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 17.5px solid transparent;
+  border-right: 17.5px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 10.10px solid #64C7CC;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 10.10px solid #64C7CC;
+}
+/* end of hexagon generation code */
+
+#clickable {
+	display: inline-block;
+	text-align: center;
+}
+
+#matrix {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+.matrixCard {
+	border: 1px solid black;
+	background-color: #263545;
+}
+
+.matrixCard:onhover {
+	background-color: #152434;
+}
+
+.optionCard {
+	border: 1px dashed black;
+}
+
+.operatorCard {
+	border: 1px solid black;
+	background-color: #C4273C;
+}
+
+.answerCard {
+	border: 1px solid black;
+	background-color: #C4273C;
+}

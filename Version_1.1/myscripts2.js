@@ -417,7 +417,7 @@ function checkEquation(){
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
 			revealAnswer();
-		} else {
+		} else { 
 			getId('answerReveal').style.backgroundColor = "#000000"; // Black
 			revealAnswer();
 			setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds

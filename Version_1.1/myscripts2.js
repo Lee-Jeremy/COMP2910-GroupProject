@@ -28,6 +28,8 @@ var r3c3Reveals = 0; //   						 9th
 var matrix = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // The Matrix Values
 var userSelection = [1, 2]; // The Two User Selected Values
 var answer; // The Answer to the Equation
+var answerCard1; // The first matrix value used in generating the answer
+var answerCard2; // The other matrix value used in generating the answer
 var operator = ""; // Mathematical operator (+, -, *, or /)
 var timer; // Reveal timer
 var seconds = 1; // Seconds counter within the timer
@@ -107,7 +109,7 @@ function generateAnswer() {
 		num1 = Math.floor(Math.random() * 9); 
 		num2 = Math.floor(Math.random() * 9); 
 	}
-	if (operator === "addition") {
+	if (operator === "addition") {	
 		answer = (matrix[num1] + matrix[num2]); 
 	} else if(operator === "subtraction") {
 		answer = (matrix[num1] - matrix[num2]); 
@@ -123,6 +125,8 @@ function generateAnswer() {
 	} else {
 		alert("Unable to indetify an operator during generateAnswer");
 	}
+	answerCard1 = num1; // Store the answer cards for the matrix reveal at the end if the player answers incorrectly
+	answerCard2 = num2;
 }
 
 // Check matrix for all combinations of a 0 remainder division solution
@@ -145,7 +149,7 @@ function checkCombinations() {
 		}
 	}
 	while (numCombinations == 0) { 
-		fillMatrix(); // If no combinations exist, re-fill the matrix with new numbers
+		fillMatrix(); // If no combinations exist, re-fill the matrix with new values
 		checkCombinations();
 	}
 }
@@ -196,12 +200,12 @@ function revealMatrix() {
 			k++;
 		}
 	}
-	$('.matrixCards').flip(true); // Flip all the matrix cards to the back
+	$('.matrixCards').flip(true); // Flip all the matrix cards to their back
 }
 
 // Hide Matrix
 function hideMatrix() {
-	$('.matrixCards').flip(false); // Flip all the matrix cards to the front	
+	$('.matrixCards').flip(false); // Flip all the matrix cards to their front	
 }
 
 // Reveal R1C1 Card
@@ -402,41 +406,93 @@ function revealR3C3() {
 	}
 }
 
+// Reveal the answer cards
+function revealAnswerCards() {
+	flipAnswerCard(answerCard1);
+	flipAnswerCard(answerCard2);	
+}
+
+// Flip the answer Card 
+function flipAnswerCard(cardNumber) {	
+	switch (cardNumber) {
+		case 0:
+			getId('r1c1Reveal').style.backgroundColor = "#29a329"; // Green
+			$('#r1c1').flip(true);
+			break;
+		case 1:
+			getId('r1c2Reveal').style.backgroundColor = "#29a329";
+			$('#r1c2').flip(true);
+			break;
+		case 2:
+			getId('r1c3Reveal').style.backgroundColor = "#29a329";
+			$('#r1c3').flip(true);
+			break;
+		case 3:
+			getId('r2c1Reveal').style.backgroundColor = "#29a329";
+			$('#r2c1').flip(true);
+			break;
+		case 4:
+			getId('r2c2Reveal').style.backgroundColor = "#29a329";
+			$('#r2c2').flip(true);
+			break;
+		case 5:
+			getId('r2c3Reveal').style.backgroundColor = "#29a329";
+			$('#r2c3').flip(true);
+			break;
+		case 6:
+			getId('r3c1Reveal').style.backgroundColor = "#29a329";
+			$('#r3c1').flip(true);
+			break;
+		case 7:
+			getId('r3c2Reveal').style.backgroundColor = "#29a329";
+			$('#r3c2').flip(true);
+			break;
+		case 8:
+			getId('r3c3Reveal').style.backgroundColor = "#29a329";
+			$('#r3c3').flip(true);
+			break;
+	}
+}
+
 // Check Equation
 function checkEquation(){
 	var first = userSelection[0];
 	var second = userSelection[1];	
 	if (operator === "addition") {
 		if ((first + second) == answer) {
+			getId('answerReveal').style.backgroundColor = "#29a329"; // Green
 			revealAnswer();
 		} else {
 			getId('answerReveal').style.backgroundColor = "#000000"; // Black
 			revealAnswer();
-			setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds
+			setTimeout(revealAnswerCards, 500) // Delay Matrix Reveal by 0.5 seconds
 		}
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
+			getId('answerReveal').style.backgroundColor = "#29a329";
 			revealAnswer();
 		} else { 
-			getId('answerReveal').style.backgroundColor = "#000000"; // Black
+			getId('answerReveal').style.backgroundColor = "#000000"; 
 			revealAnswer();
-			setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds
+			setTimeout(revealAnswerCards, 500)
 		}
 	} else if(operator === "multiplication") {
 		if ((first * second) == answer) {
+			getId('answerReveal').style.backgroundColor = "#29a329";
 			revealAnswer();
 		} else {
-			getId('answerReveal').style.backgroundColor = "#000000"; // Black
+			getId('answerReveal').style.backgroundColor = "#000000";
 			revealAnswer();
-			setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds
+			setTimeout(revealAnswerCards, 500)
 		}
 	} else if(operator === "division") {
 		if ((first / second) == answer) {
+			getId('answerReveal').style.backgroundColor = "#29a329";
 			revealAnswer();
 		} else {
-			getId('answerReveal').style.backgroundColor = "#000000"; // Black
+			getId('answerReveal').style.backgroundColor = "#000000"; 
 			revealAnswer();
-			setTimeout(revealMatrix, 500) // Delay Matrix Reveal by 0.5 seconds
+			setTimeout(revealAnswerCards, 500) 
 		}
 	} else {
 		alert('Unable to identify operator during checkEquation');	

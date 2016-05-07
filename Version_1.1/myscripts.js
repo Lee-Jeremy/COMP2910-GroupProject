@@ -51,21 +51,21 @@ function myTimer() {
 		generateOperator(); // Generate a random operator
 		fillMatrix(); // Fill the matrix with randomly generated numbers
 		generateAnswer(); // Generate an answer from two randomly picked cells within the matrix
-		revealOperator(); // Show the operator
-		revealAnswer(); // Show the answer
+		revealOperator(); // Flip the operator card
+		revealAnswer(); // Flip the answer card
 	} else if (seconds == 3) {
-		hideAnswer();
-		revealMatrix();
+		hideAnswer(); // Flip back the answer card
+		revealMatrix(); // Flip all matrix cards
 	} else if (seconds == 5) {
 		//revealAnswer();
 		//hideOperator();
-		hideMatrix();
+		hideMatrix(); // Flip back all matrix cards
 		clearInterval(timer); // Stop the timer		
 		seconds = 0; // Reset the seconds to 0 
 	} 
 }
 
-// Choose an operator
+// Randomly select an operator
 function generateOperator() {
 	var num = Math.floor((Math.random() * 4) + 1); // 1 to 4
 	switch(num) {
@@ -88,13 +88,13 @@ function generateOperator() {
 function fillMatrix() {
 	var i;
 	var num;
-	if (operator === "division") {
+	if (operator === "division") { // Allow greater card values when the operator is division
 		for (i = 0; i < matrix.length; i++) {
 			num = Math.floor(Math.random() * 145); // 0 to 144
-			matrix[i] = num;
+			matrix[i] = num; 
 		}
 	} else {
-		for (i = 0; i < matrix.length; i++) {
+		for (i = 0; i < matrix.length; i++) { // Card values 0 to 12 in all other operators
 			num = Math.floor(Math.random() * 13); // 0 to 12
 			matrix[i] = num;
 		}
@@ -103,9 +103,9 @@ function fillMatrix() {
 
 // Generate an answer
 function generateAnswer() {
-	var num1 = Math.floor(Math.random() * 9); // Randomly select a cell from the matrix
-	var num2 = Math.floor(Math.random() * 9); // index 0 to index 8
-	while (num1 == num2) {
+	var num1 = Math.floor(Math.random() * 9); // Randomly select a card (index number) from the matrix (1st card = index 0, 2nd = 1, etc...)
+	var num2 = Math.floor(Math.random() * 9); // 0 to 8
+	while (num1 == num2) { // Don't allow an answer to be generated from the same card
 		num1 = Math.floor(Math.random() * 9); 
 		num2 = Math.floor(Math.random() * 9); 
 	}
@@ -116,7 +116,7 @@ function generateAnswer() {
 	} else if(operator === "multiplication") {
 		answer = (matrix[num1] * matrix[num2]); 
 	} else if(operator === "division") {
-		checkCombinations();
+		checkCombinations(); // Ensure the matrix holds at least one combination of cards with a 0 remainder answer
 		while (matrix[num1] % matrix[num2] != 0 || num1 == num2) {
 			num1 = Math.floor(Math.random() * 9); 
 			num2 = Math.floor(Math.random() * 9); 	
@@ -125,7 +125,7 @@ function generateAnswer() {
 	} else {
 		alert("Unable to indetify an operator during generateAnswer");
 	}
-	answerCard1 = num1; // Store the answer cards for the matrix reveal at the end if the player answers incorrectly
+	answerCard1 = num1; 
 	answerCard2 = num2;
 }
 
@@ -134,14 +134,14 @@ function checkCombinations() {
 	var numCombinations = 0;
 	var i;
 	var k;
-	for (i = 0; i < matrix.length - 1; i++) { 
+	for (i = 0; i < matrix.length - 1; i++) { // 1st card / 2nd card, 1st / 3rd , 1st / 4th , etc... 8th / 9th
 		for (k = 1; k < matrix.length; k++) {
 			if (matrix[i] % matrix [k] == 0) {
 				numCombinations++;
 			}
 		}
 	}
-	for (i = matrix.length - 1; i >= 1; i--) {
+	for (i = matrix.length - 1; i >= 1; i--) { // 9th card / 8th card, 9th / 7th, 9th / 6th, etc... 2nd / 1st
 		for (k = matrix.length - 2; k >= 0; k--) {
 			if (matrix[i] % matrix[k] == 0) {
 				numCombinations++;
@@ -150,13 +150,13 @@ function checkCombinations() {
 	}
 	while (numCombinations == 0) { 
 		fillMatrix(); // If no combinations exist, re-fill the matrix with new values
-		checkCombinations();
+		checkCombinations(); // Check again for combinations
 	}
 }
 
 // Reveal Operator
 function revealOperator() {
-	var cardValue = getId('operatorReveal');
+	var cardValue = getId('operatorReveal'); // Backside of the operator card
 	if (operator === "addition") {
 		cardValue.innerHTML = "+";
 	} else if(operator === "subtraction") {
@@ -168,24 +168,24 @@ function revealOperator() {
 	} else {
 		alert("Unable to indentify an operator during revealOperator");
 	}	
-	$("#operator").flip(true);
+	$("#operator").flip(true); // Flip the operator card to its backside
 }
 
 // Hide Operator
 function hideOperator() {
-	$("#operator").flip(false);	
+	$("#operator").flip(false); // Flip the operator card to its frontside	
 }
 
 // Reveal Answer
 function revealAnswer() {
-	var cell = getId('answerReveal');	
-	cell.innerHTML = answer;
-	$("#answer").flip(true);	
+	var cell = getId('answerReveal'); // Backside of the answer card	
+	cell.innerHTML = answer; // Assign the backside the answer value
+	$("#answer").flip(true); // Flip the answer card to its backside
 }
 
 // Hide Answer
 function hideAnswer() {
-	$("#answer").flip(false);
+	$("#answer").flip(false); // Flip the answer card to its frontside
 }
 
 // Reveal Matrix
@@ -196,8 +196,8 @@ function revealMatrix() {
 	var k = 0;
 	for (i = 1; i <= 3; i++) {
 		for (j = 1; j <= 3; j++) {
-			cell = getId('r' + i + 'c' + j + 'Reveal').innerHTML = matrix[k]; // Store each value in their div's
-			k++;
+			cell = getId('r' + i + 'c' + j + 'Reveal').innerHTML = matrix[k]; // Assign each matrix card's backside to the corresponding matrix array index value
+			k++;															  // i.e. 1st matrix card backside = matrix array index 0, 2nd card = matrix[1], etc...
 		}
 	}
 	$('.matrixCards').flip(true); // Flip all the matrix cards to their back
@@ -214,7 +214,7 @@ function revealR1C1() {
 		count++; 						   // finished and from executing more that once on the same cell
 	}	
 	if (count == 1 && r1c1Reveals != 1) {
-		userSelection[0] = matrix[0]; // Assign first matrix card to the value of the 1st index in the answer array
+		userSelection[0] = matrix[0]; // Assign the first matrix array value to the 1st index in the user selection array
 		getId('firstChoiceReveal').innerHTML = matrix[0]; // Assign the 1st equation card the value of the 1st matrix card
 		getId('firstChoiceReveal').style.backgroundColor = "#ff6600"; // Change background color of equation card 1's backside to orange
 		getId('r1c1Reveal').style.backgroundColor = "#ff6600"; // Change background color of matrix card 1's backside to orange
@@ -452,11 +452,11 @@ function revealAnswerCards() {
 function flipAnswerCard(cardNumber) {	
 	switch (cardNumber) {
 		case 0:
-			getId('r1c1Reveal').style.backgroundColor = "#29a329"; // Green
-			$('#r1c1').flip(true);
+			getId('r1c1Reveal').style.backgroundColor = "#29a329"; // Change the background color of the first answer card in the matrix
+			$('#r1c1').flip(true); // Flip the first anwer card to its backside, if not yet flipped
 			break;
 		case 1:
-			getId('r1c2Reveal').style.backgroundColor = "#29a329";
+			getId('r1c2Reveal').style.backgroundColor = "#29a329"; // Green
 			$('#r1c2').flip(true);
 			break;
 		case 2:
@@ -492,23 +492,23 @@ function flipAnswerCard(cardNumber) {
 
 // Check Equation
 function checkEquation(){
-	var first = userSelection[0];
-	var second = userSelection[1];	
+	var first = userSelection[0]; // The user's 1st selected card value from the matrix
+	var second = userSelection[1]; // The user's 2nd selected card value from the matrix	
 	if (operator === "addition") {
 		if ((first + second) == answer) {
-			getId('answerReveal').style.backgroundColor = "#29a329"; // Green
+			getId('answerReveal').style.backgroundColor = "#29a329"; // Change the color of the answer card's backside to green
 			revealAnswer();
 		} else {
-			getId('answerReveal').style.backgroundColor = "#000000"; // Black
+			getId('answerReveal').style.backgroundColor = "#000000"; // Change the color of the answer card's backside to black
 			revealAnswer();
-			setTimeout(revealAnswerCards, 500) // Delay answer card reveals by 0.5 seconds
+			setTimeout(revealAnswerCards, 500) // Delay revealing the answer cards in the matrix by 0.5 seconds
 		}
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
-			getId('answerReveal').style.backgroundColor = "#29a329";
+			getId('answerReveal').style.backgroundColor = "#29a329"; // Green
 			revealAnswer();
 		} else { 
-			getId('answerReveal').style.backgroundColor = "#000000"; 
+			getId('answerReveal').style.backgroundColor = "#000000"; // Black 
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500)
 		}

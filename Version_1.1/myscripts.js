@@ -103,14 +103,14 @@ function fillMatrix() {
 
 // Generate an answer
 function generateAnswer() {
-	var num1 = Math.floor(Math.random() * 9); // Randomly select a card (index number) from the matrix (1st card = index 0, 2nd = 1, etc...)
+	var num1 = Math.floor(Math.random() * 9); // Select a random card from the matrix (1st card = 0, 2nd = 1,...9th = 8)
 	var num2 = Math.floor(Math.random() * 9); // 0 to 8
 	while (num1 == num2) { // Don't allow an answer to be generated from the same card
-		num1 = Math.floor(Math.random() * 9); 
-		num2 = Math.floor(Math.random() * 9); 
+		num1 = Math.floor(Math.random() * 9); // Card number = matrix array index number - 1 
+		num2 = Math.floor(Math.random() * 9); // e.g. card1 = matrix[0], card2 = matrix[1],...card9 = matrix[8]
 	}
 	if (operator === "addition") {	
-		answer = (matrix[num1] + matrix[num2]); 
+		answer = (matrix[num1] + matrix[num2]);  
 	} else if(operator === "subtraction") {
 		answer = (matrix[num1] - matrix[num2]); 
 	} else if(operator === "multiplication") {

@@ -134,14 +134,14 @@ function checkCombinations() {
 	var numCombinations = 0;
 	var i;
 	var k;
-	for (i = 0; i < matrix.length - 1; i++) { // 1st card / 2nd card, 1st / 3rd , 1st / 4th , etc... 8th / 9th
+	for (i = 0; i < matrix.length - 1; i++) { // 1st card / 2nd card, 1st / 3rd , 1st / 4th ,... 8th / 9th
 		for (k = 1; k < matrix.length; k++) {
 			if (matrix[i] % matrix [k] == 0) {
 				numCombinations++;
 			}
 		}
 	}
-	for (i = matrix.length - 1; i >= 1; i--) { // 9th card / 8th card, 9th / 7th, 9th / 6th, etc... 2nd / 1st
+	for (i = matrix.length - 1; i >= 1; i--) { // 9th card / 8th card, 9th / 7th, 9th / 6th,... 2nd / 1st
 		for (k = matrix.length - 2; k >= 0; k--) {
 			if (matrix[i] % matrix[k] == 0) {
 				numCombinations++;
@@ -189,15 +189,16 @@ function hideAnswer() {
 }
 
 // Reveal Matrix
+// Assign 1st matrix card's backside = 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]
 function revealMatrix() {
 	var cell;
 	var i;
 	var j;
 	var k = 0;
-	for (i = 1; i <= 3; i++) {
-		for (j = 1; j <= 3; j++) {
-			cell = getId('r' + i + 'c' + j + 'Reveal').innerHTML = matrix[k]; // Assign each matrix card's backside to the corresponding matrix array index value
-			k++;															  // i.e. 1st matrix card backside = matrix array index 0, 2nd card = matrix[1], etc...
+	for (i = 1; i <= 3; i++) { 
+		for (j = 1; j <= 3; j++) { 
+			cell = getId('r' + i + 'c' + j + 'Reveal').innerHTML = matrix[k]; 
+			k++;															  
 		}
 	}
 	$('.matrixCards').flip(true); // Flip all the matrix cards to their back
@@ -210,16 +211,16 @@ function hideMatrix() {
 
 // Reveal R1C1 Card
 function revealR1C1() {	
-	if (seconds == 0 && r1c1Reveals != 1) { // Prevents the function from executing before the intro reveals have
-		count++; 						   // finished and from executing more that once on the same cell
+	if (seconds == 0 && r1c1Reveals != 1) { // Prevent the user from flipping a card before all reveals finish
+		count++; 						    // and from flipping the same card twice 
 	}	
 	if (count == 1 && r1c1Reveals != 1) {
-		userSelection[0] = matrix[0]; // Assign the first matrix array value to the 1st index in the user selection array
+		userSelection[0] = matrix[0]; // Assign the 1st matrix array value to the 1st index in the user selection array
 		getId('firstChoiceReveal').innerHTML = matrix[0]; // Assign the 1st equation card the value of the 1st matrix card
-		getId('firstChoiceReveal').style.backgroundColor = "#ff6600"; // Change background color of equation card 1's backside to orange
-		getId('r1c1Reveal').style.backgroundColor = "#ff6600"; // Change background color of matrix card 1's backside to orange
-		$('#r1c1').flip(true); // Flip the 1st matrix card 
-		$('#first').flip(true); // Flip the 1st equation card
+		getId('firstChoiceReveal').style.backgroundColor = "#ff6600"; // Change color of 1st equation card's backside to orange
+		getId('r1c1Reveal').style.backgroundColor = "#ff6600"; // Change color of 1st matrix card's backside to orange
+		$('#r1c1').flip(true); // Flip the 1st matrix card to its backside 
+		$('#first').flip(true); // Flip the 1st equation card to its backside
 		r1c1Reveals++; // Increment the fucntion execution counter
 	}		
 	if (count == 2 && r1c1Reveals != 1) { 
@@ -452,7 +453,7 @@ function revealAnswerCards() {
 function flipAnswerCard(cardNumber) {	
 	switch (cardNumber) {
 		case 0:
-			getId('r1c1Reveal').style.backgroundColor = "#29a329"; // Change the background color of the first answer card in the matrix
+			getId('r1c1Reveal').style.backgroundColor = "#29a329"; // Change the first answer card's backside to green
 			$('#r1c1').flip(true); // Flip the first anwer card to its backside, if not yet flipped
 			break;
 		case 1:
@@ -496,10 +497,10 @@ function checkEquation(){
 	var second = userSelection[1]; // The user's 2nd selected card value from the matrix	
 	if (operator === "addition") {
 		if ((first + second) == answer) {
-			getId('answerReveal').style.backgroundColor = "#29a329"; // Change the color of the answer card's backside to green
+			getId('answerReveal').style.backgroundColor = "#29a329"; // Change the answer card's backside to green
 			revealAnswer();
 		} else {
-			getId('answerReveal').style.backgroundColor = "#000000"; // Change the color of the answer card's backside to black
+			getId('answerReveal').style.backgroundColor = "#000000"; // Change the answer card's backside to black
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500) // Delay revealing the answer cards in the matrix by 0.5 seconds
 		}

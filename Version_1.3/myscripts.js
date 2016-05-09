@@ -11,7 +11,13 @@ $(document).ready(function(){
 		trigger: 'manual',
 		front: ".back",
 		back: ".front"	
-	});		
+	});
+	$("#animationCard11").click(function() { // Start the game
+		dealCards();
+	});	
+	$("#multiplier").click(function() { // Reset the Level
+		resetLevel();
+	});
 });
 
 // Global Variables
@@ -31,9 +37,85 @@ var answer; // The Answer to the Equation
 var answerCard1; // The first matrix card value used in generating the answer
 var answerCard2; // The other matrix card value used in generating the answer
 var operator = ""; // Mathematical operator (+, -, *, or /)
-var timer; // Card reveal timer
+var timer; // Card dealing and revealing timer
 var seconds = 1; // Seconds counter within the timer
 	
+// Deal the cards
+function dealCards() {
+	var interval;
+	$("#animationCard11").animate({ 
+			left: '71.1vw',
+			top: '67vh',
+			height: '15vh',
+			width: '18.9vw'
+		},150, function() {		
+	$("#animationCard10").animate({ 
+			left: '20.7vw',
+			top: '67vh',
+			height: '15vh',
+			width: '18.9vw'
+		},150, function(){
+	$("#animationCard9").animate({ 
+			left: '58vw',
+			top: '43.75vh',
+		},150, function(){
+	$("#animationCard8").animate({ 
+			left: '33.6vw',
+			top: '43.75vh',
+		},150, function(){
+	$("#animationCard7").animate({ 
+			left: '9.5vw',
+			top: '43.75vh',
+		},150, function(){
+	$("#animationCard6").animate({ 
+			left: '58vw',
+			top: '21.8vh',
+		},150, function(){
+	$("#animationCard5").animate({ 
+			left: '33.6vw',
+			top: '21.8vh',
+		},150, function(){
+	$("#animationCard4").animate({ 
+			left: '9.5vw',
+			top: '21.8vh',
+		},150, function(){
+	$("#animationCard3").animate({ 
+			left: '58vw',
+			top: '0vh',
+		},150, function(){
+	$("#animationCard2").animate({ 
+			left: '33.6vw',
+			top: '0vh',
+		},150, function(){
+	for (var i = 1; i <= 3; i++) {
+		for (var k = 1; k <=3; k++) {
+			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#263545"; // Navy blue
+			getId('r' + i + 'c' + k + 'Back').style.borderStyle = "1px solid #000000"; // Solid black border
+		}
+	}
+	getId('eqCard2Back').style.backgroundColor = "#800000"; // Red
+	getId('eqCard4Back').style.backgroundColor = "#800000";	// Red
+	setTimeout(hideAnimations, 450);
+		});		
+		});	
+		});	
+		});		
+		});		
+		});		
+		});	
+		});	
+		});
+		});
+}
+
+// Hide all animation divisions
+function hideAnimations() {
+	for (var i = 1; i <= 11; i++) {
+		$("#animationCard" + i).css("visibility", "hidden");	
+	}	
+	timer = setInterval(myTimer, 1000); // Begin the in-game card reveals. Execute Every 1 Second(s) 
+}
+
 // Abbreviated getElementByID
 function getId(id) {
 	var element = document.getElementById(id); 
@@ -44,7 +126,6 @@ function getId(id) {
 	}
 
 // Timer - Set the reveal times
-timer = setInterval(myTimer, 1000); // Execute Every 1 Second(s) 
 function myTimer() {	
 	seconds++;	
 	if (seconds == 2) {
@@ -174,24 +255,24 @@ function revealOperator() {
 		default:
 			alert("Unable to indentify an operator during revealOperator");
 	}	
-	$("#operator").flip(true); // Flip the operator card to its frontside	
+	$("#eqCard2").flip(true); // Flip the operator card to its frontside	
 }
 
 // Hide Operator
 function hideOperator() {
-	$("#operator").flip(false); // Flip the operator card to its backside	
+	$("#eqCard2").flip(false); // Flip the operator card to its backside	
 }
 
 // Reveal Answer
 function revealAnswer() {
-	var cell = getId('eqCard5Front'); // Frontside of the answer card	
+	var cell = getId('eqCard4Front'); // Frontside of the answer card	
 	cell.innerHTML = answer; // Assign the frontside the answer value
-	$("#answer").flip(true); // Flip the answer card to its frontside
+	$("#eqCard4").flip(true); // Flip the answer card to its frontside
 }
 
 // Hide Answer
 function hideAnswer() {
-	$("#answer").flip(false); // Flip the answer card to its backside
+	$("#eqCard4").flip(false); // Flip the answer card to its backside
 }
 
 // Reveal Matrix
@@ -217,7 +298,6 @@ function hideMatrix() {
 
 // Reveal R1C1 Card
 function revealR1C1() {	
-	var temp;
 	if (seconds == 0 && r1c1Reveals != 1) { // Prevent the user from flipping a card before all reveals finish
 		count++; 						    // and from flipping the same card twice 
 	}	
@@ -234,10 +314,10 @@ function revealR1C1() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard1Back").css("background-color", "#263545"); // Change 1st equation card backside color to Navy blue
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard1").css("visibility", "hidden"); // Hide the animate division
-				$('#first').flip(true); // Flip the 1st equation card to its frontside
+				$('#eqCard1').flip(true); // Flip the 1st equation card to its frontside
 			}
 		});
 		r1c1Reveals++; // Increment the fucntion execution counter
@@ -255,20 +335,19 @@ function revealR1C1() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard3Back").css("background-color", "#263545"); // Change 3rd equation card backside color to Navy blue
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard1").css("visibility", "hidden"); 
-				$('#second').flip(true); // Flip the 3rd equation card to its frontside
+				$('#eqCard3').flip(true); // Flip the 3rd equation card to its frontside
 			}
 		});
 		r1c1Reveals++; // Increment the fucntion execution counter
-		checkEquation(); // Check if the equation is true
+		setTimeout(checkEquation, 1200); // Check if the equation is true
 	}
 }
 
 // Reveal R1C2 Card
 function revealR1C2() {	
-	var temp;
 	if (seconds == 0 && r1c2Reveals != 1) { 
 		count++; 						    
 	}	
@@ -285,10 +364,10 @@ function revealR1C2() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard1Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard2").css("visibility", "hidden"); 
-				$('#first').flip(true); 
+				$('#eqCard1').flip(true); 
 			}
 		});
 		r1c2Reveals++; 
@@ -306,20 +385,19 @@ function revealR1C2() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard3Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard2").css("visibility", "hidden"); 
-				$('#second').flip(true); 
+				$('#eqCard3').flip(true); 
 			}
 		});
 		r1c2Reveals++; 
-		checkEquation(); 
+		setTimeout(checkEquation, 1200); 
 	}
 }
 
 // Reveal R1C3 Card
 function revealR1C3() {	
-	var temp;
 	if (seconds == 0 && r1c3Reveals != 1) { 
 		count++; 						    
 	}	
@@ -336,10 +414,10 @@ function revealR1C3() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard1Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard3").css("visibility", "hidden"); 
-				$('#first').flip(true); 
+				$('#eqCard1').flip(true); 
 			}
 		});
 		r1c3Reveals++; 
@@ -357,20 +435,19 @@ function revealR1C3() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard3Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard3").css("visibility", "hidden"); 
-				$('#second').flip(true); 
+				$('#eqCard3').flip(true); 
 			}
 		});
 		r1c3Reveals++; 
-		checkEquation(); 
+		setTimeout(checkEquation, 1200); 
 	}
 }
 
 // Reveal R2C1 Card
 function revealR2C1() {	
-	var temp;
 	if (seconds == 0 && r2c1Reveals != 1) { 
 		count++; 						    
 	}	
@@ -387,10 +464,10 @@ function revealR2C1() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard1Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard4").css("visibility", "hidden"); 
-				$('#first').flip(true); 
+				$('#eqCard1').flip(true); 
 			}
 		});
 		r2c1Reveals++; 
@@ -408,20 +485,19 @@ function revealR2C1() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard3Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard4").css("visibility", "hidden"); 
-				$('#second').flip(true); 
+				$('#eqCard3').flip(true); 
 			}
 		});
 		r2c1Reveals++; 
-		checkEquation(); 
+		setTimeout(checkEquation, 1200); 
 	}
 }
 
 // Reveal R2C2 Card
 function revealR2C2() {	
-	var temp;
 	if (seconds == 0 && r2c2Reveals != 1) { 
 		count++; 						    
 	}	
@@ -438,10 +514,10 @@ function revealR2C2() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard1Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard5").css("visibility", "hidden"); 
-				$('#first').flip(true); 
+				$('#eqCard1').flip(true); 
 			}
 		});
 		r2c2Reveals++; 
@@ -459,20 +535,19 @@ function revealR2C2() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard3Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard5").css("visibility", "hidden"); 
-				$('#second').flip(true); 
+				$('#eqCard3').flip(true); 
 			}
 		});
 		r2c2Reveals++; 
-		checkEquation(); 
+		setTimeout(checkEquation, 1200); 
 	}
 }
 
 // Reveal R2C3 Card
 function revealR2C3() {	
-	var temp;
 	if (seconds == 0 && r2c3Reveals != 1) { 
 		count++; 						    
 	}	
@@ -489,10 +564,10 @@ function revealR2C3() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard1Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard6").css("visibility", "hidden"); 
-				$('#first').flip(true); 
+				$('#eqCard1').flip(true); 
 			}
 		});
 		r2c3Reveals++; 
@@ -510,20 +585,19 @@ function revealR2C3() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard3Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard6").css("visibility", "hidden"); 
-				$('#second').flip(true); 
+				$('#eqCard3').flip(true); 
 			}
 		});
 		r2c3Reveals++; 
-		checkEquation(); 
+		setTimeout(checkEquation, 1200); 
 	}
 }
 
 // Reveal R3C1 Card
 function revealR3C1() {	
-	var temp;
 	if (seconds == 0 && r3c1Reveals != 1) { 
 		count++; 						    
 	}	
@@ -540,10 +614,10 @@ function revealR3C1() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard1Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard7").css("visibility", "hidden"); 
-				$('#first').flip(true); 
+				$('#eqCard1').flip(true); 
 			}
 		});
 		r3c1Reveals++; 
@@ -561,20 +635,19 @@ function revealR3C1() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard3Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard7").css("visibility", "hidden"); 
-				$('#second').flip(true); 
+				$('#eqCard3').flip(true); 
 			}
 		});
 		r3c1Reveals++; 
-		checkEquation(); 
+		setTimeout(checkEquation, 1200); 
 	}
 }
 
 // Reveal R3C2 Card
 function revealR3C2() {	
-	var temp;
 	if (seconds == 0 && r3c2Reveals != 1) { 
 		count++; 						    
 	}	
@@ -591,10 +664,10 @@ function revealR3C2() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard1Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard8").css("visibility", "hidden"); 
-				$('#first').flip(true); 
+				$('#eqCard1').flip(true); 
 			}
 		});
 		r3c2Reveals++; 
@@ -612,20 +685,19 @@ function revealR3C2() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard3Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard8").css("visibility", "hidden"); 
-				$('#second').flip(true); 
+				$('#eqCard3').flip(true); 
 			}
 		});
 		r3c2Reveals++; 
-		checkEquation(); 
+		setTimeout(checkEquation, 1200);
 	}
 }
 
 // Reveal R3C3 Card
 function revealR3C3() {	
-	var temp;
 	if (seconds == 0 && r3c3Reveals != 1) { 
 		count++; 						    
 	}	
@@ -642,10 +714,10 @@ function revealR3C3() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard1Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard9").css("visibility", "hidden"); 
-				$('#first').flip(true); 
+				$('#eqCard1').flip(true); 
 			}
 		});
 		r3c3Reveals++; 
@@ -663,21 +735,21 @@ function revealR3C3() {
 			width: '18.9vw'
 		},200, function() {
 			$("#eqCard3Back").css("background-color", "#263545"); 
-			temp = setInterval(hideAnimator, 450); 
+			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard9").css("visibility", "hidden"); 
-				$('#second').flip(true); 
+				$('#eqCard3').flip(true); 
 			}
 		});
 		r3c3Reveals++; 
-		checkEquation(); 
+		setTimeout(checkEquation, 1200);
 	}
 }
 
 // Reveal the answer cards
 function revealAnswerCards() {
 	flipAnswerCard(answerCard1);
-	flipAnswerCard(answerCard2);	
+	flipAnswerCard(answerCard2);
 }
 
 // Flip the answer card in the matrix
@@ -685,9 +757,7 @@ function flipAnswerCard(cardNumber) {
 	switch (cardNumber) {
 		case 0:
 			getId('r1c1Front').style.backgroundColor = "#29a329"; // Change the first answer card's frontside to green
-			if (cardNumber){
-				$('#r1c1').flip(true); // Flip the first matrix card to its frontside, if not yet flipped
-			}
+			$('#r1c1').flip(true); // Flip the first matrix card to its frontside, if not yet flipped
 			break;
 		case 1:
 			getId('r1c2Front').style.backgroundColor = "#29a329"; // Green
@@ -730,37 +800,37 @@ function checkEquation(){
 	var second = userSelection[1]; // The user's 2nd selected card value from the matrix	
 	if (operator === "addition") {
 		if ((first + second) == answer) {
-			getId('eqCard5Front').style.backgroundColor = "#29a329"; // Change the answer card's frontside to green
+			getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 			revealAnswer();
 		} else {
-			getId('eqCard5Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
+			getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500) // Delay revealing the answer cards in the matrix by 0.5 seconds
 		}
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
-			getId('eqCard5Front').style.backgroundColor = "#29a329"; // Green
+			getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 			revealAnswer();
 		} else { 
-			getId('eqCard5Front').style.backgroundColor = "#000000"; // Black 
+			getId('eqCard4Front').style.backgroundColor = "#000000"; // Black 
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500)
 		}
 	} else if(operator === "multiplication") {
 		if ((first * second) == answer) {
-			getId('eqCard5Front').style.backgroundColor = "#29a329";
+			getId('eqCard4Front').style.backgroundColor = "#29a329";
 			revealAnswer();
 		} else {
-			getId('eqCard5Front').style.backgroundColor = "#000000";
+			getId('eqCard4Front').style.backgroundColor = "#000000";
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500)
 		}
 	} else if(operator === "division") {
 		if ((first / second) == answer) {
-			getId('eqCard5Front').style.backgroundColor = "#29a329";
+			getId('eqCard4Front').style.backgroundColor = "#29a329";
 			revealAnswer();
 		} else {
-			getId('eqCard5Front').style.backgroundColor = "#000000"; 
+			getId('eqCard4Front').style.backgroundColor = "#000000"; 
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500) 
 		}
@@ -769,8 +839,74 @@ function checkEquation(){
 	}
 }
 
+// Reset Level
+function resetLevel() {
+	// Change all card front's and back's to original colors and flip to their back's
+	for (var i = 1; i <= 3; i++) {	
+		for (var k = 1; k <= 3; k++) {
+			$("#r" + i + "c" + k).flip(false); // Flip all cards to their backside 
+			getId('r' + i + 'c' + k + 'Front').style.backgroundColor = "#4d4d4d"; // Medium Dark Grey 
+			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#D7DADB"; // Light Gray
+			getId('r' + i + 'c' + k + 'Back').style.borderStyle = "1px dashed #000000"; // Black
+		}
+	}
 
+	for (var i = 1; i <= 4; i++) {
+		$("#eqCard" + i).flip(false); // Backside
+		getId('eqCard' + i + 'Front').style.backgroundColor = "#4d4d4d"; // Medium Dark Grey 
+		getId('eqCard' + i + 'Back').style.backgroundColor = "#D7DADB"; // Light gray
+		getId('eqCard' + i + 'Back').style.borderStyle = "1px dashed #000000"; // Black
+	}
+	restack(); // Restack the Animation Divisions
+	// Reset all counters
+	count = 0;
+	r1c1Reveals = 0; 
+	r1c2Reveals = 0; 
+	r1c3Reveals = 0; 
+	r2c1Reveals = 0; 
+	r2c2Reveals = 0; 
+	r2c3Reveals = 0; 
+	r3c1Reveals = 0; 
+	r3c2Reveals = 0; 
+	r3c3Reveals = 0;   
+	seconds = 1;
+	operator = "";
+}
 
+// Restack the Animation Cards
+function restack() {
+	getId('animationCard1').style.left = "10.5%";
+	getId('animationCard1').style.top = "0%";
+	getId('animationCard2').style.left = "10.25%";
+	getId('animationCard2').style.top = "-0.5%";
+	getId('animationCard3').style.left = "10%";
+	getId('animationCard3').style.top = "-0.75%";
+	getId('animationCard4').style.left = "9.75%";
+	getId('animationCard4').style.top = "-1%";
+	getId('animationCard5').style.left = "9.5%";
+	getId('animationCard5').style.top = "-1.25%";
+	getId('animationCard6').style.left = "9.25%";
+	getId('animationCard6').style.top = "-1.5%";
+	getId('animationCard7').style.left = "9%";
+	getId('animationCard7').style.top = "-1.75%";
+	getId('animationCard8').style.left = "8.75%";
+	getId('animationCard8').style.top = "-2%";
+	getId('animationCard9').style.left = "8.5%";
+	getId('animationCard9').style.top = "-2.25%";
+	getId('animationCard10').style.left = "8.25%";
+	getId('animationCard10').style.top = "-2.5%";
+	getId('animationCard11').style.left = "8%";
+	getId('animationCard11').style.top = "-2.75%";
+	// Resize Animation Cards
+	for (var i = 1; i <= 11; i++) {
+		getId('animationCard' + i).style.width = "25%";
+		getId('animationCard' + i).style.height = "32%";
+	}
+	// Make animation cards visible
+	for (var i = 1; i <= 11; i++) {
+		getId('animationCard' + i).style.visibility = "visible";
+	}	
+}
 
 
 

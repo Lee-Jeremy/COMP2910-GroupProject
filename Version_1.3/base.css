@@ -85,13 +85,18 @@ body {
 	color: white;
 	text-align: center;
 	border-radius: 4%;
-	border: 1px solid #000000; /* Black */
+	/* border: 1px solid #000000; */ /* Black */
 }
 
 /* All Card Front's */
 .front{
 	background: #4d4d4d; /* Grey */
 }
+
+.back {
+	border: 1px dashed #000000;
+}
+
 
 /* Matrix container */
 #matrix {
@@ -133,73 +138,106 @@ div#animationCard7,
 #matrix
 div#animationCard8,
 #matrix 
-div#animationCard9 {
+div#animationCard9,
+#matrix 
+div#animationCard10,
+#matrix 
+div#animationCard11 {
 	position: absolute;
 	height: 32%;
 	width: 25%;
 	z-index: 1;
 	border-radius: 4%;
 	background: #263545; /* Navy blue */
-	visibility: hidden;
 	border: 1px solid #000000;
 }
 
 /* Matrix Animation Card 1*/
 #matrix
 div#animationCard1 {
-	left: 10.5%;
+	left: 10.5%; 
 }
 
 /* Matrix animation Card 2 */
 #matrix div#animationCard2 {
-	left: 37.5%;
+	/* left: 37.5%; */
+	left: 10.25%;
+	top: -0.5%;
 }
 
 /* Matrix animation Card 3 */
 #matrix div#animationCard3 {
-	left: 64.5%;
+	/* left: 64.5%; */
+	left: 10%;
+	top: -0.75%;
 }
 
 /* Matrix animation Card 4 */
 #matrix div#animationCard4 {
-	left: 10.5%;
-	top: 34%;
+	/* left: 10.5%;
+	top: 34%; */
+	left: 9.75%;
+	top: -1%;
 }
 
 /* Matrix animation Card 5 */
 #matrix div#animationCard5 {
-	left: 37.5%;
-	top: 34%;
+	/* left: 37.5%;
+	top: 34%; */
+	left: 9.5%;
+	top: -1.25%;
 }
 
 /* Matrix animation Card 6 */
 #matrix div#animationCard6 {
-	left: 64.5%;
-	top: 34%;
+	/* left: 64.5%;
+	top: 34%; */
+	left: 9.25%;
+	top: -1.5%;
 }
 
 /* Matrix animation Card 7 */
 #matrix div#animationCard7 {
-	left: 10.5%;
-	top: 68%;
+	/* left: 10.5%;
+	top: 68%; */
+	left: 9%;
+	top: -1.75%;
 }
 
 /* Matrix animation Card 8 */
 #matrix div#animationCard8 {
-	left: 37.5%;
-	top: 68%;
+	/* left: 37.5%;
+	top: 68%; */
+	left: 8.75%;
+	top: -2%;
 }
 
 /* Matrix animation Card 9 */
 #matrix div#animationCard9 {
-	left: 64.5%;
-	top: 68%;
+	/* left: 64.5%;
+	top: 68%; */
+	left: 8.5%;
+	top: -2.25%;
+}
+
+/* Matrix animation Card 10 */
+#matrix div#animationCard10 {
+	left: 8.25%;
+	top: -2.5%;
+	background: #800000; /* Red*/
+}
+
+/* Matrix animation Card 11 */
+#matrix div#animationCard11 {
+	left: 8%;
+	top: -2.75%;
+	background: #800000; /* Red */
 }
 
 /* All Matrix Card Back's */ 
 #matrix div > .back {
-	padding-top: 12.5%;
-	background: #263545; /* Navy blue */
+padding-top: 12.5%; 
+	/* background: #263545; Navy blue */
 }
 
 /* Matrix Card 1 */ 
@@ -258,7 +296,7 @@ div#animationCard1 {
 
 /* All Matrix Cells Hover */
 #matrix div > .front:hover {
-	background: #99b3ff; /* Sky blue */	
+	/* background: #99b3ff; /* Sky blue */	
 }
 
 /* Equation container */
@@ -285,20 +323,20 @@ div#animationCard1 {
 
 /* First Equation Card */
 #equation
-#first {
+#eqCard1 {
 	width: 21%;
 }
 
 /* First Equation Card Back */
 #equation
-#first
+#eqCard1
 .back {
-	border: 1px dashed #000000; /* Black */
+	/* border: 1px dashed #000000; /* Black */
 }
 
 /* Second Equation Card */
 #equation
-#operator {
+#eqCard2 {
 	margin-left: 2%;
 	margin-right: 2%;
 	width: 21%;	
@@ -306,23 +344,23 @@ div#animationCard1 {
 
 /* Second Equation Card Back*/
 #equation
-#operator
+#eqCard2
 .back {
-	background: #800000; /* Red */
+	/* background: #800000; /* Red */
 	font-weight: bold;
 }
 
 /* Third Equation Card */
 #equation
-#second {
+#eqCard3 {
 	width: 21%;
 }
 
 /* Third Equation Card Back*/
 #equation
-#second 
+#eqCard3 
 .back {
-	border: 1px dashed #000000; /* Black */
+	/* border: 1px dashed #000000; /* Black */
 }
 
 /* Fourth Equation Div (Not a card) */
@@ -348,15 +386,15 @@ div#animationCard1 {
 
 /* Fifth Equation Card */
 #equation
-#answer {
+#eqCard4 {
 	width: 21%;
 }
 
 /* Fifth Equation Card Back */
 #equation
-#answer
+#eqCard4
 .back {
-	background: #800000; /* Red */
+	/* background: #800000; /* Red */
 }
 
 

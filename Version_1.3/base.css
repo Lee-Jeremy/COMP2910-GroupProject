@@ -85,18 +85,17 @@ body {
 	color: white;
 	text-align: center;
 	border-radius: 4%;
-	/* border: 1px solid #000000; */ /* Black */
 }
 
 /* All Card Front's */
 .front{
 	background: #4d4d4d; /* Grey */
+	border: 1px solid #000000; /* Black */
 }
 
 .back {
-	border: 1px dashed #000000;
+	border: 1px dashed #000000; /* Black */
 }
-
 
 /* Matrix container */
 #matrix {
@@ -295,8 +294,8 @@ padding-top: 12.5%;
 }
 
 /* All Matrix Cells Hover */
-#matrix div > .front:hover {
-	/* background: #99b3ff; /* Sky blue */	
+#matrix div > .back:hover {
+	/* background: /* red; #99b3ff; /* Sky blue */	
 }
 
 /* Equation container */

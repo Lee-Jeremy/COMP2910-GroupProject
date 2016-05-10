@@ -191,7 +191,7 @@ function fillMatrix() {
 			num = Math.floor(Math.random() * 145); // 0 to 144
 			matrix[i] = num; 
 		}
-	} if (!operator === "division") {
+	} else if (!operator === "division") {
 		for (i = 0; i < matrix.length; i++) { // Card values 0 to 12 in all other operators
 			num = Math.floor(Math.random() * 13); // 0 to 12
 			matrix[i] = num;

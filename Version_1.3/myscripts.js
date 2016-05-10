@@ -19,6 +19,7 @@ $(document).ready(function(){
 		if (getId('buttonLeftText').innerHTML === 'Yes') { // Checks which overlay the user is on
             goToStartScreen(); // Temporary function to go to Start Screen
         } else {
+            hideOverlay();
             quitConfirm(); // Asks if the user really wants to quit
         }
 	});
@@ -954,7 +955,7 @@ function hideOverlay() {
 function playAgain() {
     showOverlay();
 
-    getId('quitText').innerHTML = "Would you like to play again?";
+    getId('quitText').innerHTML = "Would you like to PLAY AGAIN?";
     getId('buttonLeftText').innerHTML = "No";
     getId('buttonRightText').innerHTML = "Yes";  
 }

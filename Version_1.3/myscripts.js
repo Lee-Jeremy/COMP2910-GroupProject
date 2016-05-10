@@ -42,7 +42,6 @@ var seconds = 1; // Seconds counter within the timer
 	
 // Deal the cards
 function dealCards() {
-	var interval;
 	$("#animationCard11").animate({ // Move to the answer card position and shrink
 			left: '71.1vw',
 			top: '67vh',
@@ -186,8 +185,8 @@ function fillMatrix() {
 
 // Generate an answer
 function generateAnswer() {
-	var num1 = Math.floor(Math.random() * 9); // Select a random card from the matrix (1st card = 0, 2nd = 1,...9th = 8)
-	var num2 = Math.floor(Math.random() * 9); // 0 to 8
+	var num1; // Select a random card from the matrix (1st card = 0, 2nd = 1,...9th = 8)
+	var num2; // 0 to 8
 	while (num1 == num2) { // Don't allow an answer to be generated from the same card
 		num1 = Math.floor(Math.random() * 9); // Card number = matrix array index number - 1 
 		num2 = Math.floor(Math.random() * 9); // e.g. card1 = matrix[0], card2 = matrix[1],...card9 = matrix[8]
@@ -219,18 +218,18 @@ function checkCombinations() {
 	var k;
 	for (i = 0; i < matrix.length - 1; i++) { // 1st card / 2nd card, 1st / 3rd , 1st / 4th ,... 8th / 9th
 		for (k = 1; k < matrix.length; k++) {
-			if (matrix[i] % matrix [k] == 0) {
+			if (matrix[i] % matrix[k] == 0 || matrix[k] % matrix[i] == 0) {
 				numCombinations++;
 			}
 		}
 	}
-	for (i = matrix.length - 1; i >= 1; i--) { // 9th card / 8th card, 9th / 7th, 9th / 6th,... 2nd / 1st
-		for (k = matrix.length - 2; k >= 0; k--) {
-			if (matrix[i] % matrix[k] == 0) {
-				numCombinations++;
-			}
-		}
-	}
+	// for (i = matrix.length - 1; i >= 1; i--) { // 9th card / 8th card, 9th / 7th, 9th / 6th,... 2nd / 1st
+		// for (k = matrix.length - 2; k >= 0; k--) {
+			// if (matrix[i] % matrix[k] == 0) {
+				// numCombinations++;
+			// }
+		// }
+	// }
 	while (numCombinations == 0) { 
 		fillMatrix(); // If no combinations exist, re-fill the matrix with new values
 		checkCombinations(); // Check again for combinations
@@ -285,7 +284,7 @@ function revealMatrix() {
 	for (i = 1; i <= 3; i++) { 
 		for (j = 1; j <= 3; j++) { 
 			cell = getId('r' + i + 'c' + j + 'Front').innerHTML = matrix[k]; 
-			k++;															  
+			k++;			  
 		}
 	}
 	$('.matrixCards').flip(true); // Flip all the matrix cards to their frontside

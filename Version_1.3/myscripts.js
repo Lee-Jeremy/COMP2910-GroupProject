@@ -935,29 +935,26 @@ function restack() {
 // Show Overlay
 function showOverlay() {
     getId('overlayContainer').style.display = "block";
-    getId('box').style.display = "block";
+    getId('quitOverlay').style.display = "block";
     getId('buttonLeft').style.display = "block";
     getId('buttonRight').style.display = "block";
 }
 
 // Hide Overlay
 function hideOverlay() {
-    getId('overlayContainer').style.display = "none";
-    getId('box').style.display = "none";
-    getId('buttonLeft').style.display = "none";
-    getId('buttonRight').style.display = "none" 
+    getId('levelOverlay').style.display = "none";
 
-    // To change the text after the overlay hides the first time
-    getId('boxText').innerHTML = "Would you like to play again?";
-    getId('buttonLeftText').innerHTML = "No";
-    getId('buttonRightText').innerHTML = "Yes"; 
+    getId('overlayContainer').style.display = "none";
+    getId('quitOverlay').style.display = "none";
+    getId('buttonLeft').style.display = "none";
+    getId('buttonRight').style.display = "none";
 }
 
-// Play again
+// Play Again
 function playAgain() {
     showOverlay();
 
-    getId('boxText').innerHTML = "Would you like to play again?";
+    getId('quitText').innerHTML = "Would you like to play again?";
     getId('buttonLeftText').innerHTML = "No";
     getId('buttonRightText').innerHTML = "Yes";  
 }
@@ -966,7 +963,7 @@ function playAgain() {
 function quitConfirm() {
     showOverlay();
 
-    getId('boxText').innerHTML = "Are you sure you want to QUIT?";
+    getId('quitText').innerHTML = "Are you sure you want to QUIT?";
     getId('buttonLeftText').innerHTML = "Yes";
     getId('buttonRightText').innerHTML = "No";
 }

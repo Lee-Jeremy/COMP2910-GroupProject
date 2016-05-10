@@ -16,7 +16,7 @@ $(document).ready(function(){
 		dealCards();
 	});
     $("#buttonLeft").click(function() {
-		if (getId('buttonLeftText').innerHTML === 'Yes') {
+		if (getId('buttonLeftText').innerHTML === 'Yes') { // Checks which overlay the user is on
             goToStartScreen(); // Temporary function to go to Start Screen
         } else {
             quitConfirm(); // Asks if the user really wants to quit
@@ -960,7 +960,7 @@ function playAgain() {
 function quitConfirm() {
     showOverlay();
 
-    getId('boxText').innerHTML = "Are you sure you want to Quit?";
+    getId('boxText').innerHTML = "Are you sure you want to QUIT?";
     getId('buttonLeftText').innerHTML = "Yes";
     getId('buttonRightText').innerHTML = "No";
 }

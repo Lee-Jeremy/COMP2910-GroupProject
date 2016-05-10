@@ -396,19 +396,66 @@ padding-top: 12.5%;
 	/* background: #800000; /* Red */
 }
 
+/* Overlay Container */
+#overlayContainer {
+    position:  absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width:  100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: block;
+}
 
+/* Overlay Box */
+#box {
+    position: relative;
+    height: 40%;
+    width: 70%;
+    left: 15%;
+    top: 20%;
+    z-index: 3;
+    border: 1px solid black;
+    background-color:  #D7DADB;
+    text-align: center;
+    display: block;
+}
 
+#buttonLeft {
+    position: absolute;
+    height: 10%;
+    width: 33.5%;
+    bottom: 27.5%;
+    left: 15%;
+    z-index: 3;
+    border: 2px solid white;
+    background-color:  #C4273C;
+    text-align: center;
+    color: white;
+    display: block;
+}
 
+#buttonRight {
+    position: absolute;
+    height: 10%;
+    width: 33.5%;
+    bottom: 27.5%;
+    left: 51.5%;
+    z-index: 3;
+    border: 2px solid white;
+    background-color:  #263545;
+    text-align: center;
+    color: white;
+    display: block;
+}
 
+.overlayText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
-
-
-
-
-
-
-
-
-
-
-
+.overlayText p {
+    margin: 0
+}

@@ -946,6 +946,11 @@ function hideOverlay() {
     getId('box').style.display = "none";
     getId('buttonLeft').style.display = "none";
     getId('buttonRight').style.display = "none" 
+
+    // To change the text after the overlay hides the first time
+    getId('boxText').innerHTML = "Would you like to play again?";
+    getId('buttonLeftText').innerHTML = "No";
+    getId('buttonRightText').innerHTML = "Yes"; 
 }
 
 // Play again

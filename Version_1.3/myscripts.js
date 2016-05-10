@@ -14,9 +14,24 @@ $(document).ready(function(){
 	});
 	$("#animationCard11").click(function() { // Start the game
 		dealCards();
-	});	
-	$("#multiplier").click(function() { // Reset the Level
-		resetLevel();
+	});
+    $("#buttonLeft").click(function() {
+		if (getId('buttonLeftText').innerHTML === 'Yes') { // Checks which overlay the user is on
+            goToStartScreen(); // Temporary function to go to Start Screen
+        } else {
+            quitConfirm(); // Asks if the user really wants to quit
+        }
+	});
+	$("#buttonRight").click(function() { // Reset the Level; changed from #multiplier to #buttonRight
+		if (getId('buttonRightText').innerHTML === 'No') { // Checks which overlay the user is on
+		    playAgain();
+		} else {
+		    hideOverlay(); // Hides the overlay after clicking on the button
+            resetLevel();
+		} 
+	});
+    $("#backButton").click(function() { // Temporary function to prompt Quit screen on Back Button
+		quitConfirm();
 	});
 });
 
@@ -802,37 +817,45 @@ function checkEquation(){
 		if ((first + second) == answer) {
 			getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 			revealAnswer();
+            setTimeout(showOverlay, 2000); // Delays showing the overlay after 2 seconds
 		} else {
 			getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
 			revealAnswer();
-			setTimeout(revealAnswerCards, 500) // Delay revealing the answer cards in the matrix by 0.5 seconds
+			setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
+            setTimeout(showOverlay, 2000);
 		}
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
 			getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 			revealAnswer();
+            setTimeout(playAgain, 2000);
 		} else { 
 			getId('eqCard4Front').style.backgroundColor = "#000000"; // Black 
 			revealAnswer();
-			setTimeout(revealAnswerCards, 500)
+			setTimeout(revealAnswerCards, 500);
+            setTimeout(playAgain, 2000);
 		}
 	} else if(operator === "multiplication") {
 		if ((first * second) == answer) {
 			getId('eqCard4Front').style.backgroundColor = "#29a329";
 			revealAnswer();
+            setTimeout(playAgain, 2000);
 		} else {
 			getId('eqCard4Front').style.backgroundColor = "#000000";
 			revealAnswer();
-			setTimeout(revealAnswerCards, 500)
+			setTimeout(revealAnswerCards, 500);
+            setTimeout(playAgain, 2000);
 		}
 	} else if(operator === "division") {
 		if ((first / second) == answer) {
 			getId('eqCard4Front').style.backgroundColor = "#29a329";
 			revealAnswer();
+            setTimeout(playAgain, 2000);
 		} else {
 			getId('eqCard4Front').style.backgroundColor = "#000000"; 
 			revealAnswer();
-			setTimeout(revealAnswerCards, 500) 
+			setTimeout(revealAnswerCards, 500);
+            setTimeout(playAgain, 2000);
 		}
 	} else {
 		alert('Unable to identify operator during checkEquation');	
@@ -908,10 +931,39 @@ function restack() {
 	}	
 }
 
+// Show Overlay
+function showOverlay() {
+    getId('overlayContainer').style.display = "block";
+    getId('box').style.display = "block";
+    getId('buttonLeft').style.display = "block";
+    getId('buttonRight').style.display = "block";
+}
 
+// Hide Overlay
+function hideOverlay() {
+    getId('overlayContainer').style.display = "none";
+    getId('box').style.display = "none";
+    getId('buttonLeft').style.display = "none";
+    getId('buttonRight').style.display = "none" 
+}
 
+// Play again
+function playAgain() {
+    showOverlay();
 
+    getId('boxText').innerHTML = "Would you like to play again?";
+    getId('buttonLeftText').innerHTML = "No";
+    getId('buttonRightText').innerHTML = "Yes";  
+}
 
+// Quit Confirm
+function quitConfirm() {
+    showOverlay();
+
+    getId('boxText').innerHTML = "Are you sure you want to QUIT?";
+    getId('buttonLeftText').innerHTML = "Yes";
+    getId('buttonRightText').innerHTML = "No";
+}
 
 
 

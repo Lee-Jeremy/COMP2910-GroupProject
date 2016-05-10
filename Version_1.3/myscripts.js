@@ -56,6 +56,7 @@ var answerCard2; // The other matrix card value used in generating the answer
 var operator = ""; // Mathematical operator (+, -, *, or /)
 var timer; // Card dealing and revealing timer
 var seconds = 1; // Seconds counter within the timer
+var level = 1; // Level user is currently on
 	
 // Deal the cards
 function dealCards() {
@@ -817,47 +818,56 @@ function checkEquation(){
 	var second = userSelection[1]; // The user's 2nd selected card value from the matrix	
 	if (operator === "addition") {
 		if ((first + second) == answer) {
+            level++; // Increases the level count after each play
 			getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 			revealAnswer();
-            setTimeout(showOverlay, 2000); // Delays showing the overlay after 2 seconds
+            setTimeout(showLevelOverlay, 2000); // Delays showing the overlay after 2 seconds
 		} else {
+            level++;
 			getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
-            setTimeout(showOverlay, 2000);
+            setTimeout(showLevelOverlay
+            , 2000);
 		}
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
+            level++;
 			getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 			revealAnswer();
-            setTimeout(playAgain, 2000);
+            setTimeout(showLevelOverlay, 2000);
 		} else { 
+            level++;
 			getId('eqCard4Front').style.backgroundColor = "#000000"; // Black 
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500);
-            setTimeout(playAgain, 2000);
+            setTimeout(showLevelOverlay, 2000);
 		}
 	} else if(operator === "multiplication") {
 		if ((first * second) == answer) {
+            level++;
 			getId('eqCard4Front').style.backgroundColor = "#29a329";
 			revealAnswer();
-            setTimeout(playAgain, 2000);
+            setTimeout(showLevelOverlay, 2000);
 		} else {
+            level++;
 			getId('eqCard4Front').style.backgroundColor = "#000000";
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500);
-            setTimeout(playAgain, 2000);
+            setTimeout(showLevelOverlay, 2000);
 		}
 	} else if(operator === "division") {
 		if ((first / second) == answer) {
+            level++;
 			getId('eqCard4Front').style.backgroundColor = "#29a329";
 			revealAnswer();
-            setTimeout(playAgain, 2000);
+            setTimeout(showLevelOverlay, 2000);
 		} else {
+            level++;
 			getId('eqCard4Front').style.backgroundColor = "#000000"; 
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500);
-            setTimeout(playAgain, 2000);
+            setTimeout(showLevelOverlay, 2000);
 		}
 	} else {
 		alert('Unable to identify operator during checkEquation');	
@@ -951,11 +961,21 @@ function hideOverlay() {
     getId('buttonRight').style.display = "none";
 }
 
+// Show Current Level Overlay
+function showLevelOverlay() {
+    getId('overlayContainer').style.display = "block";
+    getId('levelOverlay').style.display = "block";
+    getId('buttonLeft').style.display = "block";
+    getId('buttonRight').style.display = "block";
+
+    getId('levelText').innerHTML = "Level " + level; // Increments the level after each play
+}
+
 // Play Again
 function playAgain() {
     showOverlay();
 
-    getId('quitText').innerHTML = "Would you like to PLAY AGAIN?";
+    getId('quitText').innerHTML = "Would you like to CONTINUE? ";
     getId('buttonLeftText').innerHTML = "No";
     getId('buttonRightText').innerHTML = "Yes";  
 }
@@ -968,8 +988,6 @@ function quitConfirm() {
     getId('buttonLeftText').innerHTML = "Yes";
     getId('buttonRightText').innerHTML = "No";
 }
-
-
 
 
 

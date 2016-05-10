@@ -90,11 +90,13 @@ function dealCards() {
 	for (var i = 1; i <= 3; i++) {
 		for (var k = 1; k <=3; k++) {
 			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#263545"; // Navy blue
-			getId('r' + i + 'c' + k + 'Back').style.borderStyle = "1px solid #000000"; // Solid black border
+			getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
 		}
 	}
 	getId('eqCard2Back').style.backgroundColor = "#800000"; // Red
+	getId('eqCard2Back').style.border = "1px solid #000000"; // Solid black border
 	getId('eqCard4Back').style.backgroundColor = "#800000";	// Red
+	getId('eqCard4Back').style.border = "1px solid #000000"; // Solid black border
 	setTimeout(hideAnimations, 450);
 		});		
 		});	
@@ -756,40 +758,40 @@ function revealAnswerCards() {
 function flipAnswerCard(cardNumber) {	
 	switch (cardNumber) {
 		case 0:
-			getId('r1c1Front').style.backgroundColor = "#29a329"; // Change the first answer card's frontside to green
-			$('#r1c1').flip(true); // Flip the first matrix card to its frontside, if not yet flipped
+			getId('r1c1Front').style.backgroundColor = "#29a329"; // Change the answer card's frontside to green
+			$('#r1c1').flip(true); // Flip the matrix card to its frontside, if not yet flipped
 			break;
 		case 1:
 			getId('r1c2Front').style.backgroundColor = "#29a329"; // Green
-			$('#r1c2').flip(true);
+			$('#r1c2').flip(true); 
 			break;
 		case 2:
-			getId('r1c3Front').style.backgroundColor = "#29a329";
-			$('#r1c3').flip(true);
+			getId('r1c3Front').style.backgroundColor = "#29a329"; 
+			$('#r1c3').flip(true); 
 			break;
 		case 3:
-			getId('r2c1Front').style.backgroundColor = "#29a329";
-			$('#r2c1').flip(true);
+			getId('r2c1Front').style.backgroundColor = "#29a329"; 
+			$('#r2c1').flip(true); 
 			break;
 		case 4:
-			getId('r2c2Front').style.backgroundColor = "#29a329";
-			$('#r2c2').flip(true);
+			getId('r2c2Front').style.backgroundColor = "#29a329"; 
+			$('#r2c2').flip(true); 
 			break;
 		case 5:
-			getId('r2c3Front').style.backgroundColor = "#29a329";
-			$('#r2c3').flip(true);
+			getId('r2c3Front').style.backgroundColor = "#29a329"; 
+			$('#r2c3').flip(true); 
 			break;
 		case 6:
-			getId('r3c1Front').style.backgroundColor = "#29a329";
-			$('#r3c1').flip(true);
+			getId('r3c1Front').style.backgroundColor = "#29a329"; 
+			$('#r3c1').flip(true); 
 			break;
 		case 7:
-			getId('r3c2Front').style.backgroundColor = "#29a329";
-			$('#r3c2').flip(true);
+			getId('r3c2Front').style.backgroundColor = "#29a329"; 
+			$('#r3c2').flip(true); 
 			break;
 		case 8:
-			getId('r3c3Front').style.backgroundColor = "#29a329";
-			$('#r3c3').flip(true);
+			getId('r3c3Front').style.backgroundColor = "#29a329"; 
+			$('#r3c3').flip(true); 
 			break;
 	}
 }
@@ -847,7 +849,7 @@ function resetLevel() {
 			$("#r" + i + "c" + k).flip(false); // Flip all cards to their backside 
 			getId('r' + i + 'c' + k + 'Front').style.backgroundColor = "#4d4d4d"; // Medium Dark Grey 
 			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#D7DADB"; // Light Gray
-			getId('r' + i + 'c' + k + 'Back').style.borderStyle = "1px dashed #000000"; // Black
+			getId('r' + i + 'c' + k + 'Back').style.border = "1px dashed #000000"; // Black
 		}
 	}
 
@@ -855,7 +857,7 @@ function resetLevel() {
 		$("#eqCard" + i).flip(false); // Backside
 		getId('eqCard' + i + 'Front').style.backgroundColor = "#4d4d4d"; // Medium Dark Grey 
 		getId('eqCard' + i + 'Back').style.backgroundColor = "#D7DADB"; // Light gray
-		getId('eqCard' + i + 'Back').style.borderStyle = "1px dashed #000000"; // Black
+		getId('eqCard' + i + 'Back').style.border = "1px dashed #000000"; // Black
 	}
 	restack(); // Restack the Animation Divisions
 	// Reset all counters

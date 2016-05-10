@@ -28,9 +28,10 @@ $(document).ready(function(){
 		} else {
 		    hideOverlay(); // Hides the overlay after clicking on the button
             resetLevel();
+            setTimeout(dealCards, 500); // Automatically deals the cards after .5 seconds
 		} 
 	});
-    $("#backButton").click(function() { // Temporary function to prompt Quit screen on Back Button
+    $("#arrow").click(function() { // Temporary function to prompt Quit screen on Back Button
 		quitConfirm();
 	});
 });

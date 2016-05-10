@@ -57,6 +57,7 @@ var operator = ""; // Mathematical operator (+, -, *, or /)
 var timer; // Card dealing and revealing timer
 var seconds = 1; // Seconds counter within the timer
 var level = 1; // Level user is currently on
+var lives = 3; // Number of lives; starts at 3
 	
 // Deal the cards
 function dealCards() {
@@ -823,12 +824,16 @@ function checkEquation(){
 			revealAnswer();
             setTimeout(showLevelOverlay, 2000); // Delays showing the overlay after 2 seconds
 		} else {
-            level++;
+            lives--;
 			getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
-            setTimeout(showLevelOverlay
-            , 2000);
+            if (lives === 0) {
+                setTimeout(showLevelOverlay, 2000)
+            } else {
+                setTimeout(resetLevel, 2500);
+                setTimeout(dealCards, 3500);
+            }
 		}
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
@@ -837,11 +842,16 @@ function checkEquation(){
 			revealAnswer();
             setTimeout(showLevelOverlay, 2000);
 		} else { 
-            level++;
+            lives--;
 			getId('eqCard4Front').style.backgroundColor = "#000000"; // Black 
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500);
-            setTimeout(showLevelOverlay, 2000);
+            if (lives === 0) {
+                setTimeout(showLevelOverlay, 2000)
+            } else {
+                setTimeout(resetLevel, 2500);
+                setTimeout(dealCards, 3500);
+            }
 		}
 	} else if(operator === "multiplication") {
 		if ((first * second) == answer) {
@@ -850,11 +860,16 @@ function checkEquation(){
 			revealAnswer();
             setTimeout(showLevelOverlay, 2000);
 		} else {
-            level++;
+            lives--;
 			getId('eqCard4Front').style.backgroundColor = "#000000";
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500);
-            setTimeout(showLevelOverlay, 2000);
+            if (lives === 0) {
+                setTimeout(showLevelOverlay, 2000)
+            } else {
+                setTimeout(resetLevel, 2500);
+                setTimeout(dealCards, 3500);
+            }
 		}
 	} else if(operator === "division") {
 		if ((first / second) == answer) {
@@ -863,11 +878,16 @@ function checkEquation(){
 			revealAnswer();
             setTimeout(showLevelOverlay, 2000);
 		} else {
-            level++;
+            lives--;
 			getId('eqCard4Front').style.backgroundColor = "#000000"; 
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500);
-            setTimeout(showLevelOverlay, 2000);
+            if (lives === 0) {
+                setTimeout(showLevelOverlay, 2000)
+            } else {
+                setTimeout(resetLevel, 2500);
+                setTimeout(dealCards, 3500);
+            }
 		}
 	} else {
 		alert('Unable to identify operator during checkEquation');	
@@ -969,6 +989,7 @@ function showLevelOverlay() {
     getId('buttonRight').style.display = "block";
 
     getId('levelText').innerHTML = "Level " + level; // Increments the level after each play
+    getId('tutorialOrHeartsText').innerHTML = "Current Lives: " + lives;
 }
 
 // Play Again

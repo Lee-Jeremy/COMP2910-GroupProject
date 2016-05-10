@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Mathemagics Version 1.2</title>
+<title>Mathemagics Version 1.3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="base.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -108,23 +108,56 @@
 		
         <!-- Overlay Container -->
         <div id="overlayContainer">
-            <div id="box">
-                <div class="overlayText">
-                <p id="boxText">Welcome to Mathemagics!</p>
-                </div>
-            </div>
 
+            <!-- Buttons -->
             <div id="buttonLeft">
                 <div class="overlayText">
-                <p id="buttonLeftText">Quit</p>
+                    <p id="buttonLeftText">No</p>
                 </div>
             </div>
 
             <div id="buttonRight">
                 <div class="overlayText">
-                <p id="buttonRightText">Play</p>
+                    <p id="buttonRightText">Yes</p>
                 </div>
-            </div>
+            </div> <!-- Buttons End -->
+
+            <!-- Quit Overlay-->            
+            <div id="quitOverlay">
+                <div class="overlayText">
+                    <p id="quitText">Would you like to PLAY AGAIN?</p>
+                </div>
+            </div> <!-- Quit Overlay End --> 
+
+            <!-- Level Overlay -->
+            <div id="levelOverlay">
+                <div id="levelOverlayBox">
+                    <div id="currentLevel">
+                        <p>Level 1</p>
+                    </div>
+            
+                    <div id="scoreMultiplied">
+                        <p>0 pts x 1</p>
+                    </div>
+
+                    <div id="normalScore">
+                        <p>0 pts</p>
+                    </div>
+
+                    <hr>
+
+                    <div id="totalPoints">
+                        <p>Total 0 pts</p>
+                    </div>
+
+                    <div id="tutorialOrHearts">
+                        <form>
+                            <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial"></p>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- Level Overlay End -->
+
         </div> <!-- Overlay Container End -->
 
 	</div> <!-- Wrapper End -->

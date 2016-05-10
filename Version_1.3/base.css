@@ -408,20 +408,7 @@ padding-top: 12.5%;
     display: block;
 }
 
-/* Overlay Box */
-#box {
-    position: relative;
-    height: 40%;
-    width: 70%;
-    left: 15%;
-    top: 20%;
-    z-index: 3;
-    border: 1px solid black;
-    background-color:  #D7DADB;
-    text-align: center;
-    display: block;
-}
-
+/* Overlay CSS */
 #buttonLeft {
     position: absolute;
     height: 10%;
@@ -458,4 +445,78 @@ padding-top: 12.5%;
 
 .overlayText p {
     margin: 0
+}
+
+#quitOverlay {
+    position: relative;
+    height: 40%;
+    width: 70%;
+    left: 15%;
+    top: 20%;
+    z-index: 3;
+    border: 1px solid black;
+    background-color:  #D7DADB;
+    text-align: center;
+    display: none;
+}
+
+/* Generic Level Overlay */
+#levelOverlay {
+    position: relative;
+    height: 40%;
+    width: 70%;
+    left: 15%;
+    top: 20%;
+    z-index: 3;
+    border: 1px solid black;
+    background-color:  #D7DADB;
+    text-align: center;
+    display: block;
+    line-height: 0;
+}
+
+#levelOverlay p {
+    display: inline-block;
+    margin-top: 17.5px;
+    margin-bottom: 17.5px;
+}
+
+#levelOverlayBox {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Level One Overlay */
+#currentLevel {
+    font-weight: bold;
+}
+
+#scoreMultiplied {
+    font-size:  0.75em;
+}
+
+#normalScore {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+hr {
+    width: 75%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    background-color: black;
+}
+
+#totalPoints {
+    font-size: 0.95em;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+#tutorialOrHearts {
+    font-size: 0.9em;
 }

@@ -191,7 +191,7 @@ function fillMatrix() {
 			num = Math.floor(Math.random() * 145); // 0 to 144
 			matrix[i] = num; 
 		}
-	} else if (!operator === "division") {
+	} else if (operator !== "division") {
 		for (i = 0; i < matrix.length; i++) { // Card values 0 to 12 in all other operators
 			num = Math.floor(Math.random() * 13); // 0 to 12
 			matrix[i] = num;
@@ -208,7 +208,7 @@ function insertValues() {
 	var k = 0;
 	for (i = 1; i <= 3; i++) { 
 		for (j = 1; j <= 3; j++) { 
-			cell = getId('r' + i + 'c' + j + 'Front').innerHTML = matrix[k]; 
+			cell = getId('r' + i + 'c' + j + 'FrontText').innerHTML = matrix[k]; 
 			k++;															  
 		}
 	}
@@ -264,16 +264,16 @@ function checkCombinations() {
 function revealOperator() {
 	switch (operator) {
 		case "addition":
-			getId('eqCard2Front').innerHTML = "+"; // Frontside of operator card
+			getId('eqCard2FrontText').innerHTML = "+"; // Frontside of operator card
 			break;
 		case "subtraction":
-			getId('eqCard2Front').innerHTML = "-";
+			getId('eqCard2FrontText').innerHTML = "-";
 			break;
 		case "multiplication":
-			getId('eqCard2Front').innerHTML = "x";
+			getId('eqCard2FrontText').innerHTML = "x";
 			break;
 		case "division":
-			getId('eqCard2Front').innerHTML = "/";
+			getId('eqCard2FrontText').innerHTML = "/";
 			break;
 		default:
 			alert("Unable to indentify an operator during revealOperator");
@@ -288,7 +288,7 @@ function hideOperator() {
 
 // Reveal Answer
 function revealAnswer() {
-	var cell = getId('eqCard4Front'); // Frontside of the answer card	
+	var cell = getId('eqCard4FrontText'); // Frontside of the answer card	
 	cell.innerHTML = answer; // Assign the frontside the answer value
 	$("#eqCard4").flip(true); // Flip the answer card to its frontside
 }
@@ -315,7 +315,7 @@ function revealR1C1() {
 	}	
 	if (count == 1 && r1c1Reveals != 1) {
 		userSelection[0] = matrix[0]; // Assign the 1st matrix card value to the 1st index in the user selection array
-		getId('eqCard1Front').innerHTML = matrix[0]; // Assign the 1st matrix card value to the 1st equation card
+		getId('eqCard1FrontText').innerHTML = matrix[0]; // Assign the 1st matrix card value to the 1st equation card
 		$("#r1c1Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey 
 		$("#r1c1Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed
 		$("#animationCard1").css("visibility", "visible"); // Make the hidden animate division visible
@@ -336,7 +336,7 @@ function revealR1C1() {
 	}		
 	if (count == 2 && r1c1Reveals != 1) { 		
 		userSelection[1] = matrix[0]; 
-		getId('eqCard3Front').innerHTML = matrix[0]; // Assign the 1st matrix card value to the 3rd equation card 
+		getId('eqCard3FrontText').innerHTML = matrix[0]; // Assign the 1st matrix card value to the 3rd equation card 
 		$("#r1c1Back").css("background-color", "#D7DADB"); 
 		$("#r1c1Back").css("border-style", "dashed"); 
 		$("#animationCard1").css("visibility", "visible"); 
@@ -365,7 +365,7 @@ function revealR1C2() {
 	}	
 	if (count == 1 && r1c2Reveals != 1) {
 		userSelection[0] = matrix[1]; 
-		getId('eqCard1Front').innerHTML = matrix[1]; 
+		getId('eqCard1FrontText').innerHTML = matrix[1]; 
 		$("#r1c2Back").css("background-color", "#D7DADB");  
 		$("#r1c2Back").css("border-style", "dashed"); 
 		$("#animationCard2").css("visibility", "visible"); 
@@ -386,7 +386,7 @@ function revealR1C2() {
 	}		
 	if (count == 2 && r1c2Reveals != 1) { 		
 		userSelection[1] = matrix[1]; 
-		getId('eqCard3Front').innerHTML = matrix[1]; 
+		getId('eqCard3FrontText').innerHTML = matrix[1]; 
 		$("#r1c2Back").css("background-color", "#D7DADB"); 
 		$("#r1c2Back").css("border-style", "dashed"); 
 		$("#animationCard2").css("visibility", "visible"); 
@@ -415,7 +415,7 @@ function revealR1C3() {
 	}	
 	if (count == 1 && r1c3Reveals != 1) {
 		userSelection[0] = matrix[2]; 
-		getId('eqCard1Front').innerHTML = matrix[2]; 
+		getId('eqCard1FrontText').innerHTML = matrix[2]; 
 		$("#r1c3Back").css("background-color", "#D7DADB");  
 		$("#r1c3Back").css("border-style", "dashed"); 
 		$("#animationCard3").css("visibility", "visible"); 
@@ -436,7 +436,7 @@ function revealR1C3() {
 	}		
 	if (count == 2 && r1c3Reveals != 1) { 		
 		userSelection[1] = matrix[2]; 
-		getId('eqCard3Front').innerHTML = matrix[2]; 
+		getId('eqCard3FrontText').innerHTML = matrix[2]; 
 		$("#r1c3Back").css("background-color", "#D7DADB"); 
 		$("#r1c3Back").css("border-style", "dashed"); 
 		$("#animationCard3").css("visibility", "visible"); 
@@ -465,7 +465,7 @@ function revealR2C1() {
 	}	
 	if (count == 1 && r2c1Reveals != 1) {
 		userSelection[0] = matrix[3]; 
-		getId('eqCard1Front').innerHTML = matrix[3]; 
+		getId('eqCard1FrontText').innerHTML = matrix[3]; 
 		$("#r2c1Back").css("background-color", "#D7DADB");  
 		$("#r2c1Back").css("border-style", "dashed"); 
 		$("#animationCard4").css("visibility", "visible"); 
@@ -486,7 +486,7 @@ function revealR2C1() {
 	}		
 	if (count == 2 && r2c1Reveals != 1) { 		
 		userSelection[1] = matrix[3]; 
-		getId('eqCard3Front').innerHTML = matrix[3]; 
+		getId('eqCard3FrontText').innerHTML = matrix[3]; 
 		$("#r2c1Back").css("background-color", "#D7DADB"); 
 		$("#r2c1Back").css("border-style", "dashed"); 
 		$("#animationCard4").css("visibility", "visible"); 
@@ -515,7 +515,7 @@ function revealR2C2() {
 	}	
 	if (count == 1 && r2c2Reveals != 1) {
 		userSelection[0] = matrix[4]; 
-		getId('eqCard1Front').innerHTML = matrix[4]; 
+		getId('eqCard1FrontText').innerHTML = matrix[4]; 
 		$("#r2c2Back").css("background-color", "#D7DADB");  
 		$("#r2c2Back").css("border-style", "dashed"); 
 		$("#animationCard5").css("visibility", "visible"); 
@@ -536,7 +536,7 @@ function revealR2C2() {
 	}		
 	if (count == 2 && r2c2Reveals != 1) { 		
 		userSelection[1] = matrix[4]; 
-		getId('eqCard3Front').innerHTML = matrix[4]; 
+		getId('eqCard3FrontText').innerHTML = matrix[4]; 
 		$("#r2c2Back").css("background-color", "#D7DADB"); 
 		$("#r2c2Back").css("border-style", "dashed"); 
 		$("#animationCard5").css("visibility", "visible"); 
@@ -565,7 +565,7 @@ function revealR2C3() {
 	}	
 	if (count == 1 && r2c3Reveals != 1) {
 		userSelection[0] = matrix[5]; 
-		getId('eqCard1Front').innerHTML = matrix[5]; 
+		getId('eqCard1FrontText').innerHTML = matrix[5]; 
 		$("#r2c3Back").css("background-color", "#D7DADB");  
 		$("#r2c3Back").css("border-style", "dashed"); 
 		$("#animationCard6").css("visibility", "visible"); 
@@ -586,7 +586,7 @@ function revealR2C3() {
 	}		
 	if (count == 2 && r2c3Reveals != 1) { 		
 		userSelection[1] = matrix[5]; 
-		getId('eqCard3Front').innerHTML = matrix[5]; 
+		getId('eqCard3FrontText').innerHTML = matrix[5]; 
 		$("#r2c3Back").css("background-color", "#D7DADB"); 
 		$("#r2c3Back").css("border-style", "dashed"); 
 		$("#animationCard6").css("visibility", "visible"); 
@@ -615,7 +615,7 @@ function revealR3C1() {
 	}	
 	if (count == 1 && r3c1Reveals != 1) {
 		userSelection[0] = matrix[6]; 
-		getId('eqCard1Front').innerHTML = matrix[6]; 
+		getId('eqCard1FrontText').innerHTML = matrix[6]; 
 		$("#r3c1Back").css("background-color", "#D7DADB");  
 		$("#r3c1Back").css("border-style", "dashed"); 
 		$("#animationCard7").css("visibility", "visible"); 
@@ -636,7 +636,7 @@ function revealR3C1() {
 	}		
 	if (count == 2 && r3c1Reveals != 1) { 		
 		userSelection[1] = matrix[6]; 
-		getId('eqCard3Front').innerHTML = matrix[6]; 
+		getId('eqCard3FrontText').innerHTML = matrix[6]; 
 		$("#r3c1Back").css("background-color", "#D7DADB"); 
 		$("#r3c1Back").css("border-style", "dashed"); 
 		$("#animationCard7").css("visibility", "visible"); 
@@ -665,7 +665,7 @@ function revealR3C2() {
 	}	
 	if (count == 1 && r3c2Reveals != 1) {
 		userSelection[0] = matrix[7]; 
-		getId('eqCard1Front').innerHTML = matrix[7]; 
+		getId('eqCard1FrontText').innerHTML = matrix[7]; 
 		$("#r3c2Back").css("background-color", "#D7DADB");  
 		$("#r3c2Back").css("border-style", "dashed"); 
 		$("#animationCard8").css("visibility", "visible"); 
@@ -686,7 +686,7 @@ function revealR3C2() {
 	}		
 	if (count == 2 && r3c2Reveals != 1) { 		
 		userSelection[1] = matrix[7]; 
-		getId('eqCard3Front').innerHTML = matrix[7]; 
+		getId('eqCard3FrontText').innerHTML = matrix[7]; 
 		$("#r3c2Back").css("background-color", "#D7DADB"); 
 		$("#r3c2Back").css("border-style", "dashed"); 
 		$("#animationCard8").css("visibility", "visible"); 
@@ -715,7 +715,7 @@ function revealR3C3() {
 	}	
 	if (count == 1 && r3c3Reveals != 1) {
 		userSelection[0] = matrix[8]; 
-		getId('eqCard1Front').innerHTML = matrix[8]; 
+		getId('eqCard1FrontText').innerHTML = matrix[8]; 
 		$("#r3c3Back").css("background-color", "#D7DADB");  
 		$("#r3c3Back").css("border-style", "dashed"); 
 		$("#animationCard9").css("visibility", "visible"); 
@@ -736,7 +736,7 @@ function revealR3C3() {
 	}		
 	if (count == 2 && r3c3Reveals != 1) { 		
 		userSelection[1] = matrix[8]; 
-		getId('eqCard3Front').innerHTML = matrix[8]; 
+		getId('eqCard3FrontText').innerHTML = matrix[8]; 
 		$("#r3c3Back").css("background-color", "#D7DADB"); 
 		$("#r3c3Back").css("border-style", "dashed"); 
 		$("#animationCard9").css("visibility", "visible"); 

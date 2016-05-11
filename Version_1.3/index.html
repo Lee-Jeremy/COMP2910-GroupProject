@@ -19,10 +19,10 @@
 				<div></div> <!-- Back Button -->
 			</div>		
 			<div id="points"> 
-				<div id="score" class="numbers">0 Pts</div> <!-- Points -->
+				<div id="scoreText" class="numbers">0 Pts</div> <!-- Points -->
 			</div>
 			<div id="multiplier">
-				<div id="value" class="numbers">x4</div> <!-- Multiplier -->
+				<div id="multiplierText" class="numbers">x4</div> <!-- Multiplier -->
 			</div>
 			<div>
 				<div></div><!-- Hexagon -->
@@ -34,55 +34,55 @@
 
 		<!-- Matrix -->
 		<div id="matrix" class="container">
-			<div id="r1c1" class="matrixCards" onclick="revealR1C1()"> <!-- 1st card --> <!-- 1st ROW -->
+			<div id="r1c1" class="matrixCards" onclick="revealMatrixCard('r1c1', '0', '1')"> <!-- 1st card --> <!-- 1st ROW -->
 				<div id="r1c1Back" class="back"></div>	
 				<div id="r1c1Front" class="front">
 					<div id="r1c1FrontText" class="cardFrontText"></div> <!-- Text -->
 				</div>
 			</div>
-			<div id="r1c2" class="matrixCards" onclick="revealR1C2()"> <!-- 2nd card -->
+			<div id="r1c2" class="matrixCards" onclick="revealMatrixCard('r1c2', '1', '2')"> <!-- 2nd card -->
 				<div id="r1c2Back" class="back"></div>	
 				<div id="r1c2Front" class="front">
 					<div id="r1c2FrontText" class="cardFrontText"></div> <!-- Text -->
 				</div>	
 			</div>
-			<div id="r1c3" class="matrixCards" onclick="revealR1C3()"> <!-- 3rd card -->
+			<div id="r1c3" class="matrixCards" onclick="revealMatrixCard('r1c3', '2', '3')"> <!-- 3rd card -->
 				<div id="r1c3Back" class="back"></div>	
 				<div id="r1c3Front" class="front">
 					<div id="r1c3FrontText" class="cardFrontText"></div> <!-- Text -->
 				</div>	
 			</div>
-			<div id="r2c1" class="matrixCards" onclick="revealR2C1()"> <!-- 4th card --> <!-- 2nd ROW -->
+			<div id="r2c1" class="matrixCards" onclick="revealMatrixCard('r2c1', '3', '4')"> <!-- 4th card --> <!-- 2nd ROW -->
 				<div id="r2c1Back" class="back"></div>	
 				<div id="r2c1Front" class="front">
 					<div id="r2c1FrontText" class="cardFrontText"></div> <!-- Text -->
 				</div>	
 			</div>
-			<div id="r2c2" class="matrixCards" onclick="revealR2C2()"> <!-- 5th card -->
+			<div id="r2c2" class="matrixCards" onclick="revealMatrixCard('r2c2', '4', '5')"> <!-- 5th card -->
 				<div id="r2c2Back" class="back"></div>	
 				<div id="r2c2Front" class="front">
 					<div id="r2c2FrontText" class="cardFrontText"></div> <!-- Text -->
 				</div>	
 			</div>
-			<div id="r2c3" class="matrixCards" onclick="revealR2C3()"> <!-- 6th card -->
+			<div id="r2c3" class="matrixCards" onclick="revealMatrixCard('r2c3', '5', '6')"> <!-- 6th card -->
 				<div id="r2c3Back" class="back"></div>	
 				<div id="r2c3Front" class="front">
 					<div id="r2c3FrontText" class="cardFrontText"></div> <!-- Text -->
 				</div>	
 			</div>
-			<div id="r3c1" class="matrixCards" onclick="revealR3C1()"> <!-- 7th card --> <!-- 3rd ROW -->
+			<div id="r3c1" class="matrixCards" onclick="revealMatrixCard('r3c1', '6', '7')"> <!-- 7th card --> <!-- 3rd ROW -->
 				<div id="r3c1Back" class="back"></div>	
 				<div id="r3c1Front" class="front">
 					<div id="r3c1FrontText" class="cardFrontText"></div> <!-- Text -->
 				</div>	
 			</div>
-			<div id="r3c2" class="matrixCards" onclick="revealR3C2()"> <!-- 8th card -->
+			<div id="r3c2" class="matrixCards" onclick="revealMatrixCard('r3c2', '7', '8')"> <!-- 8th card -->
 				<div id="r3c2Back" class="back"></div>	
 				<div id="r3c2Front" class="front">
 					<div id="r3c2FrontText" class="cardFrontText"></div> <!-- Text -->
 				</div>	
 			</div>
-			<div id="r3c3" class="matrixCards" onclick="revealR3C3()"> <!-- 9th card -->
+			<div id="r3c3" class="matrixCards" onclick="revealMatrixCard('r3c3', '8', '9')"> <!-- 9th card -->
 				<div id="r3c3Back" class="back"></div>	
 				<div id="r3c3Front" class="front">
 					<div id="r3c3FrontText" class="cardFrontText"></div> <!-- Text -->
@@ -161,14 +161,14 @@
                         <p id="levelText">Level 1</p>
                     </div>
                     <div id="scoreMultiplied">
-                        <p>0 pts x 1</p>
+                        <p id="scoreMultipliedText">0 pts x 1</p>
                     </div>
                     <div id="normalScore">
-                        <p>0 pts</p>
+                        <p id="normalScoreText">0 pts</p>
                     </div>
                     <hr>
                     <div id="totalPoints">
-                        <p>Total 0 pts</p>
+                        <p id="totalPointsText">Total 0 pts</p>
                     </div>
                     <div id="tutorialOrHearts">
                         <!--<form>

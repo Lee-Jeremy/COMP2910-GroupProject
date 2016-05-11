@@ -43,16 +43,7 @@ $(document).ready(function(){
 });
 
 // Global Variables
-var count = 0; // Total number of user executed card flips for all cards
-var r1c1Reveals = 0; // Total number of user executed card flips on card 1 
-var r1c2Reveals = 0; //   						 					card 2 
-var r1c3Reveals = 0; //   						 					card 3
-var r2c1Reveals = 0; //   						 					card 4
-var r2c2Reveals = 0; //   						 					card 5
-var r2c3Reveals = 0; //   						 					card 6
-var r3c1Reveals = 0; //   						 					card 7
-var r3c2Reveals = 0; //   						 					card 8
-var r3c3Reveals = 0; //   						 					card 9
+var count = 0; // Total number of user executed card flips in the matrix
 var matrix = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // The Matrix Card Values
 var userSelection = [1, 2]; // The Two User Selected Card Values
 var answer; // The Answer to the Equation
@@ -60,9 +51,22 @@ var answerCard1; // The first matrix card value used in generating the answer
 var answerCard2; // The other matrix card value used in generating the answer
 var operator = ""; // Mathematical operator (+, -, *, or /)
 var timer; // Card dealing and revealing timer
-var seconds = 1; // Seconds counter within the timer
+var seconds = 1; // Seconds counter within the reveal timer
 var level = 1; // Level user is currently on
 var lives = 3; // Number of lives; starts at 3
+var points = 25; // Total points scored in the current level
+var totalScore = 0; // Total points scored across all levels
+var multTimer; // Multiplier timer to determine bonus points
+var multiplier = 4; // Points multiplier
+var pointsPerLevel = 0; // Total points for the current level
+var mSeconds = 0; // Seconds counter within the multiplier timer
+var cardValueMax; // The max range of the value for each matrix card
+var cardValueMin; // The min range of the value for each matrix card
+var divisionCardValueMax; // The max range of the value for each matrix card during division
+var divisionCardValueMin; // The min range of the value for each matrix card during division
+var firstRevealWave; // 1st set of card reveals 
+var secondRevealWave; // 2nd set of card reveals 
+var thirdRevealWave; // 3rd set of card reveals 
 	
 // Deal the cards
 function dealCards() {
@@ -134,14 +138,6 @@ function dealCards() {
 		});
 }
 
-// Hide all animation divisions
-function hideAnimations() {
-	for (var i = 1; i <= 11; i++) {
-		$("#animationCard" + i).css("visibility", "hidden");	
-	}	
-	timer = setInterval(myTimer, 1000); // Begin the in-game card reveals. Execute Every 1 Second(s) 
-}
-
 // Abbreviated getElementByID
 function getId(id) {
 	var element = document.getElementById(id); 
@@ -150,23 +146,125 @@ function getId(id) {
 	}
 	return element;			
 	}
+	
+// Hide all animation divisions
+function hideAnimations() {
+	for (var i = 1; i <= 11; i++) {
+		$("#animationCard" + i).css("visibility", "hidden");	
+	}	
+	setDifficulty();
+	timer = setInterval(myTimer, 1000); // Begin the in-game card reveals. Execute Every 1000 milliseconds 
+}
+
+// Level difficulty
+function setDifficulty() {
+	if (level < 10) {
+		cardValueMax = 12;
+		cardValueMin = 0;
+		divisionCardValueMax = 12;
+		divisionCardValueMin = 0;
+		firstRevealWave = 2;
+		secondRevealWave = 4;
+		thirdRevealWave = 8;
+	} else if (level == 10) {
+		cardValueMax = 20;
+		cardValueMin = 1;
+		divisionCardValueMax = 12;
+		divisionCardValueMin = 1;
+		firstRevealWave = 2;
+		secondRevealWave = 4;
+		thirdRevealWave = 6;
+		points = 50; // Increase the base amount of points per level
+	} else if (level == 20) {
+		cardValueMax = 1;
+		cardValueMin = 50;
+		divisionCardValueMax = 25;
+		divisionCardValueMin = 1;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 6;
+		points = 75; // Increase base points
+	} else if (level == 30) {
+		cardValueMax = 36;
+		cardValueMin = -5;
+		divisionCardValueMax = 100;
+		divisionCardValueMin = 1;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 5;		
+		points = 100; 
+		multiplier = 5; // Unlock 5x multiplier
+	} else if (level == 40) { 
+		cardValueMax = 156;
+		cardValueMin = -10;
+		divisionCardValueMax = 144;
+		divisionCardValueMin = 1;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 4;
+		points = 250; 
+	} else if (level == 50) { 
+		points = 500; 
+	} else if (level == 60) { 
+		points = 750; 
+		multiplier = 8; // Unlock 8x multiplier
+	} else if (level == 70) { 
+		points = 1000; 
+	} else if (level == 80) { 
+		points = 2000; 
+	} else if (level == 90) { 
+		points = 3000; 
+	} else if (level == 100) { 
+		points = 5000; 
+		multiplier = 10; // Unlock 10x multiplier
+	} else if (level == 110) { 
+		points = 7500; 
+	} else if (level == 120) {  
+		points = 9000; 
+	} else if (level == 130) {  
+		points = 12000; 
+	} else if (level == 140) {  
+		points = 20000;		
+	} else if (level == 150) {  
+		points = 35000; 
+	}
+}
 
 // Timer - Set the reveal times
 function myTimer() {	
 	seconds++;	
-	if (seconds == 2) {
+	if (seconds == firstRevealWave) {
 		generateOperator(); // Generate a random operator
 		fillMatrix(); // Fill the matrix with randomly generated numbers
 		generateAnswer(); // Generate an answer from two randomly picked cells within the matrix
 		revealOperator(); // Flip the operator card
 		revealAnswer(); // Flip the answer card
-	} else if (seconds == 3) {
+	} else if (seconds == secondRevealWave) {
 		hideAnswer(); // Flip back the answer card
 		revealMatrix(); // Flip all matrix cards
-	} else if (seconds == 5) {
+	} else if (seconds == thirdRevealWave) {
 		hideMatrix(); // Flip back all matrix cards
-		clearInterval(timer); // Stop the timer		
 		seconds = 0; // Reset the seconds to 0 
+		clearInterval(timer); // Stop the timer		
+		multTimer = setInterval(multiplierTimer, 1000);
+	} 
+}
+
+// Multiplier timer
+function multiplierTimer() {
+	mSeconds++;
+	if (mSeconds == 2) {
+		multiplier = 4;
+		getId('multiplierText').innerHTML = "x" + multiplier;
+	} else if (mSeconds == 3) {
+		multiplier = 3;
+		getId('multiplierText').innerHTML = "x" + multiplier;
+	} else if (mSeconds == 5) {
+		multiplier = 2;
+		getId('multiplierText').innerHTML = "x" + multiplier;
+	} else if (mSeconds == 6) {
+		multiplier = 1;
+		getId('multiplierText').innerHTML = "x" + multiplier;
 	} 
 }
 
@@ -195,18 +293,37 @@ function generateOperator() {
 function fillMatrix() {
 	var i;
 	var num;
-	if (operator === "division") { // Allow greater card values when the operator is division
+	if (operator === "division") { 
 		for (i = 0; i < matrix.length; i++) {
-			num = Math.floor(Math.random() * 145); // 0 to 144
+			num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
 			matrix[i] = num; 
 		}
-	} else if (operator !== "division") {
-		for (i = 0; i < matrix.length; i++) { // Card values 0 to 12 in all other operators
-			num = Math.floor(Math.random() * 13); // 0 to 12
+	} else if (operator !== "division") {	
+		for (i = 0; i < matrix.length; i++) { 
+			num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
 			matrix[i] = num;
 		}
-	} // Assign 1st matrix card's frontside to 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]
+	} 
+	//checkDuplicates(); // Check for duplicate values in the matrix
+	// Assign 1st matrix card's frontside to 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]
 	insertValues(); 	
+}
+
+// Don't allow for duplicate values in the matrix
+function checkDuplicates() {
+	var i;
+	var k;
+	var duplicates = 0;
+	for (i = 0; i < matrix.length - 1; i++) {
+		for (k = 1; k < matrix.length; k++) {
+			if (matrix[i] == matrix[k]) {
+			duplicates++;		
+			}
+		}
+	}
+	while (duplicates >= 3) {
+		fillMatrix();
+	}
 }
 
 // Copy the values from the matrix array to the front of each matrix card
@@ -317,18 +434,18 @@ function hideMatrix() {
 	$('.matrixCards').flip(false); // Flip all the matrix cards to their backside	
 }
 
-// Reveal R1C1 Card
-function revealR1C1() {	
-	if (seconds == 0 && r1c1Reveals != 1) { // Prevent the user from flipping a card before all reveals finish
+// Reveal Matrix Card
+function revealMatrixCard(rowCol, cardIndexNum, cardNum) {	
+	if (seconds == 0 && count <= 2) { // Prevent the user from flipping a card before all reveals finish
 		count++; 						    // and from flipping the same card twice 
 	}	
-	if (count == 1 && r1c1Reveals != 1) {
-		userSelection[0] = matrix[0]; // Assign the 1st matrix card value to the 1st index in the user selection array
-		getId('eqCard1FrontText').innerHTML = matrix[0]; // Assign the 1st matrix card value to the 1st equation card
-		$("#r1c1Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey 
-		$("#r1c1Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed
-		$("#animationCard1").css("visibility", "visible"); // Make the hidden animate division visible
-		$("#animationCard1").animate({ // Change size and width of animate div to match equation card dimensions
+	if (count == 1) {
+		userSelection[0] = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 1st index in the user selection array
+		getId('eqCard1FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 1st equation card
+		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey 
+		$("#" + rowCol + "Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed
+		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animate division visible
+		$("#animationCard" + cardNum).animate({ // Change size and width of animate div to match equation card dimensions
 			left: '0vw',
 			top: '67vh',
 			height: '15vh',
@@ -337,19 +454,19 @@ function revealR1C1() {
 			$("#eqCard1Back").css("background-color", "#263545"); // Change 1st equation card backside color to Navy blue
 			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
-				$("#animationCard1").css("visibility", "hidden"); // Hide the animate division
+				$("#animationCard" + cardNum).css("visibility", "hidden"); // Hide the animate division
 				$('#eqCard1').flip(true); // Flip the 1st equation card to its frontside
 			}
 		});
-		r1c1Reveals++; // Increment the fucntion execution counter
 	}		
-	if (count == 2 && r1c1Reveals != 1) { 		
-		userSelection[1] = matrix[0]; 
-		getId('eqCard3FrontText').innerHTML = matrix[0]; // Assign the 1st matrix card value to the 3rd equation card 
-		$("#r1c1Back").css("background-color", "#D7DADB"); 
-		$("#r1c1Back").css("border-style", "dashed"); 
-		$("#animationCard1").css("visibility", "visible"); 
-		$("#animationCard1").animate({ 
+	if (count == 2) { 
+		clearInterval(multTimer); // Stop the multiplier timer function
+		userSelection[1] = matrix[cardIndexNum]; 
+		getId('eqCard3FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 3rd equation card 
+		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); 
+		$("#" + rowCol + "Back").css("border-style", "dashed"); 
+		$("#animationCard" + cardNum).css("visibility", "visible"); 
+		$("#animationCard" + cardNum).animate({ 
 			left: '41.4vw',
 			top: '67vh',
 			height: '15vh',
@@ -358,413 +475,74 @@ function revealR1C1() {
 			$("#eqCard3Back").css("background-color", "#263545"); // Change 3rd equation card backside color to Navy blue
 			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
-				$("#animationCard1").css("visibility", "hidden"); 
+				$("#animationCard" + cardNum).css("visibility", "hidden"); 
 				$('#eqCard3').flip(true); // Flip the 3rd equation card to its frontside
 			}
 		});
-		r1c1Reveals++; // Increment the fucntion execution counter
 		setTimeout(checkEquation, 1200); // Check if the equation is true
 	}
 }
 
-// Reveal R1C2 Card
-function revealR1C2() {	
-	if (seconds == 0 && r1c2Reveals != 1) { 
-		count++; 						    
-	}	
-	if (count == 1 && r1c2Reveals != 1) {
-		userSelection[0] = matrix[1]; 
-		getId('eqCard1FrontText').innerHTML = matrix[1]; 
-		$("#r1c2Back").css("background-color", "#D7DADB");  
-		$("#r1c2Back").css("border-style", "dashed"); 
-		$("#animationCard2").css("visibility", "visible"); 
-		$("#animationCard2").animate({ 
-			left: '0vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard1Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard2").css("visibility", "hidden"); 
-				$('#eqCard1').flip(true); 
-			}
-		});
-		r1c2Reveals++; 
-	}		
-	if (count == 2 && r1c2Reveals != 1) { 		
-		userSelection[1] = matrix[1]; 
-		getId('eqCard3FrontText').innerHTML = matrix[1]; 
-		$("#r1c2Back").css("background-color", "#D7DADB"); 
-		$("#r1c2Back").css("border-style", "dashed"); 
-		$("#animationCard2").css("visibility", "visible"); 
-		$("#animationCard2").animate({ 
-			left: '41.4vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard3Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard2").css("visibility", "hidden"); 
-				$('#eqCard3').flip(true); 
-			}
-		});
-		r1c2Reveals++; 
-		setTimeout(checkEquation, 1200); 
+// Check Equation
+function checkEquation(){
+	var Symbol;
+	var first = userSelection[0]; // The user's 1st selected card value from the matrix
+	var second = userSelection[1]; // The user's 2nd selected card value from the matrix	
+	if (operator === "addition") {
+		if ((first + second) == answer) {
+			levelComplete();
+		} else {
+			levelFailed();
+		}
+	} else if(operator === "subtraction") {
+		if ((first - second) == answer) {
+			levelComplete();
+		} else {
+			levelFailed();
+		}
+	} else if(operator === "multiplication") {
+		if ((first * second) == answer) {
+			levelComplete();
+		} else {
+			levelFailed();
+		}
+	} else if(operator === "division") {
+		if ((first / second) == answer) {
+			levelComplete();
+		} else {
+			levelFailed();
+		}
+	} else {
+		alert('Unable to identify operator during checkEquation');	
 	}
 }
 
-// Reveal R1C3 Card
-function revealR1C3() {	
-	if (seconds == 0 && r1c3Reveals != 1) { 
-		count++; 						    
-	}	
-	if (count == 1 && r1c3Reveals != 1) {
-		userSelection[0] = matrix[2]; 
-		getId('eqCard1FrontText').innerHTML = matrix[2]; 
-		$("#r1c3Back").css("background-color", "#D7DADB");  
-		$("#r1c3Back").css("border-style", "dashed"); 
-		$("#animationCard3").css("visibility", "visible"); 
-		$("#animationCard3").animate({ 
-			left: '0vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard1Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard3").css("visibility", "hidden"); 
-				$('#eqCard1').flip(true); 
-			}
-		});
-		r1c3Reveals++; 
-	}		
-	if (count == 2 && r1c3Reveals != 1) { 		
-		userSelection[1] = matrix[2]; 
-		getId('eqCard3FrontText').innerHTML = matrix[2]; 
-		$("#r1c3Back").css("background-color", "#D7DADB"); 
-		$("#r1c3Back").css("border-style", "dashed"); 
-		$("#animationCard3").css("visibility", "visible"); 
-		$("#animationCard3").animate({ 
-			left: '41.4vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard3Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard3").css("visibility", "hidden"); 
-				$('#eqCard3').flip(true); 
-			}
-		});
-		r1c3Reveals++; 
-		setTimeout(checkEquation, 1200); 
-	}
+// Successfully Completed the Equation
+function levelComplete() {
+	pointsPerLevel = (points * multiplier);
+	totalScore += pointsPerLevel; 
+    level++; // Increases the level count after each play
+    if ((level % 10) === 0 && lives != 3) { // Adds a life every 10 levels
+		lives++;
+    }
+	getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
+	revealAnswer();
+    setTimeout(showLevelOverlay, 1000); // Delays showing the overlay after 2 seconds
 }
 
-// Reveal R2C1 Card
-function revealR2C1() {	
-	if (seconds == 0 && r2c1Reveals != 1) { 
-		count++; 						    
-	}	
-	if (count == 1 && r2c1Reveals != 1) {
-		userSelection[0] = matrix[3]; 
-		getId('eqCard1FrontText').innerHTML = matrix[3]; 
-		$("#r2c1Back").css("background-color", "#D7DADB");  
-		$("#r2c1Back").css("border-style", "dashed"); 
-		$("#animationCard4").css("visibility", "visible"); 
-		$("#animationCard4").animate({ 
-			left: '0vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard1Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard4").css("visibility", "hidden"); 
-				$('#eqCard1').flip(true); 
-			}
-		});
-		r2c1Reveals++; 
-	}		
-	if (count == 2 && r2c1Reveals != 1) { 		
-		userSelection[1] = matrix[3]; 
-		getId('eqCard3FrontText').innerHTML = matrix[3]; 
-		$("#r2c1Back").css("background-color", "#D7DADB"); 
-		$("#r2c1Back").css("border-style", "dashed"); 
-		$("#animationCard4").css("visibility", "visible"); 
-		$("#animationCard4").animate({ 
-			left: '41.4vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard3Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard4").css("visibility", "hidden"); 
-				$('#eqCard3').flip(true); 
-			}
-		});
-		r2c1Reveals++; 
-		setTimeout(checkEquation, 1200); 
-	}
-}
-
-// Reveal R2C2 Card
-function revealR2C2() {	
-	if (seconds == 0 && r2c2Reveals != 1) { 
-		count++; 						    
-	}	
-	if (count == 1 && r2c2Reveals != 1) {
-		userSelection[0] = matrix[4]; 
-		getId('eqCard1FrontText').innerHTML = matrix[4]; 
-		$("#r2c2Back").css("background-color", "#D7DADB");  
-		$("#r2c2Back").css("border-style", "dashed"); 
-		$("#animationCard5").css("visibility", "visible"); 
-		$("#animationCard5").animate({ 
-			left: '0vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard1Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard5").css("visibility", "hidden"); 
-				$('#eqCard1').flip(true); 
-			}
-		});
-		r2c2Reveals++; 
-	}		
-	if (count == 2 && r2c2Reveals != 1) { 		
-		userSelection[1] = matrix[4]; 
-		getId('eqCard3FrontText').innerHTML = matrix[4]; 
-		$("#r2c2Back").css("background-color", "#D7DADB"); 
-		$("#r2c2Back").css("border-style", "dashed"); 
-		$("#animationCard5").css("visibility", "visible"); 
-		$("#animationCard5").animate({ 
-			left: '41.4vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard3Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard5").css("visibility", "hidden"); 
-				$('#eqCard3').flip(true); 
-			}
-		});
-		r2c2Reveals++; 
-		setTimeout(checkEquation, 1200); 
-	}
-}
-
-// Reveal R2C3 Card
-function revealR2C3() {	
-	if (seconds == 0 && r2c3Reveals != 1) { 
-		count++; 						    
-	}	
-	if (count == 1 && r2c3Reveals != 1) {
-		userSelection[0] = matrix[5]; 
-		getId('eqCard1FrontText').innerHTML = matrix[5]; 
-		$("#r2c3Back").css("background-color", "#D7DADB");  
-		$("#r2c3Back").css("border-style", "dashed"); 
-		$("#animationCard6").css("visibility", "visible"); 
-		$("#animationCard6").animate({ 
-			left: '0vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard1Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard6").css("visibility", "hidden"); 
-				$('#eqCard1').flip(true); 
-			}
-		});
-		r2c3Reveals++; 
-	}		
-	if (count == 2 && r2c3Reveals != 1) { 		
-		userSelection[1] = matrix[5]; 
-		getId('eqCard3FrontText').innerHTML = matrix[5]; 
-		$("#r2c3Back").css("background-color", "#D7DADB"); 
-		$("#r2c3Back").css("border-style", "dashed"); 
-		$("#animationCard6").css("visibility", "visible"); 
-		$("#animationCard6").animate({ 
-			left: '41.4vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard3Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard6").css("visibility", "hidden"); 
-				$('#eqCard3').flip(true); 
-			}
-		});
-		r2c3Reveals++; 
-		setTimeout(checkEquation, 1200); 
-	}
-}
-
-// Reveal R3C1 Card
-function revealR3C1() {	
-	if (seconds == 0 && r3c1Reveals != 1) { 
-		count++; 						    
-	}	
-	if (count == 1 && r3c1Reveals != 1) {
-		userSelection[0] = matrix[6]; 
-		getId('eqCard1FrontText').innerHTML = matrix[6]; 
-		$("#r3c1Back").css("background-color", "#D7DADB");  
-		$("#r3c1Back").css("border-style", "dashed"); 
-		$("#animationCard7").css("visibility", "visible"); 
-		$("#animationCard7").animate({ 
-			left: '0vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard1Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard7").css("visibility", "hidden"); 
-				$('#eqCard1').flip(true); 
-			}
-		});
-		r3c1Reveals++; 
-	}		
-	if (count == 2 && r3c1Reveals != 1) { 		
-		userSelection[1] = matrix[6]; 
-		getId('eqCard3FrontText').innerHTML = matrix[6]; 
-		$("#r3c1Back").css("background-color", "#D7DADB"); 
-		$("#r3c1Back").css("border-style", "dashed"); 
-		$("#animationCard7").css("visibility", "visible"); 
-		$("#animationCard7").animate({ 
-			left: '41.4vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard3Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard7").css("visibility", "hidden"); 
-				$('#eqCard3').flip(true); 
-			}
-		});
-		r3c1Reveals++; 
-		setTimeout(checkEquation, 1200); 
-	}
-}
-
-// Reveal R3C2 Card
-function revealR3C2() {	
-	if (seconds == 0 && r3c2Reveals != 1) { 
-		count++; 						    
-	}	
-	if (count == 1 && r3c2Reveals != 1) {
-		userSelection[0] = matrix[7]; 
-		getId('eqCard1FrontText').innerHTML = matrix[7]; 
-		$("#r3c2Back").css("background-color", "#D7DADB");  
-		$("#r3c2Back").css("border-style", "dashed"); 
-		$("#animationCard8").css("visibility", "visible"); 
-		$("#animationCard8").animate({ 
-			left: '0vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard1Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard8").css("visibility", "hidden"); 
-				$('#eqCard1').flip(true); 
-			}
-		});
-		r3c2Reveals++; 
-	}		
-	if (count == 2 && r3c2Reveals != 1) { 		
-		userSelection[1] = matrix[7]; 
-		getId('eqCard3FrontText').innerHTML = matrix[7]; 
-		$("#r3c2Back").css("background-color", "#D7DADB"); 
-		$("#r3c2Back").css("border-style", "dashed"); 
-		$("#animationCard8").css("visibility", "visible"); 
-		$("#animationCard8").animate({ 
-			left: '41.4vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard3Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard8").css("visibility", "hidden"); 
-				$('#eqCard3').flip(true); 
-			}
-		});
-		r3c2Reveals++; 
-		setTimeout(checkEquation, 1200);
-	}
-}
-
-// Reveal R3C3 Card
-function revealR3C3() {	
-	if (seconds == 0 && r3c3Reveals != 1) { 
-		count++; 						    
-	}	
-	if (count == 1 && r3c3Reveals != 1) {
-		userSelection[0] = matrix[8]; 
-		getId('eqCard1FrontText').innerHTML = matrix[8]; 
-		$("#r3c3Back").css("background-color", "#D7DADB");  
-		$("#r3c3Back").css("border-style", "dashed"); 
-		$("#animationCard9").css("visibility", "visible"); 
-		$("#animationCard9").animate({ 
-			left: '0vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard1Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard9").css("visibility", "hidden"); 
-				$('#eqCard1').flip(true); 
-			}
-		});
-		r3c3Reveals++; 
-	}		
-	if (count == 2 && r3c3Reveals != 1) { 		
-		userSelection[1] = matrix[8]; 
-		getId('eqCard3FrontText').innerHTML = matrix[8]; 
-		$("#r3c3Back").css("background-color", "#D7DADB"); 
-		$("#r3c3Back").css("border-style", "dashed"); 
-		$("#animationCard9").css("visibility", "visible"); 
-		$("#animationCard9").animate({ 
-			left: '41.4vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},200, function() {
-			$("#eqCard3Back").css("background-color", "#263545"); 
-			setTimeout(hideAnimator, 450); 
-			function hideAnimator() {
-				$("#animationCard9").css("visibility", "hidden"); 
-				$('#eqCard3').flip(true); 
-			}
-		});
-		r3c3Reveals++; 
-		setTimeout(checkEquation, 1200);
-	}
+// Failed to Complete the Equation
+function levelFailed() {
+	lives--;
+	getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
+	revealAnswer();
+	setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
+    if (lives === 0) { // Checks to see if the lives are 0 causing game over
+		totalScore = 0;
+        setTimeout(playAgain, 2000)
+    } else { // If lives are not 0, reshuffle and redeal
+        setTimeout(resetLevel, 2500);
+        setTimeout(dealCards, 3500);
+    }
 }
 
 // Reveal the answer cards
@@ -815,100 +593,6 @@ function flipAnswerCard(cardNumber) {
 	}
 }
 
-// Check Equation
-function checkEquation(){
-	var first = userSelection[0]; // The user's 1st selected card value from the matrix
-	var second = userSelection[1]; // The user's 2nd selected card value from the matrix	
-	if (operator === "addition") {
-		if ((first + second) == answer) {
-            level++; // Increases the level count after each play
-            if ((level % 10) === 0 && lives != 3) { // Adds a life every 10 levels
-                lives++;
-            }
-			getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
-			revealAnswer();
-            setTimeout(showLevelOverlay, 2000); // Delays showing the overlay after 2 seconds
-		} else {
-            lives--;
-			getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
-			revealAnswer();
-			setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
-			
-            if (lives === 0) { // Checks to see if the lives are 0 causing game over
-                setTimeout(playAgain, 2000)
-            } else { // If lives are not 0, reshuffle and redeal
-                setTimeout(resetLevel, 2500);
-                setTimeout(dealCards, 3500);
-            }
-		}
-	} else if(operator === "subtraction") {
-		if ((first - second) == answer) {
-            level++;
-            if ((level % 10) === 0 && lives != 3) {
-                lives++;
-            }
-			getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
-			revealAnswer();
-            setTimeout(showLevelOverlay, 2000);
-		} else { 
-            lives--;
-			getId('eqCard4Front').style.backgroundColor = "#000000"; // Black 
-			revealAnswer();
-			setTimeout(revealAnswerCards, 500);
-            if (lives === 0) {
-                setTimeout(playAgain, 2000)
-            } else {
-                setTimeout(resetLevel, 2500);
-                setTimeout(dealCards, 3500);
-            }
-		}
-	} else if(operator === "multiplication") {
-		if ((first * second) == answer) {
-            level++;
-            if ((level % 10) == 0) {
-                lives++;
-            }
-			getId('eqCard4Front').style.backgroundColor = "#29a329";
-			revealAnswer();
-            setTimeout(showLevelOverlay, 2000);
-		} else {
-            lives--;
-			getId('eqCard4Front').style.backgroundColor = "#000000";
-			revealAnswer();
-			setTimeout(revealAnswerCards, 500);
-            if (lives === 0) {
-                setTimeout(playAgain, 2000)
-            } else {
-                setTimeout(resetLevel, 2500);
-                setTimeout(dealCards, 3500);
-            }
-		}
-	} else if(operator === "division") {
-		if ((first / second) == answer) {
-            level++;
-            if ((level % 10) === 0 && lives != 3) {
-                lives++;
-            }
-			getId('eqCard4Front').style.backgroundColor = "#29a329";
-			revealAnswer();
-            setTimeout(showLevelOverlay, 2000);
-		} else {
-            lives--;
-			getId('eqCard4Front').style.backgroundColor = "#000000"; 
-			revealAnswer();
-			setTimeout(revealAnswerCards, 500);
-            if (lives === 0) {
-                setTimeout(playAgain, 2000)
-            } else {
-                setTimeout(resetLevel, 2500);
-                setTimeout(dealCards, 3500);
-            }
-		}
-	} else {
-		alert('Unable to identify operator during checkEquation');	
-	}
-}
-
 // Reset Level
 function resetLevel() {
 	// Change all card front's and back's to original colors and flip to their back's
@@ -941,6 +625,9 @@ function resetLevel() {
 	r3c3Reveals = 0;   
 	seconds = 1;
 	operator = "";
+	mSeconds = 0;
+	pointsPerLevel = 0;
+	updateGameStatistics();
 }
 
 // Restack the Animation Cards
@@ -978,6 +665,25 @@ function restack() {
 	}	
 }
 
+// Update Game Statistics
+function updateGameStatistics() {
+	// Post score and set multiplier for next level in-game screen
+	getId('scoreText').innerHTML = points + "Pts";
+	if (level < 30) {
+		multiplier = 4;
+		getId('multiplierText').innerHTML = "x" + multiplier;
+	} else if (level >= 30 && level < 60) {
+		multiplier = 5;
+		getId('multiplierText').innerHTML = "x" + multiplier;
+	} else if (level >= 60 && level < 100) {
+		multiplier = 8;
+		getId('multiplierText').innerHTML = "x" + multiplier;
+	} else if (level >= 100) {
+		multiplier = 10;
+		getId('multiplierText').innerHTML = "x" + multiplier;
+	}
+}
+
 // Show Overlay
 function showOverlay() {
     getId('overlayContainer').style.display = "block";
@@ -1006,6 +712,9 @@ function showLevelOverlay() {
     getId('buttonRightText').innerHTML = "Play";  
     getId('levelText').innerHTML = "Level " + level; // Increments the level after each play
     getId('tutorialOrHeartsText').innerHTML = "Current Lives: " + lives;
+	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
+	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
+	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
 }
 
 // Play Again

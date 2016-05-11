@@ -46,8 +46,21 @@ body {
 #back
 #arrow {
 	position: absolute;
-	left: 50px;
-	
+	left: 5%;	
+	top: 5px;
+
+}
+/* Hexagon */
+#hexagon{
+	position: relative;
+}
+#header
+#hexagon
+#level {
+	position: absolute;
+	top: -25px;;
+	right: 5%;	
+
 }
 
 /* Points text */
@@ -403,102 +416,28 @@ padding-top: 12.5%;
 .back {
 	/* background: #800000; /* Red */
 }
+#hearts {
+	text-align:center;
+	position: relative;
+	margin: auto;
+	width: 50%;
+	height: 7vh;
+	top: 15%;
+}
+
 #heart {
-	/* location of the heart */
-    position: absolute;
-    width: 100px;
-	left: 800px;
-	top: 100px;
-    height: 90px;
-	
-}
-/* top left corner*/
-#heart:before,
-#heart:after {
-    position: absolute;
-    content: "";
-	/* left half of the heart*/
-    left: 50px;
-    width: 50px;
-	/* */
-    height: 80px;
-    background: red;
-	/* curved tops */
-    border-radius: 50px 50px 0 0;
-	transform: rotate(-45deg);
-	transform-origin: 0 100%;
-	
-    
-}
-/* top right corner*/
-#heart:after {
-    left: 0;
-            transform: rotate(45deg);
-            transform-origin :100% 100%;
-			
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
 }
 #heart2 {
-	/* location of the heart */
-    position: absolute;
-    width: 100px;
-	left: 900px;
-	top: 100px;
-    height: 90px;
-}
-/* top left corner*/
-#heart2:before,
-#heart2:after {
-    position: absolute;
-    content: "";
-	/* left half of the heart*/
-    left: 50px;
-    width: 50px;
-	/* */
-    height: 80px;
-    background: green;
-	/* curved tops */
-    border-radius: 50px 50px 0 0;
-            transform: rotate(-45deg);
-            transform-origin: 0 100%;
-}
-/* top right corner*/
-#heart2:after {
-    left: 0;
-            transform: rotate(45deg);
-            transform-origin :100% 100%;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
 }
 #heart3 {
-	/* location of the heart */
-    position: absolute;
-    width: 100px;
-	left: 1000px;
-	top: 100px;
-    height: 90px;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+
 }
-/* top left corner*/
-#heart3:before,
-#heart3:after {
-    position: absolute;
-    content: "";
-	/* left half of the heart*/
-    left: 50px;
-    width: 50px;
-	/* */
-    height: 80px;
-    background: gray;
-	/* curved tops */
-    border-radius: 50px 50px 0 0;
-            transform: rotate(-45deg);
-            transform-origin: 0 100%;
-}
-/* top right corner*/
-#heart3:after {
-    left: 0;
-            transform: rotate(45deg);
-            transform-origin :100% 100%;
-}
-
-
-
-
-

@@ -164,8 +164,6 @@ function myTimer() {
 		hideAnswer(); // Flip back the answer card
 		revealMatrix(); // Flip all matrix cards
 	} else if (seconds == 5) {
-		//revealAnswer();
-		//hideOperator();
 		hideMatrix(); // Flip back all matrix cards
 		clearInterval(timer); // Stop the timer		
 		seconds = 0; // Reset the seconds to 0 
@@ -824,11 +822,9 @@ function checkEquation(){
 	if (operator === "addition") {
 		if ((first + second) == answer) {
             level++; // Increases the level count after each play
-
             if ((level % 10) === 0 && lives != 3) { // Adds a life every 10 levels
                 lives++;
             }
-
 			getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 			revealAnswer();
             setTimeout(showLevelOverlay, 2000); // Delays showing the overlay after 2 seconds
@@ -837,6 +833,7 @@ function checkEquation(){
 			getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
 			revealAnswer();
 			setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
+			
             if (lives === 0) { // Checks to see if the lives are 0 causing game over
                 setTimeout(playAgain, 2000)
             } else { // If lives are not 0, reshuffle and redeal
@@ -847,11 +844,9 @@ function checkEquation(){
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
             level++;
-
             if ((level % 10) === 0 && lives != 3) {
                 lives++;
             }
-
 			getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 			revealAnswer();
             setTimeout(showLevelOverlay, 2000);
@@ -870,11 +865,9 @@ function checkEquation(){
 	} else if(operator === "multiplication") {
 		if ((first * second) == answer) {
             level++;
-
             if ((level % 10) == 0) {
                 lives++;
             }
-
 			getId('eqCard4Front').style.backgroundColor = "#29a329";
 			revealAnswer();
             setTimeout(showLevelOverlay, 2000);
@@ -893,11 +886,9 @@ function checkEquation(){
 	} else if(operator === "division") {
 		if ((first / second) == answer) {
             level++;
-
             if ((level % 10) === 0 && lives != 3) {
                 lives++;
             }
-
 			getId('eqCard4Front').style.backgroundColor = "#29a329";
 			revealAnswer();
             setTimeout(showLevelOverlay, 2000);
@@ -998,7 +989,6 @@ function showOverlay() {
 // Hide Overlay
 function hideOverlay() {
     getId('levelOverlay').style.display = "none";
-
     getId('overlayContainer').style.display = "none";
     getId('quitOverlay').style.display = "none";
     getId('buttonLeft').style.display = "none";
@@ -1008,15 +998,12 @@ function hideOverlay() {
 // Show Current Level Overlay
 function showLevelOverlay() {
     hideOverlay();
-
     getId('overlayContainer').style.display = "block";
     getId('levelOverlay').style.display = "block";
     getId('buttonLeft').style.display = "block";
     getId('buttonRight').style.display = "block";
-
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
-
     getId('levelText').innerHTML = "Level " + level; // Increments the level after each play
     getId('tutorialOrHeartsText').innerHTML = "Current Lives: " + lives;
 }
@@ -1024,7 +1011,6 @@ function showLevelOverlay() {
 // Play Again
 function playAgain() {
     showOverlay();
-
     getId('quitText').innerHTML = "Would you like to CONTINUE? ";
     getId('buttonLeftText').innerHTML = "No";
     getId('buttonRightText').innerHTML = "Yes";  
@@ -1033,7 +1019,6 @@ function playAgain() {
 // Quit Confirm
 function quitConfirm() {
     showOverlay();
-
     getId('quitText').innerHTML = "Are you sure you want to QUIT?";
     getId('buttonLeftText').innerHTML = "Yes";
     getId('buttonRightText').innerHTML = "No";

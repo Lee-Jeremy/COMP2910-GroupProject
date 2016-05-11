@@ -732,20 +732,3 @@ function quitConfirm() {
     getId('buttonLeftText').innerHTML = "Yes";
     getId('buttonRightText').innerHTML = "No";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

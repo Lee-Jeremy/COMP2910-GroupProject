@@ -13,8 +13,11 @@ $(document).ready(function(){
 		back: ".front"	
 	});
     $("#buttonLeft").click(function() {
-		if (getId('buttonLeftText').innerHTML === 'Yes') { // Quit Confirm overlay
+        if (getId('buttonLeftText').innerHTML === 'Yes' 
+		|| getId('buttonLeftText').innerHTML === 'Continue') { // Quit Confirm and Main Menu overlay
             goToStartScreen(); // Temporary function to go to Start Screen
+        } else if (getId('buttonLeftText').innerHTML === 'Back') { // Pause Game overlay
+            mainMenu();
         } else { // Current Level and Play Again overlay
             hideOverlay();
             quitConfirm(); // Asks if the user really wants to quit
@@ -22,14 +25,19 @@ $(document).ready(function(){
 	});
 	$("#buttonRight").click(function() { // Reset the Level; checks which overlay the user is on
 		if (getId('buttonRightText').innerHTML === 'No') { // Quit Confirm overlay
-		   //playAgain
-		   showLevelOverlay();
+		    //playAgain
+		    showLevelOverlay();
+        } else if (getId('buttonRightText').innerHTML === 'Back') { // Main Menu overlay
+            pauseGame();
+        } else if (getId('buttonRightText').innerHTML === 'Continue') { // Pause Game overlay
+            multTimer = setInterval(multiplierTimer, 1000);
+            hideOverlay();
 		} else if (getId('buttonRightText').innerHTML === 'Yes') { // Play Again overlay
             if (lives === 0) {
                 level = 1;
                 lives = 3;
+                fullLives();
                 showLevelOverlay();
-				fullLives();
             } else {
                 showLevelOverlay();
             }
@@ -39,8 +47,9 @@ $(document).ready(function(){
             setTimeout(dealCards, 500); // Automatically deals the cards after .5 seconds
         } 
 	});
-    $("#arrow").click(function() { // Temporary function to prompt Quit screen on Back Button
-		quitConfirm();
+    $("#back").click(function() { // Temporary function to prompt Quit screen on Back Button
+		clearInterval(multTimer);
+        pauseGame();
 	});
 });
 
@@ -601,6 +610,9 @@ function levelComplete() {
     if ((level % 10) === 0 && lives != 3) { // Adds a life every 10 levels
 		lives++;
         setTimeout(gainingLife, 500);
+        getId('gainedHeartText').style.display = "block";
+    } else {
+        getId('gainedHeartText').style.display = "none";
     }
 	getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
@@ -809,10 +821,11 @@ function showLevelOverlay() {
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
     getId('levelText').innerHTML = "Level " + level; // Increments the level after each play
-    getId('tutorialOrHeartsText').innerHTML = "Current Lives: " + lives;
+    // getId('gainedHeartText').innerHTML = "Current Lives: " + lives;
 	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
 	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
 	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
+    getId('tutorial').style.display = "none";
 }
 
 // Play Again
@@ -825,10 +838,27 @@ function playAgain() {
 
 // Quit Confirm
 function quitConfirm() {
-		showOverlay();
-		getId('quitText').innerHTML = "Are you sure you want to QUIT?";
-		getId('buttonLeftText').innerHTML = "Yes";
-		getId('buttonRightText').innerHTML = "No";
+	showOverlay();
+	getId('quitText').innerHTML = "Are you sure you want to QUIT?";
+	getId('buttonLeftText').innerHTML = "Yes";
+	getId('buttonRightText').innerHTML = "No";
+}
+
+// Pause Game
+function pauseGame() {
+    if (seconds == 0) {
+        showOverlay();
+	    getId('quitText').innerHTML = "Game is PAUSED.";
+	    getId('buttonLeftText').innerHTML = "Back";
+	    getId('buttonRightText').innerHTML = "Continue";
+    }
+}
+
+// Main Menu
+function mainMenu() {
+    getId('quitText').innerHTML = "Go to the MAIN MENU?";
+	getId('buttonLeftText').innerHTML = "Continue";
+	getId('buttonRightText').innerHTML = "Back";
 }
 
 // Full Lives

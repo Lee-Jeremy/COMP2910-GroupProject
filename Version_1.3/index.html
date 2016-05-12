@@ -16,7 +16,7 @@
 		<!-- Header -->
 		<div id="header" class="container">
 			<div id="back">
-				<div id="backImgContainer"><img id="backImg" src="images/pause.png" onclick="quitConfirm()"></div> <!-- Back Button -->
+				<div id="backImgContainer"><img id="backImg" src="images/pause.png"></div> <!-- Back Button -->
 			</div>		
 			<div id="points">
 				<div id="pointsText" class="numbers">0Pts</div> <!-- Points -->
@@ -174,10 +174,10 @@
                         <p id="totalPointsText">Total 0 pts</p>
                     </div>
                     <div id="tutorialOrHearts">
-                        <!--<form>
-                            <p id="tutorialOrHeartsText">Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial"></p>
-                        </form>-->
-                        <p id="tutorialOrHeartsText">Current Lives: 3</p>
+                        <form id="tutorial">
+                            <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial"></p>
+                        </form>
+                        <p id="gainedHeartText" style="display: none">1 Heart Gained!</p>
                     </div>
                 </div>
             </div> <!-- Level Overlay End -->

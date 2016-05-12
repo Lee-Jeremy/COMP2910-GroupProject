@@ -29,6 +29,7 @@ $(document).ready(function(){
                 level = 1;
                 lives = 3;
                 showLevelOverlay();
+				fullLives();
             } else {
                 showLevelOverlay();
             }
@@ -190,8 +191,8 @@ function setDifficulty() {
 		thirdRevealWave = 8;
 		points = 50; // Increase the base amount of points per level
 	} else if (level == 20) {
-		cardValueMin = 15;
-		cardValueMax = -2;
+		cardValueMin = -2;
+		cardValueMax = 20;
 		divisionCardValueMin = 1;
 		divisionCardValueMax = 20;
 		firstRevealWave = 2;
@@ -318,7 +319,7 @@ function fillMatrix() {
 			matrix[i] = num;
 		}
 	} 
-	//checkDuplicates(); // Check for duplicate values in the matrix
+	checkDuplicates(); // Check for duplicate values in the matrix
 	// Assign 1st matrix card's frontside to 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]
 	insertValues(); 	
 }
@@ -335,7 +336,7 @@ function checkDuplicates() {
 			}
 		}
 	}
-	while (duplicates >= 3) {
+	while (duplicates > 2) {
 		fillMatrix();
 	}
 }
@@ -405,19 +406,15 @@ function revealOperator() {
 	switch (operator) {
 		case "addition":
 			getId('eqCard2FrontText').innerHTML = "+"; // Frontside of operator card
-            flip.play();
 			break;
 		case "subtraction":
 			getId('eqCard2FrontText').innerHTML = "-";
-            flip.play();
 			break;
 		case "multiplication":
 			getId('eqCard2FrontText').innerHTML = "x";
-            flip.play();
 			break;
 		case "division":
 			getId('eqCard2FrontText').innerHTML = "/";
-            flip.play();
 			break;
 		default:
 			alert("Unable to indentify an operator during revealOperator");
@@ -428,7 +425,8 @@ function revealOperator() {
 
 // Hide Operator
 function hideOperator() {
-	$("#eqCard2").flip(false); // Flip the operator card to its backside	
+	$("#eqCard2").flip(false); // Flip the operator card to its backside
+	flip.play();	
 }
 
 // Reveal Answer
@@ -482,6 +480,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); // Hide the animate division
 				$('#eqCard1').flip(true); // Flip the 1st equation card to its frontside
+				flip.play();
 			}
 		});
 	}		
@@ -503,6 +502,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); 
 				$('#eqCard3').flip(true); // Flip the 3rd equation card to its frontside
+				flip.play();
 			}
 		});
 		setTimeout(checkEquation, 1200); // Check if the equation is true
@@ -771,14 +771,14 @@ function updateGameStatistics() {
 
 // Show Overlay
 function showOverlay() {
-	$("#overlayContainer").fadeIn();
-	$("#quitOverlay").fadeIn();
-	$("#buttonLeft").fadeIn();
-	$("#buttonRight").fadeIn();
-    //getId('overlayContainer').style.display = "block";
-    //getId('quitOverlay').style.display = "block";
-    //getId('buttonLeft').style.display = "block";
-    //getId('buttonRight').style.display = "block";
+	//$("#overlayContainer").fadeIn();
+	//$("#quitOverlay").fadeIn();
+	//$("#buttonLeft").fadeIn();
+	//$("#buttonRight").fadeIn();
+    getId('overlayContainer').style.display = "block";
+    getId('quitOverlay').style.display = "block";
+    getId('buttonLeft').style.display = "block";
+    getId('buttonRight').style.display = "block";
 }
 
 // Hide Overlay
@@ -798,14 +798,14 @@ function hideOverlay() {
 // Show Current Level Overlay
 function showLevelOverlay() {
     hideOverlay();
-	$("#overlayContainer").fadeIn();
-	$("#levelOverlay").fadeIn();
-	$("#buttonLeft").fadeIn();
-	$("#buttonRight").fadeIn();
-    //getId('overlayContainer').style.display = "block";
-    //getId('levelOverlay').style.display = "block";
-    //getId('buttonLeft').style.display = "block";
-    //getId('buttonRight').style.display = "block";
+	//$("#overlayContainer").fadeIn();
+	//$("#levelOverlay").fadeIn();
+	//$("#buttonLeft").fadeIn();
+	//$("#buttonRight").fadeIn();
+    getId('overlayContainer').style.display = "block";
+    getId('levelOverlay').style.display = "block";
+    getId('buttonLeft').style.display = "block";
+    getId('buttonRight').style.display = "block";
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
     getId('levelText').innerHTML = "Level " + level; // Increments the level after each play
@@ -825,12 +825,10 @@ function playAgain() {
 
 // Quit Confirm
 function quitConfirm() {
-	if (seconds == 0) {
 		showOverlay();
 		getId('quitText').innerHTML = "Are you sure you want to QUIT?";
 		getId('buttonLeftText').innerHTML = "Yes";
 		getId('buttonRightText').innerHTML = "No";
-	}
 }
 
 // Full Lives

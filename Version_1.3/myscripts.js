@@ -270,10 +270,10 @@ function multiplierTimer() {
 	} else if (mSeconds == 3) {
 		multiplier = 3;
 		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (mSeconds == 5) {
+	} else if (mSeconds == 4) {
 		multiplier = 2;
 		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (mSeconds == 6) {
+	} else if (mSeconds == 5) {
 		multiplier = 1;
 		getId('multiplierText').innerHTML = "x" + multiplier;
 	} 
@@ -670,7 +670,7 @@ function resetLevel() {
 			getId('eqCard' + i + 'Front').style.backgroundColor = "#800000"; // Red
 		}
 	}
-	restack(); // Restack the Animation Divisions
+	setTimeout(restack, 500); // Restack the Animation Divisions
 	// Reset all counters
 	count = 0;   
 	seconds = 1;

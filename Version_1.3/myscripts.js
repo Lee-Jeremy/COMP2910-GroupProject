@@ -13,7 +13,7 @@ $(document).ready(function(){
 		back: ".front"	
 	});
     $("#buttonLeft").click(function() {
-		if (getId('buttonLeftText').innerHTML === 'Yes' || getId('buttonLeftText').innerHTML === 'Continue') { // Quit Confirm and Main Menu overlay
+        if (getId('buttonLeftText').innerHTML === 'Yes' || getId('buttonLeftText').innerHTML === 'Continue') { // Quit Confirm and Main Menu overlay
             goToStartScreen(); // Temporary function to go to Start Screen
         } else if (getId('buttonLeftText').innerHTML === 'Back') { // Pause Game overlay
             mainMenu();
@@ -35,6 +35,7 @@ $(document).ready(function(){
             if (lives === 0) {
                 level = 1;
                 lives = 3;
+                fullLives();
                 showLevelOverlay();
             } else {
                 showLevelOverlay();

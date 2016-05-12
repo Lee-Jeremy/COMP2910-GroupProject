@@ -323,9 +323,9 @@ function fillMatrix() {
 			matrix[i] = num;
 		}
 	}
-	} else if (operator !== "division") {	
+	if (operator !== "division") {	
 		for (i = 0; i < matrix.length; i++) { 
-		num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
+			num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
 			matrix[i] = num;
 		}
 	} 

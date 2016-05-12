@@ -45,6 +45,16 @@ $(document).ready(function(){
 
 // Global Variables
 var count = 0; // Total number of user executed card flips in the matrix
+var r1c1Clicks = 0; // Number of user clicks on the 1st Matrix card
+var r1c2Clicks = 0; // 								2nd
+var r1c3Clicks = 0; // 								3rd
+var r2c1Clicks = 0; //								4th
+var r2c2Clicks = 0; // 								5th
+var r2c3Clicks = 0; // 								6th
+var r3c1Clicks = 0; // 								7th
+var r3c2Clicks = 0; //								8th
+var r3c3Clicks = 0; // 								9th
+var numClicks = 0;
 var matrix = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // The Matrix Card Values
 var userSelection = [1, 2]; // The Two User Selected Card Values
 var answer; // The Answer to the Equation
@@ -160,46 +170,46 @@ function hideAnimations() {
 // Level difficulty
 function setDifficulty() {
 	if (level < 10) {
+		cardValueMin = 1;
+		cardValueMax = 10;
+		divisionCardValueMin = 1;
+		divisionCardValueMax = 9;
+		firstRevealWave = 2;
+		secondRevealWave = 4;
+		thirdRevealWave = 9;
+	} else if (level == 10) {
+		cardValueMin = -2;
 		cardValueMax = 12;
-		cardValueMin = 0;
+		divisionCardValueMin = 1;
 		divisionCardValueMax = 12;
-		divisionCardValueMin = 0;
 		firstRevealWave = 2;
 		secondRevealWave = 4;
 		thirdRevealWave = 8;
-	} else if (level == 10) {
-		cardValueMax = 20;
-		cardValueMin = 1;
-		divisionCardValueMax = 12;
-		divisionCardValueMin = 1;
-		firstRevealWave = 2;
-		secondRevealWave = 4;
-		thirdRevealWave = 6;
 		points = 50; // Increase the base amount of points per level
 	} else if (level == 20) {
-		cardValueMax = 1;
-		cardValueMin = 50;
-		divisionCardValueMax = 25;
+		cardValueMin = 15;
+		cardValueMax = -2;
 		divisionCardValueMin = 1;
+		divisionCardValueMax = 20;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
-		thirdRevealWave = 6;
+		thirdRevealWave = 8;
 		points = 75; // Increase base points
 	} else if (level == 30) {
-		cardValueMax = 36;
 		cardValueMin = -5;
-		divisionCardValueMax = 100;
+		cardValueMax = 36;
 		divisionCardValueMin = 1;
+		divisionCardValueMax = 144;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
-		thirdRevealWave = 5;		
+		thirdRevealWave = 7;		
 		points = 100; 
 		multiplier = 5; // Unlock 5x multiplier
 	} else if (level == 40) { 
-		cardValueMax = 156;
 		cardValueMin = -10;
-		divisionCardValueMax = 144;
+		cardValueMax = 156;
 		divisionCardValueMin = 1;
+		divisionCardValueMax = 144;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
 		thirdRevealWave = 4;
@@ -436,11 +446,14 @@ function hideMatrix() {
 }
 
 // Reveal Matrix Card
-function revealMatrixCard(rowCol, cardIndexNum, cardNum) {	
-	if (seconds == 0 && count <= 2) { // Prevent the user from flipping a card before all reveals finish
-		count++; 						    // and from flipping the same card twice 
+function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
+	if (seconds == 0) {
+		incrementClicks(cardNum);
+	}
+	if (seconds == 0 && numClicks == 1) { // Prevent the user from flipping a card before all reveals finish
+		count++; 					   // and from flipping the same card twice 
 	}	
-	if (count == 1) {
+	if (count == 1 && numClicks == 1) {
 		userSelection[0] = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 1st index in the user selection array
 		getId('eqCard1FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 1st equation card
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey 
@@ -460,7 +473,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			}
 		});
 	}		
-	if (count == 2) { 
+	if (count == 2 && numClicks == 1) { 
 		clearInterval(multTimer); // Stop the multiplier timer function
 		userSelection[1] = matrix[cardIndexNum]; 
 		getId('eqCard3FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 3rd equation card 
@@ -481,6 +494,48 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			}
 		});
 		setTimeout(checkEquation, 1200); // Check if the equation is true
+	}
+}
+
+// Get the corresponding matrix card clicks variable to increment
+function incrementClicks(cardNum) {
+	switch (cardNum) {
+		case "1":
+			r1c1Clicks++;
+			numClicks = r1c1Clicks;
+			break;
+		case "2":
+			r1c2Clicks++;
+			numClicks = r1c2Clicks;
+			break;
+		case "3":
+			r1c3Clicks++;
+			numClicks = r1c3Clicks;
+			break;
+		case "4":
+			r2c1Clicks++;
+			numClicks = r2c1Clicks;
+			break;
+		case "5":
+			r2c2Clicks++;
+			numClicks = r2c2Clicks;
+			break;
+		case "6":
+			r2c3Clicks++;
+			numClicks = r2c3Clicks;
+			break;
+		case "7":
+			r3c1Clicks++;
+			numClicks = r3c1Clicks;
+			break;
+		case "8":
+			r3c2Clicks++;
+			numClicks = r3c2Clicks;
+			break;
+		case "9":
+			r3c3Clicks++;
+			numClicks = r3c3Clicks;
+			break;
 	}
 }
 
@@ -600,7 +655,7 @@ function resetLevel() {
 	for (var i = 1; i <= 3; i++) {	
 		for (var k = 1; k <= 3; k++) {
 			$("#r" + i + "c" + k).flip(false); // Flip all cards to their backside 
-			getId('r' + i + 'c' + k + 'Front').style.backgroundColor = "#4d4d4d"; // Medium Dark Grey 
+			getId('r' + i + 'c' + k + 'Front').style.backgroundColor = "#3385ff"; // Sky blue
 			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#D7DADB"; // Light Gray
 			getId('r' + i + 'c' + k + 'Back').style.border = "1px dashed #000000"; // Black
 		}
@@ -608,9 +663,12 @@ function resetLevel() {
 
 	for (var i = 1; i <= 4; i++) {
 		$("#eqCard" + i).flip(false); // Backside
-		getId('eqCard' + i + 'Front').style.backgroundColor = "#4d4d4d"; // Medium Dark Grey 
+		getId('eqCard' + i + 'Front').style.backgroundColor = "#3385ff"; // Sky blue
 		getId('eqCard' + i + 'Back').style.backgroundColor = "#D7DADB"; // Light gray
 		getId('eqCard' + i + 'Back').style.border = "1px dashed #000000"; // Black
+		if (i == 2 || i == 4) {
+			getId('eqCard' + i + 'Front').style.backgroundColor = "#800000"; // Red
+		}
 	}
 	restack(); // Restack the Animation Divisions
 	// Reset all counters
@@ -619,6 +677,16 @@ function resetLevel() {
 	operator = "";
 	mSeconds = 0;
 	pointsPerLevel = 0;
+	numClicks = 0;
+	r1c1Clicks = 0;
+	r1c2Clicks = 0;
+	r1c3Clicks = 0;
+	r2c1Clicks = 0;
+	r2c2Clicks = 0;
+	r2c3Clicks = 0;
+	r3c1Clicks = 0;
+	r3c2Clicks = 0;
+	r3c3Clicks = 0;
 	updateGameStatistics();
 }
 
@@ -660,7 +728,8 @@ function restack() {
 // Update Game Statistics
 function updateGameStatistics() {
 	// Post score and set multiplier for next level in-game screen
-	getId('pointsText').innerHTML = points + "Pts";
+	getId('pointsText').innerHTML = totalScore + "Pts";
+	getId('hexagonText').innerHTML = level;
 	if (level < 30) {
 		multiplier = 4;
 		getId('multiplierText').innerHTML = "x" + multiplier;
@@ -732,10 +801,12 @@ function playAgain() {
 
 // Quit Confirm
 function quitConfirm() {
-    showOverlay();
-    getId('quitText').innerHTML = "Are you sure you want to QUIT?";
-    getId('buttonLeftText').innerHTML = "Yes";
-    getId('buttonRightText').innerHTML = "No";
+	if (seconds == 0) {
+		showOverlay();
+		getId('quitText').innerHTML = "Are you sure you want to QUIT?";
+		getId('buttonLeftText').innerHTML = "Yes";
+		getId('buttonRightText').innerHTML = "No";
+	}
 }
 
 

@@ -22,7 +22,8 @@ $(document).ready(function(){
 	});
 	$("#buttonRight").click(function() { // Reset the Level; checks which overlay the user is on
 		if (getId('buttonRightText').innerHTML === 'No') { // Quit Confirm overlay
-		    playAgain();
+		   //playAgain
+		   showLevelOverlay();
 		} else if (getId('buttonRightText').innerHTML === 'Yes') { // Play Again overlay
             if (lives === 0) {
                 level = 1;
@@ -613,16 +614,7 @@ function resetLevel() {
 	}
 	restack(); // Restack the Animation Divisions
 	// Reset all counters
-	count = 0;
-	r1c1Reveals = 0; 
-	r1c2Reveals = 0; 
-	r1c3Reveals = 0; 
-	r2c1Reveals = 0; 
-	r2c2Reveals = 0; 
-	r2c3Reveals = 0; 
-	r3c1Reveals = 0; 
-	r3c2Reveals = 0; 
-	r3c3Reveals = 0;   
+	count = 0;   
 	seconds = 1;
 	operator = "";
 	mSeconds = 0;
@@ -668,7 +660,7 @@ function restack() {
 // Update Game Statistics
 function updateGameStatistics() {
 	// Post score and set multiplier for next level in-game screen
-	getId('scoreText').innerHTML = points + "Pts";
+	getId('pointsText').innerHTML = points + "Pts";
 	if (level < 30) {
 		multiplier = 4;
 		getId('multiplierText').innerHTML = "x" + multiplier;
@@ -686,14 +678,23 @@ function updateGameStatistics() {
 
 // Show Overlay
 function showOverlay() {
-    getId('overlayContainer').style.display = "block";
-    getId('quitOverlay').style.display = "block";
-    getId('buttonLeft').style.display = "block";
-    getId('buttonRight').style.display = "block";
+	$("#overlayContainer").fadeIn();
+	$("#quitOverlay").fadeIn();
+	$("#buttonLeft").fadeIn();
+	$("#buttonRight").fadeIn();
+    //getId('overlayContainer').style.display = "block";
+    //getId('quitOverlay').style.display = "block";
+    //getId('buttonLeft').style.display = "block";
+    //getId('buttonRight').style.display = "block";
 }
 
 // Hide Overlay
 function hideOverlay() {
+	//$("#levelOverlay").fadeOut();
+	//$("#overlayContainer").fadeOut();
+	//$("#quitOverlay").fadeOut();
+	//$("#buttonLeft").fadeOut();
+	//$("#buttonRight").fadeOut();
     getId('levelOverlay').style.display = "none";
     getId('overlayContainer').style.display = "none";
     getId('quitOverlay').style.display = "none";
@@ -704,10 +705,14 @@ function hideOverlay() {
 // Show Current Level Overlay
 function showLevelOverlay() {
     hideOverlay();
-    getId('overlayContainer').style.display = "block";
-    getId('levelOverlay').style.display = "block";
-    getId('buttonLeft').style.display = "block";
-    getId('buttonRight').style.display = "block";
+	$("#overlayContainer").fadeIn();
+	$("#levelOverlay").fadeIn();
+	$("#buttonLeft").fadeIn();
+	$("#buttonRight").fadeIn();
+    //getId('overlayContainer').style.display = "block";
+    //getId('levelOverlay').style.display = "block";
+    //getId('buttonLeft').style.display = "block";
+    //getId('buttonRight').style.display = "block";
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
     getId('levelText').innerHTML = "Level " + level; // Increments the level after each play

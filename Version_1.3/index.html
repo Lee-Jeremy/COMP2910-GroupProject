@@ -161,10 +161,17 @@
             <div id="levelOverlay">
                 <div id="levelOverlayBox">
                     <div id="currentLevel">
-                        <p id="levelText">Level 1</p>
+                        <p id="levelText">Level</p>
+                        <div id="hexagonOverlay">
+                            <p id="hexagonTextOverlay">1</p>
+                            <div id="hexImgContainerOverlay">
+                                <img id="hexImgOverlay" src="images/orange.png">
+                            </div>
+                        </div>
                     </div>
+
                     <div id="scoreMultiplied">
-                        <p id="scoreMultipliedText">25 pts x 4</p>
+                        <p id="scoreMultipliedText">25 pts <span id="multiplierColor">x 4</span></p>
                     </div>
                     <div id="normalScore">
                         <p id="normalScoreText">0 pts</p>
@@ -177,7 +184,7 @@
                         <form id="tutorial">
                             <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial"></p>
                         </form>
-                        <p id="gainedHeartText" style="display: none">1 Heart Gained!</p>
+                        <p id="gainedHeartText" style="display: none"><img src="images/heartfull.png" id="heartGained"> Gained!</p>
                     </div>
                 </div>
             </div> <!-- Level Overlay End -->

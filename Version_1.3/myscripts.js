@@ -798,7 +798,7 @@ function showLevelOverlay() {
     //getId('buttonRight').style.display = "block";
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
-    getId('levelText').innerHTML = "Level " + level; // Increments the level after each play
+    getId('hexagonTextOverlay').innerHTML = level; // Increments the level after each play
     // getId('gainedHeartText').innerHTML = "Current Lives: " + lives;
 	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
 	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";

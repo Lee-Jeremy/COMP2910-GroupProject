@@ -527,7 +527,7 @@ function levelComplete() {
     }
 	getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
-    setTimeout(showLevelOverlay, 1000); // Delays showing the overlay after 2 seconds
+    setTimeout(showLevelOverlay, 1000); // Delays showing the overlay after 1 seconds
 }
 
 // Failed to Complete the Equation

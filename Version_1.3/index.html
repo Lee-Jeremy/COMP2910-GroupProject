@@ -15,20 +15,23 @@
         
 		<!-- Header -->
 		<div id="header" class="container">
-			<div>
-				<div></div> <!-- Back Button -->
+			<div id="back">
+				<div id="backImgContainer"><img id="backImg" src="images/pause.png" onclick="quitConfirm()"></div> <!-- Back Button -->
 			</div>		
-			<div id="points"> 
+			<div id="points">
 				<div id="scoreText" class="numbers">25 Pts</div> <!-- Points -->
 			</div>
 			<div id="multiplier">
 				<div id="multiplierText" class="numbers">x4</div> <!-- Multiplier -->
 			</div>
-			<div>
-				<div></div><!-- Hexagon -->
+			<div id="hexagon">
+				<div id="hexImgContainer"><img id="hexImg" src="images/orange.png"></div> <!-- Hexagon -->
+				<div id="hexagonText">1</div>
 			</div>
-			<div>
-				<div></div><!-- Hearts -->
+			<div id="hearts">
+				<div id="heart1"><img src="images/heartfull.png"></div><!-- Hearts -->
+				<div id="heart2"><img src="images/heartfull.png"></div>
+				<div id="heart3"><img src="images/heartfull.png"></div>
 			</div>
 		</div>
 
@@ -150,7 +153,7 @@
             <!-- Quit Overlay-->            
             <div id="quitOverlay">
                 <div class="overlayText">
-                    <p id="quitText">Would you like to CONTINUE?</p>
+                    <p id="quitText">Play Again?</p>
                 </div>
             </div> <!-- Quit Overlay End --> 
 

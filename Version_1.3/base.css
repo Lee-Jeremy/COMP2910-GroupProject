@@ -17,7 +17,7 @@ div.container {
 html, 
 body {
 	margin: 0;
-	font-size: 8vmin; /* Viewport minimum value. DO NOT CHANGE, WILL FUCK UP SOME DIV'S! :D */
+	font-size: 6vmin; /* Viewport minimum value. DO NOT CHANGE, WILL FUCK UP SOME DIV'S! :D */
 	overflow: hidden;
 }
 
@@ -32,7 +32,37 @@ body {
 	height: 15%;
 }
 
+/* Back Container*/
+#header
+#back {
+	position: absolute;
+	width: 9%;
+	height: 8vmin;
+	top: 10%;
+	left: 5%;
+}
+
+/* Back Image Container*/
+#header
+#back
+#backImgContainer {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+/* Back Button Image */
+#header
+#back
+#backImgContainer
+#backImg {
+	postion: relative;
+	width: 100%;
+	height: 100%;
+}
+
 /* Points Container */
+#header
 #points {
 	position: relative;
 	width: 40%;
@@ -46,11 +76,10 @@ body {
 /* Points text */
 #header 
 #points 
-#score {
+#pointsText {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	line-height: 95%;	
 }
 
 /* Mutiplier Container */
@@ -67,18 +96,89 @@ body {
 /* Multiplier Text */
 #header
 #multiplier
-#multiplierValue {
+#multiplierText {
 	position: absolute; 
 	width: 100%;
 	height: 100%;
-	line-height: 95%;
 	font-weight: bold;
+}
+
+/* Hexagon Container */
+#header
+#hexagon {
+	position: absolute;
+	top: 10%;
+	right: 5%;
+	width: 9%;
+	height: 8vmin;
+}
+
+/* Hexagon Image Container */
+#header
+#hexagon
+#hexImgContainer {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+/* Hexagon image */
+#header
+#hexagon
+#hexImgContainer
+#hexImg {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+/* Hexagon Text */
+#header
+#hexagon
+#hexagonText {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	color: #ffffff;
+	font-weight: bold;
+	text-align: center;
+	top: -90%;
+}
+
+/* Hearts Container*/
+#header
+#hearts {
+	position: absolute;
+	top: 50%;
+	width: 25%;
+	height: 8vmin;
+	margin: 0 0 0 37.5%;
+}
+
+/* All Individual Heart Comtainers */
+#header
+#hearts > div {
+	position: relative;
+	float: left;
+	height: 100%;
+	width: 33.33%;
+}
+
+/* All Heart Images */
+#header
+#hearts
+div > img {
+	width: 100%;
+	height: 100%;
 }
 
 /* All Header Text */
 #header 
 .numbers {
 	text-align: center;
+	position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* All Card Front's and Back's */
@@ -90,8 +190,8 @@ body {
 
 /* All Card Front's */
 .front{
-	background: #4d4d4d; /* Grey */
 	border: 1px solid #000000; /* Black */
+	font-size: 8vmin;
 }
 
 /* All Card Back's */
@@ -358,6 +458,11 @@ padding-top: 12.5%;
 	font-weight: bold;
 }
 
+#equation
+#eqCard2
+eqCard2Front.front {
+	background: green;
+}
 /* Third Equation Card */
 #equation
 #eqCard3 {
@@ -374,6 +479,7 @@ padding-top: 12.5%;
 /* Fourth Equation Div (Not a card) */
 #equation 
 #equals {
+	position: relative;
 	margin-left: 2%;
 	margin-right: 2%;
 	width: 8%;
@@ -382,13 +488,13 @@ padding-top: 12.5%;
 /* Fourth Equation Div Text */
 #equation 
 #equals 
-.fourth {
-	position: absolute;
+div.fourth {
 	width: 100%;
-	height: 100%;
+	position: absolute;
 	text-align: center;
-	line-height: 250%; /* Center text (vertically) */
 	font-weight: bold;
+	top: 50%;
+    transform: translateY(-50%);
 }
 
 

@@ -78,6 +78,9 @@ var divisionCardValueMin; // The min range of the value for each matrix card dur
 var firstRevealWave; // 1st set of card reveals 
 var secondRevealWave; // 2nd set of card reveals 
 var thirdRevealWave; // 3rd set of card reveals 
+var flip = new Audio("sounds/flip.wav"); //sound clip for card flip
+var fail = new Audio("sounds/fail.wav"); //sound clip for failure
+var success = new Audio("sounds/success.wav"); //sound clip for success
 	
 // Deal the cards
 function dealCards() {
@@ -87,7 +90,7 @@ function dealCards() {
 			top: '67vh',
 			height: '15vh',
 			width: '18.9vw'
-		},150, function() {		
+		},150, function(){		
 	$("#animationCard10").animate({ // Move to the operator card position and shrink
 			left: '20.7vw',
 			top: '67vh',
@@ -402,20 +405,25 @@ function revealOperator() {
 	switch (operator) {
 		case "addition":
 			getId('eqCard2FrontText').innerHTML = "+"; // Frontside of operator card
+            flip.play();
 			break;
 		case "subtraction":
 			getId('eqCard2FrontText').innerHTML = "-";
+            flip.play();
 			break;
 		case "multiplication":
 			getId('eqCard2FrontText').innerHTML = "x";
+            flip.play();
 			break;
 		case "division":
 			getId('eqCard2FrontText').innerHTML = "/";
+            flip.play();
 			break;
 		default:
 			alert("Unable to indentify an operator during revealOperator");
 	}	
 	$("#eqCard2").flip(true); // Flip the operator card to its frontside	
+    flip.play();
 }
 
 // Hide Operator
@@ -428,21 +436,25 @@ function revealAnswer() {
 	var cell = getId('eqCard4FrontText'); // Frontside of the answer card	
 	cell.innerHTML = answer; // Assign the frontside the answer value
 	$("#eqCard4").flip(true); // Flip the answer card to its frontside
+    flip.play();
 }
 
 // Hide Answer
 function hideAnswer() {
 	$("#eqCard4").flip(false); // Flip the answer card to its backside
+    flip.play();
 }
 
 // Reveal Matrix
 function revealMatrix() {
 	$('.matrixCards').flip(true); // Flip all the matrix cards to their frontside
+    flip.play();
 }
 
 // Hide Matrix
 function hideMatrix() {
 	$('.matrixCards').flip(false); // Flip all the matrix cards to their backside	
+    flip.play();
 }
 
 // Reveal Matrix Card
@@ -547,26 +559,34 @@ function checkEquation(){
 	if (operator === "addition") {
 		if ((first + second) == answer) {
 			levelComplete();
+            success.play();
 		} else {
 			levelFailed();
+            fail.play();
 		}
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
 			levelComplete();
+            success.play();
 		} else {
 			levelFailed();
+            fail.play();
 		}
 	} else if(operator === "multiplication") {
 		if ((first * second) == answer) {
 			levelComplete();
+            success.play();
 		} else {
 			levelFailed();
+            fail.play();
 		}
 	} else if(operator === "division") {
 		if ((first / second) == answer) {
 			levelComplete();
+            success.play();
 		} else {
 			levelFailed();
+            fail.play();
 		}
 	} else {
 		alert('Unable to identify operator during checkEquation');	
@@ -604,7 +624,9 @@ function levelFailed() {
 // Reveal the answer cards
 function revealAnswerCards() {
 	flipAnswerCard(answerCard1);
+    flip.play();
 	flipAnswerCard(answerCard2);
+    flip.play();
 }
 
 // Flip the answer card in the matrix

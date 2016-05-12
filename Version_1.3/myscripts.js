@@ -580,6 +580,7 @@ function levelComplete() {
     level++; // Increases the level count after each play
     if ((level % 10) === 0 && lives != 3) { // Adds a life every 10 levels
 		lives++;
+        setTimeout(gainingLife, 500);
     }
 	getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
@@ -589,6 +590,7 @@ function levelComplete() {
 // Failed to Complete the Equation
 function levelFailed() {
 	lives--;
+    setTimeout(losingLife, 1500);
 	getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
 	revealAnswer();
 	setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
@@ -809,6 +811,64 @@ function quitConfirm() {
 	}
 }
 
+// Full Lives
+function fullLives() {
+    getId('hearts1').src= "images/heartfull.png";
+    getId('hearts2').src= "images/heartfull.png";
+    getId('hearts3').src= "images/heartfull.png";
+}
+
+
+// Two Lives
+function twoLives() {
+    getId('hearts1').src= "images/heartfull.png";
+    getId('hearts2').src= "images/heartfull.png";
+    getId('hearts3').src= "images/heartempty.png";    
+}
+
+// One Life
+function oneLife() {
+    getId('hearts1').src= "images/heartfull.png";
+    getId('hearts2').src= "images/heartempty.png";
+    getId('hearts3').src= "images/heartempty.png";
+}
+
+// No lives
+function noLives() {
+    getId('hearts1').src= "images/heartempty.png";
+    getId('hearts2').src= "images/heartempty.png";
+    getId('hearts3').src= "images/heartempty.png";
+}
+
+// Losing Life
+function losingLife() {
+    switch (lives) {
+        case 2:
+			twoLives();
+			break;
+		case 1:
+			oneLife();
+			break;
+		case 0:
+			noLives();
+			break;
+    }
+}
+
+// Gaining Life
+function gainingLife() {
+    switch (lives) {
+        case 3:
+			fullLives();
+			break;
+		case 2:
+			twoLives();
+			break;
+		case 1:
+			oneLife();
+			break;
+    }
+}
 
 
 

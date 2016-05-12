@@ -1,6 +1,7 @@
 /* Padding and border included in width and height */
 * {
     box-sizing: border-box;
+    font-family: 'Helvetica';
 }
 
 /* Set Height and Width to Viewport Size */
@@ -66,7 +67,7 @@ body {
 /* Multiplier Text */
 #header
 #multiplier
-#value {
+#multiplierValue {
 	position: absolute; 
 	width: 100%;
 	height: 100%;
@@ -93,8 +94,16 @@ body {
 	border: 1px solid #000000; /* Black */
 }
 
+/* All Card Back's */
 .back {
 	border: 1px dashed #000000; /* Black */
+}
+
+/* All Card Front's Text */
+.cardFrontText {
+	position: relative;
+    top: 50%;
+    transform: translateY(-50%);	
 }
 
 /* Matrix container */
@@ -116,7 +125,7 @@ body {
 	width: 25%;
 	text-align: center;	
 	float: left;
-	line-height: 200%; /* Center text (vertically) */
+	/* line-height: 200%; /* Center text (vertically) */
 }
 
 /* All Matrix Animation Cards */
@@ -316,7 +325,7 @@ padding-top: 12.5%;
 
 /* All Equation Card Front's */
 #equation div > .front {
-	line-height: 250%; /* Center text (vertically) */
+	/* line-height: 250%; /* Center text (vertically) */
 	
 }
 
@@ -396,19 +405,129 @@ padding-top: 12.5%;
 	/* background: #800000; /* Red */
 }
 
+/* Overlay Container */
+#overlayContainer {
+    position:  absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width:  100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: block;
+}
 
+/* Overlay CSS */
+#buttonLeft {
+    position: absolute;
+    height: 10%;
+    width: 33.5%;
+    bottom: 27.5%;
+    left: 15%;
+    z-index: 3;
+    border: 2px solid white;
+    background-color:  #C4273C;
+    text-align: center;
+    color: white;
+    display: block;
+}
 
+#buttonRight {
+    position: absolute;
+    height: 10%;
+    width: 33.5%;
+    bottom: 27.5%;
+    left: 51.5%;
+    z-index: 3;
+    border: 2px solid white;
+    background-color:  #263545;
+    text-align: center;
+    color: white;
+    display: block;
+}
 
+.overlayText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
+.overlayText p {
+    margin: 0
+}
 
+#quitOverlay {
+    position: relative;
+    height: 40%;
+    width: 70%;
+    left: 15%;
+    top: 20%;
+    z-index: 3;
+    border: 1px solid black;
+    background-color:  #D7DADB;
+    text-align: center;
+    display: none;
+}
 
+/* Generic Level Overlay */
+#levelOverlay {
+    position: relative;
+    height: 40%;
+    width: 70%;
+    left: 15%;
+    top: 20%;
+    z-index: 3;
+    border: 1px solid black;
+    background-color:  #D7DADB;
+    text-align: center;
+    display: block;
+    line-height: 0;
+}
 
+#levelOverlay p {
+    display: inline-block;
+    margin-top: 17.5px;
+    margin-bottom: 17.5px;
+}
 
+#levelOverlayBox {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
+/* Level One Overlay */
+#currentLevel {
+    font-weight: bold;
+}
 
+#scoreMultiplied {
+    font-size:  0.75em;
+}
 
+#normalScore {
+    font-size: 1.25em;
+    font-weight: bold;
+}
 
+hr {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 75%;
+    height: 1px;
+    border: none;
+    background-color: black;
+}
 
+#totalPoints {
+    font-size: 0.95em;
+}
 
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
 
-
+#tutorialOrHearts {
+    font-size: 0.9em;
+}

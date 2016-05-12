@@ -188,36 +188,36 @@ function setDifficulty() {
 		cardValueMin = 1;
 		cardValueMax = 10;
 		divisionCardValueMin = 1;
-		divisionCardValueMax = 9;
+		divisionCardValueMax = 10;
 		firstRevealWave = 2;
 		secondRevealWave = 4;
-		thirdRevealWave = 9;
+		thirdRevealWave = 7;
 	} else if (level == 10) {
-		cardValueMin = -2;
+		cardValueMin = 1;
 		cardValueMax = 12;
 		divisionCardValueMin = 1;
 		divisionCardValueMax = 12;
 		firstRevealWave = 2;
 		secondRevealWave = 4;
-		thirdRevealWave = 8;
+		thirdRevealWave = 7;
 		points = 50; // Increase the base amount of points per level
 	} else if (level == 20) {
-		cardValueMin = -2;
-		cardValueMax = 20;
+		cardValueMin = -9;
+		cardValueMax = 30;
 		divisionCardValueMin = 1;
-		divisionCardValueMax = 20;
+		divisionCardValueMax = 100;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
-		thirdRevealWave = 8;
+		thirdRevealWave = 7;
 		points = 75; // Increase base points
 	} else if (level == 30) {
-		cardValueMin = -5;
-		cardValueMax = 36;
+		cardValueMin = -10;
+		cardValueMax = 50;
 		divisionCardValueMin = 1;
 		divisionCardValueMax = 144;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
-		thirdRevealWave = 7;		
+		thirdRevealWave = 6;		
 		points = 100; 
 		multiplier = 5; // Unlock 5x multiplier
 	} else if (level == 40) { 
@@ -227,7 +227,7 @@ function setDifficulty() {
 		divisionCardValueMax = 144;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
-		thirdRevealWave = 4;
+		thirdRevealWave = 6;
 		points = 250; 
 	} else if (level == 50) { 
 		points = 500; 
@@ -808,14 +808,14 @@ function hideOverlay() {
 // Show Current Level Overlay
 function showLevelOverlay() {
     hideOverlay();
-	//$("#overlayContainer").fadeIn();
-	//$("#levelOverlay").fadeIn();
-	//$("#buttonLeft").fadeIn();
-	//$("#buttonRight").fadeIn();
-    getId('overlayContainer').style.display = "block";
-    getId('levelOverlay').style.display = "block";
-    getId('buttonLeft').style.display = "block";
-    getId('buttonRight').style.display = "block";
+	$("#overlayContainer").fadeIn();
+	$("#levelOverlay").fadeIn();
+	$("#buttonLeft").fadeIn();
+	$("#buttonRight").fadeIn();
+    //getId('overlayContainer').style.display = "block";
+    //getId('levelOverlay').style.display = "block";
+    //getId('buttonLeft').style.display = "block";
+    //getId('buttonRight').style.display = "block";
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
     getId('hexagonTextOverlay').innerHTML = level; // Increments the level after each play

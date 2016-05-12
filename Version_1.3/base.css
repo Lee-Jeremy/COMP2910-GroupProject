@@ -604,21 +604,21 @@ div.fourth {
 
 /* Level One Overlay */
 #currentLevel {
-    font-weight: bold;
-}
-
-#scoreMultiplied {
-    font-size:  0.75em;
-}
-
-#normalScore {
     font-size: 1.25em;
     font-weight: bold;
 }
 
+#scoreMultiplied {
+    font-size:  0.9em;
+}
+
+#normalScore {
+    font-size: 0.9em;
+}
+
 hr {
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 7.5px;
     width: 75%;
     height: 1px;
     border: none;
@@ -626,7 +626,8 @@ hr {
 }
 
 #totalPoints {
-    font-size: 0.95em;
+    font-size: 1.25em;
+    font-weight: bold;
 }
 
 input[type="checkbox"] {
@@ -638,6 +639,43 @@ input[type="checkbox"] {
     font-size: 0.9em;
 }
 
+#tutorial p {
+    margin: 10px;
+}
+
+#currentLevel {
+    display: inline-block;
+}
+
+#hexagonOverlay {
+    display: inline-block;
+    position: relative;
+}
+
+#hexImgOverlay {
+    vertical-align: middle;
+}
+
+#hexagonTextOverlay {
+    position: absolute;
+    color: white;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
 #gainedHeartText {
-    font-size: 0.9em;
+    font-size: 1em;
+}
+
+#gainedHeartText p {
+    margin: 5px;
+}
+
+
+#heartGained {
+    height: 20%;
+    width: 20%
 }

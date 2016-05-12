@@ -54,7 +54,7 @@ var r2c3Clicks = 0; // 								6th
 var r3c1Clicks = 0; // 								7th
 var r3c2Clicks = 0; //								8th
 var r3c3Clicks = 0; // 								9th
-var numClicks = 0;
+var numClicks = 0; // Used in determining which matrix clicks variable (listed above) to call
 var matrix = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // The Matrix Card Values
 var userSelection = [1, 2]; // The Two User Selected Card Values
 var answer; // The Answer to the Equation

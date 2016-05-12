@@ -167,8 +167,7 @@ body {
 /* All Heart Images */
 #header
 #hearts
-div
-img {
+div > img {
 	width: 100%;
 	height: 100%;
 }
@@ -480,6 +479,7 @@ eqCard2Front.front {
 /* Fourth Equation Div (Not a card) */
 #equation 
 #equals {
+	position: relative;
 	margin-left: 2%;
 	margin-right: 2%;
 	width: 8%;
@@ -488,13 +488,13 @@ eqCard2Front.front {
 /* Fourth Equation Div Text */
 #equation 
 #equals 
-.fourth {
-	position: absolute;
+div.fourth {
 	width: 100%;
-	height: 100%;
+	position: absolute;
 	text-align: center;
-	line-height: 250%; /* Center text (vertically) */
 	font-weight: bold;
+	top: 50%;
+    transform: translateY(-50%);
 }
 
 

@@ -14,18 +14,17 @@ $(document).ready(function(){
 	});
     $("#buttonLeft").click(function() {
         switch (getId('buttonLeftText').innerHTML) {
-            case 'Continue':
-            case 'Yes':
+            case 'Continue': // Main Menu overlay
+            case 'Yes': // Quit Confirm overlay
                 goToStartScreen();
                 break;
-            case 'Back':
+            case 'Back': // Pause Game
                 mainMenu;
                 break;
-            default:
+            default: // Current Level and Play Again overlay
                 hideOverlay();
                 quitConfirm();
-        }            
-
+        }
         //if (getId('buttonLeftText').innerHTML === 'Yes' || getId('buttonLeftText').innerHTML === 'Continue') { // Quit Confirm and Main Menu overlay
         //    goToStartScreen(); // Temporary function to go to Start Screen
         //} else if (getId('buttonLeftText').innerHTML === 'Back') { // Pause Game overlay
@@ -38,18 +37,18 @@ $(document).ready(function(){
 
 	$("#buttonRight").click(function() { // Reset the Level; checks which overlay the user is on
 		switch (getId('buttonRightText').innerHTML) {
-		    case 'No':
+		    case 'No': // Quit Confirm Overlay
                 showLevelOverlay();
                 break;
-            case 'Back':
+            case 'Back': // Main Menu Overlay
                 pauseGame();
                 break;
-            case 'Continue':
+            case 'Continue': // Pause Game Overlay
                 multTimer = setInterval(multiplierTimer, 1000);
                 hideOverlay();
                 hideOverlayContainer();
                 break;
-            case 'Yes':
+            case 'Yes': // Play Again Overlay
                 if (lives === 0) {
                     level = 1;
                     lives = 3;
@@ -59,11 +58,11 @@ $(document).ready(function(){
                     showLevelOverlay();
                 }
                 break;
-            default:
-                hideOverlay(); // Hides the overlay after clicking on the button
+            default: // Current Level Overlay
+                hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
-                setTimeout(dealCards, 500); // Automatically deals the cards after .5 seconds
+                setTimeout(dealCards, 500);
             }
         
         //if (getId('buttonRightText').innerHTML === 'No') { // Quit Confirm overlay

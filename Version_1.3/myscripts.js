@@ -320,33 +320,26 @@ function fillMatrix() {
 	if (operator === "division") { 
 		for (i = 0; i < matrix.length; i++) {
 			num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
-			matrix[i] = num; 
+			matrix[i] = num;
 		}
+	}
 	} else if (operator !== "division") {	
 		for (i = 0; i < matrix.length; i++) { 
-			num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
+		num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
 			matrix[i] = num;
 		}
 	} 
-	checkDuplicates(); // Check for duplicate values in the matrix
 	// Assign 1st matrix card's frontside to 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]
 	insertValues(); 	
 }
 
 // Don't allow for duplicate values in the matrix
-function checkDuplicates() {
+function checkDuplicates(num) {
 	var i;
-	var k;
-	var duplicates = 0;
 	for (i = 0; i < matrix.length - 1; i++) {
-		for (k = 1; k < matrix.length; k++) {
-			if (matrix[i] == matrix[k]) {
-			duplicates++;		
-			}
+		while (matrix[i] == num) {
+			fillMatrix();		
 		}
-	}
-	while (duplicates > 2) {
-		fillMatrix();
 	}
 }
 

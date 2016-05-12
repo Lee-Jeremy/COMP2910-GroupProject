@@ -31,6 +31,7 @@ $(document).ready(function(){
         } else if (getId('buttonRightText').innerHTML === 'Continue') { // Pause Game overlay
             multTimer = setInterval(multiplierTimer, 1000);
             hideOverlay();
+            hideOverlayContainer();
 		} else if (getId('buttonRightText').innerHTML === 'Yes') { // Play Again overlay
             if (lives === 0) {
                 level = 1;
@@ -42,6 +43,7 @@ $(document).ready(function(){
             }
         } else { // Current Level overlay
 		    hideOverlay(); // Hides the overlay after clicking on the button
+            hideOverlayContainer();
             resetLevel();
             setTimeout(dealCards, 500); // Automatically deals the cards after .5 seconds
         } 
@@ -759,6 +761,11 @@ function updateGameStatistics() {
 	}
 }
 
+// Hide Overlay Container
+function hideOverlayContainer() {
+    $("#overlayContainer").fadeOut();
+}
+
 // Show Overlay
 function showOverlay() {
 	$("#overlayContainer").fadeIn();
@@ -774,12 +781,10 @@ function showOverlay() {
 // Hide Overlay
 function hideOverlay() {
 	//$("#levelOverlay").fadeOut();
-	//$("#overlayContainer").fadeOut();
 	//$("#quitOverlay").fadeOut();
 	//$("#buttonLeft").fadeOut();
 	//$("#buttonRight").fadeOut();
     getId('levelOverlay').style.display = "none";
-    getId('overlayContainer').style.display = "none";
     getId('quitOverlay').style.display = "none";
     getId('buttonLeft').style.display = "none";
     getId('buttonRight').style.display = "none";
@@ -825,6 +830,7 @@ function quitConfirm() {
 // Pause Game
 function pauseGame() {
     if (seconds == 0) {
+        hideOverlay();
         showOverlay();
 	    getId('quitText').innerHTML = "Game is PAUSED.";
 	    getId('buttonLeftText').innerHTML = "Back";
@@ -834,6 +840,8 @@ function pauseGame() {
 
 // Main Menu
 function mainMenu() {
+    hideOverlay();
+    showOverlay();
     getId('quitText').innerHTML = "Go to the MAIN MENU?";
 	getId('buttonLeftText').innerHTML = "Continue";
 	getId('buttonRightText').innerHTML = "Back";

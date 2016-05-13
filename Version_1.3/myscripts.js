@@ -14,7 +14,6 @@ $(document).ready(function(){
 	});
     $("#buttonLeft").click(function() { 
         switch (getId('buttonLeftText').innerHTML) {
-            case 'Continue': // Main Menu overlay
             case 'Yes': // Quit Confirm overlay
                 goToStartScreen();
                 break;
@@ -25,20 +24,16 @@ $(document).ready(function(){
                 hideOverlay();
                 quitConfirm();
         }
-        //if (getId('buttonLeftText').innerHTML === 'Yes' || getId('buttonLeftText').innerHTML === 'Continue') { // Quit Confirm and Main Menu overlay
-        //    goToStartScreen(); // Temporary function to go to Start Screen
-        //} else if (getId('buttonLeftText').innerHTML === 'Back') { // Pause Game overlay
-        //    mainMenu();
-        //} else { // Current Level and Play Again overlay
-        //    hideOverlay();
-        //    quitConfirm(); // Asks if the user really wants to quit
-        //}
 	});
 
-	$("#buttonRight").click(function() { // Reset the Level; checks which overlay the user is on
+	$("#buttonRight").click(function() {
 		switch (getId('buttonRightText').innerHTML) {
 		    case 'No': // Quit Confirm Overlay
-                showLevelOverlay();
+                if (lives === 0) {
+                    playAgain();
+                } else {
+					showLevelOverlay();
+                }
                 break;
             case 'Back': // Main Menu Overlay
                 pauseGame();
@@ -52,8 +47,11 @@ $(document).ready(function(){
                 if (lives === 0) {
                     level = 1;
                     lives = 3;
+					totalScore = 0;
                     fullLives();
-                    showLevelOverlay();
+                    fadeLevelOverlay();
+					getId('scoreMultipliedText').innerHTML = points + " pts x 0";
+                    getId('hexagonTextOverlay').innerHTML = "1";
                     getId('passOrFail').style.display = "none";
                 } else {
                     showLevelOverlay();
@@ -64,36 +62,11 @@ $(document).ready(function(){
                 hideOverlayContainer();
                 resetLevel();
                 setTimeout(dealCards, 500);
-            }
-        
-        //if (getId('buttonRightText').innerHTML === 'No') { // Quit Confirm overlay
-		//    //playAgain
-		//    showLevelOverlay();
-        //} else if (getId('buttonRightText').innerHTML === 'Back') { // Main Menu overlay
-        //    pauseGame();
-        //} else if (getId('buttonRightText').innerHTML === 'Continue') { // Pause Game overlay
-        //    multTimer = setInterval(multiplierTimer, 1000);
-        //    hideOverlay();
-        //    hideOverlayContainer();
-		//} else if (getId('buttonRightText').innerHTML === 'Yes') { // Play Again overlay
-        //    if (lives === 0) {
-        //        level = 1;
-        //        lives = 3;
-        //        fullLives();
-        //        showLevelOverlay();
-        //    } else {
-        //        showLevelOverlay();
-        //    }
-        //} else { // Current Level overlay
-		//    hideOverlay(); // Hides the overlay after clicking on the button
-        //    hideOverlayContainer();
-        //    resetLevel();
-        //    setTimeout(dealCards, 500); // Automatically deals the cards after .5 seconds
-        //} 
+        }
 	});
     $("#back").click(function() { // Temporary function to prompt Quit screen on Back Button
 		clearInterval(multTimer);
-        pauseGame();
+        fadePauseGame();
 	});
 });
 
@@ -659,7 +632,7 @@ function levelComplete() {
 	totalScore += pointsPerLevel; 
     level++; // Increases the level count after each play
     getId('passOrFailText').innerHTML = "Complete!";
-    if ((level % 10) === 0 && lives != 3) { // Adds a life every 10 levels
+    if ((level % 11) === 0 && lives != 3) { // Adds a life every 10 levels
 		lives++;
         setTimeout(gainingLife, 500);
         getId('gainedHeartText').style.display = "block";
@@ -668,7 +641,8 @@ function levelComplete() {
     }
 	getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
-    setTimeout(showLevelOverlay, 1000); // Delays showing the overlay after 1 seconds
+    setTimeout(fadeLevelOverlay, 1000); // Delays showing the overlay after 1 seconds
+    easterEggCounter++; // Increment easter egg counter
 }
 
 // Failed to Complete the Equation
@@ -679,8 +653,7 @@ function levelFailed() {
 	revealAnswer();
 	setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
     if (lives === 0) { // Checks to see if the lives are 0 causing game over
-		totalScore = 0;
-        setTimeout(playAgain, 2000)
+        setTimeout(fadePlayAgain, 2000)
     } else { // If lives are not 0, reshuffle and redeal
         setTimeout(resetLevel, 2500);
         setTimeout(dealCards, 3500);
@@ -761,7 +734,6 @@ function resetLevel() {
 	setTimeout(restack, 500); // Restack the Animation Divisions
 	// Reset all counters
 	count = 0;   
-	seconds = 1;
 	operator = "";
 	mSeconds = 0;
 	pointsPerLevel = 0;
@@ -775,6 +747,7 @@ function resetLevel() {
 	r3c1Clicks = 0;
 	r3c2Clicks = 0;
 	r3c3Clicks = 0;
+	seconds = 1;
 	updateGameStatistics();
 }
 
@@ -847,6 +820,14 @@ function showOverlay() {
     getId('buttonRight').style.display = "block";
 }
 
+// Fade Overlay
+function fadeOverlay() {
+    $("#overlayContainer").fadeIn();
+	$("#quitOverlay").fadeIn();
+	$("#buttonLeft").fadeIn();
+	$("#buttonRight").fadeIn();
+}
+
 // Hide Overlay
 function hideOverlay() {
     getId('levelOverlay').style.display = "none";
@@ -860,24 +841,44 @@ function hideOverlay() {
 function showLevelOverlay() {
     hideOverlay();
 	if (level != 1) {
-		$("#overlayContainer").fadeIn();
-		$("#levelOverlay").fadeIn();
-		$("#buttonLeft").fadeIn();
-		$("#buttonRight").fadeIn();
 		getId('tutorial').style.display = "none";
 		getId('passOrFail').style.display = "block";
-	} else {
-		getId('overlayContainer').style.display = "block";
-		getId('levelOverlay').style.display = "block";
-		getId('buttonLeft').style.display = "block";
-		getId('buttonRight').style.display = "block";
-		getId('buttonLeftText').innerHTML = "Quit";
-		getId('buttonRightText').innerHTML = "Play";  
-		getId('hexagonTextOverlay').innerHTML = level; // Increments the level after each play
-		// getId('gainedHeartText').innerHTML = "Current Lives: " + lives;
-		getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
-		getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
-		getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
+		getId('hexagonTextOverlay').innerHTML = level - 1; // Increments the level after each play
+	} 
+	getId('overlayContainer').style.display = "block";
+	getId('levelOverlay').style.display = "block";
+	getId('buttonLeft').style.display = "block";
+	getId('buttonRight').style.display = "block";
+    getId('scoreMultiplied').style.display = "block";
+    getId('normalScore').style.display = "block";
+	getId('buttonLeftText').innerHTML = "Quit";
+	getId('buttonRightText').innerHTML = "Play";  
+	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
+	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
+	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
+}
+
+// Fade Current Level Overlay
+function fadeLevelOverlay() {
+    hideOverlay();
+	$("#overlayContainer").fadeIn();
+	$("#levelOverlay").fadeIn();
+	$("#buttonLeft").fadeIn();
+	$("#buttonRight").fadeIn();
+    getId('scoreMultiplied').style.display = "block";
+    getId('normalScore').style.display = "block";
+    getId('buttonLeftText').innerHTML = "Quit";
+    getId('buttonRightText').innerHTML = "Play";  
+	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
+	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
+	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
+    if (level != 1) {
+        getId('tutorial').style.display = "none";
+        getId('passOrFail').style.display = "block";
+        getId('hexagonTextOverlay').innerHTML = level - 1;
+	}
+	if (lives == 0) {
+		getId('scoreMultipliedText').innerHTML = points + " pts x 0";
 	}
 }
 
@@ -890,12 +891,23 @@ function playAgain() {
     getId('passOrFailText').innerHTML = "Failed!";
     getId('buttonLeftText').innerHTML = "No";
     getId('buttonRightText').innerHTML = "Yes";
-    
     getId('playAgain').style.display = "block";
+    getId('scoreMultiplied').style.display = "none";
+    getId('normalScore').style.display = "none";
+}
 
-    //getId('quitText').innerHTML = "GAME OVER!<br>Play Again?";
-    //getId('buttonLeftText').innerHTML = "No";
-    //getId('buttonRightText').innerHTML = "Yes";  
+// Fade Play Again
+function fadePlayAgain() {
+    fadeLevelOverlay();
+    getId('tutorial').style.display = "none";
+    getId('passOrFail').style.display = "block";
+    getId('hexagonTextOverlay').innerHTML = level;
+    getId('passOrFailText').innerHTML = "Failed!";
+    getId('buttonLeftText').innerHTML = "No";
+    getId('buttonRightText').innerHTML = "Yes";
+    getId('playAgain').style.display = "block";
+    getId('scoreMultiplied').style.display = "none";
+    getId('normalScore').style.display = "none";
 }
 
 // Quit Confirm
@@ -906,9 +918,20 @@ function quitConfirm() {
 	getId('buttonRightText').innerHTML = "No";
 }
 
+// Fade Pause Game
+function fadePauseGame() {
+    if (seconds == 0 && count <= 1) {
+        hideOverlay();
+        fadeOverlay();
+	    getId('quitText').innerHTML = "Game is PAUSED.";
+	    getId('buttonLeftText').innerHTML = "End";
+	    getId('buttonRightText').innerHTML = "Resume";
+    }
+}
+
 // Pause Game
 function pauseGame() {
-    if (seconds == 0) {
+    if (seconds == 0 && count <= 1) {
         hideOverlay();
         showOverlay();
 	    getId('quitText').innerHTML = "Game is PAUSED.";
@@ -922,7 +945,7 @@ function mainMenu() {
     hideOverlay();
     showOverlay();
     getId('quitText').innerHTML = "Go to the MAIN MENU?";
-	getId('buttonLeftText').innerHTML = "Continue";
+	getId('buttonLeftText').innerHTML = "Yes";
 	getId('buttonRightText').innerHTML = "Back";
 }
 
@@ -1004,7 +1027,7 @@ function easterEgg() {
 function showEasterEgg() {
     for (var i = 1; i <= 3; i++) {
 		for (var k = 1; k <=3; k++) {
-            getId('r' + i + 'c' + k + 'Img').src = "images/egg" + Math.floor(Math.random() * 5 + 1) + ".jpg";
+            getId('r' + i + 'c' + k + 'Img').src = "images/egg" + (Math.floor(Math.random() * 5) + 1) + ".jpg";
             getId('r' + i + 'c' + k + 'Img').setAttribute("Width", "100%");
 	    }
     }

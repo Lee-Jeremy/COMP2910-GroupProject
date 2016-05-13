@@ -698,3 +698,8 @@ input[type="checkbox"] {
     font-weight: bold;
     font-size: 0.9em;
 }
+
+p#heartGainedText {
+    margin-top: 0;
+    margin-bottom: 0;
+}

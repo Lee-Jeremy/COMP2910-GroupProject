@@ -54,6 +54,7 @@ $(document).ready(function(){
                     lives = 3;
                     fullLives();
                     showLevelOverlay();
+                    getId('passOrFail').style.display = "none";
                 } else {
                     showLevelOverlay();
                 }
@@ -643,6 +644,7 @@ function levelComplete() {
 	pointsPerLevel = (points * multiplier);
 	totalScore += pointsPerLevel; 
     level++; // Increases the level count after each play
+    getId('passOrFailText').innerHTML = "Complete!";
     if ((level % 10) === 0 && lives != 3) { // Adds a life every 10 levels
 		lives++;
         setTimeout(gainingLife, 500);
@@ -844,6 +846,7 @@ function hideOverlay() {
     getId('quitOverlay').style.display = "none";
     getId('buttonLeft').style.display = "none";
     getId('buttonRight').style.display = "none";
+    getId('playAgain').style.display = "none";
 }
 
 // Show Current Level Overlay
@@ -857,23 +860,34 @@ function showLevelOverlay() {
     //getId('levelOverlay').style.display = "block";
     //getId('buttonLeft').style.display = "block";
     //getId('buttonRight').style.display = "block";
-    getId('passOrFail').style.display = "block";
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
-    getId('hexagonTextOverlay').innerHTML = level - 1; // Increments the level after each play
     // getId('gainedHeartText').innerHTML = "Current Lives: " + lives;
 	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
 	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
 	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
-    getId('tutorial').style.display = "none";
+    if (level != 1) {
+        getId('tutorial').style.display = "none";
+        getId('passOrFail').style.display = "block";
+        getId('hexagonTextOverlay').innerHTML = level - 1; // Increments the level after each play
+    }
 }
 
 // Play Again
 function playAgain() {
-    showOverlay();
-    getId('quitText').innerHTML = "GAME OVER!<br>Play Again?";
+    showLevelOverlay();
+    getId('tutorial').style.display = "none";
+    getId('passOrFail').style.display = "block";
+    getId('hexagonTextOverlay').innerHTML = level;
+    getId('passOrFailText').innerHTML = "Failed!";
     getId('buttonLeftText').innerHTML = "No";
-    getId('buttonRightText').innerHTML = "Yes";  
+    getId('buttonRightText').innerHTML = "Yes";
+    
+    getId('playAgain').style.display = "block";
+
+    //getId('quitText').innerHTML = "GAME OVER!<br>Play Again?";
+    //getId('buttonLeftText').innerHTML = "No";
+    //getId('buttonRightText').innerHTML = "Yes";  
 }
 
 // Quit Confirm

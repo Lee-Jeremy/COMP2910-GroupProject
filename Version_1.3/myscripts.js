@@ -18,7 +18,7 @@ $(document).ready(function(){
             case 'Yes': // Quit Confirm overlay
                 goToStartScreen();
                 break;
-            case 'Back': // Pause Game
+            case 'End': // Pause Game
                 mainMenu();
                 break;
             default: // Current Level and Play Again overlay
@@ -43,7 +43,7 @@ $(document).ready(function(){
             case 'Back': // Main Menu Overlay
                 pauseGame();
                 break;
-            case 'Continue': // Pause Game Overlay
+            case 'Resume': // Pause Game Overlay
                 multTimer = setInterval(multiplierTimer, 1000);
                 hideOverlay();
                 hideOverlayContainer();

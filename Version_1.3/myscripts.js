@@ -513,7 +513,6 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 	}		
 	if (count == 2 && numClicks == 1) { 
 		clearInterval(multTimer); // Stop the multiplier timer function
-		seconds = 1;
 		userSelection[1] = matrix[cardIndexNum]; 
 		getId('eqCard3FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 3rd equation card 
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); 
@@ -742,6 +741,7 @@ function resetLevel() {
 	r3c1Clicks = 0;
 	r3c2Clicks = 0;
 	r3c3Clicks = 0;
+	seconds = 1;
 	updateGameStatistics();
 }
 
@@ -859,6 +859,9 @@ function fadeLevelOverlay() {
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
 	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
+	if (lives == 0) {
+		getId('scoreMultipliedText').innerHTML = points + " pts x 0";
+	}
 	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
 	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
     if (level != 1) {
@@ -902,7 +905,7 @@ function quitConfirm() {
 
 // Fade Pause Game
 function fadePauseGame() {
-    if (seconds == 0) {
+    if (seconds == 0 && count <= 1) {
         hideOverlay();
         fadeOverlay();
 	    getId('quitText').innerHTML = "Game is PAUSED.";
@@ -913,7 +916,7 @@ function fadePauseGame() {
 
 // Pause Game
 function pauseGame() {
-    if (seconds == 0) {
+    if (seconds == 0 && count <= 1) {
         hideOverlay();
         showOverlay();
 	    getId('quitText').innerHTML = "Game is PAUSED.";

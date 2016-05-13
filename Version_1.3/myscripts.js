@@ -33,7 +33,7 @@ $(document).ready(function(){
                 if (lives === 0) {
                     playAgain();
                 } else {
-                    pauseGame();
+                    showLevelOverlay();
                 }
                 break;
             case 'Back': // Main Menu Overlay

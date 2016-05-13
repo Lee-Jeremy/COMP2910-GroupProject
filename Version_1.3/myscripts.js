@@ -105,6 +105,7 @@ var thirdRevealWave; // 3rd set of card reveals
 var flip = new Audio("sounds/flip.wav"); //sound clip for card flip
 var fail = new Audio("sounds/fail.wav"); //sound clip for failure
 var success = new Audio("sounds/success.wav"); //sound clip for success
+var easterEggCounter = 0; // Counter for easter egg
 	
 // Deal the cards
 function dealCards() {
@@ -163,6 +164,7 @@ function dealCards() {
 	getId('eqCard2Back').style.border = "1px solid #000000"; // Solid black border
 	getId('eqCard4Back').style.backgroundColor = "#800000";	// Red
 	getId('eqCard4Back').style.border = "1px solid #000000"; // Solid black border
+    easterEgg(); // Put easter eggs on card backs if condition is met
 	setTimeout(hideAnimations, 450);
 		});		
 		});	
@@ -492,6 +494,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 	if (count == 1 && numClicks == 1) {
 		userSelection[0] = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 1st index in the user selection array
 		getId('eqCard1FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 1st equation card
+        getId(rowCol + 'Img').src = "images/egg_empty.png"; // Removes the easter egg from the card's back
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey 
 		$("#" + rowCol + "Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed
 		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animate division visible
@@ -512,9 +515,9 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 	}		
 	if (count == 2 && numClicks == 1) { 
 		clearInterval(multTimer); // Stop the multiplier timer function
-		seconds = 1;
 		userSelection[1] = matrix[cardIndexNum]; 
-		getId('eqCard3FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 3rd equation card 
+		getId('eqCard3FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 3rd equation card
+        getId(rowCol + 'Img').src = "images/egg_empty.png"; // Removes the easter egg from the card's back
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); 
 		$("#" + rowCol + "Back").css("border-style", "dashed"); 
 		$("#animationCard" + cardNum).css("visibility", "visible"); 
@@ -636,6 +639,7 @@ function levelComplete() {
 	getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
     setTimeout(fadeLevelOverlay, 1000); // Delays showing the overlay after 1 seconds
+    easterEggCounter++; // Increment easter egg counter
 }
 
 // Failed to Complete the Equation
@@ -644,6 +648,7 @@ function levelFailed() {
     setTimeout(losingLife, 1500);
 	getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
 	revealAnswer();
+    easterEggCounter = 0; // Resets easter egg counter
 	setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
     if (lives === 0) { // Checks to see if the lives are 0 causing game over
 		totalScore = 0;
@@ -741,11 +746,13 @@ function resetLevel() {
 	r3c1Clicks = 0;
 	r3c2Clicks = 0;
 	r3c3Clicks = 0;
+	seconds = 1;
 	updateGameStatistics();
 }
 
 // Restack the Animation Cards
 function restack() {
+    hideEasterEgg(); // Removes easter eggs from all card backs
 	getId('animationCard1').style.left = "10.5%";
 	getId('animationCard1').style.top = "0%";
 	getId('animationCard2').style.left = "10.25%";
@@ -862,6 +869,9 @@ function fadeLevelOverlay() {
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
 	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
+	if (lives == 0) {
+		getId('scoreMultipliedText').innerHTML = points + " pts x 0";
+	}
 	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
 	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
     if (level != 1) {
@@ -909,7 +919,7 @@ function quitConfirm() {
 
 // Fade Pause Game
 function fadePauseGame() {
-    if (seconds == 0) {
+    if (seconds == 0 && count <= 1) {
         hideOverlay();
         fadeOverlay();
 	    getId('quitText').innerHTML = "Game is PAUSED.";
@@ -920,7 +930,7 @@ function fadePauseGame() {
 
 // Pause Game
 function pauseGame() {
-    if (seconds == 0) {
+    if (seconds == 0 && count <= 1) {
         hideOverlay();
         showOverlay();
 	    getId('quitText').innerHTML = "Game is PAUSED.";
@@ -997,18 +1007,31 @@ function gainingLife() {
     }
 }
 
+// Puts easter eggs on card backs randomly in specified conditions
+function easterEgg() {
+    var easterEggStages = 2; // Number of stages that should be cleared in a row to activate the easter egg. Put an integer
+    if (easterEggCounter % easterEggStages == 0 && easterEggCounter != 0) {
+        showEasterEgg()
+    } else {
+        hideEasterEgg()
+    }
+}
 
+// Shows easter eggs on the card backs
+function showEasterEgg() {
+    for (var i = 1; i <= 3; i++) {
+		for (var k = 1; k <=3; k++) {
+            getId('r' + i + 'c' + k + 'Img').src = "images/egg" + Math.floor(Math.random() * 5 + 1) + ".jpg";
+            getId('r' + i + 'c' + k + 'Img').setAttribute("Width", "100%");
+	    }
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Hides easter eggs from the card backs
+function hideEasterEgg() {
+    for (var i = 1; i <= 3; i++) {
+		for (var k = 1; k <=3; k++) {
+            getId('r' + i + 'c' + k + 'Img').src = "images/egg_empty.png";
+        }
+    }
+}

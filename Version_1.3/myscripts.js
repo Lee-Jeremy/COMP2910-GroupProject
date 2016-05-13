@@ -14,7 +14,6 @@ $(document).ready(function(){
 	});
     $("#buttonLeft").click(function() { 
         switch (getId('buttonLeftText').innerHTML) {
-            case 'Continue': // Main Menu overlay
             case 'Yes': // Quit Confirm overlay
                 goToStartScreen();
                 break;
@@ -933,7 +932,7 @@ function mainMenu() {
     hideOverlay();
     showOverlay();
     getId('quitText').innerHTML = "Go to the MAIN MENU?";
-	getId('buttonLeftText').innerHTML = "Continue";
+	getId('buttonLeftText').innerHTML = "Yes";
 	getId('buttonRightText').innerHTML = "Back";
 }
 

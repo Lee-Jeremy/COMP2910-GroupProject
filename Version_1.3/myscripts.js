@@ -48,6 +48,7 @@ $(document).ready(function(){
                 if (lives === 0) {
                     level = 1;
                     lives = 3;
+					totalScore = 0;
                     fullLives();
                     fadeLevelOverlay();
                     getId('passOrFail').style.display = "none";
@@ -652,7 +653,6 @@ function levelFailed() {
     easterEggCounter = 0; // Resets easter egg counter
 	setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
     if (lives === 0) { // Checks to see if the lives are 0 causing game over
-		totalScore = 0;
         setTimeout(fadePlayAgain, 2000)
     } else { // If lives are not 0, reshuffle and redeal
         setTimeout(resetLevel, 2500);
@@ -866,15 +866,15 @@ function fadeLevelOverlay() {
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
 	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
-	if (lives == 0) {
-		getId('scoreMultipliedText').innerHTML = points + " pts x 0";
-	}
 	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
 	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
     if (level != 1) {
         getId('tutorial').style.display = "none";
         getId('passOrFail').style.display = "block";
         getId('hexagonTextOverlay').innerHTML = level - 1;
+	if (lives == 0) {
+		getId('scoreMultipliedText').innerHTML = points + " pts x 0";
+	}
     }
 }
 

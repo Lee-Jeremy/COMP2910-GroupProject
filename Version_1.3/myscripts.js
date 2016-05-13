@@ -49,6 +49,7 @@ $(document).ready(function(){
                     lives = 3;
                     fullLives();
                     fadeLevelOverlay();
+                    getId('hexagonTextOverlay').innerHTML = "1";
                     getId('passOrFail').style.display = "none";
                 } else {
                     showLevelOverlay();

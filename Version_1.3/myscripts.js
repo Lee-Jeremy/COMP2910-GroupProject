@@ -32,7 +32,7 @@ $(document).ready(function(){
                 if (lives === 0) {
                     playAgain();
                 } else {
-                    showLevelOverlay();
+					showLevelOverlay();
                 }
                 break;
             case 'Back': // Main Menu Overlay
@@ -59,7 +59,7 @@ $(document).ready(function(){
                 hideOverlayContainer();
                 resetLevel();
                 setTimeout(dealCards, 500);
-            }
+        }
 	});
     $("#back").click(function() { // Temporary function to prompt Quit screen on Back Button
 		clearInterval(multTimer);
@@ -334,13 +334,23 @@ function fillMatrix() {
 	if (operator === "division") { 
 		for (i = 0; i < matrix.length; i++) {
 			num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
+			for (x in matrix) {
+				while (x == num) {
+					num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
+				}
 			matrix[i] = num;
+			}
 		}
 	}
 	if (operator !== "division") {	
 		for (i = 0; i < matrix.length; i++) { 
 			num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
+			for (x in matrix) {
+				while (x == num) {
+					num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
+				}
 			matrix[i] = num;
+			}
 		}
 	} 
 	// Assign 1st matrix card's frontside to 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]
@@ -502,6 +512,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 	}		
 	if (count == 2 && numClicks == 1) { 
 		clearInterval(multTimer); // Stop the multiplier timer function
+		seconds = 1;
 		userSelection[1] = matrix[cardIndexNum]; 
 		getId('eqCard3FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 3rd equation card 
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); 
@@ -717,7 +728,6 @@ function resetLevel() {
 	setTimeout(restack, 500); // Restack the Animation Divisions
 	// Reset all counters
 	count = 0;   
-	seconds = 1;
 	operator = "";
 	mSeconds = 0;
 	pointsPerLevel = 0;
@@ -796,10 +806,6 @@ function hideOverlayContainer() {
 
 // Show Overlay
 function showOverlay() {
-	//$("#overlayContainer").fadeIn();
-	//$("#quitOverlay").fadeIn();
-	//$("#buttonLeft").fadeIn();
-	//$("#buttonRight").fadeIn();
     getId('overlayContainer').style.display = "block";
     getId('quitOverlay').style.display = "block";
     getId('buttonLeft').style.display = "block";
@@ -816,10 +822,6 @@ function fadeOverlay() {
 
 // Hide Overlay
 function hideOverlay() {
-	//$("#levelOverlay").fadeOut();
-	//$("#quitOverlay").fadeOut();
-	//$("#buttonLeft").fadeOut();
-	//$("#buttonRight").fadeOut();
     getId('levelOverlay').style.display = "none";
     getId('quitOverlay').style.display = "none";
     getId('buttonLeft').style.display = "none";
@@ -830,24 +832,20 @@ function hideOverlay() {
 // Show Current Level Overlay
 function showLevelOverlay() {
     hideOverlay();
-	//$("#overlayContainer").fadeIn();
-	//$("#levelOverlay").fadeIn();
-	//$("#buttonLeft").fadeIn();
-	//$("#buttonRight").fadeIn();
-    getId('overlayContainer').style.display = "block";
-    getId('levelOverlay').style.display = "block";
-    getId('buttonLeft').style.display = "block";
-    getId('buttonRight').style.display = "block";
-    getId('buttonLeftText').innerHTML = "Quit";
-    getId('buttonRightText').innerHTML = "Play";  
+	if (level != 1) {
+		getId('tutorial').style.display = "none";
+		getId('passOrFail').style.display = "block";
+		getId('hexagonTextOverlay').innerHTML = level - 1; // Increments the level after each play
+	} 
+	getId('overlayContainer').style.display = "block";
+	getId('levelOverlay').style.display = "block";
+	getId('buttonLeft').style.display = "block";
+	getId('buttonRight').style.display = "block";
+	getId('buttonLeftText').innerHTML = "Quit";
+	getId('buttonRightText').innerHTML = "Play";  
 	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
 	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
 	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
-    if (level != 1) {
-        getId('tutorial').style.display = "none";
-        getId('passOrFail').style.display = "block";
-        getId('hexagonTextOverlay').innerHTML = level - 1;
-    }
 }
 
 // Fade Current Level Overlay
@@ -857,10 +855,6 @@ function fadeLevelOverlay() {
 	$("#levelOverlay").fadeIn();
 	$("#buttonLeft").fadeIn();
 	$("#buttonRight").fadeIn();
-    //getId('overlayContainer').style.display = "block";
-    //getId('levelOverlay').style.display = "block";
-    //getId('buttonLeft').style.display = "block";
-    //getId('buttonRight').style.display = "block";
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
 	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;

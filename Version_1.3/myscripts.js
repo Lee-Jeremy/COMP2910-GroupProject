@@ -19,7 +19,7 @@ $(document).ready(function(){
                 goToStartScreen();
                 break;
             case 'Back': // Pause Game
-                mainMenu;
+                mainMenu();
                 break;
             default: // Current Level and Play Again overlay
                 hideOverlay();
@@ -857,9 +857,10 @@ function showLevelOverlay() {
     //getId('levelOverlay').style.display = "block";
     //getId('buttonLeft').style.display = "block";
     //getId('buttonRight').style.display = "block";
+    getId('passOrFail').style.display = "block";
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
-    getId('hexagonTextOverlay').innerHTML = level; // Increments the level after each play
+    getId('hexagonTextOverlay').innerHTML = level - 1; // Increments the level after each play
     // getId('gainedHeartText').innerHTML = "Current Lives: " + lives;
 	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
 	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";

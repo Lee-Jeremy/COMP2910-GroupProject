@@ -603,6 +603,12 @@ div.fourth {
 }
 
 /* Level One Overlay */
+#passOrFail {
+    display: none;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
 #currentLevel {
     font-size: 1.25em;
     font-weight: bold;

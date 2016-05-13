@@ -50,6 +50,7 @@ $(document).ready(function(){
 					totalScore = 0;
                     fullLives();
                     fadeLevelOverlay();
+					getId('scoreMultipliedText').innerHTML = points + " pts x 0";
                     getId('hexagonTextOverlay').innerHTML = "1";
                     getId('passOrFail').style.display = "none";
                 } else {

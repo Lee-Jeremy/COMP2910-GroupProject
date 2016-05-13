@@ -850,8 +850,8 @@ function showLevelOverlay() {
 	getId('levelOverlay').style.display = "block";
 	getId('buttonLeft').style.display = "block";
 	getId('buttonRight').style.display = "block";
-    getId('scoreMultipliedText').style.display = "block";
-    getId('normalScoreText').style.display = "block";
+    getId('scoreMultiplied').style.display = "block";
+    getId('normalScore').style.display = "block";
 	getId('buttonLeftText').innerHTML = "Quit";
 	getId('buttonRightText').innerHTML = "Play";  
 	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
@@ -866,8 +866,8 @@ function fadeLevelOverlay() {
 	$("#levelOverlay").fadeIn();
 	$("#buttonLeft").fadeIn();
 	$("#buttonRight").fadeIn();
-    getId('scoreMultipliedText').style.display = "block";
-    getId('normalScoreText').style.display = "block";
+    getId('scoreMultiplied').style.display = "block";
+    getId('normalScore').style.display = "block";
     getId('buttonLeftText').innerHTML = "Quit";
     getId('buttonRightText').innerHTML = "Play";  
 	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
@@ -893,8 +893,8 @@ function playAgain() {
     getId('buttonLeftText').innerHTML = "No";
     getId('buttonRightText').innerHTML = "Yes";
     getId('playAgain').style.display = "block";
-    getId('scoreMultipliedText').style.display = "none";
-    getId('normalScoreText').style.display = "none";
+    getId('scoreMultiplied').style.display = "none";
+    getId('normalScore').style.display = "none";
 }
 
 // Fade Play Again
@@ -907,8 +907,8 @@ function fadePlayAgain() {
     getId('buttonLeftText').innerHTML = "No";
     getId('buttonRightText').innerHTML = "Yes";
     getId('playAgain').style.display = "block";
-    getId('scoreMultipliedText').style.display = "none";
-    getId('normalScoreText').style.display = "none";
+    getId('scoreMultiplied').style.display = "none";
+    getId('normalScore').style.display = "none";
 }
 
 // Quit Confirm

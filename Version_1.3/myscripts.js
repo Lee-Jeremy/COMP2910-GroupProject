@@ -1023,7 +1023,7 @@ function easterEgg() {
 function showEasterEgg() {
     for (var i = 1; i <= 3; i++) {
 		for (var k = 1; k <=3; k++) {
-            getId('r' + i + 'c' + k + 'Img').src = "images/egg" + Math.floor(Math.random() * 5 + 1) + ".jpg";
+            getId('r' + i + 'c' + k + 'Img').src = "images/egg" + (Math.floor(Math.random() * 5) + 1) + ".jpg";
             getId('r' + i + 'c' + k + 'Img').setAttribute("Width", "100%");
 	    }
     }

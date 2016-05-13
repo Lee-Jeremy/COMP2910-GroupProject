@@ -54,6 +54,7 @@ $(document).ready(function(){
                     lives = 3;
                     fullLives();
                     showLevelOverlay();
+                    getId('passOrFail').style.display = "none";
                 } else {
                     showLevelOverlay();
                 }
@@ -653,6 +654,7 @@ function levelComplete() {
 	pointsPerLevel = (points * multiplier);
 	totalScore += pointsPerLevel; 
     level++; // Increases the level count after each play
+    getId('passOrFailText').innerHTML = "Complete!";
     if ((level % 10) === 0 && lives != 3) { // Adds a life every 10 levels
 		lives++;
         setTimeout(gainingLife, 500);
@@ -846,6 +848,7 @@ function hideOverlay() {
     getId('quitOverlay').style.display = "none";
     getId('buttonLeft').style.display = "none";
     getId('buttonRight').style.display = "none";
+    getId('playAgain').style.display = "none";
 }
 
 // Show Current Level Overlay
@@ -857,6 +860,7 @@ function showLevelOverlay() {
 		$("#buttonLeft").fadeIn();
 		$("#buttonRight").fadeIn();
 		getId('tutorial').style.display = "none";
+		getId('passOrFail').style.display = "block";
 	} else {
 		getId('overlayContainer').style.display = "block";
 		getId('levelOverlay').style.display = "block";
@@ -874,10 +878,19 @@ function showLevelOverlay() {
 
 // Play Again
 function playAgain() {
-    showOverlay();
-    getId('quitText').innerHTML = "GAME OVER!<br>Play Again?";
+    showLevelOverlay();
+    getId('tutorial').style.display = "none";
+    getId('passOrFail').style.display = "block";
+    getId('hexagonTextOverlay').innerHTML = level;
+    getId('passOrFailText').innerHTML = "Failed!";
     getId('buttonLeftText').innerHTML = "No";
-    getId('buttonRightText').innerHTML = "Yes";  
+    getId('buttonRightText').innerHTML = "Yes";
+    
+    getId('playAgain').style.display = "block";
+
+    //getId('quitText').innerHTML = "GAME OVER!<br>Play Again?";
+    //getId('buttonLeftText').innerHTML = "No";
+    //getId('buttonRightText').innerHTML = "Yes";  
 }
 
 // Quit Confirm

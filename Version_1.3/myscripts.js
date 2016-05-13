@@ -632,11 +632,7 @@ function levelComplete() {
 	totalScore += pointsPerLevel; 
     level++; // Increases the level count after each play
     getId('passOrFailText').innerHTML = "Complete!";
-<<<<<<< HEAD
-    if ((level % 10) === 0 && lives != 3) { // Adds a life every 10 levels
-=======
     if ((level % 11) === 0 && lives != 3) { // Adds a life every 10 levels
->>>>>>> fd7874e01e958e3fc362c0462acfd5fbe74f4ad4
 		lives++;
         setTimeout(gainingLife, 500);
         getId('gainedHeartText').style.display = "block";
@@ -881,10 +877,10 @@ function fadeLevelOverlay() {
         getId('tutorial').style.display = "none";
         getId('passOrFail').style.display = "block";
         getId('hexagonTextOverlay').innerHTML = level - 1;
+	}
 	if (lives == 0) {
 		getId('scoreMultipliedText').innerHTML = points + " pts x 0";
 	}
-    }
 }
 
 // Play Again
@@ -1027,11 +1023,7 @@ function easterEgg() {
 function showEasterEgg() {
     for (var i = 1; i <= 3; i++) {
 		for (var k = 1; k <=3; k++) {
-<<<<<<< HEAD
             getId('r' + i + 'c' + k + 'Img').src = "images/egg" + Math.floor(Math.random() * 5 + 1) + ".jpg";
-=======
-            getId('r' + i + 'c' + k + 'Img').src = "images/egg" + Math.floor((Math.random() * 5) + 1) + ".jpg";
->>>>>>> fd7874e01e958e3fc362c0462acfd5fbe74f4ad4
             getId('r' + i + 'c' + k + 'Img').setAttribute("Width", "100%");
 	    }
     }

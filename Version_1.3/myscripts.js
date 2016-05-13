@@ -18,8 +18,8 @@ $(document).ready(function(){
             case 'Yes': // Quit Confirm overlay
                 goToStartScreen();
                 break;
-            case 'Back': // Pause Game
-                mainMenu;
+            case 'End': // Pause Game
+                mainMenu();
                 break;
             default: // Current Level and Play Again overlay
                 hideOverlay();
@@ -43,7 +43,7 @@ $(document).ready(function(){
             case 'Back': // Main Menu Overlay
                 pauseGame();
                 break;
-            case 'Continue': // Pause Game Overlay
+            case 'Resume': // Pause Game Overlay
                 multTimer = setInterval(multiplierTimer, 1000);
                 hideOverlay();
                 hideOverlayContainer();
@@ -363,13 +363,23 @@ function fillMatrix() {
 	if (operator === "division") { 
 		for (i = 0; i < matrix.length; i++) {
 			num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
+			for (x in matrix) {
+				while (x == num) {
+					num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
+				}
 			matrix[i] = num;
+			}
 		}
 	}
 	if (operator !== "division") {	
 		for (i = 0; i < matrix.length; i++) { 
 			num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
+			for (x in matrix) {
+				while (x == num) {
+					num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
+				}
 			matrix[i] = num;
+			}
 		}
 	} 
 	// Assign 1st matrix card's frontside to 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]
@@ -824,10 +834,6 @@ function hideOverlayContainer() {
 
 // Show Overlay
 function showOverlay() {
-	//$("#overlayContainer").fadeIn();
-	//$("#quitOverlay").fadeIn();
-	//$("#buttonLeft").fadeIn();
-	//$("#buttonRight").fadeIn();
     getId('overlayContainer').style.display = "block";
     getId('quitOverlay').style.display = "block";
     getId('buttonLeft').style.display = "block";
@@ -836,10 +842,6 @@ function showOverlay() {
 
 // Hide Overlay
 function hideOverlay() {
-	//$("#levelOverlay").fadeOut();
-	//$("#quitOverlay").fadeOut();
-	//$("#buttonLeft").fadeOut();
-	//$("#buttonRight").fadeOut();
     getId('levelOverlay').style.display = "none";
     getId('quitOverlay').style.display = "none";
     getId('buttonLeft').style.display = "none";
@@ -849,22 +851,25 @@ function hideOverlay() {
 // Show Current Level Overlay
 function showLevelOverlay() {
     hideOverlay();
-	$("#overlayContainer").fadeIn();
-	$("#levelOverlay").fadeIn();
-	$("#buttonLeft").fadeIn();
-	$("#buttonRight").fadeIn();
-    //getId('overlayContainer').style.display = "block";
-    //getId('levelOverlay').style.display = "block";
-    //getId('buttonLeft').style.display = "block";
-    //getId('buttonRight').style.display = "block";
-    getId('buttonLeftText').innerHTML = "Quit";
-    getId('buttonRightText').innerHTML = "Play";  
-    getId('hexagonTextOverlay').innerHTML = level; // Increments the level after each play
-    // getId('gainedHeartText').innerHTML = "Current Lives: " + lives;
-	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
-	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
-	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
-    getId('tutorial').style.display = "none";
+	if (level != 1) {
+		$("#overlayContainer").fadeIn();
+		$("#levelOverlay").fadeIn();
+		$("#buttonLeft").fadeIn();
+		$("#buttonRight").fadeIn();
+		getId('tutorial').style.display = "none";
+	} else {
+		getId('overlayContainer').style.display = "block";
+		getId('levelOverlay').style.display = "block";
+		getId('buttonLeft').style.display = "block";
+		getId('buttonRight').style.display = "block";
+		getId('buttonLeftText').innerHTML = "Quit";
+		getId('buttonRightText').innerHTML = "Play";  
+		getId('hexagonTextOverlay').innerHTML = level; // Increments the level after each play
+		// getId('gainedHeartText').innerHTML = "Current Lives: " + lives;
+		getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
+		getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
+		getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
+	}
 }
 
 // Play Again
@@ -889,8 +894,8 @@ function pauseGame() {
         hideOverlay();
         showOverlay();
 	    getId('quitText').innerHTML = "Game is PAUSED.";
-	    getId('buttonLeftText').innerHTML = "Back";
-	    getId('buttonRightText').innerHTML = "Continue";
+	    getId('buttonLeftText').innerHTML = "End";
+	    getId('buttonRightText').innerHTML = "Resume";
     }
 }
 

@@ -205,7 +205,7 @@ function setDifficulty() {
 		cardValueMin = 1;
 		cardValueMax = 10;
 		divisionCardValueMin = 1;
-		divisionCardValueMax = 10;
+		divisionCardValueMax = 12;
 		firstRevealWave = 2;
 		secondRevealWave = 4;
 		thirdRevealWave = 7;
@@ -219,45 +219,87 @@ function setDifficulty() {
 		thirdRevealWave = 7;
 		points = 50; // Increase the base amount of points per level
 	} else if (level == 20) {
-		cardValueMin = -9;
-		cardValueMax = 30;
+		cardValueMin = -1;
+		cardValueMax = 15;
 		divisionCardValueMin = 1;
-		divisionCardValueMax = 100;
+		divisionCardValueMax = 20;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
 		thirdRevealWave = 7;
 		points = 75; // Increase base points
 	} else if (level == 30) {
-		cardValueMin = -10;
-		cardValueMax = 50;
+		cardValueMin = -5;
+		cardValueMax = 25;
 		divisionCardValueMin = 1;
-		divisionCardValueMax = 144;
+		divisionCardValueMax = 40;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
-		thirdRevealWave = 6;		
+		thirdRevealWave = 7;		
 		points = 100; 
 		multiplier = 5; // Unlock 5x multiplier
 	} else if (level == 40) { 
 		cardValueMin = -10;
-		cardValueMax = 156;
+		cardValueMax = 50;
+		divisionCardValueMin = 1;
+		divisionCardValueMax = 70;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 6;
+		points = 250; 
+	} else if (level == 50) {
+		cardValueMin = -10;
+		cardValueMax = 60;
+		divisionCardValueMin = 1;
+		divisionCardValueMax = 100;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 6;
+		points = 500; 
+	} else if (level == 60) {
+		cardValueMin = -10;
+		cardValueMax = 70;
 		divisionCardValueMin = 1;
 		divisionCardValueMax = 144;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
 		thirdRevealWave = 6;
-		points = 250; 
-	} else if (level == 50) { 
-		points = 500; 
-	} else if (level == 60) { 
 		points = 750; 
 		multiplier = 8; // Unlock 8x multiplier
 	} else if (level == 70) { 
+		cardValueMin = -10;
+		cardValueMax = 80;
+		divisionCardValueMin = -1;
+		divisionCardValueMax = 144;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 6;
 		points = 1000; 
 	} else if (level == 80) { 
+		cardValueMin = -10;
+		cardValueMax = 90;
+		divisionCardValueMin = -1;
+		divisionCardValueMax = 160;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 5;
 		points = 2000; 
 	} else if (level == 90) { 
+		cardValueMin = -10;
+		cardValueMax = 100;
+		divisionCardValueMin = -1;
+		divisionCardValueMax = 200;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 5;
 		points = 3000; 
 	} else if (level == 100) { 
+		cardValueMin = -20;
+		cardValueMax = 20;
+		divisionCardValueMin = -10;
+		divisionCardValueMax = 20;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 5;
 		points = 5000; 
 		multiplier = 10; // Unlock 10x multiplier
 	} else if (level == 110) { 
@@ -339,23 +381,21 @@ function fillMatrix() {
 	if (operator === "division") { 
 		for (i = 0; i < matrix.length; i++) {
 			num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
-			for (x in matrix) {
-				while (x == num) {
-					num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
-				}
-			matrix[i] = num;
+			while (num == matrix[0] || num == matrix[1] || num == matrix[2] || num == matrix[3] || num == matrix[4] 
+			|| num == matrix[5] || num == matrix[6] || num == matrix[7] || num == matrix[8]) {
+				num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
 			}
+		matrix[i] = num;
 		}
 	}
 	if (operator !== "division") {	
 		for (i = 0; i < matrix.length; i++) { 
 			num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
-			for (x in matrix) {
-				while (x == num) {
-					num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
-				}
-			matrix[i] = num;
+			while (num == matrix[0] || num == matrix[1] || num == matrix[2] || num == matrix[3] || num == matrix[4] 
+			|| num == matrix[5] || num == matrix[6] || num == matrix[7] || num == matrix[8]) {
+				num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
 			}
+		matrix[i] = num;
 		}
 	} 
 	// Assign 1st matrix card's frontside to 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]
@@ -366,7 +406,7 @@ function fillMatrix() {
 function checkDuplicates(num) {
 	var i;
 	for (i = 0; i < matrix.length - 1; i++) {
-		while (matrix[i] == num) {
+		while (matrix[x] == num) {
 			fillMatrix();		
 		}
 	}

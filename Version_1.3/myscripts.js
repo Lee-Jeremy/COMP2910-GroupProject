@@ -106,8 +106,9 @@ var firstRevealWave; // 1st set of card reveals
 var secondRevealWave; // 2nd set of card reveals 
 var thirdRevealWave; // 3rd set of card reveals 
 var flip = new Audio("sounds/flip.wav"); //sound clip for card flip
-var fail = new Audio("sounds/fail.wav"); //sound clip for failure
+var fail = new Audio("sounds/fail.wav"); //sound clip for game over
 var success = new Audio("sounds/success.wav"); //sound clip for success
+var wrong = new Audio("sounds/wrong.mp3"); //sound clip for wrong answer
 var easterEggCounter = 0; // Counter for easter egg
 	
 // Deal the cards
@@ -162,7 +163,9 @@ function dealCards() {
 			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#263545"; // Navy blue
 			getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
 		}
+        
 	}
+    
 	getId('eqCard2Back').style.backgroundColor = "#800000"; // Red
 	getId('eqCard2Back').style.border = "1px solid #000000"; // Solid black border
 	getId('eqCard4Back').style.backgroundColor = "#800000";	// Red
@@ -635,7 +638,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
@@ -643,7 +646,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else if(operator === "multiplication") {
 		if ((first * second) == answer) {
@@ -651,7 +654,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else if(operator === "division") {
 		if ((first / second) == answer) {
@@ -659,7 +662,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else {
 		alert('Unable to identify operator during checkEquation');	

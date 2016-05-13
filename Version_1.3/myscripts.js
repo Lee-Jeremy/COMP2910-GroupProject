@@ -668,7 +668,6 @@ function levelComplete() {
     }
 	getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
-    easterEggCounter++; // Increment easter egg counter
     setTimeout(showLevelOverlay, 1000); // Delays showing the overlay after 1 seconds
 }
 
@@ -678,7 +677,6 @@ function levelFailed() {
     setTimeout(losingLife, 1500);
 	getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
 	revealAnswer();
-    easterEggCounter = 0; // Resets easter egg counter
 	setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
     if (lives === 0) { // Checks to see if the lives are 0 causing game over
 		totalScore = 0;
@@ -987,13 +985,18 @@ function gainingLife() {
     }
 }
 
+// Increments the easter egg counter
+function easterEggTrigger() {
+    easterEggCounter++;
+}
+
 // Puts easter eggs on card backs randomly in specified conditions
 function easterEgg() {
-    var easterEggStages = 2; // Number of stages that should be cleared in a row to activate the easter egg. Put an integer
-    if (easterEggCounter % easterEggStages == 0 && easterEggCounter != 0) {
-        showEasterEgg()
-    } else {
-        hideEasterEgg()
+    if (easterEggCounter >= 26) {
+        showEasterEgg();
+        easterEggCounter = 0; // Resets the easter egg counter
+    } else if (easterEggCounter == 0) {
+        hideEasterEgg();
     }
 }
 

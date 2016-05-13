@@ -513,6 +513,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 	}		
 	if (count == 2 && numClicks == 1) { 
 		clearInterval(multTimer); // Stop the multiplier timer function
+		seconds = 1;
 		userSelection[1] = matrix[cardIndexNum]; 
 		getId('eqCard3FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 3rd equation card 
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); 
@@ -728,7 +729,6 @@ function resetLevel() {
 	setTimeout(restack, 500); // Restack the Animation Divisions
 	// Reset all counters
 	count = 0;   
-	seconds = 1;
 	operator = "";
 	mSeconds = 0;
 	pointsPerLevel = 0;
@@ -837,17 +837,16 @@ function showLevelOverlay() {
 		getId('tutorial').style.display = "none";
 		getId('passOrFail').style.display = "block";
 		getId('hexagonTextOverlay').innerHTML = level - 1; // Increments the level after each play
-	} else {
-		getId('overlayContainer').style.display = "block";
-		getId('levelOverlay').style.display = "block";
-		getId('buttonLeft').style.display = "block";
-		getId('buttonRight').style.display = "block";
-		getId('buttonLeftText').innerHTML = "Quit";
-		getId('buttonRightText').innerHTML = "Play";  
-		getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
-		getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
-		getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
-	}
+	} 
+	getId('overlayContainer').style.display = "block";
+	getId('levelOverlay').style.display = "block";
+	getId('buttonLeft').style.display = "block";
+	getId('buttonRight').style.display = "block";
+	getId('buttonLeftText').innerHTML = "Quit";
+	getId('buttonRightText').innerHTML = "Play";  
+	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
+	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
+	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
 }
 
 // Fade Current Level Overlay
@@ -928,7 +927,7 @@ function mainMenu() {
     hideOverlay();
     showOverlay();
     getId('quitText').innerHTML = "Go to the MAIN MENU?";
-	getId('buttonLeftText').innerHTML = "Continue";
+	getId('buttonLeftText').innerHTML = "Yes";
 	getId('buttonRightText').innerHTML = "Back";
 }
 

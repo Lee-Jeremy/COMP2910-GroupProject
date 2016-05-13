@@ -593,7 +593,7 @@ div.fourth {
     border: 1px solid black;
     background-color:  #D7DADB;
     text-align: center;
-    display: block;
+    display: inline-block;
     line-height: 0;
 }
 
@@ -676,30 +676,26 @@ input[type="checkbox"] {
     z-index: 1;
     width: 100%;
     height: 100%;
-    top: 0;
+    top: 50%;
     left: 0;
+}
+
+p#hexagonTextOverlay {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 #gainedHeartText {
     font-size: 1em;
 }
 
-#gainedHeartText p {
-    margin: 5px;
-}
-
 #heartGained {
-    height: 20%;
-    width: 20%
+    height: 10%;
+    width: 10%;
 }
 
 #playAgain {
     display: none;
     font-weight: bold;
     font-size: 0.9em;
-}
-
-p#heartGainedText {
-    margin-top: 0;
-    margin-bottom: 0;
 }

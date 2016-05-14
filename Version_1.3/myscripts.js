@@ -106,8 +106,9 @@ var firstRevealWave; // 1st set of card reveals
 var secondRevealWave; // 2nd set of card reveals 
 var thirdRevealWave; // 3rd set of card reveals 
 var flip = new Audio("sounds/flip.wav"); //sound clip for card flip
-var fail = new Audio("sounds/fail.wav"); //sound clip for failure
+var fail = new Audio("sounds/fail.wav"); //sound clip for game over
 var success = new Audio("sounds/success.wav"); //sound clip for success
+var wrong = new Audio("sounds/wrong.mp3"); //sound clip for wrong answer
 var easterEggCounter = 0; // Counter for easter egg
 	
 // Deal the cards
@@ -162,7 +163,9 @@ function dealCards() {
 			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#263545"; // Navy blue
 			getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
 		}
+        
 	}
+    
 	getId('eqCard2Back').style.backgroundColor = "#800000"; // Red
 	getId('eqCard2Back').style.border = "1px solid #000000"; // Solid black border
 	getId('eqCard4Back').style.backgroundColor = "#800000";	// Red
@@ -205,7 +208,7 @@ function setDifficulty() {
 		cardValueMin = 1;
 		cardValueMax = 10;
 		divisionCardValueMin = 1;
-		divisionCardValueMax = 10;
+		divisionCardValueMax = 12;
 		firstRevealWave = 2;
 		secondRevealWave = 4;
 		thirdRevealWave = 7;
@@ -219,45 +222,87 @@ function setDifficulty() {
 		thirdRevealWave = 7;
 		points = 50; // Increase the base amount of points per level
 	} else if (level == 20) {
-		cardValueMin = -9;
-		cardValueMax = 30;
+		cardValueMin = -1;
+		cardValueMax = 15;
 		divisionCardValueMin = 1;
-		divisionCardValueMax = 100;
+		divisionCardValueMax = 20;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
 		thirdRevealWave = 7;
 		points = 75; // Increase base points
 	} else if (level == 30) {
-		cardValueMin = -10;
-		cardValueMax = 50;
+		cardValueMin = -5;
+		cardValueMax = 25;
 		divisionCardValueMin = 1;
-		divisionCardValueMax = 144;
+		divisionCardValueMax = 40;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
-		thirdRevealWave = 6;		
+		thirdRevealWave = 7;		
 		points = 100; 
 		multiplier = 5; // Unlock 5x multiplier
 	} else if (level == 40) { 
 		cardValueMin = -10;
-		cardValueMax = 156;
+		cardValueMax = 50;
+		divisionCardValueMin = 1;
+		divisionCardValueMax = 70;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 6;
+		points = 250; 
+	} else if (level == 50) {
+		cardValueMin = -10;
+		cardValueMax = 60;
+		divisionCardValueMin = 1;
+		divisionCardValueMax = 100;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 6;
+		points = 500; 
+	} else if (level == 60) {
+		cardValueMin = -10;
+		cardValueMax = 70;
 		divisionCardValueMin = 1;
 		divisionCardValueMax = 144;
 		firstRevealWave = 2;
 		secondRevealWave = 3;
 		thirdRevealWave = 6;
-		points = 250; 
-	} else if (level == 50) { 
-		points = 500; 
-	} else if (level == 60) { 
 		points = 750; 
 		multiplier = 8; // Unlock 8x multiplier
 	} else if (level == 70) { 
+		cardValueMin = -10;
+		cardValueMax = 80;
+		divisionCardValueMin = -1;
+		divisionCardValueMax = 144;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 6;
 		points = 1000; 
 	} else if (level == 80) { 
+		cardValueMin = -10;
+		cardValueMax = 90;
+		divisionCardValueMin = -1;
+		divisionCardValueMax = 160;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 5;
 		points = 2000; 
 	} else if (level == 90) { 
+		cardValueMin = -10;
+		cardValueMax = 100;
+		divisionCardValueMin = -1;
+		divisionCardValueMax = 200;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 5;
 		points = 3000; 
 	} else if (level == 100) { 
+		cardValueMin = -20;
+		cardValueMax = 20;
+		divisionCardValueMin = -10;
+		divisionCardValueMax = 20;
+		firstRevealWave = 2;
+		secondRevealWave = 3;
+		thirdRevealWave = 5;
 		points = 5000; 
 		multiplier = 10; // Unlock 10x multiplier
 	} else if (level == 110) { 
@@ -339,23 +384,21 @@ function fillMatrix() {
 	if (operator === "division") { 
 		for (i = 0; i < matrix.length; i++) {
 			num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
-			for (x in matrix) {
-				while (x == num) {
-					num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
-				}
-			matrix[i] = num;
+			while (num == matrix[0] || num == matrix[1] || num == matrix[2] || num == matrix[3] || num == matrix[4] 
+			|| num == matrix[5] || num == matrix[6] || num == matrix[7] || num == matrix[8]) {
+				num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
 			}
+		matrix[i] = num;
 		}
 	}
 	if (operator !== "division") {	
 		for (i = 0; i < matrix.length; i++) { 
 			num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
-			for (x in matrix) {
-				while (x == num) {
-					num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
-				}
-			matrix[i] = num;
+			while (num == matrix[0] || num == matrix[1] || num == matrix[2] || num == matrix[3] || num == matrix[4] 
+			|| num == matrix[5] || num == matrix[6] || num == matrix[7] || num == matrix[8]) {
+				num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
 			}
+		matrix[i] = num;
 		}
 	} 
 	// Assign 1st matrix card's frontside to 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]
@@ -366,7 +409,7 @@ function fillMatrix() {
 function checkDuplicates(num) {
 	var i;
 	for (i = 0; i < matrix.length - 1; i++) {
-		while (matrix[i] == num) {
+		while (matrix[x] == num) {
 			fillMatrix();		
 		}
 	}
@@ -595,7 +638,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
@@ -603,7 +646,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else if(operator === "multiplication") {
 		if ((first * second) == answer) {
@@ -611,7 +654,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else if(operator === "division") {
 		if ((first / second) == answer) {
@@ -619,7 +662,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else {
 		alert('Unable to identify operator during checkEquation');	
@@ -875,10 +918,10 @@ function fadeLevelOverlay() {
         getId('tutorial').style.display = "none";
         getId('passOrFail').style.display = "block";
         getId('hexagonTextOverlay').innerHTML = level - 1;
+	}
 	if (lives == 0) {
 		getId('scoreMultipliedText').innerHTML = points + " pts x 0";
 	}
-    }
 }
 
 // Play Again
@@ -1026,7 +1069,7 @@ function easterEgg() {
 function showEasterEgg() {
     for (var i = 1; i <= 3; i++) {
 		for (var k = 1; k <=3; k++) {
-            getId('r' + i + 'c' + k + 'Img').src = "images/egg" + Math.floor(Math.random() * 5 + 1) + ".jpg";
+            getId('r' + i + 'c' + k + 'Img').src = "images/egg" + (Math.floor(Math.random() * 5) + 1) + ".jpg";
             getId('r' + i + 'c' + k + 'Img').setAttribute("Width", "100%");
 	    }
     }

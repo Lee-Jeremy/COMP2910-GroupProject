@@ -82,10 +82,14 @@ var flip = new Audio("sounds/flip.wav"); //sound clip for card flip
 var fail = new Audio("sounds/fail.wav"); //sound clip for game over
 var success = new Audio("sounds/success.wav"); //sound clip for success
 var wrong = new Audio("sounds/wrong.mp3"); //sound clip for wrong answer
+var deal = new Audio("sounds/Dealing1.wav"); //sound clip for dealing
+var whoosh = new Audio("sounds/whoosh.wav"); //sound clip for card movement
+var click = new Audio("sounds/click.wav"); //sound clip for mouse click
 	
 // Deal the cards
 function dealCards() {
 	var interval;
+    deal.play();
 	$("#animationCard11").animate({ // Move to the answer card position and shrink
 			left: '71.1vw',
 			top: '67vh',
@@ -474,6 +478,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey 
 		$("#" + rowCol + "Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed
 		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animate division visible
+        click.play();
 		$("#animationCard" + cardNum).animate({ // Change size and width of animate div to match equation card dimensions
 			left: '0vw',
 			top: '67vh',
@@ -484,10 +489,12 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); // Hide the animate division
+                flip.play();
 				$('#eqCard1').flip(true); // Flip the 1st equation card to its frontside
 			}
 		});
 	}		
+    whoosh.play();
 	if (count == 2 && numClicks == 1) { 
 		clearInterval(multTimer); // Stop the multiplier timer function
 		userSelection[1] = matrix[cardIndexNum]; 
@@ -495,6 +502,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); 
 		$("#" + rowCol + "Back").css("border-style", "dashed"); 
 		$("#animationCard" + cardNum).css("visibility", "visible"); 
+        click.play();
 		$("#animationCard" + cardNum).animate({ 
 			left: '41.4vw',
 			top: '67vh',
@@ -505,6 +513,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); 
+                flip.play();
 				$('#eqCard3').flip(true); // Flip the 3rd equation card to its frontside
 			}
 		});

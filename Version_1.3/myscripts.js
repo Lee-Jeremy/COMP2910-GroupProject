@@ -90,7 +90,6 @@ var click = new Audio("sounds/click.wav"); //sound clip for mouse click
 function dealCards() {
 	var interval;
     deal.play();
-    deal.pause();
 	$("#animationCard11").animate({ // Move to the answer card position and shrink
 			left: '71.1vw',
 			top: '67vh',
@@ -140,7 +139,7 @@ function dealCards() {
 			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#263545"; // Navy blue
 			getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
 		}
-        
+        deal.pause();
 	}
     
 	getId('eqCard2Back').style.backgroundColor = "#800000"; // Red

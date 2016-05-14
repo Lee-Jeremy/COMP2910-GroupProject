@@ -90,6 +90,7 @@ var click = new Audio("sounds/click.wav"); //sound clip for mouse click
 function dealCards() {
 	var interval;
     deal.play();
+    deal.pause();
 	$("#animationCard11").animate({ // Move to the answer card position and shrink
 			left: '71.1vw',
 			top: '67vh',

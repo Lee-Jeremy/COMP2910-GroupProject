@@ -66,6 +66,7 @@ $(document).ready(function(){
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
+                hexColour();
                 setTimeout(dealCards, 500);
         }
 	});

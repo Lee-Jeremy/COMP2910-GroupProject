@@ -1,8 +1,8 @@
 <?php
-$servername = "server31.000webhost.com";
-$username = "a4755161_team26";
-$password = "abc123";
-$dbname = "a4755161_scores";
+$servername = "sql3.freesqldatabase.com";
+$username = "sql3119990";
+$password = "JfXFBwKd8t";
+$dbname = "sql3119990";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -11,11 +11,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sqlName = "SELECT name, scores FROM HighScores ORDER BY score DESC";
-$resultName = $conn->query($sql);
+$sqlFirst = "SELECT name, score FROM HighScores ORDER BY score DESC LIMIT 1";
+$resultFirst = $conn->query($sqlFirst);
 
-$sqlScores = "SELECT scores FROM HighScores";
-$resultScores = $conn->query($sql);
+$sqlRest = "SELECT name, score FROM HighScores ORDER BY score DESC LIMIT 9 OFFSET 1";
+$resultRest = $conn->query($sqlRest);
 
 <!DOCTYPE html>
 <html lang="en">
@@ -285,8 +285,10 @@ $resultScores = $conn->query($sql);
 					<div id="highScoresPointsLeader">
 						<div id="highScoresPointsLeaderText">
 							<img src="images/crown.png" alt="crown">
-							<p id="rank1">Dude</p>
-							<p>1,000,000 pts</p>
+							<?php 
+                            echo "<p id="rank1">" . $resultFirst["name"] . "</p>
+							<p>" . $resultFirst["score"] . "pts</p>"
+                            ?>
 						</div>
 					</div>
 					<div id="highScoresList">
@@ -343,3 +345,5 @@ $resultScores = $conn->query($sql);
     </body> 
 
 </html>
+
+?>

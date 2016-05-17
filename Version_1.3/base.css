@@ -1,7 +1,7 @@
 /* Padding and border included in width and height */
 * {
     box-sizing: border-box;
-    font-family: Montserrat;
+    font-family: 'Helvetica';
 }
 
 /* Set Height and Width to Viewport Size */

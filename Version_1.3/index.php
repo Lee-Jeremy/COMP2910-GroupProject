@@ -1,3 +1,22 @@
+<?php
+$servername = "server31.000webhost.com";
+$username = "a4755161_team26";
+$password = "abc123";
+$dbname = "a4755161_scores";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sqlName = "SELECT name, scores FROM HighScores ORDER BY score DESC";
+$resultName = $conn->query($sql);
+
+$sqlScores = "SELECT scores FROM HighScores";
+$resultScores = $conn->query($sql);
+
 <!DOCTYPE html>
 <html lang="en">
     <head>

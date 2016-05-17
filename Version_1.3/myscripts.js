@@ -28,7 +28,6 @@ $(document).ready(function(){
                 quitConfirm();
         }
 	});
-
 	$("#buttonRight").click(function() {
 		switch (getId('buttonRightText').innerHTML) {
 		    case 'No': // Quit Confirm Overlay

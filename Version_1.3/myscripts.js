@@ -20,12 +20,14 @@ $(document).ready(function(){
             case 'End': // Pause Game
                 mainMenu();
                 break;
+            case 'Reset': // High Score Prompt
+                getId('nameForm').reset();
+                break;
             default: // Current Level and Play Again overlay
                 hideOverlay();
                 quitConfirm();
         }
 	});
-
 	$("#buttonRight").click(function() {
 		switch (getId('buttonRightText').innerHTML) {
 		    case 'No': // Quit Confirm Overlay
@@ -57,6 +59,9 @@ $(document).ready(function(){
                     showLevelOverlay();
                 }
                 break;
+            case 'Submit': // High Score Prompt
+                // Insert Submit Function
+                break;
             default: // Current Level Overlay
                 hideOverlay();
                 hideOverlayContainer();
@@ -64,7 +69,7 @@ $(document).ready(function(){
                 setTimeout(dealCards, 500);
         }
 	});
-    $("#back").click(function() { // Temporary function to prompt Quit screen on Back Button
+    $("#back").click(function() {
 		clearInterval(multTimer);
         fadePauseGame();
 	});
@@ -106,13 +111,18 @@ var firstRevealWave; // 1st set of card reveals
 var secondRevealWave; // 2nd set of card reveals 
 var thirdRevealWave; // 3rd set of card reveals 
 var flip = new Audio("sounds/flip.wav"); //sound clip for card flip
-var fail = new Audio("sounds/fail.wav"); //sound clip for failure
+var fail = new Audio("sounds/fail.wav"); //sound clip for game over
 var success = new Audio("sounds/success.wav"); //sound clip for success
+var wrong = new Audio("sounds/wrong.mp3"); //sound clip for wrong answer
 var easterEggCounter = 0; // Counter for easter egg
+var deal = new Audio("sounds/Dealing1.wav"); //sound clip for dealing
+var whoosh = new Audio("sounds/whoosh.wav"); //sound clip for card movement
+var click = new Audio("sounds/click.wav"); //sound clip for mouse click
 	
 // Deal the cards
 function dealCards() {
 	var interval;
+    deal.play();
 	$("#animationCard11").animate({ // Move to the answer card position and shrink
 			left: '71.1vw',
 			top: '67vh',
@@ -162,7 +172,9 @@ function dealCards() {
 			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#263545"; // Navy blue
 			getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
 		}
+        deal.pause();
 	}
+    
 	getId('eqCard2Back').style.backgroundColor = "#800000"; // Red
 	getId('eqCard2Back').style.border = "1px solid #000000"; // Solid black border
 	getId('eqCard4Back').style.backgroundColor = "#800000";	// Red
@@ -201,7 +213,7 @@ function hideAnimations() {
 
 // Level difficulty
 function setDifficulty() {
-	if (level < 10) {
+	if (level < 5) {
 		cardValueMin = 1;
 		cardValueMax = 10;
 		divisionCardValueMin = 1;
@@ -209,7 +221,7 @@ function setDifficulty() {
 		firstRevealWave = 2;
 		secondRevealWave = 4;
 		thirdRevealWave = 7;
-	} else if (level == 10) {
+	} else if (level == 5) {
 		cardValueMin = 1;
 		cardValueMax = 12;
 		divisionCardValueMin = 1;
@@ -218,7 +230,7 @@ function setDifficulty() {
 		secondRevealWave = 4;
 		thirdRevealWave = 7;
 		points = 50; // Increase the base amount of points per level
-	} else if (level == 20) {
+	} else if (level == 10) {
 		cardValueMin = -1;
 		cardValueMax = 15;
 		divisionCardValueMin = 1;
@@ -227,7 +239,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 7;
 		points = 75; // Increase base points
-	} else if (level == 30) {
+	} else if (level == 15) {
 		cardValueMin = -5;
 		cardValueMax = 25;
 		divisionCardValueMin = 1;
@@ -237,7 +249,7 @@ function setDifficulty() {
 		thirdRevealWave = 7;		
 		points = 100; 
 		multiplier = 5; // Unlock 5x multiplier
-	} else if (level == 40) { 
+	} else if (level == 20) { 
 		cardValueMin = -10;
 		cardValueMax = 50;
 		divisionCardValueMin = 1;
@@ -246,7 +258,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 6;
 		points = 250; 
-	} else if (level == 50) {
+	} else if (level == 25) {
 		cardValueMin = -10;
 		cardValueMax = 60;
 		divisionCardValueMin = 1;
@@ -255,7 +267,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 6;
 		points = 500; 
-	} else if (level == 60) {
+	} else if (level == 30) {
 		cardValueMin = -10;
 		cardValueMax = 70;
 		divisionCardValueMin = 1;
@@ -265,7 +277,7 @@ function setDifficulty() {
 		thirdRevealWave = 6;
 		points = 750; 
 		multiplier = 8; // Unlock 8x multiplier
-	} else if (level == 70) { 
+	} else if (level == 35) { 
 		cardValueMin = -10;
 		cardValueMax = 80;
 		divisionCardValueMin = -1;
@@ -274,7 +286,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 6;
 		points = 1000; 
-	} else if (level == 80) { 
+	} else if (level == 40) { 
 		cardValueMin = -10;
 		cardValueMax = 90;
 		divisionCardValueMin = -1;
@@ -283,7 +295,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 5;
 		points = 2000; 
-	} else if (level == 90) { 
+	} else if (level == 45) { 
 		cardValueMin = -10;
 		cardValueMax = 100;
 		divisionCardValueMin = -1;
@@ -292,7 +304,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 5;
 		points = 3000; 
-	} else if (level == 100) { 
+	} else if (level == 50) { 
 		cardValueMin = -20;
 		cardValueMax = 20;
 		divisionCardValueMin = -10;
@@ -302,15 +314,15 @@ function setDifficulty() {
 		thirdRevealWave = 5;
 		points = 5000; 
 		multiplier = 10; // Unlock 10x multiplier
-	} else if (level == 110) { 
+	} else if (level == 55) { 
 		points = 7500; 
-	} else if (level == 120) {  
+	} else if (level == 60) {  
 		points = 9000; 
-	} else if (level == 130) {  
+	} else if (level == 65) {  
 		points = 12000; 
-	} else if (level == 140) {  
+	} else if (level == 70) {  
 		points = 20000;		
-	} else if (level == 150) {  
+	} else if (level == 80) {  
 		points = 35000; 
 	}
 }
@@ -400,16 +412,6 @@ function fillMatrix() {
 	} 
 	// Assign 1st matrix card's frontside to 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]
 	insertValues(); 	
-}
-
-// Don't allow for duplicate values in the matrix
-function checkDuplicates(num) {
-	var i;
-	for (i = 0; i < matrix.length - 1; i++) {
-		while (matrix[x] == num) {
-			fillMatrix();		
-		}
-	}
 }
 
 // Copy the values from the matrix array to the front of each matrix card
@@ -541,6 +543,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey 
 		$("#" + rowCol + "Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed
 		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animate division visible
+        click.play();
 		$("#animationCard" + cardNum).animate({ // Change size and width of animate div to match equation card dimensions
 			left: '0vw',
 			top: '67vh',
@@ -551,11 +554,13 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); // Hide the animate division
+                flip.play();
 				$('#eqCard1').flip(true); // Flip the 1st equation card to its frontside
 				flip.play();
 			}
 		});
 	}		
+    whoosh.play();
 	if (count == 2 && numClicks == 1) { 
 		clearInterval(multTimer); // Stop the multiplier timer function
 		userSelection[1] = matrix[cardIndexNum]; 
@@ -564,6 +569,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); 
 		$("#" + rowCol + "Back").css("border-style", "dashed"); 
 		$("#animationCard" + cardNum).css("visibility", "visible"); 
+        click.play();
 		$("#animationCard" + cardNum).animate({ 
 			left: '41.4vw',
 			top: '67vh',
@@ -574,6 +580,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); 
+                flip.play();
 				$('#eqCard3').flip(true); // Flip the 3rd equation card to its frontside
 				flip.play();
 			}
@@ -635,7 +642,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
@@ -643,7 +650,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else if(operator === "multiplication") {
 		if ((first * second) == answer) {
@@ -651,7 +658,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else if(operator === "division") {
 		if ((first / second) == answer) {
@@ -659,7 +666,7 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            fail.play();
+            wrong.play();
 		}
 	} else {
 		alert('Unable to identify operator during checkEquation');	
@@ -672,7 +679,7 @@ function levelComplete() {
 	totalScore += pointsPerLevel; 
     level++; // Increases the level count after each play
     getId('passOrFailText').innerHTML = "Complete!";
-    if ((level % 11) === 0 && lives != 3) { // Adds a life every 10 levels
+    if ((level % 10) === 1 && lives != 3) { // Adds a life every 10 levels
 		lives++;
         setTimeout(gainingLife, 500);
         getId('gainedHeartText').style.display = "block";
@@ -682,7 +689,6 @@ function levelComplete() {
 	getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
     setTimeout(fadeLevelOverlay, 1000); // Delays showing the overlay after 1 seconds
-    easterEggCounter++; // Increment easter egg counter
 }
 
 // Failed to Complete the Equation
@@ -832,16 +838,16 @@ function updateGameStatistics() {
 	// Post score and set multiplier for next level in-game screen
 	getId('pointsText').innerHTML = totalScore + "Pts";
 	getId('hexagonText').innerHTML = level;
-	if (level < 30) {
+	if (level < 15) {
 		multiplier = 4;
 		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 30 && level < 60) {
+	} else if (level >= 15 && level < 30) {
 		multiplier = 5;
 		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 60 && level < 100) {
+	} else if (level >= 30 && level < 50) {
 		multiplier = 8;
 		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 100) {
+	} else if (level >= 50) {
 		multiplier = 10;
 		getId('multiplierText').innerHTML = "x" + multiplier;
 	}
@@ -950,6 +956,23 @@ function fadePlayAgain() {
     getId('normalScore').style.display = "none";
 }
 
+// High Score
+function highScore() {
+    fadeLevelOverlay();
+    getId('currentLevel').style.display = "none";
+    getId('passOrFail').style.display = "none";
+    getId('scoreMultiplied').style.display = "none";
+    getId('normalScore').style.display = "none";
+    getId('pointsDivider').style.display = "none";
+    getId('tutorialOrHearts').style.display = "none";
+    getId('congrats').style.display = "block";
+    getId('highScore').style.display = "block";
+    getId('enterName').style.display = "block";
+    getId('nameBoxContainer').style.display = "block";
+    getId('buttonLeftText').innerHTML = "Reset";
+    getId('buttonRightText').innerHTML = "Submit";
+}
+
 // Quit Confirm
 function quitConfirm() {
 	showOverlay();
@@ -1046,6 +1069,11 @@ function gainingLife() {
 			oneLife();
 			break;
     }
+}
+
+// Display Crown
+function displayCrown() {
+    getId('crown').style.display = "block";
 }
 
 // Increments the easter egg counter

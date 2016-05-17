@@ -1,7 +1,7 @@
 /* Padding and border included in width and height */
 * {
     box-sizing: border-box;
-    font-family: 'Helvetica';
+    font-family: Montserrat;
 }
 
 /* Set Height and Width to Viewport Size */
@@ -772,7 +772,7 @@ p#hexagonTextOverlay {
 	width: 100%;
 	z-index: 5;
 	background: #D7DADB; /* Grey */
-	visibility: visible;
+	display: none;
 }
 
 /* High Score Page Text Container */

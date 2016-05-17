@@ -5,17 +5,18 @@ $password = "JfXFBwKd8t";
 $dbname = "sql3119990";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysql_connect($servername, $username, $password);
+mysql_select_db($dbname);
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+//if ($conn->connect_error) {
+//    die("Connection failed: " . $conn->connect_error);
+//} 
 
 $sqlFirst = "SELECT name, score FROM HighScores ORDER BY score DESC LIMIT 1";
 $resultFirst = $conn->query($sqlFirst);
 
-$sqlRest = "SELECT name, score FROM HighScores ORDER BY score DESC LIMIT 9 OFFSET 1";
-$resultRest = $conn->query($sqlRest);
+//$sqlRest = "SELECT name, score FROM HighScores ORDER BY score DESC LIMIT 9 OFFSET 1";
+//$resultRest = $conn->query($sqlRest);
 
 <!DOCTYPE html>
 <html lang="en">

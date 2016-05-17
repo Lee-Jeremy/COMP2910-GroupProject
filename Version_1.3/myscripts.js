@@ -411,16 +411,6 @@ function fillMatrix() {
 	insertValues(); 	
 }
 
-// Don't allow for duplicate values in the matrix
-function checkDuplicates(num) {
-	var i;
-	for (i = 0; i < matrix.length - 1; i++) {
-		while (matrix[x] == num) {
-			fillMatrix();		
-		}
-	}
-}
-
 // Copy the values from the matrix array to the front of each matrix card
 function insertValues() {
 	var cell;

@@ -20,6 +20,11 @@
                         <img id="backImg" src="images/pause2.png" alt="pause"> <!-- Back Button -->
                     </div>
                 </div>
+                <div id="crown">
+                    <div id="crownImgContainer">
+                        <img id="crownImg" src="images/crown.png" alt="crown"> <!-- High Score Crown -->
+                    </div>
+                </div>
                 <div id="points">
                     <div id="pointsText" class="numbers">0Pts</div> <!-- Points -->
                 </div>
@@ -192,6 +197,14 @@
                 <!-- Level Overlay -->
                 <div id="levelOverlay">
                     <div id="levelOverlayBox">
+                        <div id="congrats">
+                            <p id="congratsText">Congratulations!</p>
+                        </div>
+                        
+                        <div id="highScore">
+                            <p id="highScoreText">High Score!</p>
+                        </div>
+
                         <div id="currentLevel">
                             <p id="levelText">Level</p>
                             <div id="hexagonOverlay">
@@ -209,21 +222,36 @@
                         <div id="scoreMultiplied">
                             <p id="scoreMultipliedText">25 pts x 0</p>
                         </div>
+
                         <div id="normalScore">
                             <p id="normalScoreText">0 pts</p>
                         </div>
-                        <hr>
+
+                        <hr id="pointsDivider">
+
                         <div id="totalPoints">
                             <p id="totalPointsText">Total 0 pts</p>
                         </div>
+
                         <div id="tutorialOrHearts">
                             <form id="tutorial">
                                 <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial"></p>
                             </form>
                             <p id="gainedHeartText" style="display: none; margin: 0"><img src="images/heartfull.png" id="heartGained"> Gained!</p>
                         </div>
+
                         <div id="playAgain">
                             <p id="playAgainText">PLAY AGAIN?</p>
+                        </div>
+
+                        <div id="enterName">
+                            <p id="enterNameText">Enter your name:</p>
+                        </div>
+
+                        <div id="nameBoxContainer">
+                            <form id="nameForm">
+                                <input type="text" name="nameBox" id="nameBox">
+                            </form>
                         </div>
                     </div>
                 </div> <!-- Level Overlay End -->

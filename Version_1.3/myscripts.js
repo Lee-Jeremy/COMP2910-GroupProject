@@ -554,7 +554,6 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); // Hide the animate division
-                flip.play();
 				$('#eqCard1').flip(true); // Flip the 1st equation card to its frontside
 				flip.play();
 			}
@@ -580,7 +579,6 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			setTimeout(hideAnimator, 450); 
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); 
-                flip.play();
 				$('#eqCard3').flip(true); // Flip the 3rd equation card to its frontside
 				flip.play();
 			}

@@ -1013,6 +1013,46 @@ function mainMenu() {
 	getId('buttonRightText').innerHTML = "Back";
 }
 
+//Changing the Hex Colour
+function hexColour() {
+	if ( level >= 5 && level < 10) {
+		getId('hexImg').src= "images/gray.png";
+		getId('hexImgOverlay').src= "images/gray.png";
+	}
+	else if ( level >= 10 && level < 15) {
+		getId('hexImg').src= "images/red.png";
+		getId('hexImgOverlay').src= "images/red.png";
+	}
+	else if ( level >= 15 && level < 20) {
+		getId('hexImg').src= "images/purple.png";
+		getId('hexImgOverlay').src= "images/purple.png";
+	}
+	else if ( level >= 20 && level < 25) {
+		getId('hexImg').src= "images/blue.png";
+		getId('hexImgOverlay').src= "images/blue.png";
+	}
+	else if ( level >= 25 && level < 30) {
+		getId('hexImg').src= "images/yellow.png";
+		getId('hexImgOverlay').src= "images/yellow.png";
+	}
+	else if ( level >= 30 && level < 35) {
+		getId('hexImg').src= "images/green.png";
+		getId('hexImgOverlay').src= "images/green.png";
+	}
+	else if ( level >= 35 && level < 40) {
+		getId('hexImg').src= "images/pink.png";
+		getId('hexImgOverlay').src= "images/pink.png";
+	}
+	else if ( level >= 40 && level < 45) {
+		getId('hexImg').src= "images/cyan.png";
+		getId('hexImgOverlay').src= "images/cyan.png";
+	}
+	else if ( level >= 50) {
+		getId('hexImg').src= "images/black.png";
+		getId('hexImgOverlay').src= "images/black.png";
+	}
+}
+
 // Full Lives
 function fullLives() {
     getId('hearts1').src= "images/heartfull.png";
@@ -1109,6 +1149,11 @@ function hexColour() {
 		getId('hexImg').src= "images/black.png";
 		getId('hexImgOverlay').src= "images/black.png";
 	}
+}
+
+// Display Crown
+function displayCrown() {
+    getId('crown').style.display = "block";
 }
 
 // Display Crown

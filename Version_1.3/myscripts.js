@@ -115,10 +115,14 @@ var fail = new Audio("sounds/fail.wav"); //sound clip for game over
 var success = new Audio("sounds/success.wav"); //sound clip for success
 var wrong = new Audio("sounds/wrong.mp3"); //sound clip for wrong answer
 var easterEggCounter = 0; // Counter for easter egg
+var deal = new Audio("sounds/Dealing1.wav"); //sound clip for dealing
+var whoosh = new Audio("sounds/whoosh.wav"); //sound clip for card movement
+var click = new Audio("sounds/click.wav"); //sound clip for mouse click
 	
 // Deal the cards
 function dealCards() {
 	var interval;
+    deal.play();
 	$("#animationCard11").animate({ // Move to the answer card position and shrink
 			left: '71.1vw',
 			top: '67vh',
@@ -168,7 +172,7 @@ function dealCards() {
 			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#263545"; // Navy blue
 			getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
 		}
-        
+        deal.pause();
 	}
     
 	getId('eqCard2Back').style.backgroundColor = "#800000"; // Red
@@ -539,6 +543,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey 
 		$("#" + rowCol + "Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed
 		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animate division visible
+        click.play();
 		$("#animationCard" + cardNum).animate({ // Change size and width of animate div to match equation card dimensions
 			left: '0vw',
 			top: '67vh',
@@ -554,6 +559,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			}
 		});
 	}		
+    whoosh.play();
 	if (count == 2 && numClicks == 1) { 
 		clearInterval(multTimer); // Stop the multiplier timer function
 		userSelection[1] = matrix[cardIndexNum]; 
@@ -562,6 +568,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); 
 		$("#" + rowCol + "Back").css("border-style", "dashed"); 
 		$("#animationCard" + cardNum).css("visibility", "visible"); 
+        click.play();
 		$("#animationCard" + cardNum).animate({ 
 			left: '41.4vw',
 			top: '67vh',

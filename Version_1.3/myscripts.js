@@ -967,6 +967,10 @@ function highScore() {
     getId('normalScore').style.display = "none";
     getId('pointsDivider').style.display = "none";
     getId('tutorialOrHearts').style.display = "none";
+    getId('congrats').style.display = "block";
+    getId('highScore').style.display = "block";
+    getId('enterName').style.display = "block";
+    getId('nameBoxContainer').style.display = "block";
     getId('buttonLeftText').innerHTML = "Reset";
     getId('buttonRightText').innerHTML = "Submit";
 }

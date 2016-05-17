@@ -60,7 +60,7 @@ $(document).ready(function(){
                     showLevelOverlay();
                 }
                 break;
-            case 'Submit': // Submit Screen
+            case 'Submit': // High Score Prompt
                 // Insert Submit Function
                 break;
             default: // Current Level Overlay
@@ -70,7 +70,7 @@ $(document).ready(function(){
                 setTimeout(dealCards, 500);
         }
 	});
-    $("#back").click(function() { // Temporary function to prompt Quit screen on Back Button
+    $("#back").click(function() {
 		clearInterval(multTimer);
         fadePauseGame();
 	});
@@ -840,16 +840,16 @@ function updateGameStatistics() {
 	// Post score and set multiplier for next level in-game screen
 	getId('pointsText').innerHTML = totalScore + "Pts";
 	getId('hexagonText').innerHTML = level;
-	if (level < 30) {
+	if (level < 15) {
 		multiplier = 4;
 		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 30 && level < 60) {
+	} else if (level >= 15 && level < 30) {
 		multiplier = 5;
 		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 60 && level < 100) {
+	} else if (level >= 30 && level < 50) {
 		multiplier = 8;
 		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 100) {
+	} else if (level >= 50) {
 		multiplier = 10;
 		getId('multiplierText').innerHTML = "x" + multiplier;
 	}

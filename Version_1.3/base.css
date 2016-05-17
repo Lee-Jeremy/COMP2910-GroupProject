@@ -61,6 +61,39 @@ body {
 	height: 100%;
 }
 
+/* Crown Container */
+
+#header
+#crown {
+	position: absolute;
+	left: 20%;
+	top: 10%;
+	width: 9%;
+	height: 8vmin;
+    display: none;
+}
+
+/* Crown Image Container */
+
+#header
+#crown
+#crownImgContainer {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+/* Crown Image */
+
+#header
+#crown
+#crownImgContainer
+#crownImg {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
 /* Points Container */
 #header
 #points {

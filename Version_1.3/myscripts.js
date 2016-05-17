@@ -210,7 +210,7 @@ function hideAnimations() {
 
 // Level difficulty
 function setDifficulty() {
-	if (level < 10) {
+	if (level < 5) {
 		cardValueMin = 1;
 		cardValueMax = 10;
 		divisionCardValueMin = 1;
@@ -218,7 +218,7 @@ function setDifficulty() {
 		firstRevealWave = 2;
 		secondRevealWave = 4;
 		thirdRevealWave = 7;
-	} else if (level == 10) {
+	} else if (level == 5) {
 		cardValueMin = 1;
 		cardValueMax = 12;
 		divisionCardValueMin = 1;
@@ -227,7 +227,7 @@ function setDifficulty() {
 		secondRevealWave = 4;
 		thirdRevealWave = 7;
 		points = 50; // Increase the base amount of points per level
-	} else if (level == 20) {
+	} else if (level == 10) {
 		cardValueMin = -1;
 		cardValueMax = 15;
 		divisionCardValueMin = 1;
@@ -236,7 +236,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 7;
 		points = 75; // Increase base points
-	} else if (level == 30) {
+	} else if (level == 15) {
 		cardValueMin = -5;
 		cardValueMax = 25;
 		divisionCardValueMin = 1;
@@ -246,7 +246,7 @@ function setDifficulty() {
 		thirdRevealWave = 7;		
 		points = 100; 
 		multiplier = 5; // Unlock 5x multiplier
-	} else if (level == 40) { 
+	} else if (level == 20) { 
 		cardValueMin = -10;
 		cardValueMax = 50;
 		divisionCardValueMin = 1;
@@ -255,7 +255,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 6;
 		points = 250; 
-	} else if (level == 50) {
+	} else if (level == 25) {
 		cardValueMin = -10;
 		cardValueMax = 60;
 		divisionCardValueMin = 1;
@@ -264,7 +264,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 6;
 		points = 500; 
-	} else if (level == 60) {
+	} else if (level == 30) {
 		cardValueMin = -10;
 		cardValueMax = 70;
 		divisionCardValueMin = 1;
@@ -274,7 +274,7 @@ function setDifficulty() {
 		thirdRevealWave = 6;
 		points = 750; 
 		multiplier = 8; // Unlock 8x multiplier
-	} else if (level == 70) { 
+	} else if (level == 35) { 
 		cardValueMin = -10;
 		cardValueMax = 80;
 		divisionCardValueMin = -1;
@@ -283,7 +283,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 6;
 		points = 1000; 
-	} else if (level == 80) { 
+	} else if (level == 40) { 
 		cardValueMin = -10;
 		cardValueMax = 90;
 		divisionCardValueMin = -1;
@@ -292,7 +292,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 5;
 		points = 2000; 
-	} else if (level == 90) { 
+	} else if (level == 45) { 
 		cardValueMin = -10;
 		cardValueMax = 100;
 		divisionCardValueMin = -1;
@@ -301,7 +301,7 @@ function setDifficulty() {
 		secondRevealWave = 3;
 		thirdRevealWave = 5;
 		points = 3000; 
-	} else if (level == 100) { 
+	} else if (level == 50) { 
 		cardValueMin = -20;
 		cardValueMax = 20;
 		divisionCardValueMin = -10;
@@ -311,15 +311,15 @@ function setDifficulty() {
 		thirdRevealWave = 5;
 		points = 5000; 
 		multiplier = 10; // Unlock 10x multiplier
-	} else if (level == 110) { 
+	} else if (level == 55) { 
 		points = 7500; 
-	} else if (level == 120) {  
+	} else if (level == 60) {  
 		points = 9000; 
-	} else if (level == 130) {  
+	} else if (level == 65) {  
 		points = 12000; 
-	} else if (level == 140) {  
+	} else if (level == 70) {  
 		points = 20000;		
-	} else if (level == 150) {  
+	} else if (level == 80) {  
 		points = 35000; 
 	}
 }
@@ -681,7 +681,7 @@ function levelComplete() {
 	totalScore += pointsPerLevel; 
     level++; // Increases the level count after each play
     getId('passOrFailText').innerHTML = "Complete!";
-    if ((level % 11) === 0 && lives != 3) { // Adds a life every 10 levels
+    if ((level % 10) === 1 && lives != 3) { // Adds a life every 10 levels
 		lives++;
         setTimeout(gainingLife, 500);
         getId('gainedHeartText').style.display = "block";
@@ -1067,6 +1067,11 @@ function gainingLife() {
 			oneLife();
 			break;
     }
+}
+
+// Display Crown
+function displayCrown() {
+    getId('crown').style.display = "block";
 }
 
 // Increments the easter egg counter

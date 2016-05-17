@@ -20,6 +20,9 @@ $(document).ready(function(){
             case 'End': // Pause Game
                 mainMenu();
                 break;
+            case 'Reset': // High Score Prompt
+                getId('nameForm').reset();
+                break;
             default: // Current Level and Play Again overlay
                 hideOverlay();
                 quitConfirm();
@@ -56,6 +59,9 @@ $(document).ready(function(){
                 } else {
                     showLevelOverlay();
                 }
+                break;
+            case 'Submit': // Submit Screen
+                // Insert Submit Function
                 break;
             default: // Current Level Overlay
                 hideOverlay();
@@ -950,6 +956,19 @@ function fadePlayAgain() {
     getId('playAgain').style.display = "block";
     getId('scoreMultiplied').style.display = "none";
     getId('normalScore').style.display = "none";
+}
+
+// High Score
+function highScore() {
+    fadeLevelOverlay();
+    getId('currentLevel').style.display = "none";
+    getId('passOrFail').style.display = "none";
+    getId('scoreMultiplied').style.display = "none";
+    getId('normalScore').style.display = "none";
+    getId('pointsDivider').style.display = "none";
+    getId('tutorialOrHearts').style.display = "none";
+    getId('buttonLeftText').innerHTML = "Reset";
+    getId('buttonRightText').innerHTML = "Submit";
 }
 
 // Quit Confirm

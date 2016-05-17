@@ -699,3 +699,33 @@ p#hexagonTextOverlay {
     font-weight: bold;
     font-size: 0.9em;
 }
+
+/* High Score Prompt Screen */
+
+#congrats {
+    display: none;
+    font-size: 1.35em;
+    font-weight: bold;
+    color: #006633;
+}
+
+#highScore {
+    display: none;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#enterName {
+    display: none;
+    font-size: 0.9em;
+}
+
+#nameBoxContainer {
+    display: none;
+}
+
+#nameBox {
+    width: 90%;
+    font-size: 0.85em;
+    text-align: center;
+}

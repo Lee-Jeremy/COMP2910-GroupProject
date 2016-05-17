@@ -772,7 +772,7 @@ p#hexagonTextOverlay {
 	width: 100%;
 	z-index: 5;
 	background: #D7DADB; /* Grey */
-	visibility: hidden;
+	visibility: visible;
 }
 
 /* High Score Page Text Container */
@@ -804,13 +804,13 @@ p#hexagonTextOverlay {
 #highScoresPointsLeader {
 	position: relative;
 	width: 100%;
-	height: 8%;
-	margin: 5% 0;
+	height: 10%;
+	margin: 5% 0%;
 	border: 2px solid #000000;
 	background: #C4273C; /* Magenta */
 }
 
-/* High Score Points Leader */
+/* High Score Points Leader Text */
 #highScoresPageContainer
 #highScoresPageTextContainer
 #highScoresPointsLeader
@@ -843,7 +843,7 @@ p:first-of-type {
 	margin: 0;
 	width: 35%;
 	height: 100%;
-	line-height: 175%;
+	line-height: 200%;
 	float: left;
 	text-align: left;
 	padding-left: 5%;
@@ -857,7 +857,7 @@ p:nth-of-type(2) {
 	position: relative;
 	width: 50%;
 	height: 100%;
-	line-height: 175%;
+	line-height: 200%;
 	float: left;
 	margin: 0;
 	text-align: right;
@@ -870,7 +870,7 @@ p:nth-of-type(2) {
 #highScoresList {
 	position: relative;
 	width: 100%;
-	height: 79%;
+	height: 77%;
 	background: #263545; /* Navy Blue */
 	border: 2px solid #000000;
 }
@@ -896,6 +896,7 @@ div > p {
 	margin: 0;
 	line-height: 250%;
 	color: #ffffff;
+	border: 1px solid #ffffff;
 }
 
 /* High Score Rows Numbers (2-10) */

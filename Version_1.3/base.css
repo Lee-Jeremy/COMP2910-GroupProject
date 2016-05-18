@@ -17,7 +17,6 @@ div.container {
 html, 
 body {
 	margin: 0;
-	font-size: 6vmin; /* Viewport minimum value. DO NOT CHANGE, WILL MESS UP SOME DIV'S! :D */
 	overflow: hidden;
 }
 
@@ -113,6 +112,7 @@ body {
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	font-size: 1.5em;
 }
 
 /* Mutiplier Container */
@@ -133,6 +133,7 @@ body {
 	position: absolute; 
 	width: 100%;
 	height: 100%;
+	font-size: 1.5em;
 	font-weight: bold;
 }
 
@@ -150,7 +151,7 @@ body {
 #header
 #hexagon
 #hexImg {
-	position: relative;
+	position: absolute;
 	width: 100%;
 	height: 100%;
 }
@@ -159,14 +160,15 @@ body {
 #header
 #hexagon
 #hexagonText {
-	position: relative;
+	position: absolute;
 	width: 100%;
 	height: 100%;
 	color: #ffffff;
+	vertical-align: middle;
 	font-weight: bold;
 	text-align: center;
-	top: -96.5%;
-	font-size: 180%;
+	font-size: 3em;
+	
 }
 
 /* Hearts Container*/
@@ -216,7 +218,7 @@ div > img {
 /* All Card Front's */
 .front{
 	border: 1px solid #000000; /* Black */
-	font-size: 8vmin;
+	font-size: 3em;
 }
 
 /* All Card Back's */
@@ -492,9 +494,28 @@ padding-top: 12.5%;
 
 #equation
 #eqCard2
-eqCard2Front.front {
-	background: green;
+#eqCard2Front, 
+#equation
+#eqCard2
+#eqCard2Front
+#eqCard2FrontText {
+	width: 100%;
+	height: 100%;
 }
+
+#equation
+#eqCard2
+#eqCard2Front
+#eqCard2FrontText
+#eqCard2FrontImg {
+	position: absolute;
+	width: 50%;
+	height: 40%;
+	top: 50%;
+	left: 25%;
+    transform: translateY(-50%);
+}
+
 /* Third Equation Card */
 #equation
 #eqCard3 {
@@ -560,7 +581,7 @@ div.fourth {
     position: absolute;
     height: 10%;
     width: 33.5%;
-    bottom: 27.5%;
+    bottom: 23.5%;
     left: 15%;
     z-index: 3;
     border: 2px solid white;
@@ -568,13 +589,14 @@ div.fourth {
     text-align: center;
     color: white;
     display: block;
+	font-size: 2em;
 }
 
 #buttonRight {
     position: absolute;
     height: 10%;
     width: 33.5%;
-    bottom: 27.5%;
+    bottom: 23.5%;
     left: 51.5%;
     z-index: 3;
     border: 2px solid white;
@@ -582,6 +604,7 @@ div.fourth {
     text-align: center;
     color: white;
     display: block;
+	font-size: 2em;
 }
 
 .overlayText {
@@ -607,13 +630,19 @@ div.fourth {
     display: none;
 }
 
+#quitOverlay
+.overlayText
+#quitText {
+	font-size: 1.75em;
+}
+
 /* Generic Level Overlay */
 #levelOverlay {
     position: relative;
-    height: 40%;
+    height: 50%;
     width: 70%;
     left: 15%;
-    top: 20%;
+    top: 15%;
     z-index: 3;
     border: 1px solid black;
     background-color:  #D7DADB;
@@ -637,22 +666,24 @@ div.fourth {
 /* Level One Overlay */
 #passOrFail {
     display: none;
-    font-size: 1.25em;
+    font-size: 2em;
     font-weight: bold;
     color: #006633;
 }
 
 #currentLevel {
-    font-size: 1.25em;
+    font-size: 2.25em;
     font-weight: bold;
+	color: #000000;
 }
 
 #scoreMultiplied {
-    font-size:  0.9em;
+    font-size:  1.5em;
+	color: #800000;
 }
 
 #normalScore {
-    font-size: 0.9em;
+    font-size: 2.25em;
 }
 
 hr {
@@ -665,7 +696,7 @@ hr {
 }
 
 #totalPoints {
-    font-size: 1.25em;
+    font-size: 2em;
     font-weight: bold;
 }
 
@@ -676,7 +707,8 @@ input[type="checkbox"] {
 }
 
 #tutorial {
-    font-size: 0.9em;
+    font-size: 1.25em;
+	color: #800000;
 }
 
 #tutorial p {
@@ -725,7 +757,7 @@ p#hexagonTextOverlay {
 #playAgain {
     display: none;
     font-weight: bold;
-    font-size: 0.9em;
+    font-size: 2em;
 }
 
 /* High Score Prompt Screen */
@@ -784,7 +816,7 @@ p#hexagonTextOverlay {
 #highScoresPageContainer
 #highScoresPageTextContainer {
 	position: relative;
-	font-size: 6vmin;
+	font-size: 1.4em;
 	height: 95%;
 	width: 90%;
 	top: 2.5%;
@@ -800,7 +832,7 @@ p#hexagonTextOverlay {
 	height: 8%;
 	text-align: center;
 	font-weight: bold;
-	font-size: 180%;
+	font-size: 2.25em;
 	font-weight: bold;
 	padding-left: 15%;
 }

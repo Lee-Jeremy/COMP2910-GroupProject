@@ -55,6 +55,7 @@ $(document).ready(function(){
 					getId('scoreMultipliedText').innerHTML = points + " pts x 0";
                     getId('hexagonTextOverlay').innerHTML = "1";
                     getId('passOrFail').style.display = "none";
+                    getId('passOrFail').style.color = "#006633";
                 } else {
                     showLevelOverlay();
                 }

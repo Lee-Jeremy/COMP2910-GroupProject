@@ -17,7 +17,7 @@ div.container {
 html, 
 body {
 	margin: 0;
-	font-size: 6vmin; /* Viewport minimum value. DO NOT CHANGE, WILL MESS UP SOME DIV'S! :D */
+	font-size: ; /* Viewport minimum value. DO NOT CHANGE, WILL MESS UP SOME DIV'S! :D */
 	overflow: hidden;
 }
 
@@ -69,7 +69,7 @@ body {
 	left: 20%;
 	top: 10%;
 	width: 9%;
-	height: 8vmin;
+	height: 20%;
     display: none;
 }
 
@@ -166,7 +166,7 @@ body {
 	font-weight: bold;
 	text-align: center;
 	top: -92.5%;
-	font-size: 180%;
+	font-size: 3em;
 }
 
 /* Hearts Container*/
@@ -215,7 +215,7 @@ div > img {
 /* All Card Front's */
 .front{
 	border: 1px solid #000000; /* Black */
-	font-size: 8vmin;
+	font-size: 3em;
 }
 
 /* All Card Back's */
@@ -491,9 +491,28 @@ padding-top: 12.5%;
 
 #equation
 #eqCard2
-eqCard2Front.front {
-	background: green;
+#eqCard2Front, 
+#equation
+#eqCard2
+#eqCard2Front
+#eqCard2FrontText {
+	width: 100%;
+	height: 100%;
 }
+
+#equation
+#eqCard2
+#eqCard2Front
+#eqCard2FrontText
+#eqCard2FrontImg {
+	position: absolute;
+	width: 50%;
+	height: 40%;
+	top: 50%;
+	left: 25%;
+    transform: translateY(-50%);
+}
+
 /* Third Equation Card */
 #equation
 #eqCard3 {
@@ -768,7 +787,6 @@ p#hexagonTextOverlay {
 	z-index: 5;
 	background: #D7DADB; /* Grey */
 	display: none;
-<<<<<<< HEAD
 }
 
 /* Back Button */
@@ -778,8 +796,6 @@ p#hexagonTextOverlay {
 	left: 2%;
 	height: 8.5%;
 	width: 14%;
-=======
->>>>>>> d53d063227e7fbdd960773fb21de33977543e7b1
 }
 
 /* High Score Page Text Container */

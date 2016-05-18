@@ -65,7 +65,7 @@ $(document).ready(function(){
                 scoreName = getId('nameBox').value;
                 break;
             default: // Current Level Overlay
-			var tenthScore = 0; // FOR TESTING PURPOSES IN THE HTML FILE
+			//var tenthScore = 0; // FOR TESTING PURPOSES IN THE HTML FILE
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
@@ -988,7 +988,7 @@ function highScore() {
 // Quit Confirm
 function quitConfirm() {
 	showOverlay();
-	getId('quitText').innerHTML = "Are you sure you<br>want to QUIT?";
+	getId('quitText').innerHTML = "Are you sure you want<br>to QUIT?";
 	getId('buttonLeftText').innerHTML = "Yes";
 	getId('buttonRightText').innerHTML = "No";
 }

@@ -3,10 +3,14 @@
 // Connects to the SQL server
 $conn = mysqli_connect("sql3.freesqldatabase.com", "sql3119990","JfXFBwKd8t") or
 	die(mysqli_connect_error());
+//$conn = mysqli_connect("sql9.000webhost.com", "a4755161_team26","team26") or
+//	die(mysqli_connect_error());
 
 // Selects the DB
 mysqli_select_db($conn, "sql3119990") or 
 	die(mysqli_error($conn));
+//mysqli_select_db($conn, "a4755161_scores") or 
+//	die(mysqli_error($conn));
 
 // PHP Query: grabs the values from the TABLE (both name and score columns) and stores into a variable    
 $sql = "SELECT name, score FROM HighScores ORDER BY score DESC";
@@ -43,7 +47,7 @@ while($row = mysqli_fetch_array($result)) {
             <div id="header" class="container">
                 <div id="back">
                     <div id="backImgContainer">
-                        <img id="backImg" src="images/pause2.png" alt="pause"> <!-- Back Button -->
+                        <img id="backImg" src="images/pause.png" alt="pause"> <!-- Back Button -->
                     </div>
                 </div>
                 <div id="crown">
@@ -58,13 +62,13 @@ while($row = mysqli_fetch_array($result)) {
                     <div id="multiplierText" class="numbers">x4</div> <!-- Multiplier -->
                 </div>
                 <div id="hexagon" onclick="easterEggTrigger()">
-                    <div id="hexImgContainer"><img id="hexImg" src="images/orange.png"></div> <!-- Hexagon -->
+                    <div id="hexImgContainer"><img id="hexImg" src="images/orange.png" alt="hexImg"></div> <!-- Hexagon -->
                     <div id="hexagonText">1</div>
                 </div>
                 <div id="hearts">
-                    <div class="hearts"><img src="images/heartfull.png" id="hearts1"></div><!-- Hearts -->
-                    <div class="hearts"><img src="images/heartfull.png" id="hearts2"></div>
-                    <div class="hearts"><img src="images/heartfull.png" id="hearts3"></div>
+                    <div class="hearts"><img src="images/heartfull.png" id="hearts1" alt="heart1"></div><!-- Hearts -->
+                    <div class="hearts"><img src="images/heartfull.png" id="hearts2" alt="heart2"></div>
+                    <div class="hearts"><img src="images/heartfull.png" id="hearts3" alt="heart3"></div>
                 </div>
             </div>
 
@@ -238,7 +242,7 @@ while($row = mysqli_fetch_array($result)) {
                             <div id="hexagonOverlay">
                                 <p id="hexagonTextOverlay">1</p>
                                 <div id="hexImgContainerOverlay">
-                                    <img id="hexImgOverlay" src="images/orange.png">
+                                    <img id="hexImgOverlay" src="images/orange.png" alt="hexImgOverlay">
                                 </div>
                             </div>
                         </div>
@@ -265,7 +269,7 @@ while($row = mysqli_fetch_array($result)) {
                             <form id="tutorial">
                                 <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial"></p>
                             </form>
-                            <p id="gainedHeartText" style="display: none; margin: 0"><img src="images/heartfull.png" id="heartGained"> Gained!</p>
+                            <p id="gainedHeartText" style="display: none; margin: 0"><img src="images/heartfull.png" id="heartGained" alt="heartFull"> Gained!</p>
                         </div>
 
                         <div id="playAgain">
@@ -277,7 +281,7 @@ while($row = mysqli_fetch_array($result)) {
                         </div>
 
                         <div id="nameBoxContainer">
-                            <form id="nameForm">
+                            <form id="nameForm" onsubmit="return false">
                                 <input type="text" name="nameBox" id="nameBox">
                             </form>
                         </div>

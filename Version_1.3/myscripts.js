@@ -62,7 +62,7 @@ $(document).ready(function(){
                 }
                 break;
             case 'Submit': // High Score Prompt
-                // Insert Submit Function
+                scoreName = getId('nameBox').value;
                 break;
             default: // Current Level Overlay
                 hideOverlay();
@@ -125,6 +125,7 @@ var easterEggCounter = 0; // Counter for easter egg
 var deal = new Audio("sounds/Dealing1.wav"); //sound clip for dealing
 var whoosh = new Audio("sounds/whoosh.wav"); //sound clip for card movement
 var click = new Audio("sounds/click.wav"); //sound clip for mouse click
+var scoreName = ""; // Stores the users input on the High Score prompt screen
 	
 // Deal the cards
 function dealCards() {

@@ -52,11 +52,11 @@ while($row = mysqli_fetch_array($result)) {
                 </div>
                 <div id="crown">
                     <div id="crownImgContainer">
-                        <img id="crownImg" src="images/crown.png" alt="crown"> <!-- High Score Crown -->
+                        <img id="crownImg" src="images/crown_transparent.png" alt="crown"> <!-- High Score Crown -->
                     </div>
                 </div>
                 <div id="points">
-                    <div id="pointsText" class="numbers">0 Pts</div> <!-- Points -->
+                    <div id="pointsText" class="numbers">0 pts</div> <!-- Points -->
                 </div>
                 <div id="multiplier">
                     <div id="multiplierText" class="numbers">x4</div> <!-- Multiplier -->

@@ -56,6 +56,7 @@ $(document).ready(function(){
                     getId('hexagonTextOverlay').innerHTML = "1";
                     getId('passOrFail').style.display = "none";
                     getId('passOrFail').style.color = "#006633";
+                    getId('pointsText').style.color = "white";
                 } else {
                     showLevelOverlay();
                 }
@@ -70,6 +71,7 @@ $(document).ready(function(){
                 hexColour();
                 if (totalScore >= tenthScore) {
                     displayCrown();
+                    getId('pointsText').style.color = "#c5b358";
                 }
                 setTimeout(dealCards, 500);
         }

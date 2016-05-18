@@ -36,8 +36,8 @@ body {
 #header
 #back {
 	position: absolute;
-	width: 15%;
-	height: 60%;
+	width: 11%;
+	height: 10vmin;
 	top: 7%;
 	left: 5%;
 }
@@ -140,15 +140,25 @@ body {
 #header
 #hexagon {
 	position: absolute;
-	top: 5%;
-	right: 2%;
-	width: 17.5%;
-	height: 65%;
+	top: 10%;
+	right: 5%;
+	width: 9%;
+	height: 8vmin;
+}
+
+/* Hexagon Image Container */
+#header
+#hexagon
+#hexImgContainer {
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
 
 /* Hexagon image */
 #header
 #hexagon
+#hexImgContainer
 #hexImg {
 	position: relative;
 	width: 100%;
@@ -165,8 +175,7 @@ body {
 	color: #ffffff;
 	font-weight: bold;
 	text-align: center;
-	top: -92.5%;
-	font-size: 180%;
+	top: -90%;
 }
 
 /* Hearts Container*/
@@ -692,8 +701,6 @@ input[type="checkbox"] {
 
 #hexImgOverlay {
     vertical-align: middle;
-	width: 15%;
-	height: 15%;
 }
 
 #hexagonTextOverlay {
@@ -765,16 +772,7 @@ p#hexagonTextOverlay {
 	width: 100%;
 	z-index: 5;
 	background: #D7DADB; /* Grey */
-	display: none;
-}
-
-/* Back Button */
-#highScoresPageContainer > img {
-	position: absolute;
-	top: 1%;
-	left: 2%;
-	height: 8.5%;
-	width: 14%;
+	display: block;
 }
 
 /* High Score Page Text Container */
@@ -796,10 +794,8 @@ p#hexagonTextOverlay {
 	width: 100%;
 	height: 8%;
 	text-align: center;
+	font-size: 12vmin;
 	font-weight: bold;
-	font-size: 180%;
-	font-weight: bold;
-	padding-left: 15%;
 }
 
 /* High Score Points Leader Container */

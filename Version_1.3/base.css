@@ -647,6 +647,7 @@ div.fourth {
     display: none;
     font-size: 1.25em;
     font-weight: bold;
+    color: #006633;
 }
 
 #currentLevel {
@@ -737,7 +738,7 @@ p#hexagonTextOverlay {
 
 #congrats {
     display: none;
-    font-size: 1.35em;
+    font-size: 1.3em;
     font-weight: bold;
     color: #006633;
 }
@@ -746,6 +747,7 @@ p#hexagonTextOverlay {
     display: none;
     font-size: 1.3em;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 #enterName {
@@ -772,7 +774,7 @@ p#hexagonTextOverlay {
 	width: 100%;
 	z-index: 5;
 	background: #D7DADB; /* Grey */
-	display: block;
+	display: none;
 }
 
 /* High Score Page Text Container */

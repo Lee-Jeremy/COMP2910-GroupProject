@@ -30,6 +30,9 @@ while($row = mysqli_fetch_array($result)) {
         <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
         <script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.20/dist/jquery.flip.min.js"></script>
+        <script type="text/javascript">
+            var tenthScore = <?php echo $scoreArray[9] ?>;
+        </script>
         <script src="myscripts.js"></script>
     </head>
     <body>

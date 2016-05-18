@@ -62,13 +62,13 @@ while($row = mysqli_fetch_array($result)) {
                     <div id="multiplierText" class="numbers">x4</div> <!-- Multiplier -->
                 </div>
                 <div id="hexagon" onclick="easterEggTrigger()">
-                    <div id="hexImgContainer"><img id="hexImg" src="images/orange.png"></div> <!-- Hexagon -->
+                    <div id="hexImgContainer"><img id="hexImg" src="images/orange.png" alt="hexImg"></div> <!-- Hexagon -->
                     <div id="hexagonText">1</div>
                 </div>
                 <div id="hearts">
-                    <div class="hearts"><img src="images/heartfull.png" id="hearts1"></div><!-- Hearts -->
-                    <div class="hearts"><img src="images/heartfull.png" id="hearts2"></div>
-                    <div class="hearts"><img src="images/heartfull.png" id="hearts3"></div>
+                    <div class="hearts"><img src="images/heartfull.png" id="hearts1" alt="heart1"></div><!-- Hearts -->
+                    <div class="hearts"><img src="images/heartfull.png" id="hearts2" alt="heart2"></div>
+                    <div class="hearts"><img src="images/heartfull.png" id="hearts3" alt="heart3"></div>
                 </div>
             </div>
 
@@ -242,7 +242,7 @@ while($row = mysqli_fetch_array($result)) {
                             <div id="hexagonOverlay">
                                 <p id="hexagonTextOverlay">1</p>
                                 <div id="hexImgContainerOverlay">
-                                    <img id="hexImgOverlay" src="images/orange.png">
+                                    <img id="hexImgOverlay" src="images/orange.png" alt="hexImgOverlay">
                                 </div>
                             </div>
                         </div>
@@ -269,7 +269,7 @@ while($row = mysqli_fetch_array($result)) {
                             <form id="tutorial">
                                 <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial"></p>
                             </form>
-                            <p id="gainedHeartText" style="display: none; margin: 0"><img src="images/heartfull.png" id="heartGained"> Gained!</p>
+                            <p id="gainedHeartText" style="display: none; margin: 0"><img src="images/heartfull.png" id="heartGained" alt="heartFull"> Gained!</p>
                         </div>
 
                         <div id="playAgain">
@@ -281,7 +281,7 @@ while($row = mysqli_fetch_array($result)) {
                         </div>
 
                         <div id="nameBoxContainer">
-                            <form id="nameForm">
+                            <form id="nameForm" onsubmit="return false">
                                 <input type="text" name="nameBox" id="nameBox">
                             </form>
                         </div>

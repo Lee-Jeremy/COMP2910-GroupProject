@@ -3,10 +3,14 @@
 // Connects to the SQL server
 $conn = mysqli_connect("sql3.freesqldatabase.com", "sql3119990","JfXFBwKd8t") or
 	die(mysqli_connect_error());
+//$conn = mysqli_connect("sql9.000webhost.com", "a4755161_team26","team26") or
+//	die(mysqli_connect_error());
 
 // Selects the DB
 mysqli_select_db($conn, "sql3119990") or 
 	die(mysqli_error($conn));
+//mysqli_select_db($conn, "a4755161_scores") or 
+//	die(mysqli_error($conn));
 
 // PHP Query: grabs the values from the TABLE (both name and score columns) and stores into a variable    
 $sql = "SELECT name, score FROM HighScores ORDER BY score DESC";

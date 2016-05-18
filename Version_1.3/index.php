@@ -56,7 +56,7 @@ while($row = mysqli_fetch_array($result)) {
                     </div>
                 </div>
                 <div id="points">
-                    <div id="pointsText" class="numbers">0Pts</div> <!-- Points -->
+                    <div id="pointsText" class="numbers">0 Pts</div> <!-- Points -->
                 </div>
                 <div id="multiplier">
                     <div id="multiplierText" class="numbers">x4</div> <!-- Multiplier -->

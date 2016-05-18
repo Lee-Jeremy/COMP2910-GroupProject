@@ -56,7 +56,7 @@ $(document).ready(function(){
                     getId('hexagonTextOverlay').innerHTML = "1";
                     getId('passOrFail').style.display = "none";
                     getId('passOrFail').style.color = "#006633";
-                    getId('pointsText').style.color = "white";
+                    getId('pointsText').style.color = "black";
                 } else {
                     showLevelOverlay();
                 }
@@ -846,7 +846,7 @@ function restack() {
 // Update Game Statistics
 function updateGameStatistics() {
 	// Post score and set multiplier for next level in-game screen
-	getId('pointsText').innerHTML = totalScore + "Pts";
+	getId('pointsText').innerHTML = totalScore + " pts";
 	getId('hexagonText').innerHTML = level;
 	if (level < 15) {
 		multiplier = 4;

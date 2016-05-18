@@ -1,16 +1,22 @@
 <?php
 
-$db = mysqli_connect("sql3.freesqldatabase.com", "sql3119990","JfXFBwKd8t") or
+// Connects to the SQL server
+$conn = mysqli_connect("sql3.freesqldatabase.com", "sql3119990","JfXFBwKd8t") or
 	die(mysqli_connect_error());
 
-mysqli_select_db($db, "HighScores") or 
-	die(mysqli_error($db));
-    
-//$sqlFirst = "SELECT name, score FROM HighScores ORDER BY score DESC LIMIT 1";
-//$resultFirst = $conn->query($sqlFirst);
+// Selects the DB
+mysqli_select_db($conn, "sql3119990") or 
+	die(mysqli_error($conn));
 
-//$sqlRest = "SELECT name, score FROM HighScores ORDER BY score DESC LIMIT 9 OFFSET 1";
-//$resultRest = $conn->query($sqlRest);
+// PHP Query: grabs the values from the TABLE (both name and score columns) and stores into a variable    
+$sql = "SELECT name, score FROM HighScores ORDER BY score DESC";
+$result = mysqli_query($conn, $sql);
+
+// Stores the values from the TABLE into an array
+while($row = mysqli_fetch_array($result)) {
+    $nameArray[] = $row['name'];
+    $scoreArray[] = $row['score'];    
+}
 
 ?>
 
@@ -21,6 +27,7 @@ mysqli_select_db($db, "HighScores") or
         <title>Mathemagics v2.0</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="base.css">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
         <script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.20/dist/jquery.flip.min.js"></script>
         <script src="myscripts.js"></script>
@@ -282,55 +289,55 @@ mysqli_select_db($db, "HighScores") or
 					<div id="highScoresPointsLeader">
 						<div id="highScoresPointsLeaderText">
 							<img src="images/crown.png" alt="crown">
-							<p id="rank1">Dude</p>
-							<p>1,000,000 pts</p>
+							<p id="rank1"><?php echo $nameArray[0]; ?> </p> <!-- Grabs the first value from the SQL name array -->
+							<p><?php echo $scoreArray[0]; ?> pts</p> <!-- Grabs the first value from the SQL score array -->
 						</div>
 					</div>
 					<div id="highScoresList">
 						<div>
 							<p id="rank2">2.</p>
-							<p>Keir</p>
-							<p>878,934 pts</p>
+							<p><?php echo $nameArray[1]; ?></p>
+							<p><?php echo $scoreArray[1]; ?> pts</p>
 						</div>
 						<div>
 							<p id="rank3">3.</p>
-							<p>Jeremy</p>
-							<p>804,126 pts</p>
+							<p><?php echo $nameArray[2]; ?></p>
+							<p><?php echo $scoreArray[2]; ?> pts</p>
 						</div>
 						<div>
 							<p id="rank4">4.</p>
-							<p>Luke</p>
-							<p>803,999 pts</p>
+							<p><?php echo $nameArray[3]; ?></p>
+							<p><?php echo $scoreArray[3]; ?> pts</p>
 						</div>
 						<div>
 							<p id="rank5">5.</p>
-							<p>Yannick</p>
-							<p>750,155 pts</p>
+							<p><?php echo $nameArray[4]; ?></p>
+							<p><?php echo $scoreArray[4]; ?> pts</p>
 						</div>
 						<div>
 							<p id="rank6">6.</p>
-							<p>Jeremy</p>
-							<p>746,199 pts</p>
+							<p><?php echo $nameArray[5]; ?></p>
+							<p><?php echo $scoreArray[5]; ?> pts</p>
 						</div>
 						<div>
 							<p id="rank7">7.</p>
-							<p>Rei</p>
-							<p>719,005 pts</p>
+							<p><?php echo $nameArray[6]; ?></p>
+							<p><?php echo $scoreArray[6]; ?> pts</p>
 						</div>
 						<div>
 							<p id="rank8">8.</p>
-							<p>Nobody</p>
-							<p>655,900 pts</p>
+							<p><?php echo $nameArray[7]; ?></p>
+							<p><?php echo $scoreArray[7]; ?> pts</p>
 						</div>
 						<div>
 							<p id="rank9">9.</p>
-							<p>King</p>
-							<p>419,225 pts</p>
+							<p><?php echo $nameArray[8]; ?></p>
+							<p><?php echo $scoreArray[8]; ?> pts</p>
 						</div>
 						<div>
 							<p id="rank10">10.</p>
-							<p>Dude2</p>
-							<p>178,000 pts</p>
+							<p><?php echo $nameArray[9]; ?></p>
+							<p><?php echo $scoreArray[9]; ?> pts</p>
 						</div>
 					</div>
 				</div>	

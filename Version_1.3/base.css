@@ -36,8 +36,8 @@ body {
 #header
 #back {
 	position: absolute;
-	width: 11%;
-	height: 10vmin;
+	width: 15%;
+	height: 60%;
 	top: 7%;
 	left: 5%;
 }
@@ -140,25 +140,15 @@ body {
 #header
 #hexagon {
 	position: absolute;
-	top: 10%;
-	right: 5%;
-	width: 9%;
-	height: 8vmin;
-}
-
-/* Hexagon Image Container */
-#header
-#hexagon
-#hexImgContainer {
-	position: relative;
-	width: 100%;
-	height: 100%;
+	top: 5%;
+	right: 2%;
+	width: 17.5%;
+	height: 65%;
 }
 
 /* Hexagon image */
 #header
 #hexagon
-#hexImgContainer
 #hexImg {
 	position: relative;
 	width: 100%;
@@ -175,7 +165,8 @@ body {
 	color: #ffffff;
 	font-weight: bold;
 	text-align: center;
-	top: -90%;
+	top: -92.5%;
+	font-size: 180%;
 }
 
 /* Hearts Container*/
@@ -701,6 +692,8 @@ input[type="checkbox"] {
 
 #hexImgOverlay {
     vertical-align: middle;
+	width: 15%;
+	height: 15%;
 }
 
 #hexagonTextOverlay {

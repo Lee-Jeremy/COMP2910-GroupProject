@@ -62,7 +62,7 @@ while($row = mysqli_fetch_array($result)) {
                     <div id="multiplierText" class="numbers">x4</div> <!-- Multiplier -->
                 </div>
                 <div id="hexagon" onclick="easterEggTrigger()">
-                    <div id="hexImgContainer"><img id="hexImg" src="images/orange.png" alt="hexImg"></div> <!-- Hexagon -->
+                    <img id="hexImg" src="images/orange.png" alt="hexImg"> <!-- Hexagon -->
                     <div id="hexagonText">1</div>
                 </div>
                 <div id="hearts">
@@ -181,7 +181,7 @@ while($row = mysqli_fetch_array($result)) {
                     <!-- Operator card -->
                     <div id="eqCard2Back" class="back"></div>
                     <div id="eqCard2Front" class="front">
-                        <div id="eqCard2FrontText" class="cardFrontText"></div> <!-- Text -->
+                        <div id="eqCard2FrontText" class="cardFrontText"><img id="eqCard2FrontImg" alt="operator"></div> <!-- Text -->
                     </div>
                 </div>
                 <div id="eqCard3" class="equationCards">

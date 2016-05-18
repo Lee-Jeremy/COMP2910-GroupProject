@@ -1,7 +1,7 @@
 /* Padding and border included in width and height */
 * {
     box-sizing: border-box;
-    font-family: Montserrat;
+    font-family: 'Helvetica';
 }
 
 /* Set Height and Width to Viewport Size */
@@ -36,8 +36,8 @@ body {
 #header
 #back {
 	position: absolute;
-	width: 15%;
-	height: 60%;
+	width: 11%;
+	height: 10vmin;
 	top: 7%;
 	left: 5%;
 }
@@ -140,15 +140,25 @@ body {
 #header
 #hexagon {
 	position: absolute;
-	top: 5%;
-	right: 2%;
-	width: 17.5%;
-	height: 65%;
+	top: 10%;
+	right: 5%;
+	width: 9%;
+	height: 8vmin;
+}
+
+/* Hexagon Image Container */
+#header
+#hexagon
+#hexImgContainer {
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
 
 /* Hexagon image */
 #header
 #hexagon
+#hexImgContainer
 #hexImg {
 	position: relative;
 	width: 100%;
@@ -165,8 +175,7 @@ body {
 	color: #ffffff;
 	font-weight: bold;
 	text-align: center;
-	top: -92.5%;
-	font-size: 180%;
+	top: -90%;
 }
 
 /* Hearts Container*/
@@ -638,7 +647,6 @@ div.fourth {
     display: none;
     font-size: 1.25em;
     font-weight: bold;
-    color: #006633;
 }
 
 #currentLevel {
@@ -693,8 +701,6 @@ input[type="checkbox"] {
 
 #hexImgOverlay {
     vertical-align: middle;
-	width: 15%;
-	height: 15%;
 }
 
 #hexagonTextOverlay {
@@ -731,7 +737,7 @@ p#hexagonTextOverlay {
 
 #congrats {
     display: none;
-    font-size: 1.3em;
+    font-size: 1.35em;
     font-weight: bold;
     color: #006633;
 }
@@ -740,7 +746,6 @@ p#hexagonTextOverlay {
     display: none;
     font-size: 1.3em;
     font-weight: bold;
-    margin-bottom: 5px;
 }
 
 #enterName {
@@ -767,19 +772,7 @@ p#hexagonTextOverlay {
 	width: 100%;
 	z-index: 5;
 	background: #D7DADB; /* Grey */
-	display: none;
-<<<<<<< HEAD
-}
-
-/* Back Button */
-#highScoresPageContainer > img {
-	position: absolute;
-	top: 1%;
-	left: 2%;
-	height: 8.5%;
-	width: 14%;
-=======
->>>>>>> d53d063227e7fbdd960773fb21de33977543e7b1
+	display: block;
 }
 
 /* High Score Page Text Container */
@@ -801,9 +794,8 @@ p#hexagonTextOverlay {
 	width: 100%;
 	height: 8%;
 	text-align: center;
-	font-size: 180%;
+	font-size: 12vmin;
 	font-weight: bold;
-	padding-left: 15%;
 }
 
 /* High Score Points Leader Container */
@@ -854,7 +846,7 @@ p:first-of-type {
 	line-height: 200%;
 	float: left;
 	text-align: left;
-	padding-left: 1.5%;
+	padding-left: 5%;
 }
 
 /* High Score Points Leader Score */
@@ -914,7 +906,7 @@ div > p {
 div > p:first-of-type {
 	width: 15%;
 	text-align: right;
-	padding-right: 2.5%;
+	padding-right: 5%;
 }
 
 /* High Score Rows Names (2-10) */
@@ -924,7 +916,7 @@ div > p:first-of-type {
 div > p:nth-of-type(2) {
 	width: 35%;
 	text-align: left;
-	padding-left: 3.5%;
+	padding-left: 7.5%;
 }
 
 /* High Score Rows Points (2-10) */

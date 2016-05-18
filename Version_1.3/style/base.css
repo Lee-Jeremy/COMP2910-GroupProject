@@ -772,7 +772,7 @@ p#hexagonTextOverlay {
 	width: 100%;
 	z-index: 5;
 	background: #D7DADB; /* Grey */
-	display: none;
+	display: block;
 }
 
 /* High Score Page Text Container */

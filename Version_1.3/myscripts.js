@@ -55,6 +55,8 @@ $(document).ready(function(){
 					getId('scoreMultipliedText').innerHTML = points + " pts x 0";
                     getId('hexagonTextOverlay').innerHTML = "1";
                     getId('passOrFail').style.display = "none";
+                    getId('passOrFail').style.color = "#006633";
+                    getId('pointsText').style.color = "white";
                 } else {
                     showLevelOverlay();
                 }
@@ -66,6 +68,11 @@ $(document).ready(function(){
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
+                hexColour();
+                if (totalScore >= tenthScore) {
+                    displayCrown();
+                    getId('pointsText').style.color = "#c5b358";
+                }
                 setTimeout(dealCards, 500);
         }
 	});
@@ -350,16 +357,16 @@ function myTimer() {
 // Multiplier timer
 function multiplierTimer() {
 	mSeconds++;
-	if (mSeconds == 2) {
+	if (mSeconds == 1) {
 		multiplier = 4;
 		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (mSeconds == 3) {
+	} else if (mSeconds == 2) {
 		multiplier = 3;
 		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (mSeconds == 4) {
+	} else if (mSeconds == 3) {
 		multiplier = 2;
 		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (mSeconds == 5) {
+	} else if (mSeconds == 4) {
 		multiplier = 1;
 		getId('multiplierText').innerHTML = "x" + multiplier;
 	} 
@@ -697,7 +704,11 @@ function levelFailed() {
 	revealAnswer();
 	setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
     if (lives === 0) { // Checks to see if the lives are 0 causing game over
-        setTimeout(fadePlayAgain, 2000)
+        if (totalScore >= tenthScore) {
+            setTimeout(highScore, 2000);
+        } else {
+            setTimeout(fadePlayAgain, 2000);
+        }
     } else { // If lives are not 0, reshuffle and redeal
         setTimeout(resetLevel, 2500);
         setTimeout(dealCards, 3500);
@@ -944,6 +955,7 @@ function playAgain() {
 function fadePlayAgain() {
     fadeLevelOverlay();
     getId('tutorial').style.display = "none";
+    getId('passOrFail').style.color = "#C4273C";
     getId('passOrFail').style.display = "block";
     getId('hexagonTextOverlay').innerHTML = level;
     getId('passOrFailText').innerHTML = "Failed!";
@@ -1008,6 +1020,46 @@ function mainMenu() {
     getId('quitText').innerHTML = "Go to the MAIN MENU?";
 	getId('buttonLeftText').innerHTML = "Yes";
 	getId('buttonRightText').innerHTML = "Back";
+}
+
+//Changing the Hex Colour
+function hexColour() {
+	if ( level >= 5 && level < 10) {
+		getId('hexImg').src= "images/gray.png";
+		getId('hexImgOverlay').src= "images/gray.png";
+	}
+	else if ( level >= 10 && level < 15) {
+		getId('hexImg').src= "images/red.png";
+		getId('hexImgOverlay').src= "images/red.png";
+	}
+	else if ( level >= 15 && level < 20) {
+		getId('hexImg').src= "images/purple.png";
+		getId('hexImgOverlay').src= "images/purple.png";
+	}
+	else if ( level >= 20 && level < 25) {
+		getId('hexImg').src= "images/blue.png";
+		getId('hexImgOverlay').src= "images/blue.png";
+	}
+	else if ( level >= 25 && level < 30) {
+		getId('hexImg').src= "images/yellow.png";
+		getId('hexImgOverlay').src= "images/yellow.png";
+	}
+	else if ( level >= 30 && level < 35) {
+		getId('hexImg').src= "images/green.png";
+		getId('hexImgOverlay').src= "images/green.png";
+	}
+	else if ( level >= 35 && level < 40) {
+		getId('hexImg').src= "images/pink.png";
+		getId('hexImgOverlay').src= "images/pink.png";
+	}
+	else if ( level >= 40 && level < 45) {
+		getId('hexImg').src= "images/cyan.png";
+		getId('hexImgOverlay').src= "images/cyan.png";
+	}
+	else if ( level >= 50) {
+		getId('hexImg').src= "images/black.png";
+		getId('hexImgOverlay').src= "images/black.png";
+	}
 }
 
 // Full Lives

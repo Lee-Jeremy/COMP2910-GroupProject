@@ -47,7 +47,7 @@ while($row = mysqli_fetch_array($result)) {
             <div id="header" class="container">
                 <div id="back">
                     <div id="backImgContainer">
-                        <img id="backImg" src="images/pause2.png" alt="pause"> <!-- Back Button -->
+                        <img id="backImg" src="images/pause.png" alt="pause"> <!-- Back Button -->
                     </div>
                 </div>
                 <div id="crown">

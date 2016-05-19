@@ -1,28 +1,27 @@
 /* Place the practice cards */
+var pracStacked = 1;
+
 function placePracCards() {
-    var pracStacked = 1;
-    switch (pracStacked) {
-    case 1:
-        $("#menuMain0").flip(false);
-        $("#menuMain2").flip(false);
-        for (i = 0; i < 4; i++) {
-            getId("aniPrac" + i).style.backgroundColor = "#800000";
-            getId("aniPrac" + i).style.border = "1px solid #000000";
+    if (pracStacked == 1) {
+        for (i = 0; i < 3; i++) {
+            $("#menuMain" + i).flip(false);
         }
-        throwAndFlip('#aniPrac0', 'menuPrac0', '+', "#800000", '-3%', '22.5vh', 0);
-        throwAndFlip('#aniPrac1', 'menuPrac1', '-', "#800000", '24%', '22.5vh', 0);
-        throwAndFlip('#aniPrac2', 'menuPrac2', '*', "#800000", '51%', '22.5vh', 0);
-        throwAndFlip('#aniPrac3', 'menuPrac3', '/', "#800000", '78%', '22.5vh', 0);
-        pracStacked = 0;
-        break;
-    case 0:
-        $("#menuMain0").flip(true);
-        $("#menuMain2").flip(true);
-        //flipAndStack('#aniPrac0', 'menuPrac0', "#D7DADB", '37.5%', '22.5vh', 0);
-        //flipAndStack('#aniPrac1', 'menuPrac1', "#D7DADB", '37.5%', '22.5vh', 0);
-        //flipAndStack('#aniPrac2', 'menuPrac2',"#D7DADB", '37.5%', '22.5vh', 0);
-        //flipAndStack('#aniPrac3', 'menuPrac3', "#D7DADB", '37.5%', '22.5vh', 0);
-        //pracStacked = 1;
-        break;
+        getId('menuMain1BackText').innerHTML = "Main Menu";
+        throwAndFlip('#aniPrac0', 'menuPrac0', '+', '-3%', '22.5vh', 0);
+        throwAndFlip('#aniPrac1', 'menuPrac1', '-', '24%', '22.5vh', 0);
+        throwAndFlip('#aniPrac2', 'menuPrac2', '*', '51%', '22.5vh', 0);
+        throwAndFlip('#aniPrac3', 'menuPrac3', '/', '78%', '22.5vh', 0);
+    }
+}
+
+function restackPracCards() {
+    if (pracStacked == 0) {
+        for (i = 0; i < 3; i++) {
+            $("#menuMain" + i).flip(true);
+        }
+        flipAndStack('#aniPrac0', 'menuPrac0', '37.5%', '0vh', 0);
+        flipAndStack('#aniPrac1', 'menuPrac1', '37.5%', '0vh', 0);
+        flipAndStack('#aniPrac2', 'menuPrac2', '37.5%', '0vh', 0);
+        flipAndStack('#aniPrac3', 'menuPrac3', '37.5%', '0vh', 0);
     }
 }

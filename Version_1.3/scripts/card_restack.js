@@ -1,15 +1,12 @@
-function flipAndStack(animationCard, menuCard, color, hrPosition, vrPosition, timeOut) {
+function flipAndStack(animationCard, menuCard, hrPosition, vrPosition, timeOut) {
     $('#' + menuCard).flip(false);
     setTimeout(function () {
         $(animationCard).css("visibility", "visible");
-    }, timeOut);
+    }, timeOut + 400);
     setTimeout(function () {
-        getId(menuCard + 'Back').style.backgroundColor = color;
-        getId(menuCard + 'Back').style.border = "none";
-        getId(menuCard + 'Front').style.backgroundColor = color;
-        getId(menuCard + 'Front').style.border = "none";
-        getId(menuCard + 'FrontText').innerHTML = "";
-    }, timeOut + 250);
+        $('#' + menuCard + 'Back').css("visibility", "hidden");
+        $('#' + menuCard + 'Front').css("visibility", "hidden");
+    }, timeOut + 200);
     setTimeout(function () {
         $(animationCard).animate({
             left: hrPosition,

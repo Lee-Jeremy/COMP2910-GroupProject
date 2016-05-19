@@ -81,10 +81,10 @@ $(document).ready(function(){
                 hideOverlayContainer();
                 resetLevel();
                 hexColour();
-                //if (totalScore >= tenthScore) {
-                //    displayCrown();
-                //    getId('pointsText').style.color = "#c5b358";
-                //}
+                if (totalScore >= tenthScore) {
+                    displayCrown();
+                    getId('pointsText').style.color = "#c5b358";
+                }
                 setTimeout(dealCards, 500);
         }
 	});

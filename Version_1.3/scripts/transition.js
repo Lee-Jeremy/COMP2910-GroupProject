@@ -1,13 +1,14 @@
-/**
-*
-*/
+$(document).ready(function () {
+
+});
+
 function switchScreen(menuSelected) {
     switch (menuSelected.substring(0, 9)) {
         case "menuMain0":
-            $("body").load("./index.php");
+            $("body").load("./playmode.php");
             break;
         case "menuMain2":
-            
+            $("body").load("./leaderboard.php");
             break;
         case "menuPrac0":
             

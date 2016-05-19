@@ -11,6 +11,9 @@ function placePracCards() {
         throwAndFlip('#aniPrac1', 'menuPrac1', '-', '24%', '22.5vh', 0);
         throwAndFlip('#aniPrac2', 'menuPrac2', '*', '51%', '22.5vh', 0);
         throwAndFlip('#aniPrac3', 'menuPrac3', '/', '78%', '22.5vh', 0);
+        setTimeout(function () {
+            pracStacked = 0}, 1000
+        );
     }
 }
 
@@ -23,5 +26,8 @@ function restackPracCards() {
         flipAndStack('#aniPrac1', 'menuPrac1', '37.5%', '0vh', 0);
         flipAndStack('#aniPrac2', 'menuPrac2', '37.5%', '0vh', 0);
         flipAndStack('#aniPrac3', 'menuPrac3', '37.5%', '0vh', 0);
+        setTimeout(function () {
+            pracStacked = 1}, 1000
+        );
     }
 }

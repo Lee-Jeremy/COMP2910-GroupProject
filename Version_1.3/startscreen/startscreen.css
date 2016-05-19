@@ -1,0 +1,200 @@
+/* Padding and border included in width and height */
+* {
+    box-sizing: border-box;
+    font-family: 'Helvetica';
+}
+
+/* Set Height and Width to Viewport Size */
+html, body, #startscreen, div.container {
+    height: 100%;
+    width: 100%;
+}
+
+/* HTML and Body specs */
+html, body {
+    margin: 0;
+    font-size: 6vmin; /* Viewport minimum value. DO NOT CHANGE, WILL FUCK UP SOME DIV'S! :D */
+    overflow: hidden;
+}
+
+/* Start Screen div */
+#startscreen {
+    padding-top: 25%;
+    background: #D7DADB;
+}
+
+/**** Title ****/
+/* Title Div */
+#title {
+    width: 90%;
+    height: 25%;
+    margin: auto;
+}
+
+/* Title Image */
+#title img {
+    width: 100%;
+}
+
+/**** All Cards ****/
+/* All Card Front's and Back's */
+.front, .back {
+    color: white;
+    text-align: center;
+    border-radius: 4%;
+}
+
+/* All Card Front's */
+.front {
+    font-size: 95%;
+}
+
+/**** Main Menu Cards ****/
+/* Main menu card div */
+#menuMain {
+    position: relative;
+    margin: auto;
+    height: 65%;
+    width: 90%;
+}
+
+/* All main menu cards */
+.mainCard {
+    position: absolute;
+    height: 32%;
+    width: 25%;
+    z-index: 2;
+    text-align: center;
+    float: left;
+}
+
+/* All main menu card backs */
+#menuMain .back {
+    padding-top: 12.5%;
+}
+
+/* All main menu card fronts' texts */
+.mainFrontText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Main menu card 1 */
+#menuMain0 {
+    left: 5%;
+}
+
+/* Main menu card 2 */
+#menuMain1 {
+    left: 12.5%;
+}
+
+/* Main menu card 3 */
+#menuMain2 {
+    left: 20%;
+}
+
+/* All main menu cells hover */
+/*#menuMain .front:hover {
+    background: #99b3ff;
+}*/
+
+/**** Practice Menu Cards ****/
+/* Practice menu card div */
+#menuPrac {
+    position: relative;
+    margin: auto;
+    height: 65%;
+    width: 90%;
+}
+
+/* All practice menu cards */
+.pracCard {
+    position: absolute;
+    height: 32%;
+    width: 25%;
+    text-align: center;
+    float: left;
+    border-radius: 4%;
+}
+
+#menuPrac .back {
+    padding-top: 12.5%;
+}
+
+/* All practice menu card fronts' texts */
+.pracFrontText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Practice menu card 1 */
+#menuPrac0 {
+    top: -60%;
+    left: -3%;
+}
+
+/* Practice menu card 2 */
+#menuPrac1 {
+    top: -60%;
+    left: -1%;
+}
+
+/* Practice menu card 3 */
+#menuPrac2 {
+    top: -60%;
+    left: 1%;
+}
+
+/* Practice menu card 4 */
+#menuPrac3 {
+    top: -60%;
+    left: 3%;
+}
+
+/* All practice menu cells hover */
+/*#menuPrac .front:hover {
+    background: #99b3ff;
+}*/
+
+/**** Animation Cards ****/
+/* All main menu animation cards */
+.aniMainCard {
+    position: absolute;
+    height: 32%;
+    width: 25%;
+    z-index: 1;
+    border-radius: 4%;
+    background: #263545; /* Navy blue */
+    border: 1px solid #000000;
+}
+
+/* All practice menu animation cards */
+.aniPracCard {
+    position: absolute;
+    height: 32%;
+    width: 25%;
+    z-index: 1;
+    border-radius: 4%;
+    left: 37.5%;
+}
+
+/* Main menu animation card 1*/
+#aniMain0 {
+    left: -100%;
+    top: -100%;
+}
+
+/* Main menu animation card 2 */
+#aniMain1 {
+    left: 30%;
+    top: -100%;
+}
+
+/* Main menu animation card 3 */
+#aniMain2 {
+    left: 200%;
+    top: -100%;
+}

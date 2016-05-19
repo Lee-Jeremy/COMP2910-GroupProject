@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Mathemagics Version 1.3</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../startscreen/startscreen.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.20/dist/jquery.flip.min.js"></script>
+        <script src="../startscreen/startscreen.js"></script>
+    </head>
+    <body>
+        <!-- Start Screen -->
+        <div id="startscreen">
+
+            <!-- Title -->
+            <div id="title" class="container">
+                <img src="../images/title.png" alt="Mathemagics">
+            </div>
+
+            <!-- Main Menu -->
+            <div id="menuMain" class="container">
+                <div id="menuMain0" class="mainCard" onclick="">
+                    <!-- 1st card --> <!-- 1st ROW -->
+                    <div id="menuMain0Back" class="back">
+                    </div>
+                    <div id="menuMain0Front" class="front">
+                        <div id="menuMain0FrontText" class="mainFrontText"></div> <!-- Text -->
+                    </div>
+                </div>
+                <div id="menuMain1" class="mainCard" onclick="dealPracticeCards()">
+                    <!-- 2nd card -->
+                    <div id="menuMain1Back" class="back">
+                    </div>
+                    <div id="menuMain1Front" class="front">
+                        <div id="menuMain1FrontText" class="mainFrontText"></div> <!-- Text -->
+                    </div>
+                </div>
+                <div id="menuMain2" class="mainCard" onclick="">
+                    <!-- 3rd card -->
+                    <div id="menuMain2Back" class="back">
+                    </div>
+                    <div id="menuMain2Front" class="front">
+                        <div id="menuMain2FrontText" class="mainFrontText"></div> <!-- Text -->
+                    </div>
+                </div>
+                <div id="aniMain0" class="aniMainCard"></div>
+                <div id="aniMain1" class="aniMainCard"></div>
+                <div id="aniMain2" class="aniMainCard"></div>
+                <div id="aniPrac0" class="aniPracCard"></div>
+                <div id="aniPrac1" class="aniPracCard"></div>
+                <div id="aniPrac2" class="aniPracCard"></div>
+                <div id="aniPrac3" class="aniPracCard"></div>
+            </div> <!-- Main Menu -->
+
+            <!-- Practice Menu -->
+            <div id="menuPrac" class="container">
+                <div id="menuPrac0" class="pracCard" onclick="">
+                    <div id="menuPrac0Back" class="back">
+                    </div>
+                    <div id="menuPrac0Front" class="front">
+                        <div id="menuPrac0FrontText" class="pracFrontText"></div>
+                    </div>
+                </div>
+                <div id="menuPrac1" class="pracCard" onclick="">
+                    <div id="menuPrac1Back" class="back">
+                    </div>
+                    <div id="menuPrac1Front" class="front">
+                        <div id="menuPrac1FrontText" class="pracFrontText"></div>
+                    </div>
+                </div>
+                <div id="menuPrac2" class="pracCard" onclick="">
+                    <div id="menuPrac2Back" class="back">
+                    </div>
+                    <div id="menuPrac2Front" class="front">
+                        <div id="menuPrac2FrontText" class="pracFrontText"></div>
+                    </div>
+                </div>
+                <div id="menuPrac3" class="pracCard" onclick="">
+                    <div id="menuPrac3Back" class="back">
+                    </div>
+                    <div id="menuPrac3Front" class="front">
+                        <div id="menuPrac3FrontText" class="pracFrontText"></div>
+                    </div>
+                </div>
+            </div> <!-- Practice Menu -->
+        </div> <!-- Start Screen -->
+    </body>
+
+</html>

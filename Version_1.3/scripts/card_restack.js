@@ -1,3 +1,6 @@
+/** 
+ * Flips the cards and stacks them
+ */
 function flipAndStack(animationCard, menuCard, hrPosition, vrPosition, timeOut) {
     $('#' + menuCard).flip(false);
     setTimeout(function () {

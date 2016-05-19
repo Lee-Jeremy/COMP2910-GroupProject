@@ -1,3 +1,6 @@
+/**
+ * Transitions
+ */
 $(document).ready(function () {
 
 });

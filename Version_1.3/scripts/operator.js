@@ -4,16 +4,16 @@
 function revealOperator() {
 	switch (operator) {
 		case "addition":
-			getId('eqCard2FrontText').innerHTML = "+"; // Frontside of operator card
+			getId('eqCard2FrontImg').src = "images/addition.png"; // Frontside of operator card
 			break;
 		case "subtraction":
-			getId('eqCard2FrontText').innerHTML = "-";
+			getId('eqCard2FrontImg').src = "images/subtraction.png";
 			break;
 		case "multiplication":
-			getId('eqCard2FrontText').innerHTML = "x";
+			getId('eqCard2FrontImg').src = "images/multiplication.png";
 			break;
 		case "division":
-			getId('eqCard2FrontText').innerHTML = "/";
+			getId('eqCard2FrontImg').src = "images/division.png";
 			break;
 		default:
 			alert("Unable to indentify an operator during revealOperator");

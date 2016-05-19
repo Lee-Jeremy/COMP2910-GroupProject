@@ -1,4 +1,6 @@
-/* Place the practice cards */
+/** 
+ * Place the practice cards 
+ */
 var pracStacked = 1;
 
 function placePracCards() {

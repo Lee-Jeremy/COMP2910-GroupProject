@@ -4,7 +4,7 @@
 function switchScreen(menuSelected) {
     switch (menuSelected.substring(0, 9)) {
         case "menuMain0":
-            $("body").load("./index.html");
+            $("body").load("./index.php");
             break;
         case "menuMain2":
             

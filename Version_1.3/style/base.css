@@ -1,7 +1,7 @@
 /* Padding and border included in width and height */
 * {
     box-sizing: border-box;
-    font-family: 'Helvetica';
+    font-family: Montserrat;
 }
 
 /* Set Height and Width to Viewport Size */
@@ -17,7 +17,6 @@ div.container {
 html, 
 body {
 	margin: 0;
-	font-size: 6vmin; /* Viewport minimum value. DO NOT CHANGE, WILL MESS UP SOME DIV'S! :D */
 	overflow: hidden;
 }
 
@@ -36,8 +35,8 @@ body {
 #header
 #back {
 	position: absolute;
-	width: 11%;
-	height: 10vmin;
+	width: 15%;
+	height: 60%;
 	top: 7%;
 	left: 5%;
 }
@@ -66,10 +65,10 @@ body {
 #header
 #crown {
 	position: absolute;
-	left: 20%;
-	top: 10%;
-	width: 9%;
-	height: 8vmin;
+	left: 21.5%;
+	top: 15%;
+	width: 7%;
+	height: 6vmin;
     display: none;
 }
 
@@ -113,6 +112,7 @@ body {
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	font-size: 1.5em;
 }
 
 /* Mutiplier Container */
@@ -133,6 +133,7 @@ body {
 	position: absolute; 
 	width: 100%;
 	height: 100%;
+	font-size: 1.5em;
 	font-weight: bold;
 }
 
@@ -140,27 +141,17 @@ body {
 #header
 #hexagon {
 	position: absolute;
-	top: 10%;
-	right: 5%;
-	width: 9%;
-	height: 8vmin;
-}
-
-/* Hexagon Image Container */
-#header
-#hexagon
-#hexImgContainer {
-	position: relative;
-	width: 100%;
-	height: 100%;
+	top: 5%;
+	right: 2%;
+	width: 17.5%;
+	height: 65%;
 }
 
 /* Hexagon image */
 #header
 #hexagon
-#hexImgContainer
 #hexImg {
-	position: relative;
+	position: absolute;
 	width: 100%;
 	height: 100%;
 }
@@ -170,12 +161,12 @@ body {
 #hexagon
 #hexagonText {
 	position: relative;
-	width: 100%;
-	height: 100%;
 	color: #ffffff;
 	font-weight: bold;
 	text-align: center;
-	top: -90%;
+	font-size: 3em;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 /* Hearts Container*/
@@ -195,6 +186,7 @@ body {
 	float: left;
 	height: 100%;
 	width: 33.33%;
+    padding: 1px;
 }
 
 /* All Heart Images */
@@ -224,7 +216,7 @@ div > img {
 /* All Card Front's */
 .front{
 	border: 1px solid #000000; /* Black */
-	font-size: 8vmin;
+	font-size: 3em;
 }
 
 /* All Card Back's */
@@ -500,9 +492,28 @@ padding-top: 12.5%;
 
 #equation
 #eqCard2
-eqCard2Front.front {
-	background: green;
+#eqCard2Front, 
+#equation
+#eqCard2
+#eqCard2Front
+#eqCard2FrontText {
+	width: 100%;
+	height: 100%;
 }
+
+#equation
+#eqCard2
+#eqCard2Front
+#eqCard2FrontText
+#eqCard2FrontImg {
+	position: absolute;
+	width: 50%;
+	height: 40%;
+	top: 50%;
+	left: 25%;
+    transform: translateY(-50%);
+}
+
 /* Third Equation Card */
 #equation
 #eqCard3 {
@@ -568,7 +579,7 @@ div.fourth {
     position: absolute;
     height: 10%;
     width: 33.5%;
-    bottom: 27.5%;
+    bottom: 23.5%;
     left: 15%;
     z-index: 3;
     border: 2px solid white;
@@ -576,13 +587,14 @@ div.fourth {
     text-align: center;
     color: white;
     display: block;
+	font-size: 2em;
 }
 
 #buttonRight {
     position: absolute;
     height: 10%;
     width: 33.5%;
-    bottom: 27.5%;
+    bottom: 23.5%;
     left: 51.5%;
     z-index: 3;
     border: 2px solid white;
@@ -590,6 +602,7 @@ div.fourth {
     text-align: center;
     color: white;
     display: block;
+	font-size: 2em;
 }
 
 .overlayText {
@@ -615,13 +628,19 @@ div.fourth {
     display: none;
 }
 
+#quitOverlay
+.overlayText
+#quitText {
+	font-size: 1.75em;
+}
+
 /* Generic Level Overlay */
 #levelOverlay {
     position: relative;
-    height: 40%;
+    height: 50%;
     width: 70%;
     left: 15%;
-    top: 20%;
+    top: 15%;
     z-index: 3;
     border: 1px solid black;
     background-color:  #D7DADB;
@@ -645,21 +664,24 @@ div.fourth {
 /* Level One Overlay */
 #passOrFail {
     display: none;
-    font-size: 1.25em;
+    font-size: 2em;
     font-weight: bold;
+    color: #006633;
 }
 
 #currentLevel {
-    font-size: 1.25em;
+    font-size: 2.25em;
     font-weight: bold;
+	color: #000000;
 }
 
 #scoreMultiplied {
-    font-size:  0.9em;
+    font-size:  1.5em;
+	color: #800000;
 }
 
 #normalScore {
-    font-size: 0.9em;
+    font-size: 2.25em;
 }
 
 hr {
@@ -672,7 +694,7 @@ hr {
 }
 
 #totalPoints {
-    font-size: 1.25em;
+    font-size: 2em;
     font-weight: bold;
 }
 
@@ -683,7 +705,8 @@ input[type="checkbox"] {
 }
 
 #tutorial {
-    font-size: 0.9em;
+    font-size: 1.25em;
+	color: #800000;
 }
 
 #tutorial p {
@@ -701,6 +724,8 @@ input[type="checkbox"] {
 
 #hexImgOverlay {
     vertical-align: middle;
+	width: 15%;
+	height: 15%;
 }
 
 #hexagonTextOverlay {
@@ -730,14 +755,14 @@ p#hexagonTextOverlay {
 #playAgain {
     display: none;
     font-weight: bold;
-    font-size: 0.9em;
+    font-size: 2em;
 }
 
 /* High Score Prompt Screen */
 
 #congrats {
     display: none;
-    font-size: 1.35em;
+    font-size: 1.3em;
     font-weight: bold;
     color: #006633;
 }
@@ -746,6 +771,7 @@ p#hexagonTextOverlay {
     display: none;
     font-size: 1.3em;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 #enterName {
@@ -772,14 +798,22 @@ p#hexagonTextOverlay {
 	width: 100%;
 	z-index: 5;
 	background: #D7DADB; /* Grey */
-	display: block;
+}
+
+/* Back Button */
+#highScoresPageContainer > img {
+	position: absolute;
+	top: 1%;
+	left: 2%;
+	height: 8.5%;
+	width: 14%;
 }
 
 /* High Score Page Text Container */
 #highScoresPageContainer
 #highScoresPageTextContainer {
 	position: relative;
-	font-size: 6vmin;
+	font-size: 1.25em;
 	height: 95%;
 	width: 90%;
 	top: 2.5%;
@@ -794,8 +828,10 @@ p#hexagonTextOverlay {
 	width: 100%;
 	height: 8%;
 	text-align: center;
-	font-size: 12vmin;
 	font-weight: bold;
+	font-size: 2em;
+	font-weight: bold;
+	padding-left: 15%;
 }
 
 /* High Score Points Leader Container */
@@ -846,7 +882,7 @@ p:first-of-type {
 	line-height: 200%;
 	float: left;
 	text-align: left;
-	padding-left: 5%;
+	padding-left: 1.5%;
 }
 
 /* High Score Points Leader Score */
@@ -906,7 +942,7 @@ div > p {
 div > p:first-of-type {
 	width: 15%;
 	text-align: right;
-	padding-right: 5%;
+	padding-right: 2.5%;
 }
 
 /* High Score Rows Names (2-10) */
@@ -916,7 +952,7 @@ div > p:first-of-type {
 div > p:nth-of-type(2) {
 	width: 35%;
 	text-align: left;
-	padding-left: 7.5%;
+	padding-left: 3.5%;
 }
 
 /* High Score Rows Points (2-10) */

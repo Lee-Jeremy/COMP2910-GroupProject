@@ -2,20 +2,19 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Mathemagics Version 1.3</title>
+        <title>Mathemagics v2.0</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="./style/startscreen.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet" type="text/css">
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
         <script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.20/dist/jquery.flip.min.js"></script>
-        <script src="./scripts/globals.js"></script>
         <script src="./scripts/startscreen.js"></script>
+        <script src="./scripts/transition.js"></script>
+        <script src="./scripts/globals.js"></script>
         <script src="./scripts/menu_main.js"></script>
         <script src="./scripts/menu_practice.js"></script>
         <script src="./scripts/card_place.js"></script>
-        <script src="./scripts/card_restack.js"></script>
-        <script src="./scripts/transition.js"></script>
+        <script src="./scripts/card_restack.js"></script>       
     </head>
     <body>
         <!-- Start Screen Wrapper -->

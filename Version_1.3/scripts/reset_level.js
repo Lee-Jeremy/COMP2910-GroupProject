@@ -84,7 +84,7 @@ function restack() {
  */
 function updateGameStatistics() {
 	// Post score and set multiplier for next level in-game screen
-	getId('pointsText').innerHTML = totalScore + "Pts";
+	getId('pointsText').innerHTML = totalScore + " pts";
 	getId('hexagonText').innerHTML = level;
 	if (level < 15) {
 		multiplier = 4;

@@ -107,6 +107,7 @@ function playAgain() {
 function fadePlayAgain() {
     fadeLevelOverlay();
     getId('tutorial').style.display = "none";
+    getId('passOrFail').style.color = "#C4273C";
     getId('passOrFail').style.display = "block";
     getId('hexagonTextOverlay').innerHTML = level;
     getId('passOrFailText').innerHTML = "Failed!";
@@ -141,7 +142,7 @@ function highScore() {
  */
 function quitConfirm() {
 	showOverlay();
-	getId('quitText').innerHTML = "Are you sure you<br>want to QUIT?";
+	getId('quitText').innerHTML = "Are you sure you want<br>to QUIT?";
 	getId('buttonLeftText').innerHTML = "Yes";
 	getId('buttonRightText').innerHTML = "No";
 }

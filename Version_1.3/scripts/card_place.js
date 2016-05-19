@@ -1,12 +1,6 @@
-/* Abbreviated getElementByID */
-function getId(id) {
-    var element = document.getElementById(id);
-    if (element == null) {
-        alert('Programmer error: ' + id + ' does not exist.');
-    }
-    return element;
-}
-
+/** 
+ * Throws the cards and flips them
+ */
 function throwAndFlip(animationCard, menuCard, text, hrPosition, vrPosition, timeOut) {
     setTimeout(function () {
         $(animationCard).css("visibility", "visible");

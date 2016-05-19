@@ -2,8 +2,7 @@
  * Right button on the screen overlay's
  */
 $(document).ready(function(){ 
-	$("#buttonRight").click(function() {
-		switch (getId('buttonRightText').innerHTML) {
+	switch (getId('buttonRightText').innerHTML) {
 		    case 'No': // Quit Confirm Overlay
                 if (lives === 0) {
                     playAgain();
@@ -29,17 +28,36 @@ $(document).ready(function(){
 					getId('scoreMultipliedText').innerHTML = points + " pts x 0";
                     getId('hexagonTextOverlay').innerHTML = "1";
                     getId('passOrFail').style.display = "none";
+                    getId('passOrFail').style.color = "#006633";
+                    getId('pointsText').style.color = "black";
                 } else {
                     showLevelOverlay();
                 }
                 break;
             case 'Submit': // High Score Prompt
-                // Insert Submit Function
+                var nameInput = getId('nameBox').value;
+                var scoreInput = totalScore;
+                
+                if (nameInput == "" || scoreInput == 0 || scoreInput < tenthScore) {
+                    break;
+                } else {
+                    $.post("index.php",
+                    {
+                        newNameInput: nameInput,
+                        newTotalScore: scoreInput
+                    });
+                }
                 break;
             default: // Current Level Overlay
+			//var tenthScore = 0; // FOR TESTING PURPOSES IN THE HTML FILE
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
+                hexColour();
+                if (totalScore >= tenthScore) {
+                    displayCrown();
+                    getId('pointsText').style.color = "#c5b358";
+                }
                 setTimeout(dealCards, 500);
         }
 	});

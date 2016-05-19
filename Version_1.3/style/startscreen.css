@@ -1,7 +1,7 @@
 /* Padding and border included in width and height */
 * {
     box-sizing: border-box;
-    font-family: 'Helvetica';
+    font-family: Montserrat;
 }
 
 /* Set Height and Width to Viewport Size */
@@ -47,7 +47,7 @@ html, body {
 
 /* All Card Front's */
 .front {
-    font-size: 120%;
+    font-size: 100%;
 }
 
 /**** Main Menu Cards ****/
@@ -71,7 +71,6 @@ html, body {
 
 /* All main menu card backs */
 #menuMain .back {
-    padding-top: 12.5%;
 }
 
 /* All main menu card fronts' texts */
@@ -81,19 +80,71 @@ html, body {
     transform: translateY(-50%);
 }
 
-/* Main menu card 1 */
+/* All main menu card backs' texts */
+.mainBackText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/**** Main menu card 1 ****/
+/* Main menu card 1 div */
 #menuMain0 {
     left: 5%;
 }
 
-/* Main menu card 2 */
+/* Main menu card 1 back */
+#menuMain0Back {
+    visibility: hidden;
+    background-color: #263545;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 1 front */
+#menuMain0Front {
+    visibility: hidden;
+    background-color: #263545;
+    border: 1px solid #000000;
+}
+
+/**** Main menu card 2 ****/
+/* Main menu card 2 div */
 #menuMain1 {
     left: 12.5%;
 }
 
+/* Main menu card 2 back */
+#menuMain1Back {
+    visibility: hidden;
+    background-color: #263545;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 2 front */
+#menuMain1Front {
+    visibility: hidden;
+    background-color: #263545;
+    border: 1px solid #000000;
+}
+
+/**** Main menu card 2 ****/
 /* Main menu card 3 */
 #menuMain2 {
     left: 20%;
+}
+
+/* Main menu card 3 back */
+#menuMain2Back {
+    visibility: hidden;
+    background-color: #800000;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 3 front */
+#menuMain2Front {
+    visibility: hidden;
+    background-color: #800000;
+    border: 1px solid #000000;
 }
 
 /* All main menu cells hover */
@@ -121,7 +172,15 @@ html, body {
 }
 
 #menuPrac .back {
-    padding-top: 12.5%;
+    visibility: hidden;
+    background-color: #800000;
+    border: 1px solid #000000;
+}
+
+#menuPrac .front {
+    visibility: hidden;
+    background-color: #800000;
+    border: 1px solid #000000;
 }
 
 /* All practice menu card fronts' texts */
@@ -163,6 +222,7 @@ html, body {
 /**** Animation Cards ****/
 /* All main menu animation cards */
 .aniMainCard {
+    visibility: hidden;
     position: absolute;
     height: 32%;
     width: 25%;
@@ -193,10 +253,13 @@ html, body {
 
 /* All practice menu animation cards */
 .aniPracCard {
+    visibility: hidden;
     position: absolute;
     height: 32%;
     width: 25%;
     z-index: 1;
     border-radius: 4%;
     left: 37.5%;
+    background-color: #800000;
+    border: 1px solid #000000;
 }

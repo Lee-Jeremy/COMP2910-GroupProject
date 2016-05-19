@@ -7,21 +7,19 @@ function getId(id) {
     return element;
 }
 
-function throwAndFlip(animationCard, menuCard, text, color, hrPosition, vrPosition, timeOut) {
+function throwAndFlip(animationCard, menuCard, text, hrPosition, vrPosition, timeOut) {
     setTimeout(function () {
+        $(animationCard).css("visibility", "visible");
         $(animationCard).animate({
             left: hrPosition,
             top: vrPosition
         }, 250);
     }, timeOut);
     setTimeout(function () {
-        getId(menuCard + 'Back').style.backgroundColor = color;
-        getId(menuCard + 'Back').style.border = "1px solid #000000";
-        getId(menuCard + 'Front').style.backgroundColor = color;
-        getId(menuCard + 'Front').style.border = "1px solid #000000";
+        $('#' + menuCard + 'Back').css("visibility", "visible");
+        $('#' + menuCard + 'Front').css("visibility", "visible");
         getId(menuCard + 'FrontText').innerHTML = text;
-        //getId(menuCard + 'FrontText').style.fontSize = "x-large";
-    }, timeOut + 250);
+    }, timeOut + 350);
     setTimeout(function () {
         $(animationCard).css("visibility", "hidden");
         $('#' + menuCard).flip(true);

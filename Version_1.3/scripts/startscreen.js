@@ -17,6 +17,8 @@ $(document).ready(function () {
         var target = event.target.id;
         if (target.substring(0, 14) == "menuMain1Front") {
             placePracCards();
+        } else if (target.substring(0, 13) == "menuMain1Back") {
+            restackPracCards();
         } else if (target.substring(9, 14) == "Front") {
             switchScreen(target);
         }

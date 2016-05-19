@@ -55,7 +55,7 @@ die(mysqli_error($conn));
         <script type="text/javascript">
             var tenthScore = <?php echo $scoreArray[9] ?>;
         </script>
-        <script src="myscripts.js"></script>
+        <script src="./backup/myscripts.js"></script>
     </head>
     <body>
         <!--- Wrapper --->

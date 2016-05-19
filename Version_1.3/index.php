@@ -3,7 +3,7 @@
 // Connects to the SQL server
 $conn = mysqli_connect("sql3.freesqldatabase.com", "sql3119990","JfXFBwKd8t") or
 	die(mysqli_connect_error());
-//$conn = mysqli_connect("sql9.000webhost.com", "a4755161_team26","team26") or
+//$conn = mysqli_connect("mysql9.000webhost.com", "a4755161_team26","team26") or
 //	die(mysqli_connect_error());
 
 // Selects the DB

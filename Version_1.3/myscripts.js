@@ -62,7 +62,18 @@ $(document).ready(function(){
                 }
                 break;
             case 'Submit': // High Score Prompt
-                scoreName = getId('nameBox').value;
+                var nameInput = getId('nameBox').value;
+                var scoreInput = totalScore;
+                
+                if (nameInput == "" || scoreInput == 0 || scoreInput < tenthScore) {
+                    break;
+                } else {
+                    $.post("index.php",
+                    {
+                        newNameInput: nameInput,
+                        newTotalScore: scoreInput
+                    });
+                }
                 break;
             default: // Current Level Overlay
 			//var tenthScore = 0; // FOR TESTING PURPOSES IN THE HTML FILE
@@ -126,7 +137,6 @@ var easterEggCounter = 0; // Counter for easter egg
 var deal = new Audio("sounds/Dealing1.wav"); //sound clip for dealing
 var whoosh = new Audio("sounds/whoosh.wav"); //sound clip for card movement
 var click = new Audio("sounds/click.wav"); //sound clip for mouse click
-var scoreName = ""; // Stores the users input on the High Score prompt screen
 	
 // Deal the cards
 function dealCards() {

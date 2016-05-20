@@ -1,11 +1,15 @@
 /**
  * Left button on the screen overlay's
  */
-$(document).ready(function(){ 
-	$("#buttonLeft").click(function() { 
+$(document).ready(function () {
+    $("#buttonLeft").click(function () {
         switch (getId('buttonLeftText').innerHTML) {
             case 'Yes': // Quit Confirm overlay
-                window.location.href = './startscreen.php';
+                if (totalScore > tenthScore) {
+                    highScore();
+                } else {
+                    window.location.href = './startscreen.php';
+                }
                 break;
             case 'End': // Pause Game
                 mainMenu();
@@ -17,5 +21,5 @@ $(document).ready(function(){
                 hideOverlay();
                 quitConfirm();
         }
-	});
+    });
 });

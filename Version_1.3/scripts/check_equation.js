@@ -72,8 +72,8 @@ function levelFailed() {
 	revealAnswer();
 	setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
     if (lives === 0) { // Checks to see if the lives are 0 causing game over
-        if (totalScore >= tenthScore) {
-            setTimeout(highScore, 2000);
+        if (totalScore > tenthScore) {
+            setTimeout(fadeHighScore, 2000);
         } else {
             setTimeout(fadePlayAgain, 2000);
         }

@@ -49,7 +49,7 @@ function levelComplete() {
 	totalScore += pointsPerLevel; // Total points earned since level 1
     level++; // Increases the level count after each play
     getId('passOrFailText').innerHTML = "Complete!";
-    if ((level % 10) === 1 && lives != 3) { // Adds a life every 10 levels
+    if ((level % 5) === 1 && lives != 3) { // Adds a life every 10 levels
 		lives++;
         setTimeout(gainingLife, 500);
         getId('gainedHeartText').style.display = "block";

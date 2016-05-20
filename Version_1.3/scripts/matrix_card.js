@@ -1,21 +1,28 @@
 /**
- * Reveal Matrix Card
+ * Fly and Flip the user selected Matrix Card 
+ *
+ * @param rowCol 
+ *				The matrix card's ID
+ * @param cardIndexNum
+ *				The matrix card's index number in the matrix array
+ * @param cardNum
+ *				The matrix card's number (1-9)
  */
 function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
-	if (seconds == 0) {
-		incrementClicks(cardNum);
+	if (seconds == 0) { // Prevent the user from selecting a card before all introduction reveals finish
+		incrementClicks(cardNum); // Determine which matrix card th user selected
 	}
-	if (seconds == 0 && numClicks == 1) { // Prevent the user from flipping a card before all reveals finish
-		count++; 					   // and from flipping the same card twice 
+	if (seconds == 0 && numClicks == 1) { // Prevent the user from selecting a card before all introduction reveals finish
+		count++; 					   	  // and from selecting the same card twice 
 	}	
-	if (count == 1 && numClicks == 1) {
-		userSelection[0] = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 1st index in the user selection array
-		getId('eqCard1FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 1st equation card
-        getId(rowCol + 'Img').src = "images/egg_empty.png"; // Removes the easter egg from the card's back
-		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey 
-		$("#" + rowCol + "Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed
-		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animate division visible
-        click.play();
+	if (count == 1 && numClicks == 1) { // The first card selected by the user
+		userSelection[0] = matrix[cardIndexNum]; // Copy the selected matrix card value to the 1st index in the user selection array
+		getId('eqCard1FrontText').innerHTML = matrix[cardIndexNum]; // Copy the selected matrix card value to the 1st equation card
+        getId(rowCol + 'Img').src = "images/egg_empty.png"; // Removes the easter egg from the card's back (if activated)
+		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey (Hide the card)
+		$("#" + rowCol + "Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed 
+		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animation card visible
+        click.play(); // Click sound
 		$("#animationCard" + cardNum).animate({ // Change size and width of animate div to match equation card dimensions
 			left: '0vw',
 			top: '67vh',
@@ -60,7 +67,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 }
 
 /**
- * Get the corresponding matrix card clicks variable to increment
+ * Get the corresponding matrix card "clicks variable" to increment
  */
 function incrementClicks(cardNum) {
 	switch (cardNum) {

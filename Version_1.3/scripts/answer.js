@@ -1,5 +1,5 @@
 /**
- * Reveal Answer
+ * Flip the answer card to its frontside
  */
 function revealAnswer() {
 	var cell = getId('eqCard4FrontText'); // Frontside of the answer card	
@@ -9,7 +9,7 @@ function revealAnswer() {
 }
 
 /**
- * Hide Answer
+ * Flip the answer card to its backside 
  */
 function hideAnswer() {
 	$("#eqCard4").flip(false); // Flip the answer card to its backside

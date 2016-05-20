@@ -42,7 +42,7 @@ function fillMatrix() {
 			num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
 			while (num == matrix[0] || num == matrix[1] || num == matrix[2] || num == matrix[3] || num == matrix[4] 
 			|| num == matrix[5] || num == matrix[6] || num == matrix[7] || num == matrix[8]) {
-				num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
+				num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
 			}
 		matrix[i] = num;
 		}

@@ -1,5 +1,5 @@
 /**
- * Place the menu cards 
+ * Makes the main menu cards fly down to locations and flips in sequence
  */
 function placeMenuCards() {
     throwAndFlip('#aniMain0', 'menuMain0', 'Play', '4.5vw', '0vh', 0);

@@ -1,12 +1,12 @@
 /**
- * Hide Overlay Container
+ * Hides all overlay containers using the fadeOut jQuery effect
  */
 function hideOverlayContainer() {
     $("#overlayContainer").fadeOut();
 }
  
 /**
- * Show Overlay
+ * Shows the quitOverlay container and its buttons by changing their display to "block"
  */
 function showOverlay() {
     getId('overlayContainer').style.display = "block";
@@ -16,7 +16,7 @@ function showOverlay() {
 }
  
 /**
- * Fade Overlay
+ * Fades in the quitOverlay container and its buttons by changing their display to "block"
  */
 function fadeOverlay() {
     $("#overlayContainer").fadeIn();
@@ -26,7 +26,7 @@ function fadeOverlay() {
 }
  
 /**
- * Hide Overlay
+ * Hides all overlay containers by changing their display to "none"
  */
 function hideOverlay() {
     getId('levelOverlay').style.display = "none";
@@ -37,14 +37,14 @@ function hideOverlay() {
 }
  
 /**
- * Show Current Level Overlay
+ * Shows the current level overlay; changes the contents depending on if its the first level
  */
 function showLevelOverlay() {
     hideOverlay();
-	if (level != 1) {
+	if (level != 1) { // If level is not 1, display appropriate level overlay
 		getId('tutorial').style.display = "none";
 		getId('passOrFail').style.display = "block";
-		getId('hexagonTextOverlay').innerHTML = level - 1; // Increments the level after each play
+		getId('hexagonTextOverlay').innerHTML = level - 1;
 	} 
 	getId('overlayContainer').style.display = "block";
 	getId('levelOverlay').style.display = "block";
@@ -60,7 +60,7 @@ function showLevelOverlay() {
 }
  
 /**
- * Fade Current Level Overlay
+ * Fades in the level overlay using the jQuery effect
  */
 function fadeLevelOverlay() {
     hideOverlay();
@@ -86,7 +86,7 @@ function fadeLevelOverlay() {
 }
  
 /**
- * Play Again
+ * Updates the levelOverlay by displaying appropriate content for when the user loses
  */
 function playAgain() {
     showLevelOverlay();
@@ -102,7 +102,7 @@ function playAgain() {
 }
  
 /**
- * Fade Play Again
+ * Updates and fades in the levelOverlay and displays content appropriate for when the user loses
  */
 function fadePlayAgain() {
     fadeLevelOverlay();
@@ -119,7 +119,7 @@ function fadePlayAgain() {
 }
  
 /**
- * High Score
+ * Updates and displays the levelOverlay with content appropriate for when the user reaches a high score
  */
 function highScore() {
     hideOverlay();
@@ -139,7 +139,7 @@ function highScore() {
 }
 
 /**
- * Fade high Score
+ * Updates and fades in the levelOverlay with content appropaite for when the user reaches a high score
  */
 function fadeHighScore() {
     hideOverlay();
@@ -159,7 +159,7 @@ function fadeHighScore() {
 }
 
 /**
- * Quit Confirm
+ * Displays the overlay for quit confirmation
  */
 function quitConfirm() {
 	showOverlay();
@@ -169,10 +169,12 @@ function quitConfirm() {
 }
 
 /**
- * Fade Pause Game
+ * Fades in an overlay for when the user pauses the game; 
+ * prevents pausing after second card is selected &
+ * before all introductory reveals are finised
  */
 function fadePauseGame() {
-    if (seconds == 0 && count <= 1) {
+    if (seconds == 0 && count <= 1) { // Determines the boundaries pausing (reveals and card selection respectively)
         hideOverlay();
         fadeOverlay();
 	    getId('quitText').innerHTML = "Game is PAUSED.";
@@ -182,10 +184,12 @@ function fadePauseGame() {
 }
  
 /**
- * Pause Game
+ * Displays an overlay for when the user pauses the game; 
+ * prevents pausing after second card is selected &
+ * before all introductory reveals are finised
  */
 function pauseGame() {
-    if (seconds == 0 && count <= 1) {
+    if (seconds == 0 && count <= 1) { // Determines the boundaries pausing (reveals and card selection respectively)
         hideOverlay();
         showOverlay();
 	    getId('quitText').innerHTML = "Game is PAUSED.";
@@ -195,7 +199,7 @@ function pauseGame() {
 }
  
 /**
- * Main Menu
+ * Shows the overlay to go to the Main Menu
  */
 function mainMenu() {
     hideOverlay();
@@ -206,7 +210,7 @@ function mainMenu() {
 }
 
 /**
- * Incorrect Input
+ * Updates the highScore contents to warn the user of incorrect input
  */
 function incorrectInput() {
     showLevelOverlay();

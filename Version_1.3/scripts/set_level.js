@@ -27,26 +27,24 @@ function generateOperator() {
 function fillMatrix() {
 	var i;
 	var num;
-	if (operator === "division") { // For division equations
+	if (operator === "division") { 
 		for (i = 0; i < matrix.length; i++) {
 			num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
-			// Don't allow duplicate values in the matrix
 			while (num == matrix[0] || num == matrix[1] || num == matrix[2] || num == matrix[3] || num == matrix[4] 
 			|| num == matrix[5] || num == matrix[6] || num == matrix[7] || num == matrix[8]) {
 				num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
 			}
-		matrix[i] = num; // Place num into the matrix array
+		matrix[i] = num;
 		}
 	}
-	if (operator !== "division") {	// For addition, subtraction, and multiplication equations
+	if (operator !== "division") {	
 		for (i = 0; i < matrix.length; i++) { 
 			num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
-			// Don't allow duplicate values in the matrix
 			while (num == matrix[0] || num == matrix[1] || num == matrix[2] || num == matrix[3] || num == matrix[4] 
 			|| num == matrix[5] || num == matrix[6] || num == matrix[7] || num == matrix[8]) {
 				num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
 			}
-		matrix[i] = num; // Place num into the matrix array
+		matrix[i] = num;
 		}
 	} 
 	// Assign 1st matrix card's frontside to 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]
@@ -87,8 +85,7 @@ function generateAnswer() {
 		answer = (matrix[num1] * matrix[num2]); 
 	} else if(operator === "division") {
 		checkCombinations(); // Ensure the matrix holds at least one combination of cards with a 0 remainder answer
-		// Don't allow for a floating point answer and an answer of 2
-		while (matrix[num1] % matrix[num2] != 0 || matrix[num1] / matrix[num2] == 2 || num1 == num2) {
+		while (matrix[num1] % matrix[num2] != 0 || num1 == num2) {
 			num1 = Math.floor(Math.random() * 9); 
 			num2 = Math.floor(Math.random() * 9); 	
 		}		
@@ -114,7 +111,7 @@ function checkCombinations() {
 			}
 		}
 	}
-	while (numCombinations) { 
+	while (numCombinations == 0) { 
 		fillMatrix(); // If no combinations exist, re-fill the matrix with new values
 		checkCombinations(); // Check again for combinations
 	}

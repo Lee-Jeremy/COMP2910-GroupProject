@@ -617,10 +617,10 @@ div.fourth {
 
 #quitOverlay {
     position: relative;
-    height: 40%;
+    height: 50%;
     width: 70%;
     left: 15%;
-    top: 20%;
+    top: 15%;
     z-index: 3;
     border: 1px solid black;
     background-color:  #D7DADB;
@@ -762,21 +762,21 @@ p#hexagonTextOverlay {
 
 #congrats {
     display: none;
-    font-size: 1.3em;
+    font-size: 1.8em;
     font-weight: bold;
     color: #006633;
 }
 
 #highScore {
     display: none;
-    font-size: 1.3em;
+    font-size: 1.7em;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
 #enterName {
     display: none;
-    font-size: 0.9em;
+    font-size: 1.2em;
 }
 
 #nameBoxContainer {
@@ -785,7 +785,7 @@ p#hexagonTextOverlay {
 
 #nameBox {
     width: 90%;
-    font-size: 0.85em;
+    font-size: 1.5em;
     text-align: center;
 }
 
@@ -807,6 +807,7 @@ p#hexagonTextOverlay {
 	left: 2%;
 	height: 8.5%;
 	width: 14%;
+    z-index: 1;
 }
 
 /* High Score Page Text Container */
@@ -831,7 +832,7 @@ p#hexagonTextOverlay {
 	font-weight: bold;
 	font-size: 2em;
 	font-weight: bold;
-	padding-left: 15%;
+	margin-left: 15%;
 }
 
 /* High Score Points Leader Container */

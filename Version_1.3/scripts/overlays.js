@@ -142,7 +142,7 @@ function highScore() {
  */
 function quitConfirm() {
 	showOverlay();
-	getId('quitText').innerHTML = "Are you sure you want<br>to QUIT?";
+	getId('quitText').innerHTML = "Are you sure you<br>want to QUIT?";
 	getId('buttonLeftText').innerHTML = "Yes";
 	getId('buttonRightText').innerHTML = "No";
 }

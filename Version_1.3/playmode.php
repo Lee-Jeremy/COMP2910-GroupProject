@@ -1,8 +1,6 @@
 <?php
-
 include('config.php');
 include('functions.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +16,30 @@ include('functions.php');
         <script type="text/javascript">
             var tenthScore = <?php echo $scoreArray[9] ?>;
         </script>
-        <script src="myscripts.js"></script>
+        <script src="./scripts/answer.js"></script>
+        <script src="./scripts/answer_cards.js"></script>
+        <script src="./scripts/back_button.js"></script>
+        <script src="./scripts/check_equation.js"></script>
+        <script src="./scripts/crown.js"></script>
+        <script src="./scripts/deal_cards.js"></script>
+        <script src="./scripts/easter_egg.js"></script>
+        <script src="./scripts/flip.js"></script>
+        <script src="./scripts/get_id.js"></script>
+        <script src="./scripts/globals.js"></script>
+        <script src="./scripts/hexagon.js"></script>
+        <script src="./scripts/hide_animations.js"></script>
+        <script src="./scripts/left_button.js"></script>
+        <script src="./scripts/lives.js"></script>
+        <script src="./scripts/matrix.js"></script>
+        <script src="./scripts/matrix_card.js"></script>
+        <script src="./scripts/multiplier_timer.js"></script>
+        <script src="./scripts/operator.js"></script>
+        <script src="./scripts/overlays.js"></script>
+        <script src="./scripts/reset_level.js"></script>
+        <script src="./scripts/right_button.js"></script>
+        <script src="./scripts/set_difficulty.js"></script>
+        <script src="./scripts/set_level.js"></script>
+        <script src="./scripts/timer.js"></script>
     </head>
     <body>
         <!--- Wrapper --->
@@ -263,7 +284,7 @@ include('functions.php');
 
                         <div id="nameBoxContainer">
                             <form id="nameForm" onsubmit="return false">
-                                <input type="text" name="nameBox" id="nameBox">
+                                <input type="text" name="nameBox" id="nameBox" maxlength="7">
                             </form>
                         </div>
                     </div>

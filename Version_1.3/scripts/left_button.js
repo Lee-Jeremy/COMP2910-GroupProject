@@ -5,7 +5,7 @@ $(document).ready(function(){
 	$("#buttonLeft").click(function() { 
         switch (getId('buttonLeftText').innerHTML) {
             case 'Yes': // Quit Confirm overlay
-                goToStartScreen();
+                window.location.href = './startscreen.php';
                 break;
             case 'End': // Pause Game
                 mainMenu();

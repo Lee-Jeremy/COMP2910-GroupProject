@@ -1,12 +1,19 @@
 /**
  * Reveal Matrix Card
+ *
+ * @param rowCol 
+ *				The matrix card's ID
+ * @param cardIndexNum
+ *					The matrix card's index number in the matrix array
+ * @param cardNum
+ *				The matrix card's number (1-9)
  */
 function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 	if (seconds == 0) {
 		incrementClicks(cardNum);
 	}
 	if (seconds == 0 && numClicks == 1) { // Prevent the user from flipping a card before all reveals finish
-		count++; 					   // and from flipping the same card twice 
+		count++; 					   	  // and from flipping the same card twice 
 	}	
 	if (count == 1 && numClicks == 1) {
 		userSelection[0] = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 1st index in the user selection array

@@ -1,13 +1,14 @@
 /**
  * Right button on the screen overlay's
  */
-$(document).ready(function(){ 
-	switch (getId('buttonRightText').innerHTML) {
-		    case 'No': // Quit Confirm Overlay
+$(document).ready(function () {
+    $("#buttonRight").click(function () {
+        switch (getId('buttonRightText').innerHTML) {
+            case 'No': // Quit Confirm Overlay
                 if (lives === 0) {
                     playAgain();
                 } else {
-					showLevelOverlay();
+                    showLevelOverlay();
                 }
                 break;
             case 'Back': // Main Menu Overlay
@@ -22,10 +23,10 @@ $(document).ready(function(){
                 if (lives === 0) {
                     level = 1;
                     lives = 3;
-					totalScore = 0;
+                    totalScore = 0;
                     fullLives();
                     fadeLevelOverlay();
-					getId('scoreMultipliedText').innerHTML = points + " pts x 0";
+                    getId('scoreMultipliedText').innerHTML = points + " pts x 0";
                     getId('hexagonTextOverlay').innerHTML = "1";
                     getId('passOrFail').style.display = "none";
                     getId('passOrFail').style.color = "#006633";
@@ -37,28 +38,32 @@ $(document).ready(function(){
             case 'Submit': // High Score Prompt
                 var nameInput = getId('nameBox').value;
                 var scoreInput = totalScore;
-                
+
                 if (nameInput == "" || scoreInput == 0 || scoreInput < tenthScore) {
-                    break;
+                    incorrectInput();
                 } else {
-                    $.post("index.php",
-                    {
-                        newNameInput: nameInput,
-                        newTotalScore: scoreInput
-                    });
+                    $.post("playmode.php",
+                {
+                    newNameInput: nameInput,
+                    newTotalScore: scoreInput
+                });
+                    window.location.href = './leaderboard.php';
                 }
+
                 break;
             default: // Current Level Overlay
-			//var tenthScore = 0; // FOR TESTING PURPOSES IN THE HTML FILE
+                //var tenthScore = 0; // FOR TESTING PURPOSES IN THE HTML FILE
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
                 hexColour();
-                if (totalScore >= tenthScore) {
+
+                if (totalScore > tenthScore) {
                     displayCrown();
                     getId('pointsText').style.color = "#c5b358";
                 }
+
                 setTimeout(dealCards, 500);
         }
-	});
+    });
 });

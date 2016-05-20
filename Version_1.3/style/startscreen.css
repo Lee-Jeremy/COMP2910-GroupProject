@@ -45,11 +45,6 @@ html, body {
     border-radius: 4%;
 }
 
-/* All Card Front's */
-.front {
-    font-size: 100%;
-}
-
 /**** Main Menu Cards ****/
 /* Main menu card div */
 #menuMain {
@@ -107,6 +102,11 @@ html, body {
     border: 1px solid #000000;
 }
 
+/* Main menu card 1 front text */
+#menuMain0FrontText {
+    font-size: 120%;
+}
+
 /**** Main menu card 2 ****/
 /* Main menu card 2 div */
 #menuMain1 {
@@ -127,7 +127,12 @@ html, body {
     border: 1px solid #000000;
 }
 
-/**** Main menu card 2 ****/
+/* Main menu card 2 front text */
+#menuMain1FrontText {
+    font-size: 100%;
+}
+
+/**** Main menu card 3 ****/
 /* Main menu card 3 */
 #menuMain2 {
     left: 20%;
@@ -147,10 +152,14 @@ html, body {
     border: 1px solid #000000;
 }
 
+/* Main menu card 3 front text */
+#menuMain2FrontText {
+    font-size: 120%;
+}
+
 /* All main menu cells hover */
-/*#menuMain .front:hover {
-    background: #99b3ff;
-}*/
+#menuMain .front:hover {
+}
 
 /**** Practice Menu Cards ****/
 /* Practice menu card div */
@@ -190,6 +199,10 @@ html, body {
     transform: translateY(-50%);
 }
 
+.pracFrontText img {
+    width: 50%;
+}
+
 /* Practice menu card 1 */
 #menuPrac0 {
     top: -60%;
@@ -214,10 +227,9 @@ html, body {
     left: 3%;
 }
 
-/* All practice menu cells hover */
-/*#menuPrac .front:hover {
-    background: #99b3ff;
-}*/
+/* All practice menu hover */
+#menuPrac .front:hover {
+}
 
 /**** Animation Cards ****/
 /* All main menu animation cards */

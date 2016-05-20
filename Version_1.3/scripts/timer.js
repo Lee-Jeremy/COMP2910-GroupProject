@@ -18,4 +18,4 @@ function myTimer() {
 		clearInterval(timer); // Stop the timer		
 		multTimer = setInterval(multiplierTimer, 1000);
 	} 
-}}
+}

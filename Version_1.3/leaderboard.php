@@ -1,8 +1,6 @@
 <?php
-
 include 'config.php';
 include 'functions.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -11,18 +9,16 @@ include 'functions.php';
         <meta charset="utf-8">
         <title>Mathemagics v2.0</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="./style/base.css">
+        <link rel="stylesheet" type="text/css" href="./style/leaderboard.css">
         <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
         <script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.20/dist/jquery.flip.min.js"></script>
-        <script type="text/javascript">
-            var tenthScore = <?php echo $scoreArray[9] ?>;
-        </script>
-        <script src="myscripts.js"></script>
+        <script src="./scripts/back_button.js"></script>
     </head>
     <body>
     <!--------- High Scores --------->
-	<div id="highScoresPageContainer">
+    <div id="highScoresPageContainer">
+        <img src="images/pause.png" alt="pause" id="toStartScreen"> <!-- Back Button -->
 		<div id="highScoresPageTextContainer">
 			<div id="highScoresTitle">High Scores</div>
 			<div id="highScoresPointsLeader">

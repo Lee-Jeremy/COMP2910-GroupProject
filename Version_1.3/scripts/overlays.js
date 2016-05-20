@@ -122,6 +122,27 @@ function fadePlayAgain() {
  * High Score
  */
 function highScore() {
+    hideOverlay();
+    showLevelOverlay();
+    getId('currentLevel').style.display = "none";
+    getId('passOrFail').style.display = "none";
+    getId('scoreMultiplied').style.display = "none";
+    getId('normalScore').style.display = "none";
+    getId('pointsDivider').style.display = "none";
+    getId('tutorialOrHearts').style.display = "none";
+    getId('congrats').style.display = "block";
+    getId('highScore').style.display = "block";
+    getId('enterName').style.display = "block";
+    getId('nameBoxContainer').style.display = "block";
+    getId('buttonLeftText').innerHTML = "Reset";
+    getId('buttonRightText').innerHTML = "Submit";
+}
+
+/**
+ * Fade high Score
+ */
+function fadeHighScore() {
+    hideOverlay();
     fadeLevelOverlay();
     getId('currentLevel').style.display = "none";
     getId('passOrFail').style.display = "none";
@@ -142,7 +163,7 @@ function highScore() {
  */
 function quitConfirm() {
 	showOverlay();
-	getId('quitText').innerHTML = "Are you sure you want<br>to QUIT?";
+	getId('quitText').innerHTML = "Are you sure you<br>want to QUIT?";
 	getId('buttonLeftText').innerHTML = "Yes";
 	getId('buttonRightText').innerHTML = "No";
 }
@@ -182,4 +203,27 @@ function mainMenu() {
     getId('quitText').innerHTML = "Go to the MAIN MENU?";
 	getId('buttonLeftText').innerHTML = "Yes";
 	getId('buttonRightText').innerHTML = "Back";
+}
+
+/**
+ * Incorrect Input
+ */
+function incorrectInput() {
+    showLevelOverlay();
+    getId('currentLevel').style.display = "none";
+    getId('passOrFail').style.display = "none";
+    getId('scoreMultiplied').style.display = "none";
+    getId('normalScore').style.display = "none";
+    getId('pointsDivider').style.display = "none";
+    getId('tutorialOrHearts').style.display = "none";
+    getId('congrats').style.display = "block";
+    getId('congratsText').style.color = "#C4273C";
+    getId('congratsText').innerHTML = "Please enter";
+    getId('highScore').style.display = "block";
+    getId('highScoreText').style.color = "#C4273C";
+    getId('highScoreText').innerHTML = "YOUR NAME!";
+    getId('enterName').style.display = "block";
+    getId('nameBoxContainer').style.display = "block";
+    getId('buttonLeftText').innerHTML = "Reset";
+    getId('buttonRightText').innerHTML = "Submit";
 }

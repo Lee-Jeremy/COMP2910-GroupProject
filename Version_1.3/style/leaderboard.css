@@ -1,0 +1,200 @@
+/* Padding and border included in width and height */
+* {
+    box-sizing: border-box;
+    font-family: Montserrat;
+}
+
+/* Set Height and Width to Viewport Size */
+html, 
+body, 
+#wrapper, 
+div.container {
+	height: 100%;
+	width: 100%;
+}
+
+/* HTML and Body specs */
+html, 
+body {
+	margin: 0;
+	overflow: hidden;
+}
+
+/* High Scores Page */
+#highScoresPageContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 5;
+	background: #D7DADB; /* Grey */
+}
+
+/* Back Button */
+#highScoresPageContainer > img {
+	position: absolute;
+	top: 1%;
+	left: 2%;
+	height: 8.5%;
+	width: 14%;
+    z-index: 1;
+}
+
+/* High Score Page Text Container */
+#highScoresPageContainer
+#highScoresPageTextContainer {
+	position: relative;
+	font-size: 1.25em;
+	height: 95%;
+	width: 90%;
+	top: 2.5%;
+	left: 5%;
+}
+
+/* High Score Page Title */
+#highScoresPageContainer
+#highScoresPageTextContainer
+#highScoresTitle {
+	position: relative;
+	width: 100%;
+	height: 8%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 2em;
+	font-weight: bold;
+	margin-left: 5%;
+}
+
+/* High Score Points Leader Container */
+#highScoresPageContainer
+#highScoresPageTextContainer
+#highScoresPointsLeader {
+	position: relative;
+	width: 100%;
+	height: 10%;
+	margin: 5% 0%;
+	border: 2px solid #000000;
+	background: #C4273C; /* Magenta */
+}
+
+/* High Score Points Leader Text */
+#highScoresPageContainer
+#highScoresPageTextContainer
+#highScoresPointsLeader
+#highScoresPointsLeaderText {
+	position: relative;
+	width: 95%;
+	height: 80%;
+	border: 2px solid white;
+	color: white;
+	top: 10%;
+	left: 2.5%;
+}
+
+/* High Score Points Leader Crown Image */
+#highScoresPageContainer
+#highScoresPageTextContainer
+#highScoresPointsLeader img {
+	position: relative;
+	width: 15%;
+	height: 100%;
+	float: left;
+}
+
+/* High Score Points Leader ID */
+#highScoresPageContainer
+#highScoresPageTextContainer
+#highScoresPointsLeader
+p:first-of-type {
+	position: relative;
+	margin: 0;
+	width: 35%;
+	height: 100%;
+	line-height: 200%;
+	float: left;
+	text-align: left;
+	padding-left: 1.5%;
+}
+
+/* High Score Points Leader Score */
+#highScoresPageContainer
+#highScoresPageTextContainer
+#highScoresPointsLeader
+p:nth-of-type(2) {
+	position: relative;
+	width: 50%;
+	height: 100%;
+	line-height: 200%;
+	float: left;
+	margin: 0;
+	text-align: right;
+	padding-right: 2%;
+}
+
+/* High Score List Container (Ranks 2-10) */
+#highScoresPageContainer
+#highScoresPageTextContainer
+#highScoresList {
+	position: relative;
+	width: 100%;
+	height: 77%;
+	background: #263545; /* Navy Blue */
+	border: 2px solid #000000;
+}
+
+/* High Score Rows (2-10) */
+#highScoresPageContainer
+#highScoresPageTextContainer
+#highScoresList > div {
+	position: relative;
+	width: 100%;
+	height: 11.11%;
+	margin: 0;
+}
+
+/* High Score Row Columns (2-10) */
+#highScoresPageContainer
+#highScoresPageTextContainer
+#highScoresList
+div > p {
+	position: relative;
+	float: left;
+	height: 100%;
+	margin: 0;
+	line-height: 250%;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+}
+
+/* High Score Rows Numbers (2-10) */
+#highScoresPageContainer
+
+
+#highScoresPageTextContainer
+#highScoresList
+div > p:first-of-type {
+	width: 15%;
+	text-align: right;
+	padding-right: 2.5%;
+}
+
+/* High Score Rows Names (2-10) */
+#highScoresPageContainer
+#highScoresPageTextContainer
+#highScoresList
+div > p:nth-of-type(2) {
+	width: 35%;
+	text-align: left;
+	padding-left: 3.5%;
+}
+
+/* High Score Rows Points (2-10) */
+#highScoresPageContainer
+#highScoresPageTextContainer
+#highScoresList
+div > p:nth-of-type(3) {
+	width: 50%;
+	padding-right: 5%;
+	text-align: right;
+}

@@ -1,5 +1,5 @@
 /**
- * Changes the hexagon colour per level
+ * Changes the hexagon colour every 5 levels
  */
 function hexColour() {
 	if ( level >= 5 && level < 10) {

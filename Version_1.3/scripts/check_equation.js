@@ -1,8 +1,7 @@
 /**
- * Check Equation
+ * Determine whether the equation is true or false
  */
 function checkEquation(){
-	var Symbol;
 	var first = userSelection[0]; // The user's 1st selected card value from the matrix
 	var second = userSelection[1]; // The user's 2nd selected card value from the matrix	
 	if (operator === "addition") {
@@ -46,8 +45,8 @@ function checkEquation(){
  * Successfully Completed the Equation
  */
 function levelComplete() {
-	pointsPerLevel = (points * multiplier);
-	totalScore += pointsPerLevel; 
+	pointsPerLevel = (points * multiplier); // Points earned in the current level
+	totalScore += pointsPerLevel; // Total points earned since level 1
     level++; // Increases the level count after each play
     getId('passOrFailText').innerHTML = "Complete!";
     if ((level % 10) === 1 && lives != 3) { // Adds a life every 10 levels

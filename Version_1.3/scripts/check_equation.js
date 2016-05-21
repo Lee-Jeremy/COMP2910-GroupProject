@@ -58,7 +58,8 @@ function levelComplete() {
     }
 	getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
-    setTimeout(fadeLevelOverlay, 1000); // Delays showing the overlay after 1 seconds
+    setTimeout(resetLevel, 1000)
+    setTimeout(dealCards, 1500); // Delays showing the overlay after 1 seconds
 }
 
 /**

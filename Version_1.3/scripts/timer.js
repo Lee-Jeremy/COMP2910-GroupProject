@@ -10,7 +10,7 @@ function myTimer() {
 		revealOperator(); // Flip the operator card
 		revealAnswer(); // Flip the answer card
 	} else if (seconds == secondRevealWave) {
-		hideAnswer(); // Flip back the answer card
+		// hideAnswer(); // Flip back the answer card
 		revealMatrix(); // Flip all matrix cards
 	} else if (seconds == thirdRevealWave) {
 		hideMatrix(); // Flip back all matrix cards

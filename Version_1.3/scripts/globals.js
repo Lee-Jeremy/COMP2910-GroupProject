@@ -63,6 +63,6 @@ var hexImgArray = [ // Stores the hexagons into an arry
     hexRed,
     hexTeal,
     hexYellow,
-    hexGreen;
+    hexGreen
 ];
 var hexCount = 0; // Count for looping hexagon images

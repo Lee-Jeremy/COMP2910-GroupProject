@@ -544,6 +544,7 @@ div.fourth {
 	position: absolute;
 	text-align: center;
 	font-weight: bold;
+    font-size: 3em;
 	top: 50%;
     transform: translateY(-50%);
 }

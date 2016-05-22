@@ -25,7 +25,7 @@ $(document).ready(function () {
                     lives = 3;
                     totalScore = 0;
                     fullLives();
-                    fadeLevelOverlay();
+                    showLevelOverlay();
                     getId('scoreMultipliedText').innerHTML = points + " pts x 0";
                     getId('hexagonTextOverlay').innerHTML = "1";
                     getId('passOrFail').style.display = "none";

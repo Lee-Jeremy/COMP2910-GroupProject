@@ -21,16 +21,7 @@ $(document).ready(function () {
                 break;
             case 'Yes': // Play Again Overlay
                 if (lives === 0) { // If lives are 0, resets the game conditions to when the game initially starts
-                    level = 1;
-                    lives = 3;
-                    totalScore = 0;
-                    fullLives();
-                    showLevelOverlay();
-                    getId('scoreMultipliedText').innerHTML = points + " pts x 0";
-                    getId('hexagonTextOverlay').innerHTML = "1";
-                    getId('passOrFail').style.display = "none";
-                    getId('passOrFail').style.color = "#006633";
-                    getId('pointsText').style.color = "black";
+                    resetLoss();
                 } else {
                     showLevelOverlay();
                 }

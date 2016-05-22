@@ -14,6 +14,7 @@
         <script src="./scripts/globals.js"></script>
         <script src="./scripts/menu_main.js"></script>
         <script src="./scripts/menu_practice.js"></script>
+        <script src="./scripts/menu_login.js"></script>
         <script src="./scripts/startscreen.js"></script>
         <script src="./scripts/transition.js"></script>
     </head>
@@ -29,7 +30,7 @@
             <!-- Main Menu 1 Wrapper -->
             <div id="menuMainBox0" class="menuMainBox">
                 <!-- Main: Play -->
-                <div id="menuMain0" class="mainCard" onclick="">
+                <div id="menuMain0" class="mainCard">
                     <div id="menuMain0Back" class="back">
                     </div>
                     <div id="menuMain0Front" class="front">
@@ -41,7 +42,7 @@
             <!-- Main Menu 2 Wrapper -->
             <div id="menuMainBox1" class="menuMainBox">
                 <!-- Main: Practice -->
-                <div id="menuMain1" class="mainCard" onclick="">
+                <div id="menuMain1" class="mainCard">
                     <div id="menuMain1Back" class="back">
                         <div id="menuMain1BackText" class="mainBackText">
                         </div>
@@ -55,7 +56,7 @@
             <!-- Main Menu 3 Wrapper -->
             <div id="menuMainBox2" class="menuMainBox">
                 <!-- Main: Leaderboard -->
-                <div id="menuMain2" class="mainCard" onclick="">
+                <div id="menuMain2" class="mainCard">
                     <div id="menuMain2Back" class="back">
                     </div>
                     <div id="menuMain2Front" class="front">
@@ -67,8 +68,10 @@
             <!-- Main Menu 4 Wrapper -->
             <div id="menuMainBox3" class="menuMainBox">
                 <!-- Main: Login -->
-                <div id="menuMain3" class="mainCard" onclick="">
+                <div id="menuMain3" class="mainCard">
                     <div id="menuMain3Back" class="back">
+                        <div id="menuMain3BackText" class="mainBackText">
+                        </div>
                     </div>
                     <div id="menuMain3Front" class="front">
                         <div id="menuMain3FrontText" class="mainFrontText">
@@ -76,11 +79,10 @@
                     </div>
                 </div> <!-- Main: Login -->
             </div> <!-- Main Menu 4 Wrapper -->
-
             <!-- Practice Menu 1 Wrapper -->
             <div id="menuPracBox0" class="menuPracBox">
                 <!-- Practice: Addition -->
-                <div id="menuPrac0" class="pracCard" onclick="">
+                <div id="menuPrac0" class="pracCard">
                     <div id="menuPrac0Back" class="back">
                     </div>
                     <div id="menuPrac0Front" class="front">
@@ -92,7 +94,7 @@
             <!-- Practice Menu 2 Wrapper -->
             <div id="menuPracBox1" class="menuPracBox">
                 <!-- Practice: Subtraction -->
-                <div id="menuPrac1" class="pracCard" onclick="">
+                <div id="menuPrac1" class="pracCard">
                     <div id="menuPrac1Back" class="back">
                     </div>
                     <div id="menuPrac1Front" class="front">
@@ -104,7 +106,7 @@
             <!-- Practice Menu 3 Wrapper -->
             <div id="menuPracBox2" class="menuPracBox">
                 <!-- Practice: Multiplication -->
-                <div id="menuPrac2" class="pracCard" onclick="">
+                <div id="menuPrac2" class="pracCard">
                     <div id="menuPrac2Back" class="back">
                     </div>
                     <div id="menuPrac2Front" class="front">
@@ -116,7 +118,7 @@
             <!-- Practice Menu 4 Wrapper -->
             <div id="menuPracBox3" class="menuPracBox">
                 <!-- Practice: Division -->
-                <div id="menuPrac3" class="pracCard" onclick="">
+                <div id="menuPrac3" class="pracCard">
                     <div id="menuPrac3Back" class="back">
                     </div>
                     <div id="menuPrac3Front" class="front">
@@ -125,7 +127,20 @@
                     </div>
                 </div> <!-- Practice: Division -->
             </div> <!-- Practice Menu 4 Wrapper -->
-        </div> <!-- Practice Menu Wrapper -->
+
+            <!-- Login Window 1 Wrapper -->
+            <div id="menuLoginBox0" class="menuLoginBox">
+                <div id="menuLogin0" class="loginCard">
+                    <div id="menuLogin0Back" class="back">
+                        <div id="menuLogin0BackText" class="loginBackText">
+                        </div>
+                    </div>
+                    <div id="menuLogin0Front" class="front">
+                        <div id="menuLogin0FrontText" class="loginFrontText">
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Login Window 1 Wrapper -->
         </div> <!-- Start Screen Wrapper -->
     </body>
 

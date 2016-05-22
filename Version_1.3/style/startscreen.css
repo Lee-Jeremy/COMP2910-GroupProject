@@ -101,11 +101,6 @@ html, body {
 }
 
 /**** Main menu card 2 ****/
-/* Main menu card 2 div */
-#menuMain1 {
-    z-index: 3;
-}
-
 /* Main menu card 2 back */
 #menuMain1Back {
     background-color: #263545;
@@ -210,50 +205,49 @@ html, body {
 }
 
 /* All practice menu hover */
-#menuPrac .front:hover {
+.pracCard .front:hover {
 }
 
-/**** Animation Cards ****/
-/* All main menu animation cards */
-/*.aniMainCard {
-    visibility: hidden;
+/**** Login Menu Card ****/
+/* All login menu card div */
+.menuLoginBox {
     position: absolute;
-    height: 32%;
-    width: 25%;
+    margin: auto;
+    height: 18%;
+    width: 100%;
+}
+
+/* All login menu cards */
+.loginCard {
+    visibility: hidden;
+    left: 75.75%;
+    top: 0%;
+    height: 100%;
+    width: 22%;
     z-index: 1;
     border-radius: 4%;
-    background: #263545;
-    border: 1px solid #000000;
-}*/
+}
 
-/* Main menu animation card 1*/
-/*#aniMain0 {
-    left: -100%;
-    top: -150%;
-}*/
-
-/* Main menu animation card 2 */
-/*#aniMain1 {
-    left: 30%;
-    top: -150%;
-}*/
-
-/* Main menu animation card 3 */
-/*#aniMain2 {
-    left: 200%;
-    top: -150%;
-    background: #800000;
-}*/
-
-/* All practice menu animation cards */
-/*.aniPracCard {
-    visibility: hidden;
-    position: absolute;
-    height: 32%;
-    width: 25%;
-    z-index: 1;
-    border-radius: 4%;
-    left: 37.5%;
+.menuLoginBox .back {
     background-color: #800000;
     border: 1px solid #000000;
-}*/
+}
+
+.menuLoginBox .front {
+    background-color: #800000;
+    border: 1px solid #000000;
+}
+
+/* All login menu card fronts' texts */
+.loginFrontText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.loginFrontText img {
+}
+
+/* All login menu hover */
+.loginCard .front:hover {
+}

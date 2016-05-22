@@ -1,10 +1,8 @@
 /** 
  * Throws a card and flips it
  *
- * @param animationCard
- *                      Animation card ID
- * @param menuCard
- *                      Menu card ID
+ * @param card
+ *                      Card ID
  * @param text
  *                      Text on the card's front
  * @param hrPosition
@@ -14,24 +12,17 @@
  * @param timeOut
  *                      Time for setTimeout
  */
-function throwAndFlip(animationCard, menuCard, text, hrPosition, vrPosition, timeOut) {
+function throwAndFlip(card, text, hrPosition, vrPosition, timeOut) {
+    getId(card + 'FrontText').innerHTML = text;
     // Phase 1: makes the animation card visibile and makes it fly down the the location
     setTimeout(function () {
-        $(animationCard).css("visibility", "visible");
-        $(animationCard).animate({
+        $("#" + card).animate({
             left: hrPosition,
             top: vrPosition
-        }, 250);
+        }, 400);
     }, timeOut);
-    // Phase 2: makes the menu card front and back visible and put text on the front
+    // Phase 2: makes the animation card invisible and flips the menu card to show the front
     setTimeout(function () {
-        $('#' + menuCard + 'Back').css("visibility", "visible");
-        $('#' + menuCard + 'Front').css("visibility", "visible");
-        getId(menuCard + 'FrontText').innerHTML = text;
-    }, timeOut + 350);
-    // Phase 3: makes the animation card invisible and flips the menu card to show the front
-    setTimeout(function () {
-        $(animationCard).css("visibility", "hidden");
-        $('#' + menuCard).flip(true);
-    }, timeOut + 700);
+        $('#' + card).flip(true);
+    }, timeOut + 475);
 }

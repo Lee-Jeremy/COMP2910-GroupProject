@@ -16,16 +16,16 @@ $(document).ready(function () {
         back: ".front"
     });
     // Detects the id of the clicked division in the main menu division and executes functions accordingly
-    $("#menuMain").click(function (event) {
+    $(".menuMainBox").click(function (event) {
         // Variable for the clicked element's id
         var target = event.target.id;
         // Places practice menu cards when Practice menu card's front or front text division is clicked
         if (target.substring(0, 14) == "menuMain1Front") {
             placePracCards();
-        // Re-stacks practice menu cards when Practice menu card's back or back text division is clicked
+            // Re-stacks practice menu cards when Practice menu card's back or back text division is clicked
         } else if (target.substring(0, 13) == "menuMain1Back") {
             restackPracCards();
-        // Executes the switchScreen function when other menu cards' front is clicked
+            // Executes the switchScreen function when other menu cards' front is clicked
         } else if (target.substring(9, 14) == "Front") {
             switchScreen(target);
         }

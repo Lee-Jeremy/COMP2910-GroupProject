@@ -86,17 +86,17 @@ function updateGameStatistics() {
 	// Post the total score and set the multiplier for the next level's in-game screen
 	getId('pointsText').innerHTML = totalScore + " pts";
 	getId('hexagonText').innerHTML = level;
-	if (level < 15) {
-		multiplier = 4;
-		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 15 && level < 30) {
-		multiplier = 5;
-		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 30 && level < 50) {
-		multiplier = 8;
-		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 50) {
-		multiplier = 10;
-		getId('multiplierText').innerHTML = "x" + multiplier;
-	}
+	//if (level < 15) {
+	//	multiplier = 4;
+	//	getId('multiplierText').innerHTML = "x" + multiplier;
+	//} else if (level >= 15 && level < 30) {
+	//	multiplier = 5;
+	//	getId('multiplierText').innerHTML = "x" + multiplier;
+	//} else if (level >= 30 && level < 50) {
+	//	multiplier = 8;
+	//	getId('multiplierText').innerHTML = "x" + multiplier;
+	//} else if (level >= 50) {
+	//	multiplier = 10;
+	//	getId('multiplierText').innerHTML = "x" + multiplier;
+	//}
 }

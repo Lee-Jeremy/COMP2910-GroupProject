@@ -3,7 +3,7 @@
     session_start();    
 
     require('./php/config.php');
-    include('./php/highscores.php');
+    include('./php/scores_function.php');
 ?>
 
 <!DOCTYPE html>

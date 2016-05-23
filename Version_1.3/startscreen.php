@@ -1,6 +1,8 @@
 <?php
     // Starts the sessions; tracks user
     session_start();
+
+    require('./php/config.php');
 ?>
 
 <!DOCTYPE html>

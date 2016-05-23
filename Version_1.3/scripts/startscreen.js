@@ -15,6 +15,12 @@ $(document).ready(function () {
         front: ".back",
         back: ".front"
     });
+    $(".loginCard").flip({ // Practice cards flipping
+        axis: 'x',
+        trigger: 'manual',
+        front: ".back",
+        back: ".front"
+    });
     // Detects the id of the clicked division in the main menu division and executes functions accordingly
     $(".menuMainBox").click(function (event) {
         // Variable for the clicked element's id
@@ -26,17 +32,29 @@ $(document).ready(function () {
         } else if (target.substring(0, 13) == "menuMain1Back") {
             restackPracCards();
             // Executes the switchScreen function when other menu cards' front is clicked
+        } else if (target.substring(0, 14) == "menuMain3Front") {
+            placeLoginCard();
+            // Executes the switchScreen function when other menu cards' front is clicked
+        } else if (target.substring(0, 13) == "menuMain3Back") {
+            restackLoginCard();
+            // Executes the switchScreen function when other menu cards' front is clicked
         } else if (target.substring(9, 14) == "Front") {
             switchScreen(target);
         }
     });
     // Detects the id of the clicked division in the practice menu division and executes functions accordingly
-    $("#menuPrac").click(function (event) {
+    $(".menuPracBox").click(function (event) {
         // Variable for the clicked element's id
         var target = event.target.id;
         // Executes the switchScreen function when practice menu cards' front is clicked
         if (target.substring(10, 14) == "Front") {
             switchScreen(target);
         }
+    });
+    // Detects the id of the clicked division in the login division and executes functions accordingly
+    $(".menuLoginBox").click(function (event) {
+        // Variable for the clicked element's id
+        var target = event.target.id;
+        switchMenu(target);
     });
 });

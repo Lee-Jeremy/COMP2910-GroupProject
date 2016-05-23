@@ -4,13 +4,7 @@
 
     // Connects to the database
     require('./config.php');
-    
-    // PHP Query: grabs the values from the USERS 
-    $userRegInfo = "SELECT username, password FROM Users";
-
-    mysqli_query($conn, $userRegInfo) or 
-	    die(mysqli_error($conn));
-    
+       
     // Stores the user's input into PHP variables
     $userRegName = $_POST['regName'];
     $userRegPass = $_POST['regPass'];

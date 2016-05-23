@@ -4,12 +4,6 @@
     
     // Connects to the database
     require('./config.php');      
-
-    // PHP Query: grabs the values from the USERS 
-    $userLogInfo = "SELECT username, password, achieve1, achieve2, achieve3 FROM Users";
-
-    mysqli_query($conn, $userLogInfo) or 
-	    die(mysqli_error($conn));
      
     // Stores the user's input into PHP variables
     $userLogName = $_POST['logName'];

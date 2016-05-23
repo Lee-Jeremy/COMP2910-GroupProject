@@ -1,5 +1,5 @@
 /**
- * Full Lives
+ * Changes all of the heart images to display full hearts
  */
 function fullLives() {
     getId('hearts1').src= "images/heartfull.png";
@@ -8,7 +8,7 @@ function fullLives() {
 }
 
 /**
- * Two Lives
+ * Changes all of the heart images to display two full hearts and one empty
  */
 function twoLives() {
     getId('hearts1').src= "images/heartfull.png";
@@ -17,7 +17,7 @@ function twoLives() {
 }
  
 /**
- * One Life
+ * Changes all of the heart images to display one full heart and two empty
  */
 function oneLife() {
     getId('hearts1').src= "images/heartfull.png";
@@ -26,7 +26,7 @@ function oneLife() {
 }
  
 /**
- * No lives
+ * Changes all of the heart images to display all empty hearts
  */
 function noLives() {
     getId('hearts1').src= "images/heartempty.png";
@@ -35,7 +35,7 @@ function noLives() {
 }
  
 /**
- * Losing Life
+ * Checks the current lives when a life is lost and calls the appropriate function
  */
 function losingLife() {
     switch (lives) {
@@ -52,7 +52,7 @@ function losingLife() {
 }
 
 /**
- * Gaining Life
+ * Checks the current lives when a life is gained and calls the appropriate function
  */
 function gainingLife() {
     switch (lives) {

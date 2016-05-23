@@ -3,7 +3,7 @@
  */
 function revealAnswerCards() {
 	flipAnswerCard(answerCard1);
-    flip.play();
+    flip.play(); // Flip sound
 	flipAnswerCard(answerCard2);
     flip.play();
 }
@@ -15,7 +15,7 @@ function flipAnswerCard(cardNumber) {
 	switch (cardNumber) {
 		case 0:
 			getId('r1c1Front').style.backgroundColor = "#29a329"; // Change the answer card's frontside to green
-			$('#r1c1').flip(true); // Flip the matrix card to its frontside, if not yet flipped
+			$('#r1c1').flip(true); // Flip the answer card (in the matrix) to its frontside, if not yet flipped
 			break;
 		case 1:
 			getId('r1c2Front').style.backgroundColor = "#29a329"; // Green

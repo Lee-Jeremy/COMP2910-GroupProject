@@ -58,7 +58,8 @@ function levelComplete() {
     }
 	getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
-    setTimeout(fadeLevelOverlay, 1000); // Delays showing the overlay after 1 seconds
+    setTimeout(resetLevel, 1000)
+    setTimeout(dealCards, 1500); // Delays showing the overlay after 1 seconds
 }
 
 /**
@@ -72,10 +73,8 @@ function levelFailed() {
 	setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds
     if (lives === 0) { // Checks to see if the lives are 0 causing game over
         if (totalScore > tenthScore) {
-            getId('gainedHeartText').style.display = "none";
             setTimeout(fadeHighScore, 2000);
         } else {
-            getId('gainedHeartText').style.display = "none";
             setTimeout(fadePlayAgain, 2000);
         }
     } else { // If lives are not 0, reshuffle and redeal

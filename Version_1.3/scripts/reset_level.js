@@ -83,20 +83,30 @@ function restack() {
  * Update Game Statistics
  */
 function updateGameStatistics() {
-	// Post score and set multiplier for next level in-game screen
+	// Post the total score and set the multiplier for the next level's in-game screen
 	getId('pointsText').innerHTML = totalScore + " pts";
 	getId('hexagonText').innerHTML = level;
-	if (level < 15) {
-		multiplier = 4;
-		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 15 && level < 30) {
-		multiplier = 5;
-		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 30 && level < 50) {
-		multiplier = 8;
-		getId('multiplierText').innerHTML = "x" + multiplier;
-	} else if (level >= 50) {
-		multiplier = 10;
-		getId('multiplierText').innerHTML = "x" + multiplier;
-	}
+    getId('multiplierText').innerHTML = "x4";
 }
+
+/**
+ * Resets the game statistics after losing all of your lives
+ */
+ function resetLoss() {
+    level = 1;
+    lives = 3;
+    totalScore = 0;
+    cardValueMin = -6;
+    cardValueMax = 13
+    divisionValueMin = -6;
+    divisionValueMax = 13;
+    points = 25;
+    hexCount = 0;
+    fullLives();
+    showLevelOverlay();
+    getId('scoreMultipliedText').innerHTML = points + " pts x 0";
+    getId('hexagonTextOverlay').innerHTML = "1";
+    getId('passOrFail').style.display = "none";
+    getId('passOrFail').style.color = "#006633";
+    getId('pointsText').style.color = "black";
+ }

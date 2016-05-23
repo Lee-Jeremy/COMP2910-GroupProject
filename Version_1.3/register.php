@@ -5,9 +5,9 @@
 <div id="register">
     <table>
         <tr>
-            <td class="label">User Name
+            <td class="label">Email
             </td>
-            <td><input type="text"></input>
+            <td><input type="email"></input>
             </td>
         </tr>
         <tr>

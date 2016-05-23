@@ -1,4 +1,4 @@
-var registerOn = 0;
+var loginBackOn = 0;
 
 function placeLoginCard() {
     $("#menuLogin0FrontText").load("./login.php #login");
@@ -26,7 +26,7 @@ function placeLoginCard() {
 }
 
 function restackLoginCard() {
-    if (registerOn == 1) {
+    if (loginBackOn == 1) {
         getId("menuLogin0BackText").innerHTML = '';
     }
     flipAndStack('menuLogin0', '75.75%', '0%', 100, 750);
@@ -64,10 +64,15 @@ function switchMenu(button) {
         case "btnRegisterPage":
             $("#menuLogin0").flip(false);
             $("#menuLogin0BackText").load("./register.php #register");
-            registerOn = 1;
+            loginBackOn = 1;
             break;
         case "btnLoginPage":
             $("#menuLogin0").flip(true);
+            break;
+        case "btnPasswordPage":
+            $("#menuLogin0").flip(false);
+            $("#menuLogin0BackText").load("./password.php #password");
+            loginBackOn = 1;
             break;
     }
 }

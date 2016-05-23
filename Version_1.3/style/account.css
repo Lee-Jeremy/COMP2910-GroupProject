@@ -1,0 +1,128 @@
+/**** Login Div ****/
+#login {
+    padding: 0;
+    font-size: 100%;
+}
+
+#login table {
+    width: 90%;
+    margin: auto;
+    padding: 0;
+}
+
+#login td {
+    margin: 0;
+}
+
+#login input {
+    width: 100%;
+    margin-right: 1.5%;
+}
+
+#login .label {
+    text-align: right;
+}
+
+#login .button {
+    margin-top: 1.5%;
+    text-align: center;
+    width: 90%;
+    font-size: 100%;
+    color: #ffffff;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    background-color: #008CBA;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#login #btnLogin {
+    background-color: #4CAF50;
+}
+
+/**** Register Div ****/
+#register {
+    padding: 0;
+    font-size: 100%;
+}
+
+#register table {
+    width: 90%;
+    margin: auto;
+    padding: 0;
+}
+
+#register td {
+    margin: 0;
+}
+
+#register input {
+    width: 100%;
+    margin-right: 1.5%;
+}
+
+#register .label {
+    text-align: right;
+}
+
+#register .button {
+    margin-top: 1.5%;
+    text-align: center;
+    width: 90%;
+    font-size: 100%;
+    color: #ffffff;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    background-color: #008CBA;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#register #btnRegister {
+    background-color: #4CAF50;
+}
+
+/**** Password Div ****/
+#password {
+    padding: 0;
+    font-size: 100%;
+}
+
+#password table {
+    width: 90%;
+    margin: auto;
+    padding: 0;
+}
+
+#password td {
+    margin: 0;
+}
+
+#password input {
+    width: 100%;
+    margin-right: 1.5%;
+}
+
+#password .label {
+    text-align: right;
+}
+
+#password .button {
+    margin-top: 1.5%;
+    text-align: center;
+    width: 90%;
+    font-size: 100%;
+    color: #ffffff;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    background-color: #008CBA;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#password #btnResetPassword {
+    background-color: #4CAF50;
+}

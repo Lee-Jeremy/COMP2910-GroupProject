@@ -9,9 +9,9 @@
     <form action="./php/login_function.php" method="post">
         <table>
             <tr>
-                <td class="label">User Name
+                <td class="label">Email
                 </td>
-                <td><input type="text" name="logName"></input>
+                <td><input type="email" name="logName"></input>
                 </td>
             </tr>
             <tr>
@@ -22,7 +22,7 @@
             </tr>
         </table>
         <input type="submit" value="Login" id="btnLogin" class="button"></input>
-        <input type="button" value="Forgot Password" id="btnPasswordPage" class="button"></input>
         <input type="button" value="Register Page" id="btnRegisterPage" class="button"></input>
+        <input type="button" value="Forgot Password?" id="btnPasswordPage" class="button"></input>
     </form>
 </div>

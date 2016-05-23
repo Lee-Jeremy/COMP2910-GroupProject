@@ -9,9 +9,9 @@
     <form action="./php/register_function.php" method="post">
         <table>
             <tr>
-                <td class="label">User Name
+                <td class="label">Email
                 </td>
-                <td><input type="text" name="regName"></input>
+                <td><input type="email" name="regName"></input>
                 </td>
             </tr>
             <tr>

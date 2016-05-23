@@ -10,6 +10,10 @@
 */
 function placePracCards() {
     getId('menuMain1BackText').innerHTML = "Main Menu";
+    getId('menuPrac0FrontText').innerHTML = '<img src="./images/addition.png">';
+    getId('menuPrac1FrontText').innerHTML = '<img src="./images/subtraction.png">';
+    getId('menuPrac2FrontText').innerHTML = '<img src="./images/multiplication.png">';
+    getId('menuPrac3FrontText').innerHTML = '<img src="./images/division.png">';
     getId('menuMain1').style.zIndex = "3";
     for (i = 0; i <= 3; i++) {
         $(".mainCard").animate({
@@ -19,10 +23,10 @@ function placePracCards() {
     }
     setTimeout(function () {
         $(".pracCard").css("visibility", "visible");
-        throwAndFlip('menuPrac0', '<img src="./images/addition.png">', '2.25%', '115%', 100, 120),
-        throwAndFlip('menuPrac1', '<img src="./images/subtraction.png">', '26.75%', '115%', 100, 120),
-        throwAndFlip('menuPrac2', '<img src="./images/multiplication.png">', '51.25%', '115%', 100, 120),
-        throwAndFlip('menuPrac3', '<img src="./images/division.png">', '75.75%', '115%', 100, 120);
+        throwAndFlip('menuPrac0', '2.25%', '115%', 100, 120),
+        throwAndFlip('menuPrac1', '26.75%', '115%', 100, 120),
+        throwAndFlip('menuPrac2', '51.25%', '115%', 100, 120),
+        throwAndFlip('menuPrac3', '75.75%', '115%', 100, 120);
     }, 110);
     setTimeout(function () {
         $("#menuMain1").flip(false);
@@ -31,7 +35,7 @@ function placePracCards() {
 
 function restackPracCards() {
     for (i = 0; i <= 3; i++) {
-        flipAndStack('menuPrac' + i, '26.75%', '0%', 100, 250);
+        flipAndStack('menuPrac' + i, '26.75%', '0%', 100, 275);
     }
     setTimeout(function () {
         $("#menuMain0").animate({
@@ -46,12 +50,12 @@ function restackPracCards() {
             left: '75.75%',
             top: '0%'
         }, 100);
-    }, 350);
+    }, 375);
     setTimeout(function () {
         $("#menuMain1").flip(true);
         $(".pracCard").css("visibility", "hidden");
-    }, 425);
+    }, 475);
     setTimeout(function () {
         getId('menuMain1').style.zIndex = "2";
-    }, 450);
+    }, 500);
 }

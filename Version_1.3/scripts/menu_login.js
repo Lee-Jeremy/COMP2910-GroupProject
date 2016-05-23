@@ -1,4 +1,7 @@
+var registerOn = 0;
+
 function placeLoginCard() {
+    $("#menuLogin0FrontText").load("./login.php #login");
     getId('menuMain3BackText').innerHTML = "Main Menu";
     getId('menuMain3').style.zIndex = "3";
     for (i = 0; i <= 3; i++) {
@@ -9,15 +12,30 @@ function placeLoginCard() {
     }
     setTimeout(function () {
         $("#menuLogin0").css("visibility", "visible");
-        throwAndFlip('menuLogin0', '', '2.25%', '115%', 100, 120)
+        throwAndFlip('menuLogin0', '2.25%', '115%', 100, 460);
     }, 110);
     setTimeout(function () {
+        $("#menuLogin0").animate({
+            height: '175%',
+            width: '95.25%'
+        }, 250);
+    }, 210);
+    setTimeout(function () {
         $("#menuMain3").flip(false);
-    }, 220);
+    }, 560);
 }
 
 function restackLoginCard() {
-    flipAndStack('menuLogin0', '75.75%', '0%', 100, 250);
+    if (registerOn == 1) {
+        getId("menuLogin0BackText").innerHTML = '';
+    }
+    flipAndStack('menuLogin0', '75.75%', '0%', 100, 750);
+    setTimeout(function () {
+        $("#menuLogin0").animate({
+            height: '100%',
+            width: '22%'
+        }, 250);
+    }, 500);
     setTimeout(function () {
         $("#menuMain0").animate({
             left: '2.25%',
@@ -31,12 +49,25 @@ function restackLoginCard() {
             left: '51.25%',
             top: '0%'
         }, 100);
-    }, 350);
+    }, 850);
     setTimeout(function () {
         $("#menuMain3").flip(true);
         $("#menuLogin0").css("visibility", "hidden");
-    }, 425);
+    }, 950);
     setTimeout(function () {
         getId('menuMain3').style.zIndex = "2";
-    }, 450);
+    }, 925);
+}
+
+function switchMenu(button) {
+    switch (button) {
+        case "btnRegisterPage":
+            $("#menuLogin0").flip(false);
+            $("#menuLogin0BackText").load("./register.php #register");
+            registerOn = 1;
+            break;
+        case "btnLoginPage":
+            $("#menuLogin0").flip(true);
+            break;
+    }
 }

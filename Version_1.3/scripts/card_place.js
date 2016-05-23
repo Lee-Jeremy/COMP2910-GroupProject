@@ -3,8 +3,6 @@
 *
 * @param card
 *                      Card ID
-* @param text
-*                      Text on the card's front
 * @param hrPosition
 *                      Horizontal position of final location of card animation
 * @param vrPosition
@@ -14,8 +12,7 @@
 * @param timeOut
 *                      Time for setTimeout
 */
-function throwAndFlip(card, text, hrPosition, vrPosition, speed, timeOut) {
-    getId(card + 'FrontText').innerHTML = text;
+function throwAndFlip(card, hrPosition, vrPosition, speed, timeOut) {
     // Phase 1: makes the animation card visibile and makes it fly down the the location
     $("#" + card).animate({
         left: hrPosition,

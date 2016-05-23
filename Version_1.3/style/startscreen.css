@@ -13,7 +13,7 @@ html, body, #startscreen, div.container {
 /* HTML and Body specs */
 html, body {
     margin: 0;
-    font-size: 100%; /* Viewport minimum value. DO NOT CHANGE, WILL FUCK UP SOME DIV'S! :D */
+    font-size: 100%;
     overflow: hidden;
 }
 
@@ -45,32 +45,27 @@ html, body {
     border-radius: 4%;
 }
 
-/* All Card Front's */
-.front {
-    font-size: 100%;
-}
-
 /**** Main Menu Cards ****/
-/* Main menu card div */
-#menuMain {
-    position: relative;
+/* All main menu wrappers */
+.menuMainBox {
+    position: absolute;
     margin: auto;
-    height: 65%;
-    width: 90%;
+    height: 18%;
+    width: 100%;
 }
 
 /* All main menu cards */
 .mainCard {
-    position: absolute;
-    height: 32%;
-    width: 25%;
+    left: -75.75%;
+    top: -200%;
+    height: 100%;
+    width: 22%;
     z-index: 2;
-    text-align: center;
-    float: left;
+    border-radius: 4%;
 }
 
 /* All main menu card backs */
-#menuMain .back {
+#menuMainContainer .back {
 }
 
 /* All main menu card fronts' texts */
@@ -88,97 +83,117 @@ html, body {
 }
 
 /**** Main menu card 1 ****/
-/* Main menu card 1 div */
-#menuMain0 {
-    left: 5%;
-}
-
 /* Main menu card 1 back */
 #menuMain0Back {
-    visibility: hidden;
     background-color: #263545;
     border: 1px solid #000000;
 }
 
 /* Main menu card 1 front */
 #menuMain0Front {
-    visibility: hidden;
     background-color: #263545;
     border: 1px solid #000000;
 }
 
-/**** Main menu card 2 ****/
-/* Main menu card 2 div */
-#menuMain1 {
-    left: 12.5%;
+/* Main menu card 1 front text */
+#menuMain0FrontText {
+    font-size: 120%;
 }
 
+/**** Main menu card 2 ****/
 /* Main menu card 2 back */
 #menuMain1Back {
-    visibility: hidden;
     background-color: #263545;
     border: 1px solid #000000;
 }
 
 /* Main menu card 2 front */
 #menuMain1Front {
-    visibility: hidden;
     background-color: #263545;
     border: 1px solid #000000;
 }
 
-/**** Main menu card 2 ****/
-/* Main menu card 3 */
-#menuMain2 {
-    left: 20%;
+/* Main menu card 2 front text */
+#menuMain1FrontText {
+    font-size: 90%;
 }
 
+/* Main menu card 2 back text */
+#menuMain1BackText {
+    font-size: 110%;
+}
+
+/**** Main menu card 3 ****/
 /* Main menu card 3 back */
 #menuMain2Back {
-    visibility: hidden;
     background-color: #800000;
     border: 1px solid #000000;
 }
 
 /* Main menu card 3 front */
 #menuMain2Front {
-    visibility: hidden;
     background-color: #800000;
     border: 1px solid #000000;
 }
 
+/* Main menu card 3 front text */
+#menuMain2FrontText {
+    font-size: 110%;
+}
+
+/**** Main menu card 4 ****/
+/* Main menu card 4 back */
+#menuMain3Back {
+    background-color: #800000;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 4 front */
+#menuMain3Front {
+    background-color: #800000;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 4 front text */
+#menuMain3FrontText {
+    font-size: 120%;
+}
+
+/* Main menu card 4 back text */
+#menuMain3BackText {
+    font-size: 110%;
+}
+
 /* All main menu cells hover */
-/*#menuMain .front:hover {
-    background: #99b3ff;
-}*/
+#menuMain .front:hover {
+}
 
 /**** Practice Menu Cards ****/
-/* Practice menu card div */
-#menuPrac {
-    position: relative;
+/* All practice menu card div */
+.menuPracBox {
+    position: absolute;
     margin: auto;
-    height: 65%;
-    width: 90%;
+    height: 18%;
+    width: 100%;
 }
 
 /* All practice menu cards */
 .pracCard {
-    position: absolute;
-    height: 32%;
-    width: 25%;
-    text-align: center;
-    float: left;
+    visibility: hidden;
+    left: 26.75%;
+    top: 0%;
+    height: 99.5%;
+    width: 22%;
+    z-index: 1;
     border-radius: 4%;
 }
 
-#menuPrac .back {
-    visibility: hidden;
+.menuPracBox .back {
     background-color: #800000;
     border: 1px solid #000000;
 }
 
-#menuPrac .front {
-    visibility: hidden;
+.menuPracBox .front {
     background-color: #800000;
     border: 1px solid #000000;
 }
@@ -190,76 +205,148 @@ html, body {
     transform: translateY(-50%);
 }
 
-/* Practice menu card 1 */
-#menuPrac0 {
-    top: -60%;
-    left: -3%;
+.pracFrontText img {
+    width: 50%;
 }
 
-/* Practice menu card 2 */
-#menuPrac1 {
-    top: -60%;
-    left: -1%;
+/* All practice menu hover */
+.pracCard .front:hover {
 }
 
-/* Practice menu card 3 */
-#menuPrac2 {
-    top: -60%;
-    left: 1%;
-}
-
-/* Practice menu card 4 */
-#menuPrac3 {
-    top: -60%;
-    left: 3%;
-}
-
-/* All practice menu cells hover */
-/*#menuPrac .front:hover {
-    background: #99b3ff;
-}*/
-
-/**** Animation Cards ****/
-/* All main menu animation cards */
-.aniMainCard {
-    visibility: hidden;
+/**** Login Menu Card ****/
+/* All login menu card div */
+.menuLoginBox {
     position: absolute;
-    height: 32%;
-    width: 25%;
-    z-index: 1;
-    border-radius: 4%;
-    background: #263545; /* Navy blue */
-    border: 1px solid #000000;
+    margin: auto;
+    height: 18%;
+    width: 100%;
 }
 
-/* Main menu animation card 1*/
-#aniMain0 {
-    left: -100%;
-    top: -150%;
-}
-
-/* Main menu animation card 2 */
-#aniMain1 {
-    left: 30%;
-    top: -150%;
-}
-
-/* Main menu animation card 3 */
-#aniMain2 {
-    left: 200%;
-    top: -150%;
-    background: #800000;
-}
-
-/* All practice menu animation cards */
-.aniPracCard {
+/* All login menu cards */
+.loginCard {
     visibility: hidden;
-    position: absolute;
-    height: 32%;
-    width: 25%;
+    left: 75.75%;
+    top: 0%;
+    height: 100%;
+    width: 22%;
     z-index: 1;
-    border-radius: 4%;
-    left: 37.5%;
+    border-radius: 2%;
+}
+
+.menuLoginBox .back {
     background-color: #800000;
     border: 1px solid #000000;
+    border-radius: 2%;
+}
+
+.menuLoginBox .front {
+    background-color: #800000;
+    border: 1px solid #000000;
+    border-radius: 2%;
+}
+
+/* All login menu card fronts' texts */
+.loginFrontText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.loginBackText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.loginFrontText img {
+}
+
+/* All login menu hover */
+.loginCard .front:hover {
+}
+
+/**** Login Div ****/
+#login {
+    padding: 0;
+    font-size: 100%;
+}
+
+#login table {
+    width: 90%;
+    margin: auto;
+    padding: 0;
+}
+
+#login td {
+    margin: 0;
+}
+
+#login input {
+    width: 100%;
+    margin-right: 1.5%;
+}
+
+#login .label {
+    text-align: right;
+}
+
+#login .button {
+    margin-top: 1.5%;
+    text-align: center;
+    width: 90%;
+    font-size: 100%;
+    color: #ffffff;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    background-color: #008CBA;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#login #btnLogin {
+    background-color: #4CAF50;
+}
+
+/**** Register Div ****/
+#register {
+    padding: 0;
+    font-size: 100%;
+}
+
+#register table {
+    width: 90%;
+    margin: auto;
+    padding: 0;
+}
+
+#register td {
+    margin: 0;
+}
+
+#register input {
+    width: 100%;
+    margin-right: 1.5%;
+}
+
+#register .label {
+    text-align: right;
+}
+
+#register .button {
+    margin-top: 1.5%;
+    text-align: center;
+    width: 90%;
+    font-size: 100%;
+    color: #ffffff;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    background-color: #008CBA;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#register #btnRegister {
+    background-color: #4CAF50;
 }

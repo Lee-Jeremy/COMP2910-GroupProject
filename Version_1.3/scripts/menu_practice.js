@@ -1,35 +1,61 @@
-/** 
- * Place the practice cards 
- */
-var pracStacked = 1;
+/**
+* Global variable for identifying the status of the practice menu cards. 1 for stacked status.
+*/
+//var pracStacked = 1;
 
+/** 
+* Makes the practice menu cards fly down to locations and flips to show their fronts
+* if they are stacked behind the practice menu. Makes the practice menu cards flips
+* to show their backs and fly up to the practice menu if they are not stacked.
+*/
 function placePracCards() {
-    if (pracStacked == 1) {
-        for (i = 0; i < 3; i++) {
-            $("#menuMain" + i).flip(false);
-        }
-        getId('menuMain1BackText').innerHTML = "Main Menu";
-        throwAndFlip('#aniPrac0', 'menuPrac0', '+', '-3%', '22.5vh', 0);
-        throwAndFlip('#aniPrac1', 'menuPrac1', '-', '24%', '22.5vh', 0);
-        throwAndFlip('#aniPrac2', 'menuPrac2', '*', '51%', '22.5vh', 0);
-        throwAndFlip('#aniPrac3', 'menuPrac3', '/', '78%', '22.5vh', 0);
-        setTimeout(function () {
-            pracStacked = 0}, 1000
-        );
+    getId('menuMain1BackText').innerHTML = "Main Menu";
+    getId('menuPrac0FrontText').innerHTML = '<img src="./images/addition.png">';
+    getId('menuPrac1FrontText').innerHTML = '<img src="./images/subtraction.png">';
+    getId('menuPrac2FrontText').innerHTML = '<img src="./images/multiplication.png">';
+    getId('menuPrac3FrontText').innerHTML = '<img src="./images/division.png">';
+    getId('menuMain1').style.zIndex = "3";
+    for (i = 0; i <= 3; i++) {
+        $(".mainCard").animate({
+            left: '26.75%',
+            top: '0%'
+        }, 100);
     }
+    setTimeout(function () {
+        $(".pracCard").css("visibility", "visible");
+        throwAndFlip('menuPrac0', '2.25%', '115%', 100, 120),
+        throwAndFlip('menuPrac1', '26.75%', '115%', 100, 120),
+        throwAndFlip('menuPrac2', '51.25%', '115%', 100, 120),
+        throwAndFlip('menuPrac3', '75.75%', '115%', 100, 120);
+    }, 110);
+    setTimeout(function () {
+        $("#menuMain1").flip(false);
+    }, 220);
 }
 
 function restackPracCards() {
-    if (pracStacked == 0) {
-        for (i = 0; i < 3; i++) {
-            $("#menuMain" + i).flip(true);
-        }
-        flipAndStack('#aniPrac0', 'menuPrac0', '37.5%', '0vh', 0);
-        flipAndStack('#aniPrac1', 'menuPrac1', '37.5%', '0vh', 0);
-        flipAndStack('#aniPrac2', 'menuPrac2', '37.5%', '0vh', 0);
-        flipAndStack('#aniPrac3', 'menuPrac3', '37.5%', '0vh', 0);
-        setTimeout(function () {
-            pracStacked = 1}, 1000
-        );
+    for (i = 0; i <= 3; i++) {
+        flipAndStack('menuPrac' + i, '26.75%', '0%', 100, 275);
     }
+    setTimeout(function () {
+        $("#menuMain0").animate({
+            left: '2.25%',
+            top: '0%'
+        }, 100);
+        $("#menuMain2").animate({
+            left: '51.25%',
+            top: '0%'
+        }, 100);
+        $("#menuMain3").animate({
+            left: '75.75%',
+            top: '0%'
+        }, 100);
+    }, 375);
+    setTimeout(function () {
+        $("#menuMain1").flip(true);
+        $(".pracCard").css("visibility", "hidden");
+    }, 475);
+    setTimeout(function () {
+        getId('menuMain1').style.zIndex = "2";
+    }, 500);
 }

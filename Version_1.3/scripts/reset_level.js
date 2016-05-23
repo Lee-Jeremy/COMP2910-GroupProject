@@ -100,6 +100,8 @@ function updateGameStatistics() {
     cardValueMax = 13
     divisionValueMin = -6;
     divisionValueMax = 13;
+    secondRevealWave = 4; 
+    thirdRevealWave = 6;
     points = 25;
     hexCount = 0;
     fullLives();

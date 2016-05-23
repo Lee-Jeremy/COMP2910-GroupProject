@@ -13,6 +13,11 @@ function setDifficulty() {
         points = points + 25;
     }
 
+    if(level % 20 === 1 && level > 20) {
+        secondRevealWave++;
+        thirdRevealWave++; 
+    }
+
     //if (level < 6) { // Answer reveal: 2 seconds; Matrix reveal: 2 seconds
     //    cardValueMin = -5;   // (cardValueMax + cardValueMin - 1) is the card value range 
     //    cardValueMax = 11;  //  beginning from cardValueMin; in this case, range is 3 to 12

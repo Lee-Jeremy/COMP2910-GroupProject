@@ -22,3 +22,7 @@ function easterEgg() {
         }
     }
 }
+
+function hideEasterEgg(cardNum) {
+    getId('matrixBackText' + cardNum).innerHTML = '';
+}

@@ -12,24 +12,23 @@ function switchScreen(menuSelected) {
             break;
         // Swtiches the screen to leaderboard when High Score menu is clicked      
         case "menuMain2":
-            //$("body").load("./leaderboard.php");
             window.location.href = './leaderboard.php';
             break;
-        // Option for practice mode: addition     
+        // Option for practice mode: addition
         case "menuPrac0":
-
+            //window.location.href = '';
             break;
         // Option for practice mode: subtraction     
         case "menuPrac1":
-
+            //window.location.href = '';
             break;
         // Option for practice mode: mulitplication     
         case "menuPrac2":
-
+            //window.location.href = '';
             break;
         // Option for practice mode: division     
         case "menuPrac3":
-
+            //window.location.href = '';
             break;
     }
 }

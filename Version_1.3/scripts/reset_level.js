@@ -75,7 +75,11 @@ function restack() {
 	// Make animation cards visible
 	for (var i = 1; i <= 11; i++) {
 		getId('animationCard' + i).style.visibility = "visible";
-	}	
+	}
+    // Hides the easter eggs
+    for (var i = 1; i <= 9; i++) {
+        hideEasterEgg(i);
+	}
 }
  
 /**

@@ -45,7 +45,6 @@ function resetLevel() {
  * Restack the Animation Cards
  */
 function restack() {
-    hideEasterEgg(); // Removes easter eggs from all card backs
 	getId('animationCard1').style.left = "10.5%";
 	getId('animationCard1').style.top = "0%";
 	getId('animationCard2').style.left = "10.25%";

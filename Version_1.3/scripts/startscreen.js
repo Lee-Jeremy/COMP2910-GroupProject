@@ -2,7 +2,7 @@
 * Set-up menu cards for flipping and starts placing menu cards 
 */
 $(document).ready(function () {
-    placeMenuCards();
+    placeMainCards();
     $(".mainCard").flip({ // Main menu cards flipping
         axis: 'y',
         trigger: 'manual',

@@ -1,6 +1,12 @@
-var loginBackOn = 0;
+var loginBackOn = 0; // variable for identify if the back of the login card is empty or filled. 0 for empty.
 
+/**
+ * Makes the login card fly down, expand, flip, and show the login page format
+ */ 
 function placeLoginCard() {
+    // Phase 1: Loads the login.php on the back of login card, put main menu text, and changes z-index
+    // of the login main menu card so that it would not be hidden behind other cards. Then, moves the
+    // other main menu cards to behind of the login main menu card
     $("#menuLogin0FrontText").load("./login.php #login");
     getId('menuMain3BackText').innerHTML = "Main Menu";
     getId('menuMain3').style.zIndex = "3";
@@ -10,22 +16,27 @@ function placeLoginCard() {
             top: '0%'
         }, 100);
     }
+    // Phase 2: Makes the login menu visible and make it fly down to the specified position
     setTimeout(function () {
         $("#menuLogin0").css("visibility", "visible");
         throwAndFlip('menuLogin0', '2.25%', '115%', 100, 460);
     }, 110);
+    // Phase 3: Expands the login menu to the specified size
     setTimeout(function () {
         $("#menuLogin0").animate({
             height: '175%',
             width: '95.25%'
         }, 250);
     }, 210);
+    // Phase 4: Flips the login menu
     setTimeout(function () {
         $("#menuMain3").flip(false);
     }, 560);
 }
 
 function restackLoginCard() {
+    // Phase 1: Empty the back of the login menu if there is anything on it. Then, makes the
+    // login menu shrink to the original size, fly to behind of the login main menu card.
     if (loginBackOn == 1) {
         getId("menuLogin0BackText").innerHTML = '';
     }
@@ -36,6 +47,7 @@ function restackLoginCard() {
             width: '22%'
         }, 250);
     }, 500);
+    // Phase 2: Moves the other main menu cards back to their original positions
     setTimeout(function () {
         $("#menuMain0").animate({
             left: '2.25%',
@@ -50,6 +62,8 @@ function restackLoginCard() {
             top: '0%'
         }, 100);
     }, 850);
+    // Phase 3: Flips the login main menu card, makes the login menu invisible, and changes
+    // z-index of the login main menu card back to 2
     setTimeout(function () {
         $("#menuMain3").flip(true);
         $("#menuLogin0").css("visibility", "hidden");

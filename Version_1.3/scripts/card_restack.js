@@ -13,9 +13,9 @@
 *                      Time for setTimeout
 */
 function flipAndStack(card, hrPosition, vrPosition, speed, timeOut) {
-    // Phase 1: flips the card to show the back and makes the animation card visible
+    // Phase 1: flips the card to show the back
     $('#' + card).flip(false);
-    // Phase 2: makes the card fly up to the location
+    // Phase 2: makes the card fly up to the specified position
     setTimeout(function () {
         $('#' + card).animate({
             left: hrPosition,

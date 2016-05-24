@@ -13,12 +13,12 @@
 *                      Time for setTimeout
 */
 function throwAndFlip(card, hrPosition, vrPosition, speed, timeOut) {
-    // Phase 1: makes the animation card visibile and makes it fly down the the location
+    // Phase 1: makes the card fly down to the specified position
     $("#" + card).animate({
         left: hrPosition,
         top: vrPosition
     }, speed);
-    // Phase 2: makes the animation card invisible and flips the menu card to show the front
+    // Phase 2: makes the card flip showing the back of it
     setTimeout(function () {
         $('#' + card).flip(true);
     }, timeOut);

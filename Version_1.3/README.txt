@@ -53,6 +53,9 @@
 			  screen resolutions smaller than the iPhone 6 specifications. The sound effects 
 			  don't funciton adequately on mobile devices.
 
+			  There is an instance where the answer card may not reveal, this is the result of
+			  the callstack error. Not yet resolved.
+
 			  On some mobile operating systems (Android), when entering a name into the input box, the 
 			  on-screen keyboard display will shrink the viewport of the game resulting 
 			  in a "squished" look. 

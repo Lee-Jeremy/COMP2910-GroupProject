@@ -3,8 +3,8 @@
  */
 function setDifficulty() {
 	if (level < 5) {
-		cardValueMin = 1;
-		cardValueMax = 10;
+		cardValueMin = -5;
+		cardValueMax = 15;
 		divisionCardValueMin = 1;
 		divisionCardValueMax = 12;
 		firstRevealWave = 2;

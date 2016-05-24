@@ -35,7 +35,7 @@ function fillMatrix() {
 			|| num == matrix[5] || num == matrix[6] || num == matrix[7] || num == matrix[8]) {
 				num = Math.floor((Math.random() * divisionCardValueMax) + divisionCardValueMin);
 			}
-		matrix[i] = num; // Place num into the matrix array
+			matrix[i] = num; // Place num into the matrix array
 		}
 	}
 	if (operator !== "division") {	// For addition, subtraction, and multiplication equations
@@ -46,7 +46,7 @@ function fillMatrix() {
 			|| num == matrix[5] || num == matrix[6] || num == matrix[7] || num == matrix[8]) {
 				num = Math.floor((Math.random() * cardValueMax) + cardValueMin);
 			}
-		matrix[i] = num; // Place num into the matrix array
+			matrix[i] = num; // Place num into the matrix array
 		}
 	} 
 	// Assign 1st matrix card's frontside to 1st matrix array index. 2nd card = matrix[1],...9th = matrix[8]

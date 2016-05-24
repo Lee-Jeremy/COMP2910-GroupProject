@@ -38,6 +38,10 @@ $(document).ready(function () {
                     newNameInput: nameInput,
                     newTotalScore: scoreInput
                 });
+
+                    achieve1();
+                    achieve2();
+                    achieve3();
                     window.location.href = './leaderboard.php'; // Links to the leaderboard.php page;
                 }                                               // query is processed slower than page refreshes
 
@@ -53,6 +57,10 @@ $(document).ready(function () {
                     displayCrown();            // and displays a crown while converting the points color to gold
                     getId('pointsText').style.color = "#c5b358";
                 }
+
+                achieve1();
+                achieve2();
+                achieve3();
 
                 setTimeout(dealCards, 500);
         }

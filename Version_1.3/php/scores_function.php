@@ -3,7 +3,7 @@
     session_start();
 
     // Connects to the database
-    require('./config.php');
+    // require('./config.php');
 
     // PHP Query: grabs the values from the TABLE (both name and score columns) and stores into a variable    
     $table = "SELECT name, score FROM HighScores ORDER BY score DESC";

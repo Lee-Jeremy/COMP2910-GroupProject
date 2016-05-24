@@ -8,6 +8,9 @@ $(document).ready(function () {
                 if (totalScore > tenthScore) { // Checks the current totalScore versus the 10th score 
                     highScore();               // from the database
                 } else {
+                    achieve1();
+                    achieve2();
+                    achieve3();
                     window.location.href = './startscreen.php';
                 }
                 break;

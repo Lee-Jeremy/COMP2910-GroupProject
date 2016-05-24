@@ -20,9 +20,6 @@
         $user = mysqli_fetch_assoc($loginCheck);
         $_SESSION['SESS_LOGIN'] = $user['username'];
         $_SESSION['SESS_PASSWORD'] = $user['password'];
-        $_SESSION['SESS_ACHIEVE1'] = $user['achieve1'];
-        $_SESSION['SESS_ACHIEVE2'] = $user['achieve2'];
-        $_SESSION['SESS_ACHIEVE3'] = $user['achieve3'];
         session_write_close();
         header("location: ../startscreen.php");
         exit();

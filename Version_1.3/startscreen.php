@@ -3,6 +3,7 @@
     session_start();
 
     require('./php/config.php');
+    include('./php/achieve_get.php');
 ?>
 
 <!DOCTYPE html>

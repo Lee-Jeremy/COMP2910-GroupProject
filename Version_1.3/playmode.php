@@ -4,6 +4,7 @@
 
     require('./php/config.php');
     include('./php/scores_function.php');
+    include('./php/achieve_post.php');
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +20,7 @@
         <script type="text/javascript">
             var tenthScore = <?php echo $scoreArray[9] ?>;
         </script>
+        <script src="./scripts/achievements.js"></script>
         <script src="./scripts/answer.js"></script>
         <script src="./scripts/answer_cards.js"></script>
         <script src="./scripts/back_button.js"></script>

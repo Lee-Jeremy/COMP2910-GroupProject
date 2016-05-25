@@ -23,6 +23,40 @@ $(document).ready(function(){
             case 'Reset': // High Score Prompt
                 getId('nameForm').reset();
                 break;
+			case 'Back': //Tutorial going back option
+			// if the user has clicked back on the first tutorial page it will return back to level 1 overlay
+			if (tutorialCounter <= 0){
+				showLevelOverlay();
+				getId("tutorialBox").checked = false;
+			}
+			// The user is still able to cycle back and forward in the code
+			else {
+			tutorialCounter--;
+			if (tutorialCounter ==1){
+				resetLevel();
+				setTimeout(tutorial,500);
+			}
+			else if (tutorialCounter ==3){
+				hideMatrix();
+				revealAnswer();
+				setTimeout(tutorial2,500);
+			}
+			else if (tutorialCounter ==5){
+				setTimeout(tutorialOperator,500);
+				setTimeout(revealOperator,1000);
+				modifiedReset();
+				modifiedDealCards();
+				setTimeout(tutorial4,500);
+			}
+			else{
+			displayTutorial();
+			tutorial1();
+			tutorial2();
+			tutorial3();
+			}			
+			}
+				// Tutorial back option
+				break;
             default: // Current Level and Play Again overlay
                 hideOverlay();
                 quitConfirm();
@@ -64,18 +98,43 @@ $(document).ready(function(){
             case 'Submit': // High Score Prompt
                 // Insert Submit Function
                 break;
+			case 'Next': // Tutorial Next option
+			// Has a counter to cycle through all the tutorial and repeats it after user is done
+			if (tutorialCounter >=6){
+				showLevelOverlay();
+				getId("tutorialBox").checked = false;
+				
+				tutorialCounter =0;
+			//The user is still in the tutorial page
+			}else {
+				tutorialCounter++;
+				tutorial();
+				setTimeout(tutorial1,10000);
+				tutorial2();
+				setTimeout(tutorial3,10000);
+				tutorial4();
+				setTimeout(tutorial5,200000);
+			}
+                break;
             default: // Current Level Overlay
+			if (getId("tutorialBox").checked == true){
+				resetLevel();
+				displayTutorial();
+                }
+                else{
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
                 hexColour();
+             
                 if (totalScore >= tenthScore) {
                     displayCrown();
                     getId('pointsText').style.color = "#c5b358";
                 }
                 setTimeout(dealCards, 500);
         }
-	});
+	}});
+                
     $("#back").click(function() {
 		clearInterval(multTimer);
         fadePauseGame();
@@ -125,6 +184,7 @@ var easterEggCounter = 0; // Counter for easter egg
 var deal = new Audio("sounds/Dealing1.wav"); //sound clip for dealing
 var whoosh = new Audio("sounds/whoosh.wav"); //sound clip for card movement
 var click = new Audio("sounds/click.wav"); //sound clip for mouse click
+var tutorialCounter = 0;
 	
 // Deal the cards
 function dealCards() {
@@ -137,6 +197,7 @@ function dealCards() {
 			width: '18.9vw'
 		},150, function(){		
 	$("#animationCard10").animate({ // Move to the operator card position and shrink
+			left: '20.7vw',
 			left: '20.7vw',
 			top: '67vh',
 			height: '15vh',
@@ -187,7 +248,10 @@ function dealCards() {
 	getId('eqCard4Back').style.backgroundColor = "#800000";	// Red
 	getId('eqCard4Back').style.border = "1px solid #000000"; // Solid black border
     easterEgg(); // Put easter eggs on card backs if condition is met
+	// will only have the card deal when doing tutorial
+	if (tutorialCounter != 1) { 
 	setTimeout(hideAnimations, 450);
+	}
 		});		
 		});	
 		});	
@@ -214,8 +278,11 @@ function hideAnimations() {
 	for (var i = 1; i <= 11; i++) {
 		$("#animationCard" + i).css("visibility", "hidden");	
 	}	
+	//disabled for tutorial mode**********
+	if (getId("tutorialBox").checked == false){
 	setDifficulty();
 	timer = setInterval(myTimer, 1000); // Begin the in-game card reveals. Execute Every 1000 milliseconds 
+}
 }
 
 // Level difficulty
@@ -537,10 +604,11 @@ function hideMatrix() {
 
 // Reveal Matrix Card
 function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
-	if (seconds == 0) {
+	//if (seconds == 0) {
 		incrementClicks(cardNum);
-	}
-	if (seconds == 0 && numClicks == 1) { // Prevent the user from flipping a card before all reveals finish
+	//}
+	//seconds == 0 &&
+	if (numClicks == 1) { // Prevent the user from flipping a card before all reveals finish
 		count++; 					   // and from flipping the same card twice 
 	}	
 	if (count == 1 && numClicks == 1) {
@@ -592,7 +660,12 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 				flip.play();
 			}
 		});
+		// for tutorial option 
+		if (getId("tutorialBox").checked = false) {
 		setTimeout(checkEquation, 1200); // Check if the equation is true
+	}else {
+		setTimeout(tutorialEquation, 1200);
+	}
 	}
 }
 
@@ -640,7 +713,7 @@ function incrementClicks(cardNum) {
 
 // Check Equation
 function checkEquation(){
-	var Symbol;
+	//var Symbol; random var
 	var first = userSelection[0]; // The user's 1st selected card value from the matrix
 	var second = userSelection[1]; // The user's 2nd selected card value from the matrix	
 	if (operator === "addition") {
@@ -649,9 +722,11 @@ function checkEquation(){
             success.play();
 		} else {
 			levelFailed();
-            wrong.play();
+            wrong.play();			
 		}
-	} else if(operator === "subtraction") {
+	} 
+	
+	else if(operator === "subtraction") {
 		if ((first - second) == answer) {
 			levelComplete();
             success.play();
@@ -675,7 +750,7 @@ function checkEquation(){
 			levelFailed();
             wrong.play();
 		}
-	} else {
+	}else {
 		alert('Unable to identify operator during checkEquation');	
 	}
 }
@@ -1160,4 +1235,285 @@ function hideEasterEgg() {
             getId('r' + i + 'c' + k + 'Img').src = "images/egg_empty.png";
         }
     }
+}
+// Show tutorial
+function displayTutorial() {
+	if (tutorialCounter == 0){
+		hideOverlay();
+		showOverlay();
+		getId('quitText').innerHTML = "Memorize the <mark>Answer</mark> card at the bottom";
+		getId('buttonRightText').innerHTML = "Next";
+		getId('buttonLeftText').innerHTML = "Back";
+	}	
+}
+function tutorial() {
+	if (tutorialCounter == 1){
+	hideOverlay();
+	hideOverlayContainer();
+	
+	//deals the cards without any inputs due to stopping the hide animations
+	dealCards();
+	//Hard-coded operator "addition"
+	tutorialOperator();
+	//it reveals the operator
+	setTimeout(revealOperator,2000);
+	
+	//hard coded matrix 
+	tutorialMatrix();
+	
+	
+	//sets the answer card
+	setTimeout(tutorialAnswer,2000);
+	
+	// reveals answer
+	setTimeout(revealAnswer,2000);
+
+
+	//Makes the card flip yellow for answer
+	getId('eqCard4Front').style.backgroundColor = "yellow"; 
+	//Makes the card flip red for operator
+	getId('eqCard2Front').style.backgroundColor = "#800000";
+	
+	tutorialCounter++;
+	//Waits until animation is complete to go onto next tutorial overlay
+	setTimeout(tutorial1,3500);
+}
+}
+function tutorial1() {
+	if (tutorialCounter == 2){
+		hideOverlay();
+		showOverlay();
+		getId('quitText').innerHTML = "Memorize the <mark>Matrix</mark> to equal the <mark>Answer</mark>";
+}
+}
+
+function tutorial2() {
+	if (tutorialCounter == 3){
+	hideOverlay();
+	hideOverlayContainer();
+	// changing color of all the matrix cars to yellow
+	getId('r1c1Front').style.backgroundColor = "yellow"; 
+	getId('r1c2Front').style.backgroundColor = "yellow"; 
+	getId('r1c3Front').style.backgroundColor = "yellow"; 
+	getId('r2c1Front').style.backgroundColor = "yellow"; 
+	getId('r2c2Front').style.backgroundColor = "yellow"; 
+	getId('r2c3Front').style.backgroundColor = "yellow"; 
+	getId('r3c1Front').style.backgroundColor = "yellow"; 
+	getId('r3c2Front').style.backgroundColor = "yellow"; 
+	getId('r3c3Front').style.backgroundColor = "yellow"; 
+	
+	// reveals answer
+	setTimeout(hideAnswer,2000);
+
+	
+	//Flips over the matrix
+	setTimeout(revealMatrix,2000);
+
+	
+	
+	tutorialCounter++;
+	
+	setTimeout(tutorial3,3500);
+
+}
+}
+
+function tutorial3() {
+	if (tutorialCounter == 4){
+		hideOverlay();
+		showOverlay();
+		getId('quitText').innerHTML = "Click on 2 cards from the matrix to solve the <mark>Answer</mark>";
+}
+	}
+function tutorial4() {
+	if (tutorialCounter == 5){
+		hideOverlay();
+		hideOverlayContainer();
+		hideMatrix();
+		tutorialAnswer();
+		hideAnswer();
+		//Showing the correct cards
+		//tutorialPick();
+		
+		
+		
+		tutorialCounter++;
+		//revealing answer again
+		//setTimeout(revealAnswer,2000);
+		//setTimeout(tutorial5,6000);
+		//revealMatrixCard();
+		//need a checkequation()to go onto tutorial 5
+		//getId('eqCard1Front').style.backgroundColor = "#800000";
+		//getId('eqCard3Front').style.backgroundColor = "#800000";
+		//getId('eqCard1FrontText').innerHTML = matrix[0];
+		//getId('eqCard3FrontText').innerHTML = matrix[4];
+	}
+}
+function tutorial5() {
+	if (tutorialCounter == 6){
+		hideOverlay();
+		showOverlay();
+		getId('quitText').innerHTML = "At the top there is a <mark>Pause</mark> Button, <mark>Points</mark> Tracker, <mark>Life </mark>Tracker, <mark>Level </mark>Tracker, and <mark>Mulitplier</mark> Indicator.";
+}
+	}
+	
+//Tutorial Operator
+function tutorialOperator () {
+	operator = "addition";
+}
+// Assigns each of the matrix card a value
+function tutorialMatrix(){
+	matrix[0] = 5; 
+	matrix[1] = 3;  
+	matrix[2] = 8;  
+	matrix[3] = 1;  
+	matrix[4] = 4;  
+	matrix[5] = 6;  
+	matrix[6] = 2;  
+	matrix[7] = 7; 
+	matrix[8] = 9; 
+	insertValues();
+}
+// Hard coding an answer
+function tutorialAnswer() {
+	answer = (matrix[0] + matrix[4]);
+	//answerCard1 = matrix [6];
+	//answerCard2 = matrix [4];
+}
+
+function tutorialPick(){
+	userSelection[0] = matrix[0];
+	getId('eqCard1FrontText').innerHTML = matrix[0]; // Assign the 1st matrix card value to the 1st equation card
+	userSelection[1] = matrix[4];
+	getId('eqCard3FrontText').innerHTML = matrix[4]; // Assign the 1st matrix card value to the 1st equation card
+}
+// tutorial option for checking the answer
+function tutorialEquation() {
+	var first = userSelection[0]; // The user's 1st selected card value from the matrix
+	var second = userSelection[1]; // The user's 2nd selected card value from the matrix
+ if(operator === "addition") {
+		if ((first + second) == answer) {
+			setTimeout(tutorial5,2000);
+			revealAnswer();
+		} else {
+			tutorialCounter--;
+			//restack();
+			modifiedReset();
+			modifiedDealCards();
+
+			setTimeout(tutorialOperator,1500);
+			setTimeout(tutorialMatrix,1500);	
+			setTimeout(revealOperator,2000);
+			//getId('eqCard1Back').css("visibility", "hidden");
+			//getId('eqCard3Back').style.backgroundColor = "#800000";
+			tutorial4();
+		}
+	}
+}
+function modifiedReset() {
+	// Change all card front's and back's to original colors and flip to their back's
+	for (var i = 1; i <= 3; i++) {	
+		for (var k = 1; k <= 3; k++) {
+			//taking out these 3 lines keeps every other cards ok
+			$("#r" + i + "c" + k).flip(false); // Flip all cards to their backside 
+			//getId('r' + i + 'c' + k + 'Front').style.backgroundColor = "#3385ff"; // Sky blue
+			//getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#D7DADB"; // Light Gray
+			//getId('r' + i + 'c' + k + 'Back').style.border = "1px dashed #000000"; // Black
+		}
+	}
+
+	for (var i = 1; i <= 4; i++) {
+		$("#eqCard" + i).flip(false); // Backside
+		//makes the bottom 4 equation keep their colour
+		//getId('eqCard' + i + 'Front').style.backgroundColor = "#3385ff"; // Sky blue
+		//getId('eqCard' + i + 'Back').style.backgroundColor = "#D7DADB"; // Light gray
+		//getId('eqCard' + i + 'Back').style.border = "1px dashed #000000"; // Black
+		if (i == 2 || i == 4) {
+			getId('eqCard' + i + 'Front').style.backgroundColor = "#800000"; // Red
+		}
+	}
+	// Reset all counters
+	count = 0;   
+	operator = "";
+	mSeconds = 0;
+	pointsPerLevel = 0;
+	numClicks = 0;
+	r1c1Clicks = 0;
+	r1c2Clicks = 0;
+	r1c3Clicks = 0;
+	r2c1Clicks = 0;
+	r2c2Clicks = 0;
+	r2c3Clicks = 0;
+	r3c1Clicks = 0;
+	r3c2Clicks = 0;
+	r3c3Clicks = 0;
+	seconds = 1;
+}
+
+
+function modifiedDealCards() {
+	var interval;
+    deal.play();
+	$("#animationCard11").animate({ // Move to the answer card position and shrink
+			left: '71.1vw',
+			top: '67vh',
+			height: '15vh',
+			width: '18.9vw'
+		},150, function(){		
+	$("#animationCard10").animate({ // Move to the operator card position and shrink
+			left: '20.7vw',
+			left: '20.7vw',
+			top: '67vh',
+			height: '15vh',
+			width: '18.9vw'
+		},150, function(){
+	$("#animationCard9").animate({ // Move to the r3c3 position
+			left: '58vw',
+			top: '43.75vh',
+		},150, function(){
+	$("#animationCard8").animate({ // Move to the r3c2 position
+			left: '33.6vw',
+			top: '43.75vh',
+		},150, function(){
+	$("#animationCard7").animate({ // Move to the r3c1 position
+			left: '9.5vw',
+			top: '43.75vh',
+		},150, function(){
+	$("#animationCard6").animate({ // Move to the r2c3 position
+			left: '58vw',
+			top: '21.8vh',
+		},150, function(){
+	$("#animationCard5").animate({ // Move to the r2c2 position
+			left: '33.6vw',
+			top: '21.8vh',
+		},150, function(){
+	$("#animationCard4").animate({ // Move to the r2c1 position
+			left: '9.5vw',
+			top: '21.8vh',
+		},150, function(){
+	$("#animationCard3").animate({ // Move to the r1c3 position
+			left: '58vw',
+			top: '0vh',
+		},150, function(){
+	$("#animationCard2").animate({ // Move to the r1c2 position
+			left: '33.6vw',
+			top: '0vh',
+		},150, function(){ // Change background color and border style of all matrix card's backside's
+	for (var i = 1; i <= 3; i++) {
+		for (var k = 1; k <=3; k++) {
+			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#263545"; // Navy blue
+			getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
+		}
+        deal.pause();
+	}
+			});		
+		});	
+		});	
+		});		
+		});		
+		});		
+		});	
+		});	
+		});
+		});
 }

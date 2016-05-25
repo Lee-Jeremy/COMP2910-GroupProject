@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Mathemagics v3.0</title>
+        <title>Multiplication</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="./style/base.css">
         <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
@@ -217,7 +217,7 @@
                         </div>
                         <hr id="pointsDivider">
                         <div id="totalPoints">
-                            <p id="totalPointsText">Addition</p>
+                            <p id="totalPointsText">Multiplication</p>
                         </div>
                         <div id="tutorialOrHearts">
                             <form id="tutorial">

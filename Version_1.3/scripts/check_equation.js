@@ -45,10 +45,9 @@ function checkEquation(){
  * Successfully Completed the Equation
  */
 function levelComplete() {
-    if (playMode) {
+    if (document.title === 'Play') {
         pointsPerLevel = (points * multiplier); // Points earned in the current level
         totalScore += pointsPerLevel; // Total points earned since level 1
-        level++; // Increases the level count after each play
         getId('passOrFailText').innerHTML = "Complete!";
         if ((level % 5) === 1 && lives != 3) { // Adds a life every 10 levels
             lives++;
@@ -59,12 +58,12 @@ function levelComplete() {
         }
         setTimeout(fadeLevelOverlay, 1000); // Delays showing the overlay after 1 seconds
     }
-    if (!playMode) {
-        level++;
+    if (document.title !== 'Play') {
         levelCompletions++;
         setTimeout(resetLevel, 2500);
         setTimeout(dealCards, 3500);
-    }	
+    }
+    level++; // Increases the level count after each play
     getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
 }
@@ -73,7 +72,7 @@ function levelComplete() {
  *  Failed to Successfully Complete the Equation
  */
 function levelFailed() {
-    if (playMode) {
+    if (document.title === 'Play') {
         lives--;
         setTimeout(losingLife, 1500);
         if (lives === 0) { // Checks to see if the lives are 0 causing game over
@@ -82,18 +81,18 @@ function levelFailed() {
                 setTimeout(fadeHighScore, 2000);
             } else {
                 getId('gainedHeartText').style.display = "none";
-                setTimeout(fadePlayAgain, 2000);
+                setTimeout(fadePlayAgain, 2000);               
             }
-        } else { // If lives are not 0, reshuffle and redeal
+        } else {
             setTimeout(resetLevel, 2500);
             setTimeout(dealCards, 3500);
         }
     }
-    if (!playMode) {
-        level++;
+    if (document.title !== 'Play') {
         setTimeout(resetLevel, 2500);
         setTimeout(dealCards, 3500);
-    }
+        level++;     
+    }  
     getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
 	revealAnswer();
 	setTimeout(revealAnswerCards, 500); // Delay revealing the answer cards in the matrix by 0.5 seconds

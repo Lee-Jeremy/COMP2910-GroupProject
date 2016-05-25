@@ -5,7 +5,7 @@ $(document).ready(function () {
     $("#buttonRight").click(function () {
         switch (getId('buttonRightText').innerHTML) {
             case 'No': // Quit Confirm Overlay
-                if (playMode && lives === 0) { // If lives are 0, brings up the playAgain overlay
+                if (document.title === 'Play' && lives === 0) { // If lives are 0, brings up the playAgain overlay
                     playAgain();
                 } else { // If lives are remaining, show the current levelOverlay
                     showLevelOverlay();
@@ -15,21 +15,21 @@ $(document).ready(function () {
                 pauseGame(); // Returns to the pauseGame overlay
                 break;
             case 'Resume': // Pause Game Overlay
-                if (playMode) {
+                if (document.title === 'Play') {
                     multTimer = setInterval(multiplierTimer, 1000); // Resumes the timer functionality
                 }
                 hideOverlay();
                 hideOverlayContainer();
                 break;
             case 'Yes': // Play Again Overlay
-                if (playMode && lives === 0) { // If lives are 0, resets the game conditions to when the game initially starts
+                if (document.title === 'Play' && lives === 0) { // If lives are 0, resets the game conditions to when the game initially starts
                     resetLoss();
                 } else {
                     showLevelOverlay();
                 }
                 break;
             case 'Submit': // High Score Prompt
-                if (playMode) {
+                if (document.title === 'Play') {
                     var nameInput = getId('nameBox').value; // Stores the value of input to a variable
                     var scoreInput = totalScore; // Stores the current totalScore to a variable
                     if (nameInput == "" || scoreInput == 0 || scoreInput < tenthScore) { // Validates the user input
@@ -48,7 +48,7 @@ $(document).ready(function () {
                 hideOverlayContainer();
                 resetLevel();
                 hexColour();
-                if (playMode && totalScore > tenthScore) { // Checks current totalScore versus the 10th score from the database
+                if (document.title === 'Play' && totalScore > tenthScore) { // Checks current totalScore versus the 10th score from the database
                     displayCrown();            // and displays a crown while converting the points color to gold
                     getId('pointsText').style.color = "#c5b358";
                 }

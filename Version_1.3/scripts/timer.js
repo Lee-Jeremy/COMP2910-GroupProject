@@ -16,7 +16,7 @@ function myTimer() {
 		hideMatrix(); // Flip back all matrix cards
 		seconds = 0; // Reset the seconds to 0 
 		clearInterval(timer); // Stop the timer
-		if (playMode) {
+		if (document.title === 'Play') {
 		    multTimer = setInterval(multiplierTimer, 1000);
 		}
 	} 

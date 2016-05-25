@@ -1,29 +1,18 @@
-<?php
-    // Starts the sessions; tracks user
-    session_start();    
-
-    require('./php/config.php');
-    include('./php/scores_function.php');
-?>
-
+<!-- Practice mode in-game screen -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Play</title>
+        <title>Subtraction</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="./style/base.css">
         <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
         <script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.20/dist/jquery.flip.min.js"></script>
-        <script type="text/javascript">
-            var tenthScore = <?php echo $scoreArray[9] ?>;
-        </script>
         <script src="./scripts/answer.js"></script>
         <script src="./scripts/answer_cards.js"></script>
         <script src="./scripts/back_button.js"></script>
         <script src="./scripts/check_equation.js"></script>
-        <script src="./scripts/crown.js"></script>
         <script src="./scripts/deal_cards.js"></script>
         <script src="./scripts/easter_egg.js"></script>
         <script src="./scripts/flip.js"></script>
@@ -32,10 +21,8 @@
         <script src="./scripts/hexagon.js"></script>
         <script src="./scripts/hide_animations.js"></script>
         <script src="./scripts/left_button.js"></script>
-        <script src="./scripts/lives.js"></script>
         <script src="./scripts/matrix.js"></script>
         <script src="./scripts/matrix_card.js"></script>
-        <script src="./scripts/multiplier_timer.js"></script>
         <script src="./scripts/operator.js"></script>
         <script src="./scripts/overlays.js"></script>
         <script src="./scripts/reset_level.js"></script>
@@ -55,25 +42,12 @@
                         <img id="backImg" src="images/pause.png" alt="pause"> <!-- Back Button -->
                     </div>
                 </div>
-                <div id="crown">
-                    <div id="crownImgContainer">
-                        <img id="crownImg" src="images/crown_transparent.png" alt="crown"> <!-- High Score Crown -->
-                    </div>
-                </div>
-                <div id="points">
-                    <div id="pointsText" class="numbers">0 pts</div> <!-- Points -->
-                </div>
-                <div id="multiplier">
-                    <div id="multiplierText" class="numbers">x4</div> <!-- Multiplier -->
+                <div id="completions">
+                    <div id="practiceText">Levels<br>Completed: 0</div> <!-- Points -->
                 </div>
                 <div id="hexagon" onclick="easterEggTrigger()">
                     <img id="hexImg" src="images/orange.png" alt="hexImg"> <!-- Hexagon -->
                     <div id="hexagonText">1</div>
-                </div>
-                <div id="hearts">
-                    <div class="hearts"><img src="images/heartfull.png" id="hearts1" alt="heart1"></div><!-- Hearts -->
-                    <div class="hearts"><img src="images/heartfull.png" id="hearts2" alt="heart2"></div>
-                    <div class="hearts"><img src="images/heartfull.png" id="hearts3" alt="heart3"></div>
                 </div>
             </div>
 
@@ -234,61 +208,24 @@
                 <!--- Level Overlay -->
                 <div id="levelOverlay">
                     <div id="levelOverlayBox">
-                        <div id="congrats">
-                            <p id="congratsText">Congratulations!</p>
-                        </div>
-                        
-                        <div id="highScore">
-                            <p id="highScoreText">High Score!</p>
-                        </div>
-
                         <div id="currentLevel">
                             <p id="levelText">Level</p>
                             <div id="hexagonOverlay">
-                                <p id="hexagonTextOverlay">1</p>
-                                <div id="hexImgContainerOverlay">
-                                    <img id="hexImgOverlay" src="images/orange.png" alt="hexImgOverlay">
-                                </div>
+                                <div id="hexagonTextOverlay">1</div>    
+                                <img id="hexImgOverlay" src="images/orange.png" alt="hexImgOverlay">  
                             </div>
                         </div>
-
-                        <div id="passOrFail">
-                            <p id="passOrFailText">Complete!</p>
-                        </div>
-
-                        <div id="scoreMultiplied">
-                            <p id="scoreMultipliedText">25 pts x 0</p>
-                        </div>
-
-                        <div id="normalScore">
-                            <p id="normalScoreText">0 pts</p>
-                        </div>
-
                         <hr id="pointsDivider">
-
                         <div id="totalPoints">
-                            <p id="totalPointsText">Total 0 pts</p>
+                            <p id="totalPointsText">Subtraction</p>
                         </div>
-
                         <div id="tutorialOrHearts">
                             <form id="tutorial">
                                 <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial"></p>
                             </form>
-                            <p id="gainedHeartText" style="display: none; margin: 0"><img src="images/heartfull.png" id="heartGained" alt="heartFull"> Gained!</p>
                         </div>
-
-                        <div id="playAgain">
+                         <div id="playAgain">
                             <p id="playAgainText">PLAY AGAIN?</p>
-                        </div>
-
-                        <div id="enterName">
-                            <p id="enterNameText">Enter your name:</p>
-                        </div>
-
-                        <div id="nameBoxContainer">
-                            <form id="nameForm" onsubmit="return false">
-                                <input type="text" name="nameBox" id="nameBox" maxlength="7">
-                            </form>
                         </div>
                     </div>
                 </div> <!-- Level Overlay End -->

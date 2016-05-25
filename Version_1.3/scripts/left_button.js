@@ -5,7 +5,7 @@ $(document).ready(function () {
     $("#buttonLeft").click(function () {
         switch (getId('buttonLeftText').innerHTML) {
             case 'Yes': // Quit Confirm overlay
-                if (playMode && totalScore > tenthScore) { // Checks the current totalScore versus the 10th score 
+                if (document.title === 'Play' && totalScore > tenthScore) { // Checks the current totalScore versus the 10th score 
                     highScore();               // from the database
                 } else {
                     window.location.href = './startscreen.php';

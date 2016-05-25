@@ -1,7 +1,6 @@
 /**
  * Global Vaiables
  */
-var playMode = false; // Determines which game mode is currently selected
 var count = 0; // Total number of user executed card flips in the matrix
 var r1c1Clicks = 0; // Number of user clicks on the 1st Matrix card
 var r1c2Clicks = 0; // 								2nd

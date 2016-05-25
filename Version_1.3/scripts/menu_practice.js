@@ -10,10 +10,10 @@
 */
 function placePracCards() {
     getId('menuMain1BackText').innerHTML = "Main Menu";
-    getId('menuPrac0FrontText').innerHTML = '<img src="./images/addition.png">';
-    getId('menuPrac1FrontText').innerHTML = '<img src="./images/subtraction.png">';
-    getId('menuPrac2FrontText').innerHTML = '<img src="./images/multiplication.png">';
-    getId('menuPrac3FrontText').innerHTML = '<img src="./images/division.png">';
+    getId('menuPrac0FrontText').innerHTML = '<img src="./images/addition.png" id="addition">';
+    getId('menuPrac1FrontText').innerHTML = '<img src="./images/subtraction.png" id="subtraction">';
+    getId('menuPrac2FrontText').innerHTML = '<img src="./images/multiplication.png" id="multiplication">';
+    getId('menuPrac3FrontText').innerHTML = '<img src="./images/division.png" id="division">';
     getId('menuMain1').style.zIndex = "3";
     for (i = 0; i <= 3; i++) {
         $(".mainCard").animate({

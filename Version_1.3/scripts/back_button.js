@@ -3,7 +3,9 @@
  */
 $(document).ready(function () {
     $("#backImg").click(function () {
-        clearInterval(multTimer); // Stop the multiplier timer
+        if (document.title === 'Play') {
+            clearInterval(multTimer); // Stop the multiplier timer
+        }
         fadePauseGame(); // Fade-in the paue overlay screen
     });
     $("#toStartScreen").click(function () {

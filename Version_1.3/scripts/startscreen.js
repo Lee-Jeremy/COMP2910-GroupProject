@@ -1,8 +1,8 @@
 /** 
-* Set-up menu cards for flipping and starts placing menu cards 
-*/
+ * Set-up menu cards for flipping and starts placing menu cards 
+ */
 $(document).ready(function () {
-    placeMenuCards();
+    placeMainCards();
     $(".mainCard").flip({ // Main menu cards flipping
         axis: 'y',
         trigger: 'manual',
@@ -31,10 +31,10 @@ $(document).ready(function () {
             // Re-stacks practice menu cards when Practice menu card's back or back text division is clicked
         } else if (target.substring(0, 13) == "menuMain1Back") {
             restackPracCards();
-            // Executes the switchScreen function when other menu cards' front is clicked
+            // Executes the placeLoginCard function when Login main menu's front is clicked
         } else if (target.substring(0, 14) == "menuMain3Front") {
             placeLoginCard();
-            // Executes the switchScreen function when other menu cards' front is clicked
+            // Executes the restackLoginCard function when Login main menu's back is clicked
         } else if (target.substring(0, 13) == "menuMain3Back") {
             restackLoginCard();
             // Executes the switchScreen function when other menu cards' front is clicked

@@ -28,18 +28,40 @@ var multTimer; // Multiplier timer to determine bonus points
 var multiplier = 4; // Points multiplier
 var pointsPerLevel = 0; // Total points for the current level
 var mSeconds = 0; // Seconds counter within the multiplier timer
-var cardValueMax; // The max range of the value for each matrix card
-var cardValueMin; // The min range of the value for each matrix card
-var divisionCardValueMax; // The max range of the value for each matrix card during division
-var divisionCardValueMin; // The min range of the value for each matrix card during division
-var firstRevealWave; // 1st set of card reveals 
-var secondRevealWave; // 2nd set of card reveals 
-var thirdRevealWave; // 3rd set of card reveals 
-var flip = new Audio("sounds/flip.wav"); //sound clip for card flip
-var fail = new Audio("sounds/fail.wav"); //sound clip for game over
-var success = new Audio("sounds/success.wav"); //sound clip for success
-var wrong = new Audio("sounds/wrong.mp3"); //sound clip for wrong answer
-var deal = new Audio("sounds/Dealing1.wav"); //sound clip for dealing
-var whoosh = new Audio("sounds/whoosh.wav"); //sound clip for card movement
-var click = new Audio("sounds/click.wav"); //sound clip for mouse click
-var easterEggCounter = 0; // Counter for easter egg
+var cardValueMax = 13; // The max range of the value for each matrix card
+var cardValueMin = -6; // The min range of the value for each matrix card
+var divisionCardValueMax = 13; // The max range of the value for each matrix card during division
+var divisionCardValueMin = -6; // The min range of the value for each matrix card during division
+var firstRevealWave = 2; // 1st set of card reveals 
+var secondRevealWave = 4; // 2nd set of card reveals 
+var thirdRevealWave = 6; // 3rd set of card reveals 
+var flip = new Audio("sounds/flip.wav"); // Sound clip for card flip
+var fail = new Audio("sounds/fail.wav"); // Sound clip for game over
+var success = new Audio("sounds/success.wav"); // Sound clip for success
+var wrong = new Audio("sounds/wrong.mp3"); // Sound clip for wrong answer
+var deal = new Audio("sounds/Dealing1.wav"); // Sound clip for dealing
+var whoosh = new Audio("sounds/whoosh.wav"); // Sound clip for card movement
+var click = new Audio("sounds/click.wav"); // Sound clip for mouse click
+var hexOrange = "images/orange.png"; // Orange hexagon
+var hexBlue = "images/blue.png"; // Orange hexagon
+var hexGrey = "images/grey.png"; // Grey hexagon
+var hexLime = "images/lime.png"; // Lime hexagon
+var hexPink = "images/pink.png"; // Pink hexagon
+var hexPurple = "images/purple.png"; // Purple hexagon
+var hexRed = "images/red.png"; // Red hexagon
+var hexTeal = "images/teal.png"; // Teal hexagon
+var hexYellow = "images/yellow.png"; // Yellow hexagon
+var hexGreen = "images/green.png"; // Green hexagon
+var hexImgArray = [ // Stores the hexagons into an arry
+    hexOrange,
+    hexBlue,
+    hexGrey,
+    hexLime,
+    hexPink,
+    hexPurple,
+    hexRed,
+    hexTeal,
+    hexYellow,
+    hexGreen
+];
+var hexCount = 0; // Count for looping hexagon images

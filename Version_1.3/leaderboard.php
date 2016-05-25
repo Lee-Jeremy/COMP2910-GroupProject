@@ -1,6 +1,9 @@
 <?php
-include 'config.php';
-include 'functions.php';
+    // Starts the sessions; tracks user
+    session_start();    
+
+    require('./php/config.php');
+    include('./php/scores_function.php');
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
  /**
- * Reveal Operator
+ * Flip the operator card to its frontside
  */
 function revealOperator() {
 	switch (operator) {
@@ -23,7 +23,7 @@ function revealOperator() {
 }
  
 /**
- * Hide Operator
+ * Flip the operator card to its backside
  */
 function hideOperator() {
 	$("#eqCard2").flip(false); // Flip the operator card to its backside

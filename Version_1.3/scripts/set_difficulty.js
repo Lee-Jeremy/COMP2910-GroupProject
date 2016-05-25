@@ -1,117 +1,111 @@
 /**
- * Set the difficulty for the level
+ * Set the difficulty for the level -- changes every 5 levels
+ * Lower range decreases by 2;
+ * Upper range increases by 2;
+ * Points increase by 25;
  */
 function setDifficulty() {
-	if (level < 5) {
-		cardValueMin = 1;
-		cardValueMax = 10;
-		divisionCardValueMin = 1;
-		divisionCardValueMax = 12;
-		firstRevealWave = 2;
-		secondRevealWave = 4;
-		thirdRevealWave = 7;
-	} else if (level == 5) {
-		cardValueMin = 1;
-		cardValueMax = 12;
-		divisionCardValueMin = 1;
-		divisionCardValueMax = 12;
-		firstRevealWave = 2;
-		secondRevealWave = 4;
-		thirdRevealWave = 7;
-		points = 50; // Increase the base amount of points per level
-	} else if (level == 10) {
-		cardValueMin = -1;
-		cardValueMax = 15;
-		divisionCardValueMin = 1;
-		divisionCardValueMax = 20;
-		firstRevealWave = 2;
-		secondRevealWave = 3;
-		thirdRevealWave = 7;
-		points = 75; // Increase base points
-	} else if (level == 15) {
-		cardValueMin = -5;
-		cardValueMax = 25;
-		divisionCardValueMin = 1;
-		divisionCardValueMax = 40;
-		firstRevealWave = 2;
-		secondRevealWave = 3;
-		thirdRevealWave = 7;		
-		points = 100; 
-		multiplier = 5; // Unlock 5x multiplier
-	} else if (level == 20) { 
-		cardValueMin = -10;
-		cardValueMax = 50;
-		divisionCardValueMin = 1;
-		divisionCardValueMax = 70;
-		firstRevealWave = 2;
-		secondRevealWave = 3;
-		thirdRevealWave = 6;
-		points = 250; 
-	} else if (level == 25) {
-		cardValueMin = -10;
-		cardValueMax = 60;
-		divisionCardValueMin = 1;
-		divisionCardValueMax = 100;
-		firstRevealWave = 2;
-		secondRevealWave = 3;
-		thirdRevealWave = 6;
-		points = 500; 
-	} else if (level == 30) {
-		cardValueMin = -10;
-		cardValueMax = 70;
-		divisionCardValueMin = 1;
-		divisionCardValueMax = 144;
-		firstRevealWave = 2;
-		secondRevealWave = 3;
-		thirdRevealWave = 6;
-		points = 750; 
-		multiplier = 8; // Unlock 8x multiplier
-	} else if (level == 35) { 
-		cardValueMin = -10;
-		cardValueMax = 80;
-		divisionCardValueMin = -1;
-		divisionCardValueMax = 144;
-		firstRevealWave = 2;
-		secondRevealWave = 3;
-		thirdRevealWave = 6;
-		points = 1000; 
-	} else if (level == 40) { 
-		cardValueMin = -10;
-		cardValueMax = 90;
-		divisionCardValueMin = -1;
-		divisionCardValueMax = 160;
-		firstRevealWave = 2;
-		secondRevealWave = 3;
-		thirdRevealWave = 5;
-		points = 2000; 
-	} else if (level == 45) { 
-		cardValueMin = -10;
-		cardValueMax = 100;
-		divisionCardValueMin = -1;
-		divisionCardValueMax = 200;
-		firstRevealWave = 2;
-		secondRevealWave = 3;
-		thirdRevealWave = 5;
-		points = 3000; 
-	} else if (level == 50) { 
-		cardValueMin = -20;
-		cardValueMax = 20;
-		divisionCardValueMin = -10;
-		divisionCardValueMax = 20;
-		firstRevealWave = 2;
-		secondRevealWave = 3;
-		thirdRevealWave = 5;
-		points = 5000; 
-		multiplier = 10; // Unlock 10x multiplier
-	} else if (level == 55) { 
-		points = 7500; 
-	} else if (level == 60) {  
-		points = 9000; 
-	} else if (level == 65) {  
-		points = 12000; 
-	} else if (level == 70) {  
-		points = 20000;		
-	} else if (level == 80) {  
-		points = 35000; 
-	}
+    if (level % 5 === 1 && level > 5) {
+        cardValueMin = cardValueMin - 2;
+        cardValueMax = cardValueMax + 4;
+        divisionValueMin = cardValueMin - 2;
+        divisonValueMax = cardValueMax + 4;
+        points = points + 25;
+    }
+
+    if(level % 20 === 1 && level > 20) {
+        secondRevealWave++;
+        thirdRevealWave++; 
+    }
+
+    //if (level < 6) { // Answer reveal: 2 seconds; Matrix reveal: 2 seconds
+    //    cardValueMin = -5;   // (cardValueMax + cardValueMin - 1) is the card value range 
+    //    cardValueMax = 11;  //  beginning from cardValueMin; in this case, range is 3 to 12
+    //    divisionCardValueMin = -5;
+    //    divisionCardValueMax = 11; // 34;
+    //    firstRevealWave = 2;
+    //    secondRevealWave = 4;
+    //    thirdRevealWave = 6;
+    //} else if (level == 6) { // Answer reveal: 1 seconds; Matrix reveal: 1 seconds
+    //    cardValueMin = -5;
+    //    cardValueMax = 11;
+    //    divisionCardValueMin = -5;
+    //    divisionCardValueMax = 11; // 34;
+    //    firstRevealWave = 2;
+    //    secondRevealWave = 3;
+    //    thirdRevealWave = 4;
+    //    points = 50;
+    //} else if (level == 11) { // Answer reveal: 2 seconds; Matrix reveal: 2 seconds; Range increases
+    //    cardValueMin = -10;
+    //    cardValueMax = 21;
+    //    divisionCardValueMin = -10;
+    //    divisionCardValueMax = 21; // 34;
+    //    firstRevealWave = 2;
+    //    secondRevealWave = 4;
+    //    thirdRevealWave = 6;
+    //    points = 75;
+    //} else if (level == 16) { // Answer reveal: 1 seconds; Matrix reveal: 1 seconds
+    //    cardValueMin = -10;
+    //    cardValueMax = 21;
+    //    divisionCardValueMin = -10;
+    //    divisionCardValueMax = 21; // 34;
+    //    firstRevealWave = 2;
+    //    secondRevealWave = 3;
+    //    thirdRevealWave = 4;
+    //    points = 100;
+    //} else if (level == 21) { // Answer reveal: 2 seconds; Matrix reveal: 2 seconds; Range increases
+    //    cardValueMin = -15;
+    //    cardValueMax = 31;
+    //    divisionCardValueMin = -15;
+    //    divisionCardValueMax = 31; // 66;
+    //    firstRevealWave = 2;
+    //    secondRevealWave = 4;
+    //    thirdRevealWave = 6;
+    //    points = 125;
+    //} else if (level == 26) { // Answer reveal: 1 seconds; Matrix reveal: 1 seconds
+    //    cardValueMin = -15;
+    //    cardValueMax = 31;
+    //    divisionCardValueMin = -15;
+    //    divisionCardValueMax = 31; // 66;
+    //    firstRevealWave = 2;
+    //    secondRevealWave = 3;
+    //    thirdRevealWave = 4;
+    //    points = 150;
+    //} else if (level == 31) { // Answer reveal: 2 seconds; Matrix reveal: 2 seconds; Range increases
+    //    cardValueMin = -20;
+    //    cardValueMax = 41;
+    //    divisionCardValueMin = -20;
+    //    divisionCardValueMax = 41; // 66;
+    //    firstRevealWave = 2;
+    //    secondRevealWave = 4;
+    //    thirdRevealWave = 6;
+    //    points = 175;
+    //} else if (level == 36) { // Answer reveal: 1 seconds; Matrix reveal: 1 seconds
+    //    cardValueMin = -20;
+    //    cardValueMax = 41;
+    //    divisionCardValueMin = -20;
+    //    divisionCardValueMax = 41; // 131;
+    //    firstRevealWave = 2;
+    //    secondRevealWave = 3;
+    //    thirdRevealWave = 4;
+    //    points = 200;
+    //} else if (level == 41) { // Answer reveal: 2 seconds; Matrix reveal: 2 seconds; Range increases
+    //    cardValueMin = -25;
+    //    cardValueMax = 51;
+    //    divisionCardValueMin = -25;
+    //    divisionCardValueMax = 26; // 131;
+    //    firstRevealWave = 2;
+    //    secondRevealWave = 4;
+    //    thirdRevealWave = 6;
+    //    points = 225;
+    //} else if (level == 46) { // Answer reveal: 1 seconds; Matrix reveal: 1 seconds
+    //    cardValueMin = -25;
+    //    cardValueMax = 51;
+    //    divisionCardValueMin = -25;
+    //    divisionCardValueMax = 51; // 131;
+    //    firstRevealWave = 2;
+    //    secondRevealWave = 3;
+    //    thirdRevealWave = 4;
+    //    points = 250;
+    //}
 }

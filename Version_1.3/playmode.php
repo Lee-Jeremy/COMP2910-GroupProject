@@ -1,6 +1,9 @@
 <?php
-include('config.php');
-include('functions.php');
+    // Starts the sessions; tracks user
+    session_start();    
+
+    require('./php/config.php');
+    include('./php/scores_function.php');
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +66,7 @@ include('functions.php');
                 <div id="multiplier">
                     <div id="multiplierText" class="numbers">x4</div> <!-- Multiplier -->
                 </div>
-                <div id="hexagon" onclick="easterEggTrigger()">
+                <div id="hexagon">
                     <img id="hexImg" src="images/orange.png" alt="hexImg"> <!-- Hexagon -->
                     <div id="hexagonText">1</div>
                 </div>
@@ -79,7 +82,7 @@ include('functions.php');
                 <div id="r1c1" class="matrixCards" onclick="revealMatrixCard('r1c1', '0', '1')">
                     <!-- 1st card --> <!-- 1st ROW -->
                     <div id="r1c1Back" class="back">
-                        <div id="r1c1BackImg" class="cardBackImg"><img id="r1c1Img" src="images/egg_empty.png" alt="egg_empty"></div>
+                        <div id="matrixBackText1" class="cardBackText"></div>
                     </div>
                     <div id="r1c1Front" class="front">
                         <div id="r1c1FrontText" class="cardFrontText"></div> <!-- Text -->
@@ -88,7 +91,7 @@ include('functions.php');
                 <div id="r1c2" class="matrixCards" onclick="revealMatrixCard('r1c2', '1', '2')">
                     <!-- 2nd card -->
                     <div id="r1c2Back" class="back">
-                        <div id="r1c2BackImg" class="cardBackImg"><img id="r1c2Img" src="images/egg_empty.png" alt="egg_empty"></div>
+                        <div id="matrixBackText2" class="cardBackText"></div>
                     </div>
                     <div id="r1c2Front" class="front">
                         <div id="r1c2FrontText" class="cardFrontText"></div> <!-- Text -->
@@ -97,7 +100,7 @@ include('functions.php');
                 <div id="r1c3" class="matrixCards" onclick="revealMatrixCard('r1c3', '2', '3')">
                     <!-- 3rd card -->
                     <div id="r1c3Back" class="back">
-                        <div id="r1c3BackImg" class="cardBackImg"><img id="r1c3Img" src="images/egg_empty.png" alt="egg_empty"></div>
+                        <div id="matrixBackText3" class="cardBackText"></div>
                     </div>
                     <div id="r1c3Front" class="front">
                         <div id="r1c3FrontText" class="cardFrontText"></div> <!-- Text -->
@@ -106,7 +109,7 @@ include('functions.php');
                 <div id="r2c1" class="matrixCards" onclick="revealMatrixCard('r2c1', '3', '4')">
                     <!-- 4th card --> <!-- 2nd ROW -->
                     <div id="r2c1Back" class="back">
-                        <div id="r2c1BackImg" class="cardBackImg"><img id="r2c1Img" src="images/egg_empty.png" alt="egg_empty"></div>
+                        <div id="matrixBackText4" class="cardBackText"></div>
                     </div>
                     <div id="r2c1Front" class="front">
                         <div id="r2c1FrontText" class="cardFrontText"></div> <!-- Text -->
@@ -115,7 +118,7 @@ include('functions.php');
                 <div id="r2c2" class="matrixCards" onclick="revealMatrixCard('r2c2', '4', '5')">
                     <!-- 5th card -->
                     <div id="r2c2Back" class="back">
-                        <div id="r2c2BackImg" class="cardBackImg"><img id="r2c2Img" src="images/egg_empty.png" alt="egg_empty"></div>
+                        <div id="matrixBackText5" class="cardBackText"></div>
                     </div>
                     <div id="r2c2Front" class="front">
                         <div id="r2c2FrontText" class="cardFrontText"></div> <!-- Text -->
@@ -124,7 +127,7 @@ include('functions.php');
                 <div id="r2c3" class="matrixCards" onclick="revealMatrixCard('r2c3', '5', '6')">
                     <!-- 6th card -->
                     <div id="r2c3Back" class="back">
-                        <div id="r2c3BackImg" class="cardBackImg"><img id="r2c3Img" src="images/egg_empty.png" alt="egg_empty"></div>
+                        <div id="matrixBackText6" class="cardBackText"></div>
                     </div>
                     <div id="r2c3Front" class="front">
                         <div id="r2c3FrontText" class="cardFrontText"></div> <!-- Text -->
@@ -133,7 +136,7 @@ include('functions.php');
                 <div id="r3c1" class="matrixCards" onclick="revealMatrixCard('r3c1', '6', '7')">
                     <!-- 7th card --> <!-- 3rd ROW -->
                     <div id="r3c1Back" class="back">
-                        <div id="r3c1BackImg" class="cardBackImg"><img id="r3c1Img" src="images/egg_empty.png" alt="egg_empty"></div>
+                        <div id="matrixBackText7" class="cardBackText"></div>
                     </div>
                     <div id="r3c1Front" class="front">
                         <div id="r3c1FrontText" class="cardFrontText"></div> <!-- Text -->
@@ -142,7 +145,7 @@ include('functions.php');
                 <div id="r3c2" class="matrixCards" onclick="revealMatrixCard('r3c2', '7', '8')">
                     <!-- 8th card -->
                     <div id="r3c2Back" class="back">
-                        <div id="r3c2BackImg" class="cardBackImg"><img id="r3c2Img" src="images/egg_empty.png" alt="egg_empty"></div>
+                        <div id="matrixBackText8" class="cardBackText"></div>
                     </div>
                     <div id="r3c2Front" class="front">
                         <div id="r3c2FrontText" class="cardFrontText"></div> <!-- Text -->
@@ -151,7 +154,7 @@ include('functions.php');
                 <div id="r3c3" class="matrixCards" onclick="revealMatrixCard('r3c3', '8', '9')">
                     <!-- 9th card -->
                     <div id="r3c3Back" class="back">
-                        <div id="r3c3BackImg" class="cardBackImg"><img id="r3c3Img" src="images/egg_empty.png" alt="egg_empty"></div>
+                        <div id="matrixBackText9" class="cardBackText"></div>
                     </div>
                     <div id="r3c3Front" class="front">
                         <div id="r3c3FrontText" class="cardFrontText"></div> <!-- Text -->

@@ -109,11 +109,8 @@ $(document).ready(function(){
 			}else {
 				tutorialCounter++;
 				tutorial();
-				setTimeout(tutorial1,10000);
 				tutorial2();
-				setTimeout(tutorial3,10000);
 				tutorial4();
-				setTimeout(tutorial5,200000);
 			}
                 break;
             default: // Current Level Overlay
@@ -604,10 +601,11 @@ function hideMatrix() {
 
 // Reveal Matrix Card
 function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
-	//if (seconds == 0) {
+	// making it tutorial friendly if the tutorial counter is greater 
+	if (seconds == 0 || tutorialCounter > 1) {
 		incrementClicks(cardNum);
-	//}
-	//seconds == 0 &&
+	}
+
 	if (numClicks == 1) { // Prevent the user from flipping a card before all reveals finish
 		count++; 					   // and from flipping the same card twice 
 	}	
@@ -713,7 +711,6 @@ function incrementClicks(cardNum) {
 
 // Check Equation
 function checkEquation(){
-	//var Symbol; random var
 	var first = userSelection[0]; // The user's 1st selected card value from the matrix
 	var second = userSelection[1]; // The user's 2nd selected card value from the matrix	
 	if (operator === "addition") {
@@ -1268,12 +1265,12 @@ function tutorial() {
 	// reveals answer
 	setTimeout(revealAnswer,2000);
 
-
 	//Makes the card flip yellow for answer
 	getId('eqCard4Front').style.backgroundColor = "yellow"; 
 	//Makes the card flip red for operator
 	getId('eqCard2Front').style.backgroundColor = "#800000";
 	
+	// increments the tutorial counter to the next line
 	tutorialCounter++;
 	//Waits until animation is complete to go onto next tutorial overlay
 	setTimeout(tutorial1,3500);
@@ -1282,7 +1279,7 @@ function tutorial() {
 function tutorial1() {
 	if (tutorialCounter == 2){
 		hideOverlay();
-		showOverlay();
+		fadeOverlay();
 		getId('quitText').innerHTML = "Memorize the <mark>Matrix</mark> to equal the <mark>Answer</mark>";
 }
 }
@@ -1305,16 +1302,11 @@ function tutorial2() {
 	// reveals answer
 	setTimeout(hideAnswer,2000);
 
-	
 	//Flips over the matrix
 	setTimeout(revealMatrix,2000);
 	
-	//setTimeout(tutorialAnswer,2000);
-
-	
-	
-	tutorialCounter++;
-	
+	// increments the tutorial counter to the next line
+	tutorialCounter++;	
 	setTimeout(tutorial3,3500);
 
 }
@@ -1323,7 +1315,7 @@ function tutorial2() {
 function tutorial3() {
 	if (tutorialCounter == 4){
 		hideOverlay();
-		showOverlay();
+		fadeOverlay();
 		getId('quitText').innerHTML = "Click on 2 cards from the matrix to solve the <mark>Answer</mark>";
 }
 	}
@@ -1334,32 +1326,20 @@ function tutorial4() {
 		hideMatrix();
 		tutorialAnswer();
 		hideAnswer();
-		//Showing the correct cards
-		//tutorialPick();
-		
-		
-		
+
 		tutorialCounter++;
-		//revealing answer again
-		//setTimeout(revealAnswer,2000);
-		//setTimeout(tutorial5,6000);
-		//revealMatrixCard();
-		//need a checkequation()to go onto tutorial 5
-		//getId('eqCard1Front').style.backgroundColor = "#800000";
-		//getId('eqCard3Front').style.backgroundColor = "#800000";
-		//getId('eqCard1FrontText').innerHTML = matrix[0];
-		//getId('eqCard3FrontText').innerHTML = matrix[4];
+
 	}
 }
 function tutorial5() {
 	if (tutorialCounter == 6){
 		hideOverlay();
-		showOverlay();
+		fadeOverlay();
 		getId('quitText').innerHTML = "At the top there is a <mark>Pause</mark> Button, <mark>Points</mark> Tracker, <mark>Life </mark>Tracker, <mark>Level </mark>Tracker, and <mark>Mulitplier</mark> Indicator.";
 }
 	}
 	
-//Tutorial Operator
+//Tutorial Operator hard coded as addition
 function tutorialOperator () {
 	operator = "addition";
 }
@@ -1374,65 +1354,53 @@ function tutorialMatrix(){
 	matrix[6] = 2;  
 	matrix[7] = 7; 
 	matrix[8] = 9; 
+	// inserts the hard coded values into the matrix
 	insertValues();
 }
 // Hard coding an answer
 function tutorialAnswer() {
 	answer = (matrix[0] + matrix[4]);
+	// when the matrix card reveals from revealAnswerCards will show these 2 points
 	answerCard1 = matrix [0];
 	answerCard2 = matrix [3];
 }
 
-function tutorialPick(){
-	userSelection[0] = matrix[0];
-	getId('eqCard1FrontText').innerHTML = matrix[0]; // Assign the 1st matrix card value to the 1st equation card
-	userSelection[1] = matrix[4];
-	getId('eqCard3FrontText').innerHTML = matrix[4]; // Assign the 1st matrix card value to the 1st equation card
-}
+
 // tutorial option for checking the answer
 function tutorialEquation() {
 	var first = userSelection[0]; // The user's 1st selected card value from the matrix
 	var second = userSelection[1]; // The user's 2nd selected card value from the matrix
  if(operator === "addition") {
+	 //if answer is right will show the answer at the bottom and move onto next tutorial
 		if ((first + second) == answer) {
 			setTimeout(tutorial5,2000);
 			revealAnswer();
 		} else {
-			//tutorialCounter--;
-			//restack();
+			//if wrong will reset all the counters and redeal the cards
 			modifiedReset();
 			modifiedDealCards();
-
+			//have to reput tutorial operator due to reset in cards
 			setTimeout(tutorialOperator,1500);
-			setTimeout(tutorialMatrix,1500);	
 			setTimeout(revealOperator,2000);
 			setTimeout(revealAnswer,2000);
 			setTimeout(revealAnswerCards,2000);
-			
-			//getId('eqCard1Back').css("visibility", "hidden");
-			//getId('eqCard3Back').style.backgroundColor = "#800000";
 			setTimeout(tutorial5,3000);
 		}
 	}
 }
+// resets all the card values except the matrix
 function modifiedReset() {
 	// Change all card front's and back's to original colors and flip to their back's
 	for (var i = 1; i <= 3; i++) {	
 		for (var k = 1; k <= 3; k++) {
-			//taking out these 3 lines keeps every other cards ok
+			//flips all of the cards to the backside
 			$("#r" + i + "c" + k).flip(false); // Flip all cards to their backside 
-			//getId('r' + i + 'c' + k + 'Front').style.backgroundColor = "#3385ff"; // Sky blue
-			//getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#D7DADB"; // Light Gray
-			//getId('r' + i + 'c' + k + 'Back').style.border = "1px dashed #000000"; // Black
 		}
 	}
 
 	for (var i = 1; i <= 4; i++) {
 		$("#eqCard" + i).flip(false); // Backside
-		//makes the bottom 4 equation keep their colour
-		//getId('eqCard' + i + 'Front').style.backgroundColor = "#3385ff"; // Sky blue
-		//getId('eqCard' + i + 'Back').style.backgroundColor = "#D7DADB"; // Light gray
-		//getId('eqCard' + i + 'Back').style.border = "1px dashed #000000"; // Black
+		//flips the bottom 4 cards to the backside
 		if (i == 2 || i == 4) {
 			getId('eqCard' + i + 'Front').style.backgroundColor = "#800000"; // Red
 		}
@@ -1455,7 +1423,7 @@ function modifiedReset() {
 	seconds = 1;
 }
 
-
+// redeals the cards that went to the bottom to refill the matrix
 function modifiedDealCards() {
 	var interval;
     deal.play();
@@ -1522,3 +1490,4 @@ function modifiedDealCards() {
 		});
 		});
 }
+

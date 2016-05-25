@@ -18,9 +18,9 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 	if (count == 1 && numClicks == 1) { // The first card selected by the user
 		userSelection[0] = matrix[cardIndexNum]; // Copy the selected matrix card value to the 1st index in the user selection array
 		getId('eqCard1FrontText').innerHTML = matrix[cardIndexNum]; // Copy the selected matrix card value to the 1st equation card
-        getId(rowCol + 'Img').src = "images/egg_empty.png"; // Removes the easter egg from the card's back (if activated)
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey (Hide the card)
-		$("#" + rowCol + "Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed 
+		$("#" + rowCol + "Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed
+		hideEasterEgg(cardNum);
 		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animation card visible
         click.play(); // Click sound
 		$("#animationCard" + cardNum).animate({ // Change size and width of animate div to match equation card dimensions
@@ -43,10 +43,10 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		clearInterval(multTimer); // Stop the multiplier timer function
 		userSelection[1] = matrix[cardIndexNum]; 
 		getId('eqCard3FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 3rd equation card
-        getId(rowCol + 'Img').src = "images/egg_empty.png"; // Removes the easter egg from the card's back
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); 
 		$("#" + rowCol + "Back").css("border-style", "dashed"); 
-		$("#animationCard" + cardNum).css("visibility", "visible"); 
+		hideEasterEgg(cardNum);
+        $("#animationCard" + cardNum).css("visibility", "visible");
         click.play();
 		$("#animationCard" + cardNum).animate({ 
 			left: '41.4vw',

@@ -142,8 +142,11 @@ var click = new Audio("sounds/click.wav"); //sound clip for mouse click
 	
 // Deal the cards
 function dealCards() {
+<<<<<<< HEAD:Version_1.3/myscripts.js
+=======
 	var interval;
     deal.play();
+>>>>>>> 007e2460205f931dbbe61f71813b100ba64ff986:Version_1.3/backup/myscripts.js
 	$("#animationCard11").animate({ // Move to the answer card position and shrink
 			left: '71.1vw',
 			top: '67vh',
@@ -484,11 +487,18 @@ function checkCombinations() {
 	var k;
 	for (i = 0; i < matrix.length - 1; i++) { // 1st card / 2nd card, 1st / 3rd , 1st / 4th ,... 8th / 9th
 		for (k = 1; k < matrix.length; k++) {
-			if (matrix[i] % matrix [k] == 0 || matrix[k] % matrix [i] == 0) {
+			if (matrix[i] % matrix[k] == 0 || matrix[k] % matrix[i] == 0) {
 				numCombinations++;
 			}
 		}
 	}
+	// for (i = matrix.length - 1; i >= 1; i--) { // 9th card / 8th card, 9th / 7th, 9th / 6th,... 2nd / 1st
+		// for (k = matrix.length - 2; k >= 0; k--) {
+			// if (matrix[i] % matrix[k] == 0) {
+				// numCombinations++;
+			// }
+		// }
+	// }
 	while (numCombinations == 0) { 
 		fillMatrix(); // If no combinations exist, re-fill the matrix with new values
 		checkCombinations(); // Check again for combinations
@@ -539,6 +549,19 @@ function hideAnswer() {
 
 // Reveal Matrix
 function revealMatrix() {
+<<<<<<< HEAD
+	var cell;
+	var i;
+	var j;
+	var k = 0;
+	for (i = 1; i <= 3; i++) { 
+		for (j = 1; j <= 3; j++) { 
+			cell = getId('r' + i + 'c' + j + 'Front').innerHTML = matrix[k]; 
+			k++;			  
+		}
+	}
+=======
+>>>>>>> master
 	$('.matrixCards').flip(true); // Flip all the matrix cards to their frontside
     flip.play();
 }
@@ -1004,6 +1027,8 @@ function quitConfirm() {
 	getId('buttonLeftText').innerHTML = "Yes";
 	getId('buttonRightText').innerHTML = "No";
 }
+<<<<<<< HEAD:Version_1.3/myscripts.js
+=======
 
 // Fade Pause Game
 function fadePauseGame() {
@@ -1169,3 +1194,4 @@ function hideEasterEgg() {
         }
     }
 }
+>>>>>>> 007e2460205f931dbbe61f71813b100ba64ff986:Version_1.3/backup/myscripts.js

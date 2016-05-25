@@ -126,3 +126,95 @@
 #password #btnResetPassword {
     background-color: #4CAF50;
 }
+
+
+/**** Account Div ****/
+#account {
+    padding: 0;
+}
+
+#account table {
+    width: 97.5%;
+    margin: auto;
+    padding: 0;
+    border-collapse: separate;
+    border-spacing: 1.5vw 0;
+    table-layout: fixed;
+}
+
+#account td {
+    margin: 0;
+}
+
+#account #labelEmail {
+    font-size: 95%;
+    font-weight: bolder;
+    text-align: left;
+    padding-bottom: 1%;
+    color: #78d2f0;
+}
+
+#account #labelAchieve {
+    font-size: 100%;
+    font-weight: bolder;
+    padding-bottom: 1.5%;
+}
+
+
+.achieveImage {
+    padding: 0;
+    background-color: rgba(128, 128, 128, 0.75);
+    border-top-left-radius: 6%;
+    border-top-right-radius: 6%;
+    border-top: 2px outset #5d5d5d;
+    border-left: 2px outset #5d5d5d;
+    border-right: 2px outset #5d5d5d;
+    margin-bottom: 0;
+    width: 31.5%;
+}
+
+.achieveImage img {
+    height: 60%;
+    margin-bottom: 0;
+    opacity: 0.4;
+}
+
+.achieveText {
+    font-size: 115%;
+    font-variant: small-caps;
+    line-height: 0.9;
+    width: 31.5%;
+    height: 6vh;
+    vertical-align: top;
+    color: #ffffff;
+    background-color: rgba(128, 128, 128, 0.75);
+    border-bottom-left-radius: 6%;
+    border-bottom-right-radius: 6%;
+    border-left: 2px outset #5d5d5d;
+    border-right: 2px outset #5d5d5d;
+    border-bottom: 2px outset #5d5d5d;
+    padding-top: -100%;
+    padding-bottom: 1.5%;
+}
+
+.achieveText:nth-child(3) {
+    letter-spacing: -0.2vw;
+}
+
+/*#account #btnResetPassword {
+    background-color: #008CBA;
+}*/
+
+#account .button {
+    margin-top: 1.5%;
+    text-align: center;
+    width: 95%;
+    font-size: 100%;
+    color: #ffffff;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    background-color: #4CAF50;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}

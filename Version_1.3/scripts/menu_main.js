@@ -1,7 +1,8 @@
 /**
-* Makes the main menu cards fly down to locations and flips in sequence
-*/
-function placeMenuCards() {
+ * Makes the main menu cards fly down to locations and flips in sequence.
+ * Puts the title of each main menu cards.
+ */
+function placeMainCards() {
     getId('menuMain0FrontText').innerHTML = "Play";
     getId('menuMain1FrontText').innerHTML = "Practice";
     getId('menuMain2FrontText').innerHTML = "High Scores";

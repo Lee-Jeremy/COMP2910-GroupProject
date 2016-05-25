@@ -42,7 +42,6 @@ var wrong = new Audio("sounds/wrong.mp3"); // Sound clip for wrong answer
 var deal = new Audio("sounds/Dealing1.wav"); // Sound clip for dealing
 var whoosh = new Audio("sounds/whoosh.wav"); // Sound clip for card movement
 var click = new Audio("sounds/click.wav"); // Sound clip for mouse click
-var easterEggCounter = 0; // Counter for easter egg
 var hexOrange = "images/orange.png"; // Orange hexagon
 var hexBlue = "images/blue.png"; // Orange hexagon
 var hexGrey = "images/grey.png"; // Grey hexagon

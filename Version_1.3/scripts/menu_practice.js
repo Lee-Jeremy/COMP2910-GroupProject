@@ -1,12 +1,7 @@
-/**
-* Global variable for identifying the status of the practice menu cards. 1 for stacked status.
-*/
-//var pracStacked = 1;
-
 /** 
 * Makes the practice menu cards fly down to locations and flips to show their fronts
-* if they are stacked behind the practice menu. Makes the practice menu cards flips
-* to show their backs and fly up to the practice menu if they are not stacked.
+* if they are stacked behind the practice menu. Hides the other main menu cards behind
+* the practice main menu.
 */
 function placePracCards() {
     getId('menuMain1BackText').innerHTML = "Main Menu";
@@ -33,6 +28,10 @@ function placePracCards() {
     }, 220);
 }
 
+/**
+ * Makes the practice menu cards flips to show their backs and fly up to the practice menu.
+ * Takes out the other main menu cards from the back of the practice main menu.
+ */
 function restackPracCards() {
     for (i = 0; i <= 3; i++) {
         flipAndStack('menuPrac' + i, '26.75%', '0%', 100, 275);

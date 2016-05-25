@@ -232,7 +232,7 @@ div > img {
 }
 
 /* All Card Back's Img Wrapper */
-.cardBackImg {
+.cardBackText {
 	position: relative;
     top: 50%;
     transform: translateY(-50%);	

@@ -211,22 +211,21 @@
                         <div id="currentLevel">
                             <p id="levelText">Level</p>
                             <div id="hexagonOverlay">
-                                <p id="hexagonTextOverlay">1</p>
-                                <div id="hexImgContainerOverlay">
-                                    <img id="hexImgOverlay" src="images/orange.png" alt="hexImgOverlay">
-                                </div>
+                                <div id="hexagonTextOverlay">1</div>    
+                                <img id="hexImgOverlay" src="images/orange.png" alt="hexImgOverlay">  
                             </div>
                         </div>
                         <hr id="pointsDivider">
-
                         <div id="totalPoints">
                             <p id="totalPointsText">Addition</p>
                         </div>
-
                         <div id="tutorialOrHearts">
                             <form id="tutorial">
                                 <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial"></p>
                             </form>
+                        </div>
+                         <div id="playAgain">
+                            <p id="playAgainText">PLAY AGAIN?</p>
                         </div>
                     </div>
                 </div> <!-- Level Overlay End -->

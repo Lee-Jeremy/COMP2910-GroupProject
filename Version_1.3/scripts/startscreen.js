@@ -47,7 +47,7 @@ $(document).ready(function () {
         // Variable for the clicked element's id
         var target = event.target.id;
         // Executes the switchScreen function when practice menu cards' front is clicked
-        if (target.substring(10, 14) == "Front") {
+        if (target.substring(9, 14) == "Front") {
             switchScreen(target);
         }
     });

@@ -5,18 +5,27 @@
 }
 
 #login table {
-    width: 90%;
+    width: 95%;
     margin: auto;
     padding: 0;
+    table-layout: fixed;
 }
 
 #login td {
     margin: 0;
+    padding-right: 1.5%;
+}
+
+#login td:nth-child(1) {
+    width: 35%;
+}
+
+#login td:nth-child(2) {
+    width: 60%;
 }
 
 #login input {
     width: 100%;
-    margin-right: 1.5%;
 }
 
 #login .label {
@@ -26,7 +35,7 @@
 #login .button {
     margin-top: 1.5%;
     text-align: center;
-    width: 90%;
+    width: 95%;
     font-size: 100%;
     color: #ffffff;
     padding-top: 1.5%;
@@ -41,6 +50,33 @@
     background-color: #4CAF50;
 }
 
+/**** TEST BUTTONS. DELETE AFTER TEST IS DONE ****/
+#login .buttonTest {
+    position: absolute;
+    margin-top: 1.5%;
+    text-align: center;
+    width: 27.5%;
+    font-size: 85%;
+    color: #ffffff;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    background-color: #f00;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 20%;
+}
+
+#login #btnTEST1 {
+    top: -25%;
+    left: 40%;
+}
+
+#login #btnTEST2 {
+    top: -25%;
+    left: 70%;
+}
+
 /**** Register Div ****/
 #register {
     padding: 0;
@@ -51,6 +87,7 @@
     width: 90%;
     margin: auto;
     padding: 0;
+    table-layout: fixed;
 }
 
 #register td {
@@ -94,6 +131,7 @@
     width: 90%;
     margin: auto;
     padding: 0;
+    table-layout: fixed;
 }
 
 #password td {

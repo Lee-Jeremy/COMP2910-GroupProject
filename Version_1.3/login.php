@@ -23,6 +23,8 @@
         </table>
         <input type="submit" value="Login" id="btnLogin" class="button"></input>
         <input type="button" value="Register Page" id="btnRegisterPage" class="button"></input>
-        <input type="button" value="Forgot Password?" id="btnPasswordPage" class="button"></input>
+        <!-- Forgot-Password Menu. Uncomment it after testing other temporary menus. -->
+        <!--<input type="button" value="Forgot Password?" id="btnPasswordPage" class="button"></input>-->
+        <input type="button" value="TEST_ACCOUNT" id="btnTEST" class="button"></input>
     </form>
 </div>

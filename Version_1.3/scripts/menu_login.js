@@ -7,7 +7,6 @@ function placeLoginCard() {
     // Phase 1: Loads the login.php on the back of login card, put main menu text, and changes z-index
     // of the login main menu card so that it would not be hidden behind other cards. Then, moves the
     // other main menu cards to behind of the login main menu card
-    $("#menuLogin0FrontText").load("./login.php #login");
     getId('menuMain3BackText').innerHTML = "Main Menu";
     getId('menuMain3').style.zIndex = "3";
     for (i = 0; i <= 3; i++) {
@@ -32,6 +31,10 @@ function placeLoginCard() {
     setTimeout(function () {
         $("#menuMain3").flip(false);
     }, 560);
+}
+
+function fillLoginFront(URL) {
+    $("#menuLogin0FrontText").load(URL);
 }
 
 /**
@@ -85,26 +88,32 @@ function restackLoginCard() {
 */
 function switchMenu(button) {
     switch (button) {
-        // Flips the login menu and shows the register page when Register button is clicked   
+        // Flips the login menu and shows the register page when Register button is clicked    
         case "btnRegisterPage":
             $("#menuLogin0").flip(false);
             $("#menuLogin0BackText").load("./register.php #register");
             loginBackOn = 1;
             break;
-        // Flips the login menu and shows the login page when Login button is clicked   
+        // Flips the login menu and shows the login page when Login button is clicked    
         case "btnLoginPage":
             $("#menuLogin0").flip(true);
             break;
-        // Flips the login menu and shows the lost-password page when Forgot-Password button is clicked  
+        // Flips the login menu and shows the lost-password page when Forgot-Password button is clicked   
         case "btnPasswordPage":
             $("#menuLogin0").flip(false);
             $("#menuLogin0BackText").load("./password.php #password");
             loginBackOn = 1;
             break;
-        // TEST PAGE TRANSITION: DELETE AFTER TESTS ARE COMPLETED
-        case "btnTEST":
+
+        // TEST PAGE TRANSITION: DELETE AFTER TESTS ARE COMPLETED 
+        case "btnTEST1":
             $("#menuLogin0").flip(false);
             $("#menuLogin0BackText").load("./account.php #account");
+            loginBackOn = 1;
+            break;
+        case "btnTEST2":
+            $("#menuLogin0").flip(false);
+            $("#menuLogin0BackText").load("./fail.php #fail");
             loginBackOn = 1;
             break;
     }

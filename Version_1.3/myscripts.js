@@ -1308,6 +1308,8 @@ function tutorial2() {
 	
 	//Flips over the matrix
 	setTimeout(revealMatrix,2000);
+	
+	//setTimeout(tutorialAnswer,2000);
 
 	
 	
@@ -1377,8 +1379,8 @@ function tutorialMatrix(){
 // Hard coding an answer
 function tutorialAnswer() {
 	answer = (matrix[0] + matrix[4]);
-	//answerCard1 = matrix [6];
-	//answerCard2 = matrix [4];
+	answerCard1 = matrix [0];
+	answerCard2 = matrix [3];
 }
 
 function tutorialPick(){
@@ -1396,7 +1398,7 @@ function tutorialEquation() {
 			setTimeout(tutorial5,2000);
 			revealAnswer();
 		} else {
-			tutorialCounter--;
+			//tutorialCounter--;
 			//restack();
 			modifiedReset();
 			modifiedDealCards();
@@ -1404,9 +1406,12 @@ function tutorialEquation() {
 			setTimeout(tutorialOperator,1500);
 			setTimeout(tutorialMatrix,1500);	
 			setTimeout(revealOperator,2000);
+			setTimeout(revealAnswer,2000);
+			setTimeout(revealAnswerCards,2000);
+			
 			//getId('eqCard1Back').css("visibility", "hidden");
 			//getId('eqCard3Back').style.backgroundColor = "#800000";
-			tutorial4();
+			setTimeout(tutorial5,3000);
 		}
 	}
 }

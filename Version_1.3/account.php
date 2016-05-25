@@ -3,13 +3,17 @@
     session_start();    
     
     require('./php/config.php');
+    include('./php/achieve_get.php');
 ?>
 
 <div id="account">
-    <form method="post">
+    <form action="./php/logout_function.php">
         <table>
             <tr>
-                <td id="labelEmail" class="label" colspan="3">USER EMAIL HERE
+                <td id="labelEmail" class="label" colspan="3">
+                    <?php
+                        echo $_SESSION['SESS_LOGIN'];
+                    ?>
                 </td>
             </tr>
             <tr>
@@ -17,22 +21,43 @@
                 </td>
             </tr>
             <tr>
-                <td id="achieve1Image" class="achieveImage"><img src="./images/achieve1.png" alt="image" onclick="acheiveUnlock(1)">
+                <td id="achieve1Image" class="achieveImage">    
+                    <img src="./images/achieve1.png" alt="image">
                 </td>
-                <td id="achieve2Image" class="achieveImage"><img src="./images/achieve2.png" alt="image" onclick="acheiveUnlock(2)">
+                <td id="achieve2Image" class="achieveImage">
+                    <img src="./images/achieve2.png" alt="image">
                 </td>
-                <td id="achieve3Image" class="achieveImage"><img src="./images/achieve3.png" alt="image" onclick="acheiveUnlock(3)">
+                <td id="achieve3Image" class="achieveImage">
+                    <img src="./images/achieve3.png" alt="image">
                 </td>
             </tr>
             <tr>
                 <td id="achieve1Text" class="achieveText">
-                    LOCKED
+                    <?php
+                        if ($_SESSION['SESS_ACHIEVE1'] == "yes") {
+                            echo "UNLOCKED";
+                        } else {
+                            echo "LOCKED";
+                        }
+                    ?>                   
                 </td>
                 <td id="achieve2Text" class="achieveText">
-                    LOCKED
+                    <?php
+                        if ($_SESSION['SESS_ACHIEVE2'] == "yes") {
+                              echo "UNLOCKED";
+                          } else {
+                              echo "LOCKED";
+                          }
+                    ?>                
                 </td>
                 <td id="achieve3Text" class="achieveText">
-                    LOCKED
+                    <?php
+                        if ($_SESSION['SESS_ACHIEVE3'] == "yes") {
+                              echo "UNLOCKED";
+                          } else {
+                              echo "LOCKED";
+                          }
+                    ?>
                 </td>
             </tr>
         </table>

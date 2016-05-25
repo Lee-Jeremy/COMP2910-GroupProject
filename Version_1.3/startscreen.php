@@ -84,6 +84,13 @@
                     </div>
                     <div id="menuMain3Front" class="front">
                         <div id="menuMain3FrontText" class="mainFrontText">
+                            <?php
+                                if (isset($_SESSION['SESS_LOGIN'])) {
+                                    echo "My Info";
+                                } else {
+                                    echo "Login";
+                                }
+                            ?>
                         </div>
                     </div>
                 </div> <!-- Main: Login -->

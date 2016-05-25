@@ -6,7 +6,7 @@ function placeMainCards() {
     getId('menuMain0FrontText').innerHTML = "Play";
     getId('menuMain1FrontText').innerHTML = "Practice";
     getId('menuMain2FrontText').innerHTML = "High Scores";
-    getId('menuMain3FrontText').innerHTML = "Login";
+    // getId('menuMain3FrontText').innerHTML = "Login";
     setTimeout(function () {
         throwAndFlip('menuMain0', '2.25%', '0%', 400, 475);
     }, 100);

@@ -23,8 +23,10 @@ function resetLevel() {
 	}
 	setTimeout(restack, 500); // Restack the Animation Divisions
 	// Reset all counters
-	count = 0;   
-	operator = "";
+	count = 0;
+	if (playMode) {
+	    operator = "";
+	}
 	mSeconds = 0;
 	pointsPerLevel = 0;
 	numClicks = 0;
@@ -84,9 +86,15 @@ function restack() {
  */
 function updateGameStatistics() {
 	// Post the total score and set the multiplier for the next level's in-game screen
-	getId('pointsText').innerHTML = totalScore + " pts";
-	getId('hexagonText').innerHTML = level;
-    getId('multiplierText').innerHTML = "x4";
+    if (playMode) {
+        getId('pointsText').innerHTML = totalScore + " pts";
+	    getId('hexagonText').innerHTML = level;
+        getId('multiplierText').innerHTML = "x4"; 
+    } else {
+        getId('hexagonText').innerHTML = level;
+        getId('practiceText').innerHTML = "Levels Completed: " + levelCompletions;
+    }
+	
 }
 
 /**

@@ -1,6 +1,7 @@
 /**
  * Global Vaiables
  */
+var playMode = false; // Determines which game mode is currently selected
 var count = 0; // Total number of user executed card flips in the matrix
 var r1c1Clicks = 0; // Number of user clicks on the 1st Matrix card
 var r1c2Clicks = 0; // 								2nd
@@ -21,6 +22,7 @@ var operator = ""; // Mathematical operator (+, -, *, or /)
 var timer; // Card dealing and revealing timer
 var seconds = 1; // Seconds counter within the reveal timer
 var level = 1; // Level user is currently on
+var levelCompletions = 0; // Number of practice mode levels completed
 var lives = 3; // Number of lives; starts at 3
 var points = 25; // Total points scored in the current level
 var totalScore = 0; // Total points scored across all levels

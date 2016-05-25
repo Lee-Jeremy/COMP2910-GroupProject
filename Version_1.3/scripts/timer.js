@@ -15,7 +15,9 @@ function myTimer() {
 	} else if (seconds == thirdRevealWave) {
 		hideMatrix(); // Flip back all matrix cards
 		seconds = 0; // Reset the seconds to 0 
-		clearInterval(timer); // Stop the timer		
-		multTimer = setInterval(multiplierTimer, 1000);
+		clearInterval(timer); // Stop the timer
+		if (playMode) {
+		    multTimer = setInterval(multiplierTimer, 1000);
+		}
 	} 
 }

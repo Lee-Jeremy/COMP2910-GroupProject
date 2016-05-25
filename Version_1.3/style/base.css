@@ -115,6 +115,31 @@ body {
 	font-size: 1.5em;
 }
 
+/* Points Container */
+#header
+#completions {
+	position: relative;
+	width: 40%;
+	height: 15vmin; /* Viewport minimum value */
+	top: 10%;
+	margin: auto;
+	background: #ffffff;
+	border-radius: 4%;
+}
+
+/* Completion Text */
+#header 
+#completions 
+#practiceText {
+	position: relative;
+	width: 100%;
+	height: auto;
+	font-size: 5vmin;
+    text-align: center; 
+    top: 50%;
+    transform: translateY(-50%); 
+}
+
 /* Mutiplier Container */
 #header 
 #multiplier {

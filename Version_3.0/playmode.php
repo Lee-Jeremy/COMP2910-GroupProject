@@ -5,6 +5,7 @@
     require('./php/config.php');
     include('./php/scores_function.php');
     include('./php/achieve_post.php');
+    include('./php/achieve_get.php');
 ?>
 
 <!DOCTYPE html>
@@ -17,9 +18,15 @@
         <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
         <script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.20/dist/jquery.flip.min.js"></script>
-        <script type="text/javascript">
-            var tenthScore = <?php echo $scoreArray[9] ?>;
-        </script>
+        <script type="text/javascript"><?php
+            echo 'var tenthScore = '.$scoreArray[9].';';                
+
+            if (isset($_SESSION['SESS_LOGIN'])) {
+                echo 'var achievement1 = "'.$_SESSION['SESS_ACHIEVE1'].'";';
+                echo 'var achievement2 = "'.$_SESSION['SESS_ACHIEVE2'].'";';
+                echo 'var achievement3 = "'.$_SESSION['SESS_ACHIEVE3'].'";';
+            }
+        ?></script>
         <script src="./scripts/achievements.js"></script>
         <script src="./scripts/answer.js"></script>
         <script src="./scripts/answer_cards.js"></script>
@@ -213,6 +220,13 @@
 
             <!--- Overlay Container -->
             <div id="overlayContainer">
+
+                <!---- Achievement Notification ---->
+                <div id="achievementContainer">
+                    <div id="achievementNotification">
+                        <p id="achievementText">Achievement: Unlocked!</p>
+                    </div>
+                </div>
 
                 <!----- Buttons ---->
                 <div id="buttonLeft">

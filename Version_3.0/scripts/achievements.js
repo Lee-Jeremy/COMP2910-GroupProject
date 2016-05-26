@@ -28,11 +28,51 @@ function achieve2() {
  * If the user reaches level 21, store and send to PHP
  */
 function achieve3() {
-    if (level == 21) {
+    if (level == 2) {
         $.post("playmode.php",
             {
                 achieve3: "yes"
             });
         // alert("Achievement 3 Unlocked");
     }
+}
+
+/**
+ * Checks if achievement has been achieved, displays notification
+ */
+function achieveDisplay() {
+    if (level == 11 && totalScore == 1500 && achievement1 == "no") {
+        getId('achievementText').innerHTML = "Achievement: Flash Memory Unlocked!";
+        if (lives === 0) {
+            setTimeout($("#achievementContainer").fadeIn(), 2000);
+        } else {
+            setTimeout($("#achievementContainer").fadeIn(), 1000);
+        }
+    }
+
+    if (level == 16 && lives == 3 && achievement2 == "no") {
+        getId('achievementText').innerHTML = "Achievement: Diehard Unlocked!";
+        if (lives === 0) {
+            setTimeout($("#achievementContainer").fadeIn(), 2000);
+        } else {
+            setTimeout($("#achievementContainer").fadeIn(), 1000);
+        }
+    }
+
+    if (level == 21 && achievement3 == "no") {
+        getId('achievementText').innerHTML = "Achievement: Human Calculator Unlocked!";
+        if (lives === 0) {
+            setTimeout($("#achievementContainer").fadeIn(), 2000);
+        } else {
+            setTimeout($("#achievementContainer").fadeIn(), 1000);
+        }
+
+    }
+}
+
+/**
+ * Fades out the achievement notification
+ */
+function achieveHide() {
+    $("#achivementContainer").fadeOut();
 }

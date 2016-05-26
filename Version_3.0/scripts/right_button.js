@@ -37,15 +37,16 @@ $(document).ready(function () {
                         incorrectInput();
                     } else { // Uses AJAX to submit the JS variables to be read via PHP
                         $.post("playmode.php", {
-                        newNameInput: nameInput,
-                        newTotalScore: scoreInput
-                    });
-                    if (document.title === 'Play') {
-                        achieve1();
-                        achieve2();
-                        achieve3();
-                    }
-                    window.location.href = './leaderboard.php'; // Links to the leaderboard.php page;
+                            newNameInput: nameInput,
+                            newTotalScore: scoreInput
+                        });
+                        if (document.title === 'Play') {
+                            achieve1();
+                            achieve2();
+                            achieve3();
+                            achieveHide();
+                        }
+                        window.location.href = './leaderboard.php'; // Links to the leaderboard.php page;
                     }                                           // query is processed slower than page refreshes
                 }
                 break;
@@ -62,6 +63,7 @@ $(document).ready(function () {
                     achieve1();
                     achieve2();
                     achieve3();
+                    achieveHide();
                 }
                 setTimeout(dealCards, 500);
         }

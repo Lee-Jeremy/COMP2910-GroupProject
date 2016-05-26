@@ -771,7 +771,7 @@ p#hexagonTextOverlay {
 }
 
 #gainedHeartText {
-    font-size: 1em;
+    font-size: 1.5em;
 }
 
 #heartGained {
@@ -814,4 +814,21 @@ p#hexagonTextOverlay {
     width: 90%;
     font-size: 1.5em;
     text-align: center;
+}
+
+/* Achievement Notification */
+#achievementContainer {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6%;
+    width: 100%;
+    background-color: #D7DADB;
+    display: none;
+}
+
+#achievementText {
+    text-align: center;
+    vertical-align: middle;
 }

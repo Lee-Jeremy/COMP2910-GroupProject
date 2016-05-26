@@ -26,7 +26,16 @@
             VALUES ('$userRegName', '$userRegPass', '$regAchieve1', '$regAchieve2', '$regAchieve3')";
         mysqli_query($conn, $create) or
             die(mysqli_error($conn));
-        // header("location: login_function.php?logName=".$userLogName."&logPass=".$userLogPass);
+
+        $login = "SELECT * FROM Users WHERE username='$userRegName' AND password='$userRegPass'";
+        $loginCheck = mysqli_query($conn, $login) or
+        die(mysqli_error($conn));
+        session_regenerate_id;
+        $user = mysqli_fetch_assoc($loginCheck);
+        $_SESSION['SESS_LOGIN'] = $user['username'];
+        $_SESSION['SESS_PASSWORD'] = $user['password'];
+        session_write_close();
+
         header("location: ../startscreen.php");
         exit();
         // DISPLAY ACCOUNT CREATION SUCCESSFUL

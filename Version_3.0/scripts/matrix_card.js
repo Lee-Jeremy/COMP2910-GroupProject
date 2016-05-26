@@ -21,6 +21,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey (Hide the card)
 		$("#" + rowCol + "Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed
 		hideEasterEgg(cardNum);
+		uncuePlay("#" + rowCol);
 		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animation card visible
         click.play(); // Click sound
 		$("#animationCard" + cardNum).animate({ // Change size and width of animate div to match equation card dimensions
@@ -46,9 +47,10 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); 
 		$("#" + rowCol + "Back").css("border-style", "dashed"); 
 		hideEasterEgg(cardNum);
+        uncuePlay(".matrixCards")
         $("#animationCard" + cardNum).css("visibility", "visible");
         click.play();
-		$("#animationCard" + cardNum).animate({ 
+		$("#animationCard" + cardNum).animate({
 			left: '41.4vw',
 			top: '67vh',
 			height: '15vh',

@@ -116,13 +116,13 @@ html, body {
 
 /* Main menu card 2 front text */
 #menuMain1FrontText {
-    font-size: 105%;
+    font-size: 100%;
     letter-spacing: -0.1vw;
 }
 
 /* Main menu card 2 back text */
 #menuMain1BackText {
-    font-size: 110%;
+    font-size: 120%;
 }
 
 /**** Main menu card 3 ****/
@@ -140,7 +140,7 @@ html, body {
 
 /* Main menu card 3 front text */
 #menuMain2FrontText {
-    font-size: 110%;
+    font-size: 120%;
 }
 
 /**** Main menu card 4 ****/
@@ -158,12 +158,13 @@ html, body {
 
 /* Main menu card 4 front text */
 #menuMain3FrontText {
-    font-size: 120%;
+    font-size: 100%;
+    letter-spacing: -0.1vw;
 }
 
 /* Main menu card 4 back text */
 #menuMain3BackText {
-    font-size: 110%;
+    font-size: 120%;
 }
 
 /* All main menu cells hover */

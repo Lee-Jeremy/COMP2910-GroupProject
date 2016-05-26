@@ -88,7 +88,7 @@
                                 if (isset($_SESSION['SESS_LOGIN'])) {
                                     echo "Account";
                                 } else {
-                                    echo "Login<br>or<br>Register";
+                                    echo "Login";
                                 }
                             ?>
                         </div>

@@ -1,3 +1,9 @@
+/**** Styles input elements in all tables ****/
+table input {
+    text-shadow: 0px 0px 0px #ffffff;
+    font-size: 105%;
+}
+
 /**** Login Div ****/
 #login {
     padding: 0;
@@ -45,28 +51,6 @@
 
 #login #btnLogin {
     background-color: #4CAF50;
-}
-
-/**** TEST BUTTONS. DELETE AFTER TEST IS DONE ****/
-#login .buttonTest {
-    position: absolute;
-    margin-top: 1.5%;
-    text-align: center;
-    font-size: 85%;
-    color: #ffffff;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
-    background-color: #f00;
-    border: none;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 20%;
-}
-
-#login #btnTEST1 {
-    top: -25%;
-    left: 40%;
-    width: 30%;
 }
 
 /**** Register Div ****/
@@ -189,13 +173,12 @@
 
 #account #labelEmail {
     font-size: 95%;
-    text-align: left;
     padding-bottom: 2%;
     color: #78d2f0;
 }
 
 #account #labelAchieve {
-    font-size: 100%;
+    font-size: 95%;
     padding-bottom: 1.5%;
 }
 

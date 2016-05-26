@@ -86,9 +86,9 @@
                         <div id="menuMain3FrontText" class="mainFrontText">
                             <?php
                                 if (isset($_SESSION['SESS_LOGIN'])) {
-                                    echo "My Info";
+                                    echo "Account";
                                 } else {
-                                    echo "Login";
+                                    echo "Login<br>or<br>Register";
                                 }
                             ?>
                         </div>
@@ -153,6 +153,17 @@
                     </div>
                     <div id="menuLogin0Front" class="front">
                         <div id="menuLogin0FrontText" class="loginFrontText">
+                        <?php
+                            if (isset($_SESSION['SESS_LOGIN'])) {
+                                echo '<script type="text/javascript">';
+                                echo 'fillLoginFront("./account.php #account")';
+                                echo '</script>';
+                            } else {
+                                echo '<script type="text/javascript">';
+                                echo 'fillLoginFront("./login.php #login")';
+                                echo '</script>';
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>

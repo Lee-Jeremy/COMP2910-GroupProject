@@ -3,7 +3,7 @@
  * @param num
  *              Achievement number. 1 for "Flash Memory", 2 for "Diehard", 3 for "Human Calculator".
  */
-function acheiveUnlock(num) {
+function achieveUnlock(num) {
     switch (num) {
         case 1:
             getId("achieve1Text").innerHTML = 'Flash Memory';

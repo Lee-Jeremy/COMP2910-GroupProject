@@ -289,7 +289,13 @@
 
                         <div id="nameBoxContainer">
                             <form id="nameForm" onsubmit="return false">
-                                <input type="text" name="nameBox" id="nameBox" maxlength="7">
+                                <input type="text" name="nameBox" id="nameBox" maxlength="7"
+                                    <?php
+                                        if (isset($_SESSION['SESS_LOGIN'])) {
+                                            echo 'value="'.$_SESSION['SESS_LOGIN'].'"';
+                                        }
+                                    ?>       
+                                >
                             </form>
                         </div>
                     </div>

@@ -51,20 +51,16 @@ $(document).ready(function () {
             switchScreen(target);
         }
         if (target == "addition") {
-            target = "menuPrac0Front";
-            switchScreen(target);
+            switchScreen("menuPrac0Front");
         }
         if (target == "subtraction") {
-            target = "menuPrac1Front";
-            switchScreen(target);
+            switchScreen("menuPrac1Front");
         }
         if (target == "multiplication") {
-            target = "menuPrac2Front";
-            switchScreen(target);
+            switchScreen("menuPrac2Front");
         }
         if (target == "division") {
-            target = "menuPrac3Front";
-            switchScreen(target);
+            switchScreen("menuPrac3Front");
         }
     });
     // Detects the id of the clicked division in the login division and executes functions accordingly

@@ -243,25 +243,58 @@
 #account .achieveTxt {
     visibility: hidden;
     width: 70%;
-    height: 95%;
+    height: 75%;
     background-color: black;
     color: #fff;
     text-align: left;
-    padding: 2%;
+    padding: 0;
     border-radius: 2%;
-    opacity: 0.85;
- 
+    opacity: 0.90;
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
-    top: -75%;
-    left: 2%;
+    top: -60%;
+    left: 3%;
+}
+
+#account .achieveTxt table {
+    border-collapse: collapse;
+    width: 97.5%;
+    margin-top: 2%;
+    table-layout: fixed;
 }
 
 #account .achieveTxt img {
-    position: relative;
-    clear: both;
-    width: 40%;
+    width: 100%;
+}
+
+#account .achieveTxt td:nth-child(2) {
+    width: 70%;
+    text-align: center;
+    font-variant: small-caps;
+    font-size: 120%;
+    line-height: 0.95;
+}
+
+#account .achieveTxt td:nth-child(1) {
+    padding-left: 4%;
+}
+
+#account .achieveDescription {
+    text-align: left;
+    font-size: 95%;
+}
+
+.achieveTxt #achieve1Title {
+    color: #FFC270;
+}
+
+.achieveTxt #achieve2Title {
+    color: #99FF99;
+}
+
+.achieveTxt #achieve3Title {
+    color: #99CCFF;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */

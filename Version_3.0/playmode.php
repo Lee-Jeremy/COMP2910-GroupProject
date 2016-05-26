@@ -40,6 +40,7 @@
         <script src="./scripts/multiplier_timer.js"></script>
         <script src="./scripts/operator.js"></script>
         <script src="./scripts/overlays.js"></script>
+        <script src="./scripts/play_cue.js"></script>
         <script src="./scripts/reset_level.js"></script>
         <script src="./scripts/right_button.js"></script>
         <script src="./scripts/set_difficulty.js"></script>

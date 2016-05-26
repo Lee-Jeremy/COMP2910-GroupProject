@@ -13,26 +13,29 @@
                 </td>
             </tr>
             <tr>
-                <td id="labelAchieve" class="label" colspan="3">Achievement (Click To See)
+                <td id="labelAchieve" class="label" colspan="3">Achievement (Click To View)
                 </td>
             </tr>
             <tr>
-                <td id="achieve1Image" class="achieveImage"><img src="./images/achieve1.png" alt="image" onclick="acheiveUnlock(1)">
+                <td id="achieve1Image" class="achieveImage"><img src="./images/achieve1.png" alt="achieve1" onclick="acheiveUnlock(1)">
+                    <div id="achieve1Status" class="achieveStatus">
+                        <img src="./images/locked.png" alt="locked">
+                    </div>
+                    <div id="achieve1Txt" class="achieveTxt">
+                        <h3>Flash Memory</h3>
+                        <p>Clear first 10 stages without losing any multipliers</p>
+                    </div>
                 </td>
-                <td id="achieve2Image" class="achieveImage"><img src="./images/achieve2.png" alt="image" onclick="acheiveUnlock(2)">
+                <td id="achieve2Image" class="achieveImage"><img src="./images/achieve2.png" alt="achieve2" onclick="acheiveUnlock(2)">
+                    <div id="achieve2Status" class="achieveStatus">
+                        <img src="./images/locked.png" alt="locked">
+                    </div>
+                    <div id="achieve2Txt" class="achieveTxt">Achievement2 tooltip</div>
                 </td>
-                <td id="achieve3Image" class="achieveImage"><img src="./images/achieve3.png" alt="image" onclick="acheiveUnlock(3)">
-                </td>
-            </tr>
-            <tr>
-                <td id="achieve1Text" class="achieveText">
-                    LOCKED
-                </td>
-                <td id="achieve2Text" class="achieveText">
-                    LOCKED
-                </td>
-                <td id="achieve3Text" class="achieveText">
-                    LOCKED
+                <td id="achieve3Image" class="achieveImage"><img src="./images/achieve3.png" alt="achieve3" onclick="acheiveUnlock(3)">
+                    <div id="achieve3Status" class="achieveStatus"><img src="./images/locked.png" alt="locked">
+                    </div>
+                    <div id="achieve3Txt" class="achieveTxt">Achievement3 tooltip</div>
                 </td>
             </tr>
         </table>

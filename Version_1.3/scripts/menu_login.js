@@ -7,6 +7,7 @@ function placeLoginCard() {
     // Phase 1: Loads the login.php on the back of login card, put main menu text, and changes z-index
     // of the login main menu card so that it would not be hidden behind other cards. Then, moves the
     // other main menu cards to behind of the login main menu card
+    fillLoginFront("./login.php #login")
     getId('menuMain3BackText').innerHTML = "Main Menu";
     getId('menuMain3').style.zIndex = "3";
     for (i = 0; i <= 3; i++) {

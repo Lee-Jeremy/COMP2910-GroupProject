@@ -1,7 +1,8 @@
 /* Padding and border included in width and height */
 * {
+    box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    font-weight: bolder;
+    text-shadow: 1px 1px 2px #000000;
 }
 
 /* Set Height and Width to Viewport Size */
@@ -34,7 +35,7 @@ html, body {
 /* Title image */
 #title img {
     width: 100%;
-    height: 87.5%;
+    height: 80%;
 }
 
 /**** All Cards ****/
@@ -115,7 +116,8 @@ html, body {
 
 /* Main menu card 2 front text */
 #menuMain1FrontText {
-    font-size: 90%;
+    font-size: 105%;
+    letter-spacing: -0.1vw;
 }
 
 /* Main menu card 2 back text */

@@ -2,74 +2,73 @@
  * Deal the Matrix Cards
  */
 function dealCards() {
-	var interval;
-    deal.play();
-	$("#animationCard11").animate({ // Move to the answer card position and shrink
-			left: '71.1vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},150, function(){		
-	$("#animationCard10").animate({ // Move to the operator card position and shrink
-			left: '20.7vw',
-			top: '67vh',
-			height: '15vh',
-			width: '18.9vw'
-		},150, function(){
-	$("#animationCard9").animate({ // Move to the r3c3 position
-			left: '58vw',
-			top: '43.75vh',
-		},150, function(){
-	$("#animationCard8").animate({ // Move to the r3c2 position
-			left: '33.6vw',
-			top: '43.75vh',
-		},150, function(){
-	$("#animationCard7").animate({ // Move to the r3c1 position
-			left: '9.5vw',
-			top: '43.75vh',
-		},150, function(){
-	$("#animationCard6").animate({ // Move to the r2c3 position
-			left: '58vw',
-			top: '21.8vh',
-		},150, function(){
-	$("#animationCard5").animate({ // Move to the r2c2 position
-			left: '33.6vw',
-			top: '21.8vh',
-		},150, function(){
-	$("#animationCard4").animate({ // Move to the r2c1 position
-			left: '9.5vw',
-			top: '21.8vh',
-		},150, function(){
-	$("#animationCard3").animate({ // Move to the r1c3 position
-			left: '58vw',
-			top: '0vh',
-		},150, function(){
-	$("#animationCard2").animate({ // Move to the r1c2 position
-			left: '33.6vw',
-			top: '0vh',
-		},150, function(){ // Change background color and border style of all matrix card's backside's
-	for (var i = 1; i <= 3; i++) {
-		for (var k = 1; k <=3; k++) {
-			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#263545"; // Navy blue
-			getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
-		}
-        deal.pause();
+    deal.play(); // Sound effect
+
+	setTimeout(dealCard11, 150);
+	setTimeout(dealCard10, 300);
+	setTimeout(dealCard9, 450);
+	setTimeout(dealCard8, 600);
+	setTimeout(dealCard7, 750);
+	setTimeout(dealCard6, 900);
+	setTimeout(dealCard5, 1050);
+	setTimeout(dealCard4, 1200);
+	setTimeout(dealCard3, 1350);
+	setTimeout(dealCard2, 1500);
+	setTimeout(showMatrixCards, 1650);
+
+	function dealCard11() {
+		dealCard("#animationCard11", '71.1vw', '67vh', '15vh', '18.9vw', 150);
 	}
-    
-	getId('eqCard2Back').style.backgroundColor = "#800000"; // Red
-	getId('eqCard2Back').style.border = "1px solid #000000"; // Solid black border
-	getId('eqCard4Back').style.backgroundColor = "#800000";	// Red
-	getId('eqCard4Back').style.border = "1px solid #000000"; // Solid black border
-    easterEgg(); // Put easter eggs on card backs if condition is met
-	setTimeout(hideAnimations, 450);
-		});		
-		});	
-		});	
-		});		
-		});		
-		});		
-		});	
-		});	
-		});
-		});
+	function dealCard10() {
+		dealCard("#animationCard10", '20.7vw', '67vh', '15vh', '18.9vw', 150);
+	}
+	function dealCard9() {
+		dealCard("#animationCard9", '58vw', '43.75vh', '32%', '25%', 150);
+	}
+	function dealCard8() {
+		dealCard("#animationCard8", '33.6vw', '43.75vh', '32%', '25%', 150);
+	}
+	function dealCard7() {
+		dealCard("#animationCard7", '9.5vw', '43.75vh', '32%', '25%', 150);
+	}
+	function dealCard6() {
+		dealCard("#animationCard6", '58vw', '21.8vh', '32%', '25%', 150);
+	}
+	function dealCard5() {
+		dealCard("#animationCard5", '33.6vw', '21.8vh', '32%', '25%', 150);
+	}
+	function dealCard4() {
+		dealCard("#animationCard4", '9.5vw', '21.8vh', '32%', '25%', 150);
+	}
+	function dealCard3() {
+		dealCard("#animationCard3", '58vw', '0vh', '32%', '25%', 150);
+	}
+	function dealCard2() {
+		dealCard("#animationCard2", '33.6vw', '0vh', '32%', '25%', 150);
+	}
+
+    function dealCard(id, leftPosition, topPosition, heightValue, widthValue, animationSpeed) {
+        $(id).animate({ // Move each card to their respective positions (resize if necessary)
+            left: leftPosition,
+            top: topPosition,
+            height: heightValue,
+            width: widthValue
+        }, animationSpeed);
+    }
+
+    function showMatrixCards() {
+        for (var i = 1; i <= 3; i++) {
+            for (var k = 1; k <=3; k++) {
+                getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#263545"; // Navy blue
+                getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
+            }
+        }
+        deal.pause();
+        getId('eqCard2Back').style.backgroundColor = "#800000"; // Red
+        getId('eqCard2Back').style.border = "1px solid #000000"; // Solid black border
+        getId('eqCard4Back').style.backgroundColor = "#800000";	// Red
+        getId('eqCard4Back').style.border = "1px solid #000000"; // Solid black border
+        easterEgg(); // Put easter eggs on card backs if condition is met
+        setTimeout(hideAnimations, 450);
+    }
 }

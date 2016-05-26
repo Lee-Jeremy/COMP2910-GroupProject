@@ -1,7 +1,7 @@
 <?php
     // Starts the sessions; tracks user
     session_start();
-
+    
     require('./php/config.php');
     include('./php/achieve_get.php');
 ?>
@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="./style/startscreen.css">
         <link rel="stylesheet" type="text/css" href="./style/account.css">
-        <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:700">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
         <script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.20/dist/jquery.flip.min.js"></script>
         <script src="./scripts/achieve.js"></script>
@@ -143,7 +143,6 @@
                     </div>
                 </div> <!-- Practice: Division -->
             </div> <!-- Practice Menu 4 Wrapper -->
-
             <!-- Login Window 1 Wrapper -->
             <div id="menuLoginBox0" class="menuLoginBox">
                 <div id="menuLogin0" class="loginCard">

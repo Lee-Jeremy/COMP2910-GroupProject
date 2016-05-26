@@ -1,6 +1,6 @@
 /** 
- * Set-up menu cards for flipping and starts placing menu cards 
- */
+* Set-up menu cards for flipping and starts placing menu cards 
+*/
 $(document).ready(function () {
     placeMainCards();
     $(".mainCard").flip({ // Main menu cards flipping

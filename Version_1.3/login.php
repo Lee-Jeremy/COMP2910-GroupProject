@@ -25,6 +25,5 @@
         <input type="button" value="Register Page" id="btnRegisterPage" class="button"></input>
         <input type="button" value="Forgot Password?" id="btnPasswordPage" class="button"></input>
         <input type="button" value="ACCOUNT" id="btnTEST1" class="buttonTest"></input>
-        <input type="button" value="FAIL" id="btnTEST2" class="buttonTest"></input>
     </form>
 </div>

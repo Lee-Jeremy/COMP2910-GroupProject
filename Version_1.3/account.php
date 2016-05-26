@@ -17,65 +17,48 @@
                 </td>
             </tr>
             <tr>
-                <td id="labelAchieve" class="label" colspan="3">Achievements (Click To See)
+                <td id="labelAchieve" class="label" colspan="3">Achievement (Click To View)
                 </td>
             </tr>
             <tr>
-                <td id="achieve1Image" class="achieveImage">    
-                    <img src="./images/achieve1.png" alt="image"
-                    <?php
+                <td id="achieve1Image" class="achieveImage"><img src="./images/achieve1.png" alt="achieve1">
+                    <div id="achieve1Status" class="achieveStatus">
+                        <img src=<?php
                         if ($_SESSION['SESS_ACHIEVE1'] == "yes") {
-                            echo 'onload="achieveUnlock(1)"';
-                        }
-                    ?>     
-                    >
-                </td>
-                <td id="achieve2Image" class="achieveImage">
-                    <img src="./images/achieve2.png" alt="image"
-                    <?php
-                        if ($_SESSION['SESS_ACHIEVE2'] == "yes") {
-                            echo 'onload="achieveUnlock(2)"';
-                        }
-                    ?>
-                    >
-                </td>
-                <td id="achieve3Image" class="achieveImage">
-                    <img src="./images/achieve3.png" alt="image"
-                    <?php
-                        if ($_SESSION['SESS_ACHIEVE3'] == "yes") {
-                            echo 'onload="achieveUnlock(3)"';
-                        }
-                    ?>  
-                    >
-                </td>
-            </tr>
-            <tr>
-                <td id="achieve1Text" class="achieveText">
-                    <?php
-                        if ($_SESSION['SESS_ACHIEVE1'] == "yes") {
-                            echo "UNLOCKED";
+                            echo '"./images/unlocked.png onload="achieveUnlock(1)"';
                         } else {
-                            echo "LOCKED";
+                            echo './images/locked.png';
                         }
-                    ?>                   
+                        ?> alt="locked">
+                    </div>
+                    <div id="achieve1Txt" class="achieveTxt">
+                        <h3>Flash Memory</h3>
+                        <p>Clear first 10 stages without losing any multipliers</p>
+                    </div>
                 </td>
-                <td id="achieve2Text" class="achieveText">
-                    <?php
+                <td id="achieve2Image" class="achieveImage"><img src="./images/achieve2.png" alt="achieve2">
+                    <div id="achieve2Status" class="achieveStatus">
+                        <img src=<?php
                         if ($_SESSION['SESS_ACHIEVE2'] == "yes") {
-                              echo "UNLOCKED";
-                          } else {
-                              echo "LOCKED";
-                          }
-                    ?>                
+                            echo '"./images/unlocked.png onload="achieveUnlock(2)"';
+                        } else {
+                            echo './images/locked.png';
+                        }
+                        ?> alt="locked">
+                    </div>
+                    <div id="achieve2Txt" class="achieveTxt">Achievement2 tooltip</div>
                 </td>
-                <td id="achieve3Text" class="achieveText">
-                    <?php
+                <td id="achieve3Image" class="achieveImage"><img src="./images/achieve3.png" alt="achieve3">
+                    <div id="achieve3Status" class="achieveStatus">
+                        <img src=<?php
                         if ($_SESSION['SESS_ACHIEVE3'] == "yes") {
-                              echo "UNLOCKED";
-                          } else {
-                              echo "LOCKED";
-                          }
-                    ?>
+                            echo '"./images/unlocked.png" onload="achieveUnlock(3)"';
+                        } else {
+                            echo './images/locked.png';
+                        }
+                        ?> alt="locked">
+                    </div>
+                    <div id="achieve3Txt" class="achieveTxt">Achievement3 tooltip</div>
                 </td>
             </tr>
         </table>

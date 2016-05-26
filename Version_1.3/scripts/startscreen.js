@@ -44,11 +44,23 @@ $(document).ready(function () {
     });
     // Detects the id of the clicked division in the practice menu division and executes functions accordingly
     $(".menuPracBox").click(function (event) {
-        // Variable for the clicked element's id
+        // Variable for the clicked element's id      
         var target = event.target.id;
         // Executes the switchScreen function when practice menu cards' front is clicked
-        if (target.substring(10, 14) == "Front") {
+        if (target.substring(9, 14) == "Front") {
             switchScreen(target);
+        }
+        if (target == "addition") {
+            switchScreen("menuPrac0Front");
+        }
+        if (target == "subtraction") {
+            switchScreen("menuPrac1Front");
+        }
+        if (target == "multiplication") {
+            switchScreen("menuPrac2Front");
+        }
+        if (target == "division") {
+            switchScreen("menuPrac3Front");
         }
     });
     // Detects the id of the clicked division in the login division and executes functions accordingly

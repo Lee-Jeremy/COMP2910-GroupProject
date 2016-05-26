@@ -3,22 +3,36 @@
  */
 function generateOperator() {
 	var num = Math.floor((Math.random() * 4) + 1); // 1 to 4
-	switch(num) {
-		case 1:
-			operator = "addition";
-			break;
-		case 2:
-			operator = "subtraction";
-			break;
-		case 3:
-			operator = "multiplication";
-			break;
-		case 4:
-			operator = "division";
-			break;
-		default:
-			alert('Unable to set an operator during generateOperator');
+	if (document.title === 'Play') {
+	    switch (num) {
+	        case 1:
+	            operator = "addition";
+	            break;
+	        case 2:
+	            operator = "subtraction";
+	            break;
+	        case 3:
+	            operator = "multiplication";
+	            break;
+	        case 4:
+	            operator = "division";
+	            break;
+	        default:
+	            alert('Unable to set an operator during generateOperator');
+	    }
 	}
+    if (document.title === 'Addition') {
+        operator = 'addition';    
+    }
+    if (document.title === 'Subtraction') {
+        operator = 'subtraction'; 
+    }
+    if (document.title === 'Multiplication') {
+        operator = 'multiplication'; 
+    }
+    if (document.title === 'Division') {
+        operator = 'division'; 
+    }
 }
 
 /**

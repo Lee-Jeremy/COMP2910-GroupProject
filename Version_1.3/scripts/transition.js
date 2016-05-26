@@ -16,19 +16,19 @@ function switchScreen(menuSelected) {
             break;
         // Option for practice mode: addition
         case "menuPrac0":
-            //window.location.href = '';
+            window.location.href = 'addition.php';
             break;
         // Option for practice mode: subtraction     
         case "menuPrac1":
-            //window.location.href = '';
+            window.location.href = 'subtraction.php';
             break;
         // Option for practice mode: mulitplication     
         case "menuPrac2":
-            //window.location.href = '';
+            window.location.href = 'multiplication.php';
             break;
         // Option for practice mode: division     
         case "menuPrac3":
-            //window.location.href = '';
+            window.location.href = 'division.php';
             break;
     }
 }

@@ -34,6 +34,12 @@ function placeLoginCard() {
     }, 560);
 }
 
+/**
+ * Fills the account information box with the appropriate content
+ *
+ * @param URL
+ *                  URL of the content that is intended to be shown
+ */
 function fillLoginFront(URL) {
     $("#menuLogin0FrontText").load(URL);
 }

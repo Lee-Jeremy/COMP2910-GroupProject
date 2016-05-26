@@ -177,7 +177,7 @@ function fadePauseGame() {
     if (seconds == 0 && count <= 1) { // Determines the boundaries pausing (reveals and card selection respectively)
         hideOverlay();
         fadeOverlay();
-	    getId('quitText').innerHTML = "Game is<br>PAUSED.";
+	    getId('quitText').innerHTML = "Game is<br>PAUSED";
 	    getId('buttonLeftText').innerHTML = "End";
 	    getId('buttonRightText').innerHTML = "Resume";
     }
@@ -192,7 +192,7 @@ function pauseGame() {
     if (seconds == 0 && count <= 1) { // Determines the boundaries pausing (reveals and card selection respectively)
         hideOverlay();
         showOverlay();
-	    getId('quitText').innerHTML = "Game is<br>PAUSED.";
+	    getId('quitText').innerHTML = "Game is<br>PAUSED";
 	    getId('buttonLeftText').innerHTML = "End";
 	    getId('buttonRightText').innerHTML = "Resume";
     }

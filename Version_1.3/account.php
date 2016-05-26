@@ -17,7 +17,7 @@
                 </td>
             </tr>
             <tr>
-                <td id="labelAchieve" class="label" colspan="3">Achievement (Click To View)
+                <td id="labelAchieve" class="label" colspan="3">Achievements (Click To View)
                 </td>
             </tr>
             <tr>
@@ -25,7 +25,7 @@
                     <div id="achieve1Status" class="achieveStatus">
                         <img src=<?php
                         if ($_SESSION['SESS_ACHIEVE1'] == "yes") {
-                            echo '"./images/unlocked.png onload="achieveUnlock(1)"';
+                            echo '"./images/unlocked.png" onload="achieveUnlock(1)"';
                         } else {
                             echo './images/locked.png';
                         }
@@ -39,7 +39,7 @@
                             </tr>
                             <tr>
                                 <td class="achieveDescription" colspan="2">
-                                Clear first 10 stages without losing any multipliers
+                                Clear first 5 stages without losing any multipliers
                                 </td>
                             </tr>
                         </table>
@@ -49,7 +49,7 @@
                     <div id="achieve2Status" class="achieveStatus">
                         <img src=<?php
                         if ($_SESSION['SESS_ACHIEVE2'] == "yes") {
-                            echo '"./images/unlocked.png onload="achieveUnlock(2)"';
+                            echo '"./images/unlocked.png" onload="achieveUnlock(2)"';
                         } else {
                             echo './images/locked.png';
                         }
@@ -63,7 +63,7 @@
                             </tr>
                             <tr>
                                 <td class="achieveDescription" colspan="2">
-                                Clear 15 stages with all 3 lives
+                                Clear first 15 stages with full lives
                                 </td>
                             </tr>
                         </table>
@@ -87,7 +87,7 @@
                             </tr>
                             <tr>
                                 <td class="achieveDescription" colspan="2">
-                                Clear 20 stages
+                                Clear 25 stages
                                 </td>
                             </tr>
                         </table>

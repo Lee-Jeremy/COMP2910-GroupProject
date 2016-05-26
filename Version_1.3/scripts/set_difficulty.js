@@ -13,7 +13,7 @@ function setDifficulty() {
         points = points + 25;
     }
 
-    if(level % 20 === 1 && level > 20) {
+    if(level % 25 === 1 && level > 25) {
         secondRevealWave++;
         thirdRevealWave++; 
     }

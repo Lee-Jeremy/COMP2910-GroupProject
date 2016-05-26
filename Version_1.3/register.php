@@ -11,19 +11,19 @@
             <tr>
                 <td class="label">Email
                 </td>
-                <td><input type="email" name="regName"></input>
+                <td><input type="email" name="regName" required></input>
                 </td>
             </tr>
             <tr>
                 <td class="label">Password
                 </td>
-                <td><input type="password" name="regPass"></input>
+                <td><input type="password" name="regPass" required></input>
                 </td>
             </tr>
             <tr>
                 <td class="label">Confirm
                 </td>
-                <td><input type="password"></input>
+                <td><input type="password" required></input>
                 </td>
             </tr>
         </table>

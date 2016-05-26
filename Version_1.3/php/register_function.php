@@ -18,7 +18,7 @@
         die(mysqli_error($conn));
     
     // Checks if login already exists, otherwise create new user
-    if (mysqli_num_rows($checkResult) > 0) {
+    if (mysqli_num_rows($checkResult) > 0 || $userRegName == "" || $userRegPass == "") {
         // PRODUCE SOME SORT OF ERROR RESPONSE
         // exit();
     } else {
@@ -26,6 +26,7 @@
             VALUES ('$userRegName', '$userRegPass', '$regAchieve1', '$regAchieve2', '$regAchieve3')";
         mysqli_query($conn, $create) or
             die(mysqli_error($conn));
+        // header("location: login_function.php?logName=".$userLogName."&logPass=".$userLogPass);
         header("location: ../startscreen.php");
         exit();
         // DISPLAY ACCOUNT CREATION SUCCESSFUL
@@ -34,6 +35,6 @@
 
 <html>
 <body>
-<?php echo "Username already taken"?>
+<?php echo "Username already taken or missing fields"?>
 </body>
 </html>

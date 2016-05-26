@@ -11,13 +11,13 @@
             <tr>
                 <td class="label">Email
                 </td>
-                <td><input type="email" name="logName"></input>
+                <td><input type="email" name="logName" required></input>
                 </td>
             </tr>
             <tr>
                 <td class="label">Password
                 </td>
-                <td><input type="password" name="logPass"></input>
+                <td><input type="password" name="logPass" required></input>
                 </td>
             </tr>
         </table>

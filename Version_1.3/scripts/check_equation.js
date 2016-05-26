@@ -46,10 +46,11 @@ function checkEquation(){
  */
 function levelComplete() {
     if (document.title === 'Play') {
+        level++; 
         pointsPerLevel = (points * multiplier); // Points earned in the current level
         totalScore += pointsPerLevel; // Total points earned since level 1
         getId('passOrFailText').innerHTML = "Complete!";
-        if ((level % 5) === 1 && lives != 3) { // Adds a life every 10 levels
+        if ((level % 5) === 1 && lives != 3 && level != 1) { // Adds a life every 10 levels
             lives++;
             setTimeout(gainingLife, 500);
             getId('gainedHeartText').style.display = "block";
@@ -57,13 +58,14 @@ function levelComplete() {
             getId('gainedHeartText').style.display = "none";
         }
         setTimeout(fadeLevelOverlay, 1000); // Delays showing the overlay after 1 seconds
+        level++; // Increases the level count after each play
     }
-    if (document.title !== 'Play') {
+    if (document.title !== 'Play') { 
         levelCompletions++;
+        setTimeout(hexColour, 2500);
         setTimeout(resetLevel, 2500);
         setTimeout(dealCards, 3500);
     }
-    level++; // Increases the level count after each play
     getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
 }
@@ -89,9 +91,11 @@ function levelFailed() {
         }
     }
     if (document.title !== 'Play') {
+        level++;
+        setTimeout(hexColour, 2500);
         setTimeout(resetLevel, 2500);
         setTimeout(dealCards, 3500);
-        level++;     
+             
     }  
     getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
 	revealAnswer();

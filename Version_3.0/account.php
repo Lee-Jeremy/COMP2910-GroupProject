@@ -39,7 +39,7 @@
                             </tr>
                             <tr>
                                 <td class="achieveDescription" colspan="2">
-                                Clear first 5 stages without losing any multipliers
+                                Clear first 10 stages without losing any multipliers
                                 </td>
                             </tr>
                         </table>
@@ -63,7 +63,7 @@
                             </tr>
                             <tr>
                                 <td class="achieveDescription" colspan="2">
-                                Clear first 15 stages with full lives
+                                Clear first 15 stages with full lives remaining
                                 </td>
                             </tr>
                         </table>
@@ -87,7 +87,7 @@
                             </tr>
                             <tr>
                                 <td class="achieveDescription" colspan="2">
-                                Clear 25 stages
+                                Clear 20 stages
                                 </td>
                             </tr>
                         </table>

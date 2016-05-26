@@ -29,10 +29,10 @@ var multTimer; // Multiplier timer to determine bonus points
 var multiplier = 4; // Points multiplier
 var pointsPerLevel = 0; // Total points for the current level
 var mSeconds = 0; // Seconds counter within the multiplier timer
-var cardValueMax = 9; // The max range of the value for each matrix card
-var cardValueMin = -4; // The min range of the value for each matrix card
-var divisionCardValueMax = 9; // The max range of the value for each matrix card during division
-var divisionCardValueMin = -4; // The min range of the value for each matrix card during division
+var cardValueMax = 13; // The max range of the value for each matrix card
+var cardValueMin = -6; // The min range of the value for each matrix card
+var divisionCardValueMax = 13; // The max range of the value for each matrix card during division
+var divisionCardValueMin = -6; // The min range of the value for each matrix card during division
 var firstRevealWave = 2; // 1st set of card reveals 
 var secondRevealWave = 4; // 2nd set of card reveals 
 var thirdRevealWave = 6; // 3rd set of card reveals 

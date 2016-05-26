@@ -28,7 +28,7 @@ function achieve2() {
  * If the user reaches level 21, store and send to PHP
  */
 function achieve3() {
-    if (level == 2) {
+    if (level == 21) {
         $.post("playmode.php",
             {
                 achieve3: "yes"

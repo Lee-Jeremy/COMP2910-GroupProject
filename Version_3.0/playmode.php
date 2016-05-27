@@ -43,8 +43,8 @@
         <script src="./scripts/reset_level.js"></script>
         <script src="./scripts/right_button.js"></script>
         <script src="./scripts/set_difficulty.js"></script>
-        <script src="./scripts/set_level.js"></script>
-        <script src="./scripts/timer.js"></script>
+        <script src="./scripts/set_level.js"></script>        
+        <script src="./scripts/tutorial.js"></script>
     </head>
     <body>
         <!--- Wrapper --->
@@ -274,7 +274,7 @@
 
                         <div id="tutorialOrHearts">
                             <form id="tutorial">
-                                <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial"></p>
+                                <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial" id="tutorialBox"></p>
                             </form>
                             <p id="gainedHeartText" style="display: none; margin: 0"><img src="images/heartfull.png" id="heartGained" alt="heartFull"> Gained!</p>
                         </div>

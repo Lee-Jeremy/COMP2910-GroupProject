@@ -40,9 +40,6 @@ function resetLevel() {
 	r3c2Clicks = 0;
 	r3c3Clicks = 0;
 	seconds = 1;
-    gameStartCounter = 0;
-    playCounter = 0;
-    highScoreCounter = 0;
 	updateGameStatistics();
 }
  

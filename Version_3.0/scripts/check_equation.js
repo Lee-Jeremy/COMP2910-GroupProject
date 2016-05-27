@@ -71,6 +71,9 @@ function levelFailed() {
         lives--;
         setTimeout(losingLife, 1500);
         if (lives === 0) { // Checks to see if the lives are 0 causing game over
+            gameStartCounter = 0;
+            playCounter = 0;
+            highScoreCounter = 0;
             pauseMusic();        
             gameOver.play();
             if (totalScore > tenthScore) {

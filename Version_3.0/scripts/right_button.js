@@ -54,13 +54,16 @@ $(document).ready(function () {
                 gameStartCounter++;
                 if (gameStartCounter <= 1) {
                     gameStart.play();
-                }                   
+                }
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
                 hexColour();
                 if (document.title === 'Play' && totalScore > tenthScore) { // Checks current totalScore versus the 10th score from the database
-                    newHighScore.play();
+                    highScoreCounter++;
+                    if (highScoreCounter <= 1) {
+                        newHighScore.play();
+                    }
                     displayCrown();            // and displays a crown while converting the points color to gold
                     getId('pointsText').style.color = "#c5b358";
                 }

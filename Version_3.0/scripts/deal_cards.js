@@ -69,6 +69,8 @@ function dealCards() {
         getId('eqCard4Back').style.backgroundColor = "#800000";	// Red
         getId('eqCard4Back').style.border = "1px solid #000000"; // Solid black border
         easterEgg(); // Put easter eggs on card backs if condition is met
-        setTimeout(hideAnimations, 450);
+        if (tutorialCounter != 1) { 
+	    setTimeout(hideAnimations, 450);
+	}
     }
 }

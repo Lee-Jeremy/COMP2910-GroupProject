@@ -24,7 +24,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		hideEasterEgg(cardNum);
 		uncuePlay("#" + rowCol);
 		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animation card visible
-        click.play(); // Click sound
+        click.play(); // Slam Sound Effect
 		$("#animationCard" + cardNum).animate({ // Change size and width of animate div to match equation card dimensions
 			left: '0vw',
 			top: '67vh',
@@ -36,11 +36,9 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); // Hide the animate division
 				$('#eqCard1').flip(true); // Flip the 1st equation card to its frontside
-				flip.play();
 			}
 		});
 	}		
-    whoosh.play();
 	if (count == 2 && numClicks == 1) { 
 		clearInterval(multTimer); // Stop the multiplier timer function
 		userSelection[1] = matrix[cardIndexNum]; 
@@ -62,7 +60,6 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); 
 				$('#eqCard3').flip(true); // Flip the 3rd equation card to its frontside
-				flip.play();
 			}
 		});
 		// for tutorial option 

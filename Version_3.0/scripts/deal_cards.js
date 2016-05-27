@@ -63,7 +63,6 @@ function dealCards() {
                 getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
             }
         }
-        deal.pause();
         getId('eqCard2Back').style.backgroundColor = "#800000"; // Red
         getId('eqCard2Back').style.border = "1px solid #000000"; // Solid black border
         getId('eqCard4Back').style.backgroundColor = "#800000";	// Red

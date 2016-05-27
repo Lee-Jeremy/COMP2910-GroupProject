@@ -15,8 +15,9 @@ $(document).ready(function () {
                 pauseGame(); // Returns to the pauseGame overlay
                 break;
             case 'Resume': // Pause Game Overlay
+                resumeMusic();
                 if (document.title === 'Play') {
-                    multTimer = setInterval(multiplierTimer, 1000); // Resumes the timer functionality
+                    multTimer = setInterval(multiplierTimer, 1000); // Resumes the timer functionality                  
                 }
                 hideOverlay();
                 hideOverlayContainer();

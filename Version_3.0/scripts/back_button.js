@@ -7,6 +7,7 @@ $(document).ready(function () {
             clearInterval(multTimer); // Stop the multiplier timer
         }
         fadePauseGame(); // Fade-in the paue overlay screen
+        pauseMusic();
     });
     $("#toStartScreen").click(function () {
         window.location.href = './startscreen.php'; // Load the startscreen page

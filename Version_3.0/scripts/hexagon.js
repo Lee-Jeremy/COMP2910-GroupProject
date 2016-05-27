@@ -2,7 +2,7 @@
  * Changes the hexagon colour every 5 levels
  */
 function hexColour() {
-    if (level % 5 === 1) {
+    if (level % 5 === 1 && level != 1) {
         getId('hexImg').src = hexImgArray[hexCount];
         getId('hexImgOverlay').src = hexImgArray[hexCount];
         hexCount++;

@@ -1,12 +1,12 @@
 <?php
     // Starts the sessions; tracks user
     session_start();    
-
+    
     require('./php/config.php');
 ?>
 
 <div id="register">
-    <form action="./php/register_function.php" method="post">
+    <form action="./php/register_function.php" method="post" onsubmit="return validatePassword()">
         <table>
             <tr>
                 <td class="label">Email
@@ -17,13 +17,16 @@
             <tr>
                 <td class="label">Password
                 </td>
-                <td><input type="password" name="regPass" required></input>
+                <td>
+                    <input id="registerPassword" type="password" name="regPass" required></input>
                 </td>
             </tr>
             <tr>
                 <td class="label">Confirm
                 </td>
-                <td><input type="password" required></input>
+                <td>
+                    <input id="registerConfirm" type="password" required></input>
+                    <label id="invalidMsg1" for="registerConfirm">Passwords must match</label>
                 </td>
             </tr>
         </table>

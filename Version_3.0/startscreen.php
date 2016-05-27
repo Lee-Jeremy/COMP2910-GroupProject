@@ -20,6 +20,7 @@
         <script src="./scripts/achieve.js"></script>
         <script src="./scripts/card_place.js"></script>
         <script src="./scripts/card_restack.js"></script>
+        <script src="./scripts/form_validation.js"></script>
         <script src="./scripts/get_id.js"></script>
         <script src="./scripts/menu_main.js"></script>
         <script src="./scripts/menu_practice.js"></script>

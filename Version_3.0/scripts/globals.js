@@ -60,6 +60,7 @@ var hexPurple = "images/purple.png"; // Purple hexagon
 var hexRed = "images/red.png"; // Red hexagon
 var hexTeal = "images/teal.png"; // Teal hexagon
 var hexYellow = "images/yellow.png"; // Yellow hexagon
+var hexYellow = "images/green.png"; // Green hexagon
 var hexImgArray = [ // Stores the hexagons into an array
     hexOrange,
     hexBlue,
@@ -70,6 +71,7 @@ var hexImgArray = [ // Stores the hexagons into an array
     hexRed,
     hexTeal,
     hexYellow,
+    hexGreen
 ];
 var hexCount = 0; // Count for looping hexagon images
 var tutorialCounter = 0;

@@ -7,7 +7,7 @@ function hexColour() {
         getId('hexImgOverlay').src = hexImgArray[hexCount];
         hexCount++;
 
-        if (hexCount === 9) {
+        if (hexCount === 10) {
             hexCount = 0;
         }
     }

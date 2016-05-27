@@ -128,6 +128,11 @@
                 break;
             default: // Current Level Overlay
 			//var tenthScore = 0; // FOR TESTING PURPOSES IN THE HTML FILE
+            if (getId("tutorialBox").checked == true){
+				resetLevel();
+				displayTutorial();
+                }
+                else{
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
@@ -140,7 +145,6 @@
                 setTimeout(dealCards, 500);
         }
 	}});
-                
     $("#back").click(function() {
 		clearInterval(multTimer);
         fadePauseGame();
@@ -194,11 +198,8 @@ var tutorialCounter = 0;
 	
 // Deal the cards
 function dealCards() {
-<<<<<<< HEAD:Version_1.3/myscripts.js
-=======
 	var interval;
     deal.play();
->>>>>>> 007e2460205f931dbbe61f71813b100ba64ff986:Version_1.3/backup/myscripts.js
 	$("#animationCard11").animate({ // Move to the answer card position and shrink
 			left: '71.1vw',
 			top: '67vh',
@@ -287,7 +288,7 @@ function hideAnimations() {
 	for (var i = 1; i <= 11; i++) {
 		$("#animationCard" + i).css("visibility", "hidden");	
 	}	
-	//disabled for tutorial mode**********
+	//disabled for tutorial mode
 	if (getId("tutorialBox").checked == false){
 	setDifficulty();
 	timer = setInterval(myTimer, 1000); // Begin the in-game card reveals. Execute Every 1000 milliseconds 
@@ -1519,5 +1520,3 @@ function modifiedDealCards() {
 		});
 		});
 }
-
->>>>>>> Yannick:Version_1.3/myscripts.js

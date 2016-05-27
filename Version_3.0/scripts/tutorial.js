@@ -3,7 +3,7 @@ function displayTutorial() {
 	if (tutorialCounter == 0){
 		hideOverlay();
 		showOverlay();
-		getId('quitText').innerHTML = "Memorize the <mark>Answer</mark> card at the bottom";
+		getId('quitText').innerHTML = "Memorize the <mark>ANSWER</mark> card at the bottom";
 		getId('buttonRightText').innerHTML = "Next";
 		getId('buttonLeftText').innerHTML = "Back";
 	}	
@@ -45,7 +45,7 @@ function tutorial1() {
 	if (tutorialCounter == 2){
 		hideOverlay();
 		fadeOverlay();
-		getId('quitText').innerHTML = "Memorize the <mark>Matrix</mark> to equal the <mark>Answer</mark>";
+		getId('quitText').innerHTML = "Memorize the <mark>MATRIX</mark> to equal the <mark>ANSWER</mark>";
 }
 }
 
@@ -81,7 +81,7 @@ function tutorial3() {
 	if (tutorialCounter == 4){
 		hideOverlay();
 		fadeOverlay();
-		getId('quitText').innerHTML = "Click on 2 cards from the matrix to solve the <mark>Answer</mark>";
+		getId('quitText').innerHTML = "Click on 2 cards from the matrix to solve the <mark>ANSWER</mark>";
 }
 	}
 function tutorial4() {
@@ -100,7 +100,7 @@ function tutorial5() {
 	if (tutorialCounter == 6){
 		hideOverlay();
 		fadeOverlay();
-		getId('quitText').innerHTML = "At the top there is a <mark>Pause</mark> Button, <mark>Points</mark> Tracker, <mark>Life </mark>Tracker, <mark>Level </mark>Tracker, and <mark>Mulitplier</mark> Indicator.";
+		getId('quitText').innerHTML = "More points are rewarded by solving the <br>answer quickly.<br><br>Difficulty increases every 5 levels.";
 }
 	}
 	

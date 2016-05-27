@@ -21,12 +21,15 @@
         <script src="./scripts/card_place.js"></script>
         <script src="./scripts/card_restack.js"></script>
         <script src="./scripts/form_validation.js"></script>
+        <script src="./scripts/globals.js"></script>
         <script src="./scripts/get_id.js"></script>
         <script src="./scripts/menu_main.js"></script>
         <script src="./scripts/menu_practice.js"></script>
         <script src="./scripts/menu_login.js"></script>
         <script src="./scripts/startscreen.js"></script>
         <script src="./scripts/transition.js"></script>
+        <script src="./scripts/inGame_music.js"></script>
+        <script src="./scripts/menu_music.js"></script>
     </head>
     <body>
         <!-- Start Screen Wrapper -->

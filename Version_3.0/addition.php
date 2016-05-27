@@ -33,6 +33,7 @@
         <script src="./scripts/set_level.js"></script>        
         <script src="./scripts/timer.js"></script>
         <script src="./scripts/tutorial.js"></script>
+        <script src="./scripts/inGame_music.js"></script>
     </head>
     <body>
         <!--- Wrapper --->

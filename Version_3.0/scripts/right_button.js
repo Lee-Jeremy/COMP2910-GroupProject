@@ -68,11 +68,13 @@ $(document).ready(function () {
 				displayTutorial();
                 }
                 else{
+                gameStart.play();
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
                 hexColour();
                 if (document.title === 'Play' && totalScore > tenthScore) { // Checks current totalScore versus the 10th score from the database
+                    newHighScore.play();
                     displayCrown();            // and displays a crown while converting the points color to gold
                     getId('pointsText').style.color = "#c5b358";
                 }
@@ -83,6 +85,7 @@ $(document).ready(function () {
                     achieveHide();
                 }
                 setTimeout(dealCards, 500);
+                setTimeout(cueMusic, 6500);
         }
 		}
     });

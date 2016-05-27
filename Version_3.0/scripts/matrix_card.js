@@ -64,7 +64,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			}
 		});
 		// for tutorial option 
-		if (getId("tutorialBox").checked = false) {
+		if (getId("tutorialBox").checked == false) {
 			setTimeout(checkEquation, 1200); // Check if the equation is true
 		}else {
 			setTimeout(tutorialEquation, 1200);

@@ -48,27 +48,7 @@ $(document).ready(function () {
                     }                                               // query is processed slower than page refreshes
                 }
                 break;
-			case 'Next': // Tutorial Next option
-			// Has a counter to cycle through all the tutorial and repeats it after user is done
-			if (tutorialCounter >=6){
-				showLevelOverlay();
-				getId("tutorialBox").checked = false;
-				
-				tutorialCounter =0;
-			//The user is still in the tutorial page
-			}else {
-				tutorialCounter++;
-				tutorial();
-				tutorial2();
-				tutorial4();
-			}
-                break;
             default: // Current Level Overlay
-			if (getId("tutorialBox").checked == true){
-				resetLevel();
-				displayTutorial();
-                }
-                else{
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
@@ -85,6 +65,5 @@ $(document).ready(function () {
                 }
                 setTimeout(dealCards, 500);
         }
-		}
     });
 });

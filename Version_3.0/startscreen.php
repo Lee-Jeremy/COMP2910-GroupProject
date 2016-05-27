@@ -26,6 +26,7 @@
         <script src="./scripts/menu_login.js"></script>
         <script src="./scripts/startscreen.js"></script>
         <script src="./scripts/transition.js"></script>
+        <script src="./scripts/menu_music.js"></script>
     </head>
     <body>
         <!-- Start Screen Wrapper -->

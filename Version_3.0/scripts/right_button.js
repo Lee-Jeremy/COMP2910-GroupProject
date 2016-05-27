@@ -37,24 +37,26 @@ $(document).ready(function () {
                         incorrectInput();
                     } else { // Uses AJAX to submit the JS variables to be read via PHP
                         $.post("playmode.php", {
-                        newNameInput: nameInput,
-                        newTotalScore: scoreInput
-                    });
-                    if (document.title === 'Play') {
-                        achieve1();
-                        achieve2();
-                        achieve3();
-                    }
-                    window.location.href = './leaderboard.php'; // Links to the leaderboard.php page;
+                            newNameInput: nameInput,
+                            newTotalScore: scoreInput
+                        });
+                        if (document.title === 'Play') {
+                            achieve1();
+                            achieve2();
+                            achieve3();
+                        }
+                        window.location.href = './leaderboard.php'; // Links to the leaderboard.php page;
                     }                                           // query is processed slower than page refreshes
                 }
                 break;
             default: // Current Level Overlay
+                gameStart.play();
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
                 hexColour();
                 if (document.title === 'Play' && totalScore > tenthScore) { // Checks current totalScore versus the 10th score from the database
+                    newHighScore.play();
                     displayCrown();            // and displays a crown while converting the points color to gold
                     getId('pointsText').style.color = "#c5b358";
                 }
@@ -64,6 +66,7 @@ $(document).ready(function () {
                     achieve3();
                 }
                 setTimeout(dealCards, 500);
+                setTimeout(cueMusic, 6500);
         }
     });
 });

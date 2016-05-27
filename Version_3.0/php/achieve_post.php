@@ -14,8 +14,8 @@
     if (isset($_SESSION['SESS_LOGIN']) && $_SESSION['SESS_LOGIN'] != '') {
         $achievePost = $_SESSION['SESS_LOGIN'];
         
-        if (isset($achieve1Post) && $achieve1Post == "yes") {
-            $writeA1 = "UPDATE Users SET achieve1='no' WHERE username='$achievePost'";
+        if ($achieve1Post == "yes") {
+            $writeA1 = "UPDATE Users SET achieve1='yes' WHERE username='$achievePost'";
             mysqli_query($conn, $writeA1) or
                 die(mysqli_error($conn));
         }

@@ -37,39 +37,18 @@ $(document).ready(function () {
                         incorrectInput();
                     } else { // Uses AJAX to submit the JS variables to be read via PHP
                         $.post("playmode.php", {
-                        newNameInput: nameInput,
-                        newTotalScore: scoreInput
-                    });
-                    if (document.title === 'Play') {
+                            newNameInput: nameInput,
+                            newTotalScore: scoreInput
+                        });
                         achieve1();
                         achieve2();
                         achieve3();
-                    }
-                    window.location.href = './leaderboard.php'; // Links to the leaderboard.php page;
-                    }                                           // query is processed slower than page refreshes
+                        achieveHide();
+                        window.location.href = './leaderboard.php'; // Links to the leaderboard.php page;
+                    }                                               // query is processed slower than page refreshes
                 }
-                break;
-			case 'Next': // Tutorial Next option
-			// Has a counter to cycle through all the tutorial and repeats it after user is done
-			if (tutorialCounter >=6){
-				showLevelOverlay();
-				getId("tutorialBox").checked = false;
-				
-				tutorialCounter =0;
-			//The user is still in the tutorial page
-			}else {
-				tutorialCounter++;
-				tutorial();
-				tutorial2();
-				tutorial4();
-			}
                 break;
             default: // Current Level Overlay
-			if (getId("tutorialBox").checked == true){
-				resetLevel();
-				displayTutorial();
-                }
-                else{
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
@@ -82,9 +61,9 @@ $(document).ready(function () {
                     achieve1();
                     achieve2();
                     achieve3();
+                    achieveHide();
                 }
                 setTimeout(dealCards, 500);
         }
-		}
     });
 });

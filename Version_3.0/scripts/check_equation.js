@@ -57,6 +57,7 @@ function levelComplete() {
         } else {
             getId('gainedHeartText').style.display = "none";
         }
+        achieveDisplay();
         setTimeout(fadeLevelOverlay, 1000); // Delays showing the overlay after 1 seconds
     }
     if (document.title !== 'Play') {
@@ -76,6 +77,7 @@ function levelComplete() {
 function levelFailed() {
     if (document.title === 'Play') {
         lives--;
+        achieveDisplay();
         setTimeout(losingLife, 1500);
         if (lives === 0) { // Checks to see if the lives are 0 causing game over
             if (totalScore > tenthScore) {

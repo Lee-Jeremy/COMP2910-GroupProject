@@ -111,17 +111,5 @@ function switchMenu(button) {
             $("#menuLogin0BackText").load("./password.php #password");
             loginBackOn = 1;
             break;
-
-        // TEST PAGE TRANSITION: DELETE AFTER TESTS ARE COMPLETED 
-        case "btnTEST1":
-            $("#menuLogin0").flip(false);
-            $("#menuLogin0BackText").load("./account.php #account");
-            loginBackOn = 1;
-            break;
-        case "btnTEST2":
-            $("#menuLogin0").flip(false);
-            $("#menuLogin0BackText").load("./fail.php #fail");
-            loginBackOn = 1;
-            break;
     }
 }

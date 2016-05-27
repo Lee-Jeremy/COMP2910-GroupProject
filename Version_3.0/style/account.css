@@ -1,9 +1,17 @@
+/**** Styles input elements in all tables ****/
+table input {
+    text-shadow: 0px 0px 0px #ffffff;
+    font-size: 105%;
+}
+
 /**** Login Div ****/
+/* Login wrapper */
 #login {
     padding: 0;
     font-size: 120%;
 }
 
+/* Tables */
 #login table {
     width: 95%;
     margin: auto;
@@ -11,24 +19,29 @@
     table-layout: fixed;
 }
 
+/* Table cells */
 #login td {
     margin: 0;
     padding-right: 1%;
     padding-bottom: 2%;
 }
 
+/* First table cells */
 #login td:nth-child(1) {
     width: 35%;
 }
 
+/* Input forms in  */
 #login input {
     width: 100%;
 }
 
+/* Labels (first column cells) */
 #login .label {
     text-align: right;
 }
 
+/* Buttons */
 #login .button {
     margin-top: 2%;
     text-align: center;
@@ -43,63 +56,48 @@
     display: inline-block;
 }
 
+/* Login button */
 #login #btnLogin {
     background-color: #4CAF50;
 }
 
-/**** TEST BUTTONS. DELETE AFTER TEST IS DONE ****/
-#login .buttonTest {
-    position: absolute;
-    margin-top: 1.5%;
-    text-align: center;
-    font-size: 85%;
-    color: #ffffff;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
-    background-color: #f00;
-    border: none;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 20%;
-}
-
-#login #btnTEST1 {
-    top: -25%;
-    left: 40%;
-    width: 30%;
-}
-
 /**** Register Div ****/
+/* Register wrapper */
 #register {
     padding: 0;
     font-size: 120%;
 }
 
+/* Tables */
 #register table {
     width: 95%;
     margin: auto;
     padding: 0;
     table-layout: fixed;
 }
-
+/* Table cells */
 #register td {
     margin: 0;
     padding-right: 1%;
     padding-bottom: 2%;
 }
 
+/* First table cells */
 #register td:nth-child(1) {
     width: 35%;
 }
 
+/* Input forms */
 #register input {
     width: 100%;
 }
 
+/* Labels (first column cells) */
 #register .label {
     text-align: right;
 }
 
+/* Buttons */
 #register .button {
     margin-top: 2%;
     text-align: center;
@@ -114,16 +112,32 @@
     display: inline-block;
 }
 
+/* Register button */
 #register #btnRegister {
     background-color: #4CAF50;
 }
 
+/* Invalid input message wrapper */
+#register #invalidMsg1 {
+    visibility: hidden;
+    letter-spacing: -1px;
+    word-spacing: -1px;
+    text-shadow: 0 0 0px #ffffff;
+    position: absolute;
+    font-size: 85%;
+    color: #ff0000;
+    left: 37.5%;
+    top: 42.5%;
+}
+
 /**** Password Div ****/
+/* Password wrapper */
 #password {
     padding: 0;
     font-size: 120%;
 }
 
+/* Table */
 #password table {
     width: 95%;
     margin: auto;
@@ -131,24 +145,29 @@
     table-layout: fixed;
 }
 
+/* Table cells */
 #password td {
     margin: 0;
     padding-right: 1%;
     padding-bottom: 2%;
 }
 
+/* First table cells */
 #password td:nth-child(1) {
     width: 35%;
 }
 
+/* Input forms */
 #password input {
     width: 100%;
 }
 
+/* Labels (first column cells) */
 #password .label {
     text-align: right;
 }
 
+/* Buttons */
 #password .button {
     margin-top: 2%;
     text-align: center;
@@ -163,17 +182,20 @@
     display: inline-block;
 }
 
+/* Reset-password button */
 #password #btnResetPassword {
     background-color: #4CAF50;
 }
 
 
 /**** Account Div ****/
+/* Account wrapper */
 #account {
     padding: 0;
     font-size: 120%;
 }
 
+/* Table */
 #account table {
     width: 97.5%;
     margin: auto;
@@ -183,22 +205,25 @@
     table-layout: fixed;
 }
 
+/* Table cells */
 #account td {
     margin: 0;
 }
 
+/* Email label (first row cell) */
 #account #labelEmail {
     font-size: 95%;
-    text-align: left;
     padding-bottom: 2%;
     color: #78d2f0;
 }
 
+/* Achievement label (second row cell) */
 #account #labelAchieve {
-    font-size: 100%;
+    font-size: 95%;
     padding-bottom: 1.5%;
 }
 
+/* Achievement icon image wrapper */
 .achieveImage {
     width: 31.5%;
     padding: 0;
@@ -208,22 +233,26 @@
     margin-bottom: 0;
 }
 
+/* Achievement icon images */
 .achieveImage img {
     width: 100%;
     margin-bottom: 0;
     opacity: 0.4;
 }
 
+/* Achievement status icon wrapper */
 .achieveStatus {
     margin-top: -40%;
     text-align: left;
 }
 
+/* Achievement status icon image */
 .achieveStatus img {
     width: 35%;
     opacity: 1.0;
 }
 
+/* Buttons */
 #account .button {
     margin-top: 2%;
     text-align: center;
@@ -250,13 +279,13 @@
     padding: 0;
     border-radius: 2%;
     opacity: 0.90;
-    /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
     top: -60%;
     left: 3%;
 }
 
+/* Tooltip built-in table */
 #account .achieveTxt table {
     border-collapse: collapse;
     width: 97.5%;
@@ -264,10 +293,12 @@
     table-layout: fixed;
 }
 
+/* Tooltip built-in image*/
 #account .achieveTxt img {
     width: 100%;
 }
 
+/* Tooltip table second cells (second column) */
 #account .achieveTxt td:nth-child(2) {
     width: 70%;
     text-align: center;
@@ -276,36 +307,43 @@
     line-height: 0.95;
 }
 
+/* Tooltip table first cells (first column cells) */
 #account .achieveTxt td:nth-child(1) {
     padding-left: 4%;
 }
 
+/* Tooltip achievement descriptions (second row cells) */
 #account .achieveDescription {
     text-align: left;
     font-size: 95%;
 }
 
+/* Tooltip achievement 1 title */
 .achieveTxt #achieve1Title {
     color: #FFC270;
 }
 
+/* Tooltip achievement 2 title */
 .achieveTxt #achieve2Title {
     color: #99FF99;
 }
 
+/* Tooltip achievement 3 title */
 .achieveTxt #achieve3Title {
     color: #99CCFF;
 }
 
-/* Show the tooltip text when you mouse over the tooltip container */
+/* Show the tooltip box when non-tooltip achievement is mouse-hovered or touched */
 #achieve1Image:hover #achieve1Txt {
     visibility: visible;
 }
 
+/* Show the tooltip box when non-tooltip achievement is mouse-hovered or touched */
 #achieve2Image:hover #achieve2Txt {
     visibility: visible;
 }
 
+/* Show the tooltip box when non-tooltip achievement is mouse-hovered or touched */
 #achieve3Image:hover #achieve3Txt {
     visibility: visible;
 }

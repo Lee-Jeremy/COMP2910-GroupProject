@@ -4,7 +4,6 @@ var secondIsPlaying = false;
 var thirdIsPlaying = false;
 var fourthIsPlaying = false;
 var fifthIsPlaying = false;
-var playCounter = 0;
 
 // Choose a random audio file to start each game or menu screen
 function cueMusic() {

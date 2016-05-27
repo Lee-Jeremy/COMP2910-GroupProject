@@ -46,6 +46,7 @@ var gamePlay3 = new Audio("sounds/game_play3.mp3"); // Sound clip in-game play
 var gamePlay4 = new Audio("sounds/game_play4.mp3"); // Sound clip in-game play
 var gamePlay5 = new Audio("sounds/game_play5.mp3"); // Sound clip in-game play
 var gamePlayMusic = [gamePlay1, gamePlay2, gamePlay3, gamePlay4, gamePlay5]; // in-game music loop
+var playCounter = 0; // Only cue the music at the start of level 1 (otherwise, it's continuous)
 var flip = new Audio("sounds/flip.wav"); // Sound clip for card flip
 var fail = new Audio("sounds/level_fail.mp3"); // Sound clip for level failed
 var gameOver = new Audio("sounds/game_over.mp3"); // Sound clip for game over

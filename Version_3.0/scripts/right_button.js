@@ -43,7 +43,6 @@ $(document).ready(function () {
                         achieve1();
                         achieve2();
                         achieve3();
-                        achieveHide();
                         window.location.href = './leaderboard.php'; // Links to the leaderboard.php page;
                     }                                               // query is processed slower than page refreshes
                 }

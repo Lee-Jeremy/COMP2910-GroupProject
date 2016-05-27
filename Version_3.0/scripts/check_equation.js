@@ -7,34 +7,26 @@ function checkEquation(){
 	if (operator === "addition") {
 		if ((first + second) == answer) {
 			levelComplete();
-            success.play();
 		} else {
 			levelFailed();
-            wrong.play();
 		}
 	} else if(operator === "subtraction") {
 		if ((first - second) == answer) {
 			levelComplete();
-            success.play();
 		} else {
 			levelFailed();
-            wrong.play();
 		}
 	} else if(operator === "multiplication") {
 		if ((first * second) == answer) {
 			levelComplete();
-            success.play();
 		} else {
 			levelFailed();
-            wrong.play();
 		}
 	} else if(operator === "division") {
 		if ((first / second) == answer) {
 			levelComplete();
-            success.play();
 		} else {
 			levelFailed();
-            wrong.play();
 		}
 	} else {
 		alert('Unable to identify operator during checkEquation');	
@@ -68,6 +60,7 @@ function levelComplete() {
     }
     getId('eqCard4Front').style.backgroundColor = "#29a329"; // Green
 	revealAnswer();
+    success.play();
 }
 
 /**
@@ -78,6 +71,7 @@ function levelFailed() {
         lives--;
         setTimeout(losingLife, 1500);
         if (lives === 0) { // Checks to see if the lives are 0 causing game over
+            gameOver.play();
             if (totalScore > tenthScore) {
                 getId('gainedHeartText').style.display = "none";
                 setTimeout(fadeHighScore, 2000);
@@ -86,6 +80,7 @@ function levelFailed() {
                 setTimeout(fadePlayAgain, 2000);               
             }
         } else {
+            fail.play();
             setTimeout(resetLevel, 2500);
             setTimeout(dealCards, 3500);
         }
@@ -95,7 +90,7 @@ function levelFailed() {
         setTimeout(hexColour, 2500);
         setTimeout(resetLevel, 2500);
         setTimeout(dealCards, 3500);
-             
+        fail.play();           
     }  
     getId('eqCard4Front').style.backgroundColor = "#000000"; // Change the answer card's frontside to black
 	revealAnswer();

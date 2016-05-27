@@ -16,13 +16,13 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		count++; 					   	  // and from selecting the same card twice 
 	}	
 	if (count == 1 && numClicks == 1) { // The first card selected by the user
+        click.play(); // Slam Sound Effect
 		userSelection[0] = matrix[cardIndexNum]; // Copy the selected matrix card value to the 1st index in the user selection array
 		getId('eqCard1FrontText').innerHTML = matrix[cardIndexNum]; // Copy the selected matrix card value to the 1st equation card
 		$("#" + rowCol + "Back").css("background-color", "#D7DADB"); // Change 1st matric card's backside color to grey (Hide the card)
 		$("#" + rowCol + "Back").css("border-style", "dashed"); // Change 1st matrix card's backside border-style to dashed
 		hideEasterEgg(cardNum);
-		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animation card visible
-        click.play(); // Slam Sound Effect
+		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animation card visible 
 		$("#animationCard" + cardNum).animate({ // Change size and width of animate div to match equation card dimensions
 			left: '0vw',
 			top: '67vh',
@@ -38,6 +38,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		});
 	}		
 	if (count == 2 && numClicks == 1) { 
+        click.play();
 		clearInterval(multTimer); // Stop the multiplier timer function
 		userSelection[1] = matrix[cardIndexNum]; 
 		getId('eqCard3FrontText').innerHTML = matrix[cardIndexNum]; // Assign the 1st matrix card value to the 3rd equation card
@@ -45,7 +46,6 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		$("#" + rowCol + "Back").css("border-style", "dashed"); 
 		hideEasterEgg(cardNum);
         $("#animationCard" + cardNum).css("visibility", "visible");
-        click.play();
 		$("#animationCard" + cardNum).animate({ 
 			left: '41.4vw',
 			top: '67vh',

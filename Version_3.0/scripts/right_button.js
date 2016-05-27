@@ -49,11 +49,11 @@ $(document).ready(function () {
                 break;
 			case 'Next': // Tutorial Next option
 			// Has a counter to cycle through all the tutorial and repeats it after user is done
-			if (tutorialCounter >=6){
+			if (tutorialCounter >= 6){
 				showLevelOverlay();
 				getId("tutorialBox").checked = false;
 				
-				tutorialCounter =0;
+				tutorialCounter = 0;
 			//The user is still in the tutorial page
 			}else {
 				tutorialCounter++;
@@ -63,7 +63,7 @@ $(document).ready(function () {
 			}
                 break;
             default: // Current Level Overlay
-			if (getId("tutorialBox").checked == true){
+			if (document.title === "Play" && getId("tutorialBox").checked == true){
 				resetLevel();
 				displayTutorial();
                 }

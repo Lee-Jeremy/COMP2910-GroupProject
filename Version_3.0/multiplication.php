@@ -25,11 +25,13 @@
         <script src="./scripts/matrix_card.js"></script>
         <script src="./scripts/operator.js"></script>
         <script src="./scripts/overlays.js"></script>
+        <script src="./scripts/play_cue.js"></script>
         <script src="./scripts/reset_level.js"></script>
         <script src="./scripts/right_button.js"></script>
         <script src="./scripts/set_difficulty.js"></script>
         <script src="./scripts/set_level.js"></script>
         <script src="./scripts/timer.js"></script>
+        <script src="./scripts/tutorial.js"></script>
     </head>
     <body>
         <!--- Wrapper --->
@@ -219,9 +221,9 @@
                         <div id="totalPoints">
                             <p id="totalPointsText">Multiplication</p>
                         </div>
-                        <div id="tutorialOrHearts">
+                        <div id="tutorialOrHearts" style="display: none">
                             <form id="tutorial">
-                                <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial"></p>
+                                <p>Show Tutorial <input type="checkbox" name="tutorial" value="showTutorial" id="tutorialBox"></p>
                             </form>
                         </div>
                          <div id="playAgain">

@@ -14,6 +14,8 @@ $(document).ready(function () {
                         achieve3();
                         window.location.href = './startscreen.php';
                     }
+                } else {
+                    window.location.href = './startscreen.php';
                 }
                 break;
             case 'End': // Pause Game

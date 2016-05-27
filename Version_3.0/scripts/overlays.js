@@ -50,13 +50,15 @@ function showLevelOverlay() {
 	getId('levelOverlay').style.display = "block";
 	getId('buttonLeft').style.display = "block";
 	getId('buttonRight').style.display = "block";
-    getId('scoreMultiplied').style.display = "block";
-    getId('normalScore').style.display = "block";
+	if (document.title === "Play") {
+	    getId('scoreMultiplied').style.display = "block";
+	    getId('normalScore').style.display = "block";
+        getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
+	    getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
+	    getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
+	}
 	getId('buttonLeftText').innerHTML = "Quit";
 	getId('buttonRightText').innerHTML = "Play";  
-	getId('scoreMultipliedText').innerHTML = points + " pts x " + multiplier;
-	getId('normalScoreText').innerHTML = pointsPerLevel + " pts";
-	getId('totalPointsText').innerHTML = "Total " + totalScore + " pts";
 }
  
 /**

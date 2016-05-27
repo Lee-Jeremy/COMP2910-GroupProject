@@ -1,0 +1,269 @@
+/* Padding and border included in width and height */
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+/* Set Height and Width to Viewport Size */
+html, body, #startscreen, div.container {
+    height: 100%;
+    width: 100%;
+}
+
+/* HTML and Body specs */
+html, body {
+    margin: 0;
+    font-size: 100%;
+    overflow: hidden;
+}
+
+/* Start Screen div */
+#startscreen {
+    padding-top: 15%;
+    background: #D7DADB;
+}
+
+/**** Title ****/
+/* Title div */
+#title {
+    width: 90%;
+    height: 27.5%;
+    margin: auto;
+}
+
+/* Title image */
+#title img {
+    width: 100%;
+    height: 80%;
+}
+
+/**** All Cards ****/
+/* All card front's and back's */
+.front, .back {
+    color: white;
+    text-align: center;
+    border-radius: 4%;
+}
+
+/**** Main Menu Cards ****/
+/* All main menu wrappers */
+.menuMainBox {
+    position: absolute;
+    margin: auto;
+    height: 18%;
+    width: 100%;
+}
+
+/* All main menu cards */
+.mainCard {
+    left: -75.75%;
+    top: -200%;
+    height: 100%;
+    width: 22%;
+    z-index: 2;
+    border-radius: 4%;
+}
+
+/* All main menu card backs */
+#menuMainContainer .back {
+}
+
+/* All main menu card fronts' texts */
+.mainFrontText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* All main menu card backs' texts */
+.mainBackText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/**** Main menu card 1 ****/
+/* Main menu card 1 back */
+#menuMain0Back {
+    background-color: #263545;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 1 front */
+#menuMain0Front {
+    background-color: #263545;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 1 front text */
+#menuMain0FrontText {
+    font-size: 120%;
+}
+
+/**** Main menu card 2 ****/
+/* Main menu card 2 back */
+#menuMain1Back {
+    background-color: #263545;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 2 front */
+#menuMain1Front {
+    background-color: #263545;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 2 front text */
+#menuMain1FrontText {
+    font-size: 100%;
+    letter-spacing: -0.1vw;
+}
+
+/* Main menu card 2 back text */
+#menuMain1BackText {
+    font-size: 120%;
+}
+
+/**** Main menu card 3 ****/
+/* Main menu card 3 back */
+#menuMain2Back {
+    background-color: #800000;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 3 front */
+#menuMain2Front {
+    background-color: #800000;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 3 front text */
+#menuMain2FrontText {
+    font-size: 120%;
+}
+
+/**** Main menu card 4 ****/
+/* Main menu card 4 back */
+#menuMain3Back {
+    background-color: #800000;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 4 front */
+#menuMain3Front {
+    background-color: #800000;
+    border: 1px solid #000000;
+}
+
+/* Main menu card 4 front text */
+#menuMain3FrontText {
+    font-size: 100%;
+    letter-spacing: -0.1vw;
+}
+
+/* Main menu card 4 back text */
+#menuMain3BackText {
+    font-size: 120%;
+}
+
+/* All main menu cells hover */
+#menuMain .front:hover {
+}
+
+/**** Practice Menu Cards ****/
+/* All practice menu card div */
+.menuPracBox {
+    position: absolute;
+    margin: auto;
+    height: 18%;
+    width: 100%;
+}
+
+/* All practice menu cards */
+.pracCard {
+    visibility: hidden;
+    left: 26.75%;
+    top: 0%;
+    height: 99.5%;
+    width: 22%;
+    z-index: 1;
+    border-radius: 4%;
+}
+
+.menuPracBox .back {
+    background-color: #800000;
+    border: 1px solid #000000;
+}
+
+.menuPracBox .front {
+    background-color: #800000;
+    border: 1px solid #000000;
+}
+
+/* All practice menu card fronts' texts */
+.pracFrontText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.pracFrontText img {
+    width: 50%;
+}
+
+/* All practice menu hover */
+.pracCard .front:hover {
+}
+
+/**** Login Menu Card ****/
+/* All login menu card div */
+.menuLoginBox {
+    position: absolute;
+    margin: auto;
+    height: 18%;
+    width: 100%;
+}
+
+/* All login menu cards */
+.loginCard {
+    visibility: hidden;
+    left: 75.75%;
+    top: 0%;
+    height: 100%;
+    width: 22%;
+    z-index: 1;
+    border-radius: 4%;
+}
+
+.menuLoginBox .back {
+    background-color: #800000;
+    border: 1px solid #000000;
+    border-radius: 1%;
+}
+
+.menuLoginBox .front {
+    background-color: #800000;
+    border: 1px solid #000000;
+    border-radius: 1%;
+}
+
+/* All login menu card fronts' texts */
+.loginFrontText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.loginBackText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.loginFrontText img {
+}
+
+/* All login menu hover */
+.loginCard .front:hover {
+}

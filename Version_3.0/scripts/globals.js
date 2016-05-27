@@ -38,6 +38,7 @@ var secondRevealWave = 4; // 2nd set of card reveals
 var thirdRevealWave = 6; // 3rd set of card reveals 
 var newHighScore = new Audio("sounds/high_score.mp3"); // Sound clip for the start of the game
 var gameStart = new Audio("sounds/game_start.mp3"); // Sound clip for the start of the game
+var gameStartCounter = 0; // Only play on level 1 intro
 var gamePlay1 = new Audio("sounds/game_play1.mp3"); // Sound clip in-game play
 var gamePlay2 = new Audio("sounds/game_play2.mp3"); // Sound clip in-game play
 var gamePlay3 = new Audio("sounds/game_play3.mp3"); // Sound clip in-game play

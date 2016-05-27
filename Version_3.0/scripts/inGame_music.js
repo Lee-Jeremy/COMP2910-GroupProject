@@ -4,35 +4,39 @@ var secondIsPlaying = false;
 var thirdIsPlaying = false;
 var fourthIsPlaying = false;
 var fifthIsPlaying = false;
+var playCounter = 0;
 
 // Choose a random audio file to start each game or menu screen
 function cueMusic() {
-    fifthIsPlaying = false;
-    var random = Math.floor((Math.random() * 4) + 1); // 1 to 4 
-    switch (random) {
-        case 1:
-            playFirst();
-            break;
+    playCounter++;
+    if (playCounter <= 1) {
+        var random = Math.floor((Math.random() * 4) + 1); // 1 to 4 
+        switch (random) {
+            case 1:
+                playFirst();
+                break;
 
-        case 2:
-            playSecond();
-            break;
+            case 2:
+                playSecond();
+                break;
 
-        case 3:
-            playThird();
-            break;
+            case 3:
+                playThird();
+                break;
 
-        case 4:
-            playFourth();
-            break;
+            case 4:
+                playFourth();
+                break;
 
-        default:
-            playFifth();
+            default:
+                playFifth();
+        }
     }
 }
 
 // Cue the in-game music
 function playFirst() {
+    fifthIsPlaying = false;
     gamePlayMusic[0].play();
     firstIsPlaying = true;
     gamePlayMusic[0].addEventListener("ended", playSecond);
@@ -67,7 +71,7 @@ function playFifth() {
     fourthIsPlaying = false;
     gamePlayMusic[4].play();
     fifthIsPlaying = true;
-    gamePlayMusic[4].addEventListener("ended", cueMusic);
+    gamePlayMusic[4].addEventListener("ended", playFirst);
 }
 
 var firstIsPaused = false;

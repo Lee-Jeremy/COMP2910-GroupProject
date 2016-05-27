@@ -50,8 +50,11 @@ $(document).ready(function () {
                     }                                           // query is processed slower than page refreshes
                 }
                 break;
-            default: // Current Level Overlay
-                gameStart.play();
+            default: // Current Level Overlay  
+                gameStartCounter++;
+                if (gameStartCounter <= 1) {
+                    gameStart.play();
+                }                   
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();

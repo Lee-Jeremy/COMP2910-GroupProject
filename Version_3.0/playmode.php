@@ -44,6 +44,7 @@
         <script src="./scripts/right_button.js"></script>
         <script src="./scripts/set_difficulty.js"></script>
         <script src="./scripts/set_level.js"></script>        
+        <script src="./scripts/timer.js"></script>
         <script src="./scripts/tutorial.js"></script>
     </head>
     <body>

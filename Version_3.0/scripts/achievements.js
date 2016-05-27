@@ -2,7 +2,7 @@
  * If the user reaches level 6 getting 4x multiplier at each stage, store and send to PHP
  */
 function achieve1() {
-    if (level == 6 && totalScore == 500) {
+    if (level == 6 && totalScore == 500 && achievement1 != "") {
         $.post("playmode.php",
             {
                 achieve1: "yes"
@@ -15,7 +15,7 @@ function achieve1() {
  * If the user reaches level 11 with 3 lives, store and send to PHP
  */
 function achieve2() {
-    if (level == 11 && lives == 3) {
+    if (level == 11 && lives == 3 && achievement2 != "") {
         $.post("playmode.php",
             {
                 achieve2: "yes"
@@ -28,7 +28,7 @@ function achieve2() {
  * If the user reaches level 16, store and send to PHP
  */
 function achieve3() {
-    if (level == 16) {
+    if (level == 16 && achievement3 != "") {
         $.post("playmode.php",
             {
                 achieve3: "yes"

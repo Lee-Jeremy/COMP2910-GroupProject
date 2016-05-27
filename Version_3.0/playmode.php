@@ -25,6 +25,10 @@
                 echo 'var achievement1 = "'.$_SESSION['SESS_ACHIEVE1'].'";';
                 echo 'var achievement2 = "'.$_SESSION['SESS_ACHIEVE2'].'";';
                 echo 'var achievement3 = "'.$_SESSION['SESS_ACHIEVE3'].'";';
+            } else {
+                echo 'var achievement1 = "";';
+                echo 'var achievement2 = "";';
+                echo 'var achievement3 = "";';
             }
         ?></script>
         <script src="./scripts/achievements.js"></script>

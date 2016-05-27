@@ -9,11 +9,10 @@
  *				The matrix card's number (1-9)
  */
 function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
-    // making it tutorial friendly if the tutorial counter is greater 
-	if (seconds == 0 || tutorialCounter > 1) { // Prevent the user from selecting a card before all introduction reveals finish
+	if (seconds == 0) { // Prevent the user from selecting a card before all introduction reveals finish
 		incrementClicks(cardNum); // Determine which matrix card th user selected
 	}
-	if ((seconds == 0 || tutorialCounter > 1) && numClicks == 1) { // Prevent the user from selecting a card before all introduction reveals finish
+	if (seconds == 0 && numClicks == 1) { // Prevent the user from selecting a card before all introduction reveals finish
 		count++; 					   	  // and from selecting the same card twice 
 	}	
 	if (count == 1 && numClicks == 1) { // The first card selected by the user
@@ -24,7 +23,7 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 		hideEasterEgg(cardNum);
 		uncuePlay("#" + rowCol);
 		$("#animationCard" + cardNum).css("visibility", "visible"); // Make the hidden animation card visible
-        click.play(); // Slam Sound Effect
+        click.play(); // Click sound
 		$("#animationCard" + cardNum).animate({ // Change size and width of animate div to match equation card dimensions
 			left: '0vw',
 			top: '67vh',
@@ -36,9 +35,11 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); // Hide the animate division
 				$('#eqCard1').flip(true); // Flip the 1st equation card to its frontside
+				flip.play();
 			}
 		});
 	}		
+    whoosh.play();
 	if (count == 2 && numClicks == 1) { 
 		clearInterval(multTimer); // Stop the multiplier timer function
 		userSelection[1] = matrix[cardIndexNum]; 
@@ -60,14 +61,10 @@ function revealMatrixCard(rowCol, cardIndexNum, cardNum) {
 			function hideAnimator() {
 				$("#animationCard" + cardNum).css("visibility", "hidden"); 
 				$('#eqCard3').flip(true); // Flip the 3rd equation card to its frontside
+				flip.play();
 			}
 		});
-		// for tutorial option 
-		if (getId("tutorialBox").checked = false) {
-			setTimeout(checkEquation, 1200); // Check if the equation is true
-		}else {
-			setTimeout(tutorialEquation, 1200);
-	}
+		setTimeout(checkEquation, 1200); // Check if the equation is true
 	}
 }
 

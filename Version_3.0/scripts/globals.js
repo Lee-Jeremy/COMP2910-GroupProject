@@ -38,10 +38,11 @@ var secondRevealWave = 4; // 2nd set of card reveals
 var thirdRevealWave = 6; // 3rd set of card reveals 
 var flip = new Audio("sounds/flip.wav"); // Sound clip for card flip
 var fail = new Audio("sounds/fail.wav"); // Sound clip for game over
-var success = new Audio("sounds/success.mp3"); // Sound clip for success
+var success = new Audio("sounds/success.wav"); // Sound clip for success
 var wrong = new Audio("sounds/wrong.mp3"); // Sound clip for wrong answer
 var deal = new Audio("sounds/Dealing1.wav"); // Sound clip for dealing
-var click = new Audio("sounds/card_pick.mp3"); // Sound clip for mouse click
+var whoosh = new Audio("sounds/whoosh.wav"); // Sound clip for card movement
+var click = new Audio("sounds/click.wav"); // Sound clip for mouse click
 var hexOrange = "images/orange.png"; // Orange hexagon
 var hexBlue = "images/blue.png"; // Orange hexagon
 var hexGrey = "images/grey.png"; // Grey hexagon
@@ -65,4 +66,3 @@ var hexImgArray = [ // Stores the hexagons into an arry
     hexGreen
 ];
 var hexCount = 0; // Count for looping hexagon images
-var tutorialCounter = 0;

@@ -63,13 +63,12 @@ function dealCards() {
                 getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
             }
         }
+        deal.pause();
         getId('eqCard2Back').style.backgroundColor = "#800000"; // Red
         getId('eqCard2Back').style.border = "1px solid #000000"; // Solid black border
         getId('eqCard4Back').style.backgroundColor = "#800000";	// Red
         getId('eqCard4Back').style.border = "1px solid #000000"; // Solid black border
         easterEgg(); // Put easter eggs on card backs if condition is met
-        if (tutorialCounter != 1) { 
-	    setTimeout(hideAnimations, 450);
-	}
+        setTimeout(hideAnimations, 450);
     }
 }

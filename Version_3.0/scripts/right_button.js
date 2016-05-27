@@ -15,8 +15,9 @@ $(document).ready(function () {
                 pauseGame(); // Returns to the pauseGame overlay
                 break;
             case 'Resume': // Pause Game Overlay
+                resumeMusic();
                 if (document.title === 'Play') {
-                    multTimer = setInterval(multiplierTimer, 1000); // Resumes the timer functionality
+                    multTimer = setInterval(multiplierTimer, 1000); // Resumes the timer functionality                  
                 }
                 hideOverlay();
                 hideOverlayContainer();
@@ -63,18 +64,23 @@ $(document).ready(function () {
 			}
                 break;
             default: // Current Level Overlay
-			if (document.title === "Play" && getId("tutorialBox").checked == true){
+			if (level == 1 && getId('tutorialBox').checked == false) {
+                gameStart.play();
+            }
+            if (document.title === "Play" && getId("tutorialBox").checked == true){
 				resetLevel();
 				displayTutorial();
                 }
-                else{
-                gameStart.play();
+             else{
                 hideOverlay();
                 hideOverlayContainer();
                 resetLevel();
                 hexColour();
                 if (document.title === 'Play' && totalScore > tenthScore) { // Checks current totalScore versus the 10th score from the database
-                    newHighScore.play();
+                    highScoreCounter++;
+                    if (highScoreCounter <= 1) {
+                        newHighScore.play();
+                    }
                     displayCrown();            // and displays a crown while converting the points color to gold
                     getId('pointsText').style.color = "#c5b358";
                 }
@@ -86,7 +92,7 @@ $(document).ready(function () {
                 }
                 setTimeout(dealCards, 500);
                 setTimeout(cueMusic, 6500);
-        }
+            }
 		}
     });
 });

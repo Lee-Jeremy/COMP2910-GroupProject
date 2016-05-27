@@ -65,10 +65,10 @@ function tutorial2() {
 	getId('r3c3Front').style.backgroundColor = "yellow"; 
 	
 	// reveals answer
-	setTimeout(hideAnswer,2000);
+	setTimeout(hideAnswer,1000);
 
 	//Flips over the matrix
-	setTimeout(revealMatrix,2000);
+	setTimeout(revealMatrix,1000);
 	
 	// increments the tutorial counter to the next line
 	tutorialCounter++;	
@@ -88,7 +88,7 @@ function tutorial4() {
 	if (tutorialCounter == 5){
 		hideOverlay();
 		hideOverlayContainer();
-		hideMatrix();
+		setTimeout(hideMatrix, 2000);
 		tutorialAnswer();
 		hideAnswer();
 
@@ -138,7 +138,7 @@ function tutorialEquation() {
  if(operator === "addition") {
 	 //if answer is right will show the answer at the bottom and move onto next tutorial
 		if ((first + second) == answer) {
-			setTimeout(tutorial5,2000);
+			setTimeout(tutorial5,3000);
 			revealAnswer();
 		} else {
 			//if wrong will reset all the counters and redeal the cards
@@ -191,7 +191,6 @@ function modifiedReset() {
 // redeals the cards that went to the bottom to refill the matrix
 function modifiedDealCards() {
 	var interval;
-    deal.play();
 	$("#animationCard11").animate({ // Move to the answer card position and shrink
 			left: '71.1vw',
 			top: '67vh',
@@ -242,7 +241,6 @@ function modifiedDealCards() {
 			getId('r' + i + 'c' + k + 'Back').style.backgroundColor = "#263545"; // Navy blue
 			getId('r' + i + 'c' + k + 'Back').style.border = "1px solid #000000"; // Solid black border
 		}
-        deal.pause();
 	}
 			});		
 		});	

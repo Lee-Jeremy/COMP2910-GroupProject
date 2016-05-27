@@ -176,12 +176,13 @@ function quitConfirm() {
  * before all introductory reveals are finised
  */
 function fadePauseGame() {
-    if (seconds == 0 && count <= 1) { // Determines the boundaries pausing (reveals and card selection respectively)
+    if (seconds == 0 && count <= 1) { // Determines the boundaries pausing (reveals and card selection respectively)        
         hideOverlay();
         fadeOverlay();
 	    getId('quitText').innerHTML = "Game is<br>PAUSED";
 	    getId('buttonLeftText').innerHTML = "End";
 	    getId('buttonRightText').innerHTML = "Resume";
+        pauseMusic();
     }
 }
  

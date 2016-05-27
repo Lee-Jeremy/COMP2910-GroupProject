@@ -37,6 +37,7 @@ var firstRevealWave = 2; // 1st set of card reveals
 var secondRevealWave = 4; // 2nd set of card reveals 
 var thirdRevealWave = 6; // 3rd set of card reveals 
 var newHighScore = new Audio("sounds/high_score.mp3"); // Sound clip for the start of the game
+var highScoreCounter = 0; // Only play the high score audio the first time
 var gameStart = new Audio("sounds/game_start.mp3"); // Sound clip for the start of the game
 var gamePlay1 = new Audio("sounds/game_play1.mp3"); // Sound clip in-game play
 var gamePlay2 = new Audio("sounds/game_play2.mp3"); // Sound clip in-game play
@@ -60,7 +61,7 @@ var hexPurple = "images/purple.png"; // Purple hexagon
 var hexRed = "images/red.png"; // Red hexagon
 var hexTeal = "images/teal.png"; // Teal hexagon
 var hexYellow = "images/yellow.png"; // Yellow hexagon
-var hexYellow = "images/green.png"; // Green hexagon
+var hexGreen = "images/green.png"; // Green hexagon
 var hexImgArray = [ // Stores the hexagons into an array
     hexOrange,
     hexBlue,

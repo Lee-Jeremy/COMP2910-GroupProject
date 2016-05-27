@@ -40,14 +40,12 @@ $(document).ready(function () {
                             newNameInput: nameInput,
                             newTotalScore: scoreInput
                         });
-                        if (document.title === 'Play') {
-                            achieve1();
-                            achieve2();
-                            achieve3();
-                            achieveHide();
-                        }
+                        achieve1();
+                        achieve2();
+                        achieve3();
+                        achieveHide();
                         window.location.href = './leaderboard.php'; // Links to the leaderboard.php page;
-                    }                                           // query is processed slower than page refreshes
+                    }                                               // query is processed slower than page refreshes
                 }
                 break;
             default: // Current Level Overlay

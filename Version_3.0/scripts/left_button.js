@@ -12,9 +12,9 @@ $(document).ready(function () {
                         achieve1();
                         achieve2();
                         achieve3();
+                        window.location.href = './startscreen.php';
                     }
                 }
-                window.location.href = './startscreen.php';
                 break;
             case 'End': // Pause Game
                 mainMenu();

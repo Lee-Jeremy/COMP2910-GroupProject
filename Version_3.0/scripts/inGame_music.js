@@ -11,7 +11,7 @@ function cueMusic() {
     var random = Math.floor((Math.random() * 4) + 1); // 1 to 4 
     switch (random) {
         case 1:
-            cueMusic();
+            playFirst();
             break;
 
         case 2:

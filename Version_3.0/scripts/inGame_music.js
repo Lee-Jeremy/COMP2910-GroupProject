@@ -7,8 +7,7 @@ var fifthIsPlaying = false;
 
 // Choose a random audio file to start each game or menu screen
 function cueMusic() {
-    playCounter++;
-    if (playCounter <= 1) {
+    if (level == 1) {
         var random = Math.floor((Math.random() * 4) + 1); // 1 to 4 
         switch (random) {
             case 1:

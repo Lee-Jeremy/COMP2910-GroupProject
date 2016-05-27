@@ -51,8 +51,7 @@ $(document).ready(function () {
                 }
                 break;
             default: // Current Level Overlay  
-                gameStartCounter++;
-                if (gameStartCounter <= 1) {
+                if (level == 1) {
                     gameStart.play();
                 }
                 hideOverlay();
